@@ -24,8 +24,7 @@ date_default_timezone_set("America/Mexico_City");
 #librerias
 define('ADODB_ERROR_LOG_DEST','errors.log');
 define('ADODB_ERROR_LOG_TYPE',2);
-//include('librerias/adodb/adodb-errorhandler.inc.php');
-//include('librerias/adodb/adodb.inc.php');
+
 require_once('librerias/phpMailer/PHPMailerAutoload.php');
 require('librerias/fpdf/fpdf.php');
 require('librerias/fpdf/tfpdf.php');
@@ -41,7 +40,6 @@ $objModulo = new TModulo($modulo);
 $bandSesion = true;
 if ($objModulo->requiereSeguridad()){
 	if (!isset($sesion['usuario']) or $sesion['usuario'] == ''){
-		#echo $sesion['usuario'];
 		$bandSesion = false;
 		$modulo = MODULO_DEFECTO;
 		unset($objModulo);

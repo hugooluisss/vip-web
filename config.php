@@ -1,5 +1,5 @@
 <?php
-define('SISTEMA', 'REOSA');
+define('SISTEMA', 'VIP');
 define('VERSION', 'v 1.0');
 define('ALIAS', '');
 define('AUTOR', 'Hugo Luis Santiago Altamirano');
@@ -18,7 +18,7 @@ $conf['inicio'] = array(
 	'seguridad' => false,
 	'js' => array('usuario.class.js'),
 	'jsTemplate' => array('login.js'),
-	'capa' => 'layout/login.tpl');
+	'capa' => LAYOUT_TOPNAV);
 
 $conf['logout'] = array(
 	'controlador' => 'login.php',
