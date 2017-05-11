@@ -28,6 +28,7 @@ $(document).ready(function(){
 				email: $("#txtEmail").val(),
 				pass: $("#txtPass").val(),
 				tipo: $("#selTipo").val(),
+				empresa: $("#empresa").val(),
 				fn: {
 					after: function(datos){
 						if (datos.band){
@@ -45,7 +46,7 @@ $(document).ready(function(){
     });
 		
 	function getLista(){
-		$.get("listaUsuarios", function( data ) {
+		$.post("listaUsuarios", {"empresa": $("#empresa").val()}, function( data ) {
 			$("#dvLista").html(data);
 			
 			$("[action=eliminar]").click(function(){

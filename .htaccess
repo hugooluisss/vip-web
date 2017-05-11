@@ -6,4 +6,4 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 
 RewriteRule ^([0-9a-zA-Z]*)\/?$ index.php?mod=$1 [QSA,L]
 RewriteRule ^([0-9a-zA-Z]*)/$ index.php?mod=$1 [QSA,L]
-RewriteRule ^([0-9a-zA-Z]*)/(\d*)\/$ index.php?mod=$1&id=$2 [QSA,L]
+RewriteRule ^([0-9a-zA-Z]*)/(\d*)\-([0-9a-zA-Z+]*)\/$ index.php?mod=$1&id=$2 [QSA,L]

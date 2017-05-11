@@ -15,6 +15,7 @@ class TEmpresa{
 	private $email;
 	private $rfc;
 	private $activo;
+	public $usuarios;
 	
 	/**
 	* Constructor de la clase
@@ -24,6 +25,7 @@ class TEmpresa{
 	* @param int $id identificador del objeto
 	*/
 	public function TEmpresa($id = ''){
+		$this->usuarios = array();
 		$this->setId($id);		
 		return true;
 	}
@@ -45,6 +47,30 @@ class TEmpresa{
 		
 		foreach($rs->fetch_assoc() as $field => $val)
 			$this->$field = $val;
+			
+		$this->getUsuarios();
+		
+		return true;
+	}
+	
+	/**
+	* Carga la lista de usuarios
+	*
+	* @autor Hugo
+	* @access public
+	* @param int $id identificador del objeto
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function getUsuarios(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->query("select idUsuario from usuarioempresa where idEmpresa = ".$id);
+		
+		$this->usuarios = array();
+		while($row = $rs->fetch_assoc())
+			$this->usuarios[$row['idUsuario']] = new TUsuario($row['idUsuario']);
 		
 		return true;
 	}
@@ -297,6 +323,51 @@ class TEmpresa{
 		$rs = $db->query("update usuario set visible = false where idUsuario = ".$this->getId());
 		
 		return $rs?true:false;
+	}
+	
+	
+	/**
+	* Agrega un usuario a la empresa
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function addUsuario($usuario = ''){
+		if ($usuario == '') return false;
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		
+		$sql = "INSERT INTO usuarioempresa(idUsuario, idEmpresa) VALUES(".$usuario.", ".$this->getId().");";
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		
+		if (!$rs) return false;
+		$this->getUsuarios();
+		return true;
+	}
+	
+	/**
+	* Quita un usuario a la empresa
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function delUsuario($usuario = ''){
+		if ($usuario == '') return false;
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		
+		$sql = "delete from usuarioempresa where idUsuario = ".$usuario." and idEmpresa = ".$this->getId()."";
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		
+		if (!$rs) return false;
+		$this->getUsuarios();
+		return true;
 	}
 }
 ?>

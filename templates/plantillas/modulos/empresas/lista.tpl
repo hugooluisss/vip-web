@@ -14,6 +14,8 @@
 						<td style="border-left: 2px solid {if $row.activo eq 1}blue{else}red{/if}">{$row.idEmpresa}</td>
 						<td>{$row.razonsocial}</td>
 						<td style="text-align: right">
+							<a href="admonUsuarios/{$row.idEmpresa}-{str_replace(" ", "", $row.razonsocial)}/" class="btn btn-default" title="Usuarios"><i class="fa fa-users"></i></a>
+							
 							<button type="button" class="btn btn-success" action="modificar" title="Modificar" datos='{$row.json}'><i class="fa fa-pencil"></i></button>
 							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador="{$row.idEmpresa}"><i class="fa fa-times"></i></button>
 						</td>

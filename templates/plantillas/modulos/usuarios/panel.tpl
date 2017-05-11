@@ -53,6 +53,7 @@
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
 					<button type="submit" class="btn btn-info pull-right">Guardar</button>
 					<input type="hidden" id="id"/>
+					<input type="text" id="empresa" value="{$empresa}"/>
 				</div>
 			</div>
 		</form>

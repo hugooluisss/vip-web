@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-09 13:43:26
+<?php /* Smarty version Smarty-3.1.11, created on 2017-05-11 09:24:06
          compiled from "templates/plantillas/modulos/empresas/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:136594591259120c07f14800-58695612%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd1dd6b5fce0dd38d2e1d39d3560331c3daa4d349' => 
     array (
       0 => 'templates/plantillas/modulos/empresas/lista.tpl',
-      1 => 1494355311,
+      1 => 1494512644,
       2 => 'file',
     ),
   ),
@@ -46,6 +46,10 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['razonsocial'];?>
 </td>
 						<td style="text-align: right">
+							<a href="admonUsuarios/<?php echo $_smarty_tpl->tpl_vars['row']->value['idEmpresa'];?>
+-<?php echo str_replace(" ",'',$_smarty_tpl->tpl_vars['row']->value['razonsocial']);?>
+/" class="btn btn-default" title="Usuarios"><i class="fa fa-users"></i></a>
+							
 							<button type="button" class="btn btn-success" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>
 							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idEmpresa'];?>

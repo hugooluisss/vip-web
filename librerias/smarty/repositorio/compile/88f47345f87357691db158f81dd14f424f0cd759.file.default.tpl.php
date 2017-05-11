@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-09 12:29:15
+<?php /* Smarty version Smarty-3.1.11, created on 2017-05-11 09:05:06
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6823998275911fc6bf042b5-57055635%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1494342886,
+      1 => 1494511505,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_5911fc6c1ada89_03406835',
   'variables' => 
   array (
     'PAGE' => 0,
     'script' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_5911fc6c1ada89_03406835',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5911fc6c1ada89_03406835')) {function content_5911fc6c1ada89_03406835($_smarty_tpl) {?><!DOCTYPE html>
 <html>
@@ -149,7 +149,7 @@ img/logo.png" alt="User Image" style="background: white"/>
 				<ul class="sidebar-menu">
 					<li class="header">MENÚ PRINCIPAL</li>
 					<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getPerfil()==1){?>
-					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('admonUsuarios','estados'))){?>active<?php }?> treeview">
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('admonUsuarios','empresas'))){?>active<?php }?> treeview">
 						<a href="#">
 							<i class="fa fa-dashboard"></i>
 							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>

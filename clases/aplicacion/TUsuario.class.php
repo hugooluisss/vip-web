@@ -13,7 +13,6 @@ class TUsuario{
 	private $email;
 	private $pass;
 	private $visible;
-	
 	/**
 	* Constructor de la clase
 	*
@@ -22,6 +21,7 @@ class TUsuario{
 	* @param int $id identificador del objeto
 	*/
 	public function TUsuario($id = ''){
+		$this->empresa = new TEmpresa;
 		$this->setId($id);		
 		return true;
 	}
@@ -39,13 +39,16 @@ class TUsuario{
 		if ($id == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->query("select * from usuario where idUsuario = ".$id);
+		$rs = $db->query("select * from usuario a where idUsuario = ".$id);
 		
 		foreach($rs->fetch_assoc() as $field => $val){
-			if ($field == 'idSucursal')
-				$this->sucursal = new TSucursal($val);
-			else
-				$this->$field = $val;
+			switch($field){
+				case 'idSucursal':
+					$this->sucursal = new TSucursal($val);
+				break;
+				default:
+					$this->$field = $val;
+			}
 		}
 		
 		return true;

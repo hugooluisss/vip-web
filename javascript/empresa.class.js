@@ -13,6 +13,7 @@ TEmpresa = function(){
 				"email": datos.email,
 				"rfc": datos.rfc,
 				"activo": datos.activo,
+				"empresa": datos.empresa,
 				"action": "add"
 			}, function(data){
 				if (data.band == 'false')

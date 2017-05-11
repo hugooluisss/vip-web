@@ -99,7 +99,7 @@
 				<ul class="sidebar-menu">
 					<li class="header">MENÚ PRINCIPAL</li>
 					{if $PAGE.usuario->getPerfil() eq 1}
-					<li class="{if in_array($PAGE.modulo, array('admonUsuarios', 'estados'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('admonUsuarios', 'empresas'))}active{/if} treeview">
 						<a href="#">
 							<i class="fa fa-dashboard"></i>
 							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
