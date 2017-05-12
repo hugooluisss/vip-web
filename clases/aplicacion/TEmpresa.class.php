@@ -66,7 +66,8 @@ class TEmpresa{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->query("select idUsuario from usuarioempresa where idEmpresa = ".$id);
+		$sql = "select idUsuario from usuarioempresa where idEmpresa = ".$this->getId();
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		
 		$this->usuarios = array();
 		while($row = $rs->fetch_assoc())

@@ -17,7 +17,40 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("tipos", $datos);
-		$smarty->assign("empresa", $_GET['id']);
+		$smarty->assign("empresa", new TEmpresa($_GET['id']));
+	break;
+	case 'misUsuarios':
+		$db = TBase::conectaDB();
+		global $userSesion;
+		
+		$rs = $db->query("select * from tipoUsuario where rol = 'B'"); #Bazas
+			
+		$datos = array();
+		while($row = $rs->fetch_assoc()){
+			$datos[$row['idTipoUsuario']] = $row['nombre'];
+		}
+		
+		$smarty->assign("tipos", $datos);
+	break;
+	case 'listaUsuariosBazar':
+		$db = TBase::conectaDB();
+		global $userSesion;
+		
+		if ($userSesion->getEmpresa() <> '') #Estamos dentro de una empresa
+			$sql = "select * from usuario a where a.visible = true and idUsuario in (select idUsuario from usuarioempresa where idEmpresa = ".$userSesion->getEmpresa().")";
+			
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		$datos = array();
+		while($row = $rs->fetch_assoc()){
+			$obj = new TUsuario($row['idUsuario']);
+			
+			$row['tipo'] = $obj->getTipo();
+			$row['json'] = json_encode($row);
+			
+			array_push($datos, $row);
+		}
+		
+		$smarty->assign("lista", $datos);
 	break;
 	case 'listaUsuarios':
 		$db = TBase::conectaDB();
@@ -74,10 +107,20 @@ switch($objModulo->getId()){
 				$obj->setPass($_POST['pass']);
 				$obj->setTipo($_POST['tipo']);
 				$band = $obj->guardar();
-				if ($band and $_POST['empresa'] <> ''){
-					$empresa = new TEmpresa($_POST['empresa']);
-					$empresa->addUsuario($obj->getId());
+				
+				if ($_POST['id'] == ''){
+					if ($band and $_POST['empresa'] <> ''){
+						$empresa = new TEmpresa($_POST['empresa']);
+						$empresa->addUsuario($obj->getId());
+					}else{
+						global $userSesion;
+						if ($userSesion->getEmpresa() <> ''){
+							$empresa = new TEmpresa($userSesion->getEmpresa());
+							$empresa->addUsuario($obj->getId());
+						}
+					}
 				}
+				
 				$smarty->assign("json", array("band" => $band));
 			break;
 			case 'del':

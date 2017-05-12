@@ -1,7 +1,6 @@
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Administración de usuarios</h1>
-		<p><b>{$empresa->getRazonSocial()}</b></p>
 	</div>
 </div>
 
@@ -54,7 +53,6 @@
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
 					<button type="submit" class="btn btn-info pull-right">Guardar</button>
 					<input type="hidden" id="id"/>
-					<input type="hidden" id="empresa" value="{$empresa->getId()}"/>
 				</div>
 			</div>
 		</form>

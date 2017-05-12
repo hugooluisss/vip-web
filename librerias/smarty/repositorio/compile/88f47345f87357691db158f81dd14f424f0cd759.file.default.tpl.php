@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-11 09:05:06
+<?php /* Smarty version Smarty-3.1.11, created on 2017-05-11 22:19:53
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6823998275911fc6bf042b5-57055635%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1494511505,
+      1 => 1494559191,
       2 => 'file',
     ),
   ),
@@ -73,9 +73,6 @@ plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 		<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/upload/css/jquery.fileupload.css">
-		
-		<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['maps'];?>
-"></script>
 		
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -160,7 +157,18 @@ img/logo.png" alt="User Image" style="background: white"/>
 						</ul>
 					</li>
 					<?php }?>
-					
+					<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getPerfil(),array(2))){?>
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('miEmpresa','misUsuarios'))){?>active<?php }?> treeview">
+						<a href="#">
+							<i class="fa fa-dashboard"></i>
+							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='miEmpresa'){?>class="active"<?php }?>><a href="miEmpresa"><i class="fa fa-university"></i> Mi empresa</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='misUsuarios'){?>class="active"<?php }?>><a href="misUsuarios"><i class="fa fa-users"></i> Mis usuarios</a></li>
+						</ul>
+					</li>
+					<?php }?>
 				</ul>
 			</section>
 			<!-- /.sidebar -->

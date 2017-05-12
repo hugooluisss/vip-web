@@ -10,6 +10,7 @@ TUsuario = function(){
 				"email": datos.email, 
 				"pass": datos.pass,
 				"tipo": datos.tipo,
+				"empresa": datos.empresa,
 				"action": "add"
 			}, function(data){
 				if (data.band == 'false')

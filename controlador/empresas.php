@@ -14,6 +14,10 @@ switch($objModulo->getId()){
 		}
 		$smarty->assign("lista", $datos);
 	break;
+	case 'miEmpresa':
+		global $userSesion;
+		$smarty->assign("empresa", new TEmpresa($userSesion->getEmpresa()));
+	break;
 	case 'cempresas':
 		switch($objModulo->getAction()){
 			case 'add':

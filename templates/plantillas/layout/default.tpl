@@ -30,8 +30,6 @@
 		<link rel="stylesheet" href="{$PAGE.ruta}plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 		<link rel="stylesheet" href="{$PAGE.ruta}plugins/upload/css/jquery.fileupload.css">
 		
-		<script src="https://maps.googleapis.com/maps/api/js?key={$PAGE.maps}"></script>
-		
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -110,7 +108,18 @@
 						</ul>
 					</li>
 					{/if}
-					
+					{if in_array($PAGE.usuario->getPerfil(), array(2))}
+					<li class="{if in_array($PAGE.modulo, array('miEmpresa', 'misUsuarios'))}active{/if} treeview">
+						<a href="#">
+							<i class="fa fa-dashboard"></i>
+							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li {if $PAGE.modulo eq 'miEmpresa'}class="active"{/if}><a href="miEmpresa"><i class="fa fa-university"></i> Mi empresa</a></li>
+							<li {if $PAGE.modulo eq 'misUsuarios'}class="active"{/if}><a href="misUsuarios"><i class="fa fa-users"></i> Mis usuarios</a></li>
+						</ul>
+					</li>
+					{/if}
 				</ul>
 			</section>
 			<!-- /.sidebar -->
