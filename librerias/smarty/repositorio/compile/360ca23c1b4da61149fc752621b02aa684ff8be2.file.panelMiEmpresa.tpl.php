@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-11 22:01:09
+<?php /* Smarty version Smarty-3.1.11, created on 2017-05-18 09:42:49
          compiled from "templates/plantillas/modulos/empresas/panelMiEmpresa.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:772156433591521af986027-36244439%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '360ca23c1b4da61149fc752621b02aa684ff8be2' => 
     array (
       0 => 'templates/plantillas/modulos/empresas/panelMiEmpresa.tpl',
-      1 => 1494558026,
+      1 => 1495118565,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_591521af9d4217_89749622')) {function content_591521af9d4217_89749622($_smarty_tpl) {?><form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;">
+<?php if ($_valid && !is_callable('content_591521af9d4217_89749622')) {function content_591521af9d4217_89749622($_smarty_tpl) {?><div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Mi empresa</h1>
+	</div>
+</div>
+
+<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;">
 	<div class="box">
 		<div class="box-body">			
 			<div class="form-group">

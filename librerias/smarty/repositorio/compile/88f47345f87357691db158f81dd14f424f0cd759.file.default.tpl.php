@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-11 22:19:53
+<?php /* Smarty version Smarty-3.1.11, created on 2017-05-18 12:10:40
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6823998275911fc6bf042b5-57055635%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1494559191,
+      1 => 1495127438,
       2 => 'file',
     ),
   ),
@@ -166,6 +166,17 @@ img/logo.png" alt="User Image" style="background: white"/>
 						<ul class="treeview-menu">
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='miEmpresa'){?>class="active"<?php }?>><a href="miEmpresa"><i class="fa fa-university"></i> Mi empresa</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='misUsuarios'){?>class="active"<?php }?>><a href="misUsuarios"><i class="fa fa-users"></i> Mis usuarios</a></li>
+						</ul>
+					</li>
+					<br />
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('metodospago','productos'))){?>active<?php }?> treeview">
+						<a href="#">
+							<i class="fa fa-book" aria-hidden="true"></i>
+							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='metodospago'){?>class="active"<?php }?>><a href="metodospago"><i class="fa fa-credit-card"></i> Métodos de pago</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='productos'){?>class="active"<?php }?>><a href="productos"><i class="fa fa-cube"></i> Productos</a></li>
 						</ul>
 					</li>
 					<?php }?>

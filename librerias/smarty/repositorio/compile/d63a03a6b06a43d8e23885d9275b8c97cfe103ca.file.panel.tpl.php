@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-12 09:14:57
+<?php /* Smarty version Smarty-3.1.11, created on 2017-05-18 09:36:57
          compiled from "templates/plantillas/modulos/empresas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:73113637459120b688fb297-28068119%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd63a03a6b06a43d8e23885d9275b8c97cfe103ca' => 
     array (
       0 => 'templates/plantillas/modulos/empresas/panel.tpl',
-      1 => 1494557343,
+      1 => 1494597795,
       2 => 'file',
     ),
   ),

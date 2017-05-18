@@ -119,6 +119,17 @@
 							<li {if $PAGE.modulo eq 'misUsuarios'}class="active"{/if}><a href="misUsuarios"><i class="fa fa-users"></i> Mis usuarios</a></li>
 						</ul>
 					</li>
+					<br />
+					<li class="{if in_array($PAGE.modulo, array('metodospago', 'productos'))}active{/if} treeview">
+						<a href="#">
+							<i class="fa fa-book" aria-hidden="true"></i>
+							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li {if $PAGE.modulo eq 'metodospago'}class="active"{/if}><a href="metodospago"><i class="fa fa-credit-card"></i> Métodos de pago</a></li>
+							<li {if $PAGE.modulo eq 'productos'}class="active"{/if}><a href="productos"><i class="fa fa-cube"></i> Productos</a></li>
+						</ul>
+					</li>
 					{/if}
 				</ul>
 			</section>
