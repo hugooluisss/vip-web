@@ -14,6 +14,38 @@ switch($objModulo->getId()){
 		}
 		$smarty->assign("lista", $datos);
 	break;
+	case 'productosImportar':
+		$data = new Spreadsheet_Excel_Reader();
+
+		$data->setOutputEncoding('CP1251');
+		$data->read($_POST['archivo']);
+		$hoja = $data->sheets[0];
+		$datos = array();
+		$campos = array(
+			1 => "codigoBarras",
+			2 => "codigoInterno",
+			3 => "descripcion",
+			4 => "color",
+			5 => "talla",
+			6 => "unidad",
+			7 => "costo",
+			8 => "descuento",
+			9 => "existencias",
+			10 => "precio"
+		);
+		
+		for($j = 6 ; $j <= max(array_keys($hoja['cells'])) ; $j++){
+			if (count($hoja['cells'][$j]) > 0){
+				$aux = array();
+				foreach($hoja['cells'][$j] as $key => $val)
+					$aux[$campos[$key]] = $val;
+					
+				array_push($datos, $aux);
+			}
+		}
+		$smarty->assign("lista", $datos);
+		$smarty->assign("json", json_encode($datos));
+	break;
 	case 'cproductos':
 		switch($objModulo->getAction()){
 			case 'add':
@@ -39,6 +71,62 @@ switch($objModulo->getId()){
 			case 'del':
 				$obj = new TProducto($_POST['id']);
 				$smarty->assign("json", array("band" => $obj->eliminar()));
+			break;
+			case 'exportar':
+				include_once("repositorio/excel/exportarInventario.php");
+				$db = TBase::conectaDB();
+				
+				$rs = $db->query("select * from producto a where idBazar = ".$_POST['bazar']." and visible = true");
+				$datos = array();
+				while($row = $rs->fetch_assoc())
+					array_push($datos, $row);
+				
+				$obj = new RInventario($_POST['bazar']);
+				$obj->generar($datos);
+					
+				$smarty->assign("json", array("archivo" => $obj->output()));
+			break;
+			case 'uploadfile':
+				if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
+					$ext = explode(".", $_FILES['upl']['name']);
+					if (strtolower($ext[count($ext) -1]) == 'xls'){
+						if(move_uploaded_file($_FILES['upl']['tmp_name'], "temporal/".$_FILES['upl']['name'])){
+							chmod("temporal/".$_FILES['upl']['name'], 0755);
+							echo json_encode(array("status" => true, "ruta" => "temporal/".$_FILES['upl']['name']));
+							exit;
+						}
+					}
+				}
+				
+				echo json_encode(array("status" => false));
+			break;
+			case 'importar':
+				$productos = json_decode($_POST['productos']);
+				$db = TBase::conectaDB();
+				
+				foreach($productos as $producto){
+					$sql = "select * from producto where idBazar = ".$_POST['bazar']." and codigoBarras = ".$producto->codigoBarras;
+					$rs = $db->query($sql);
+					$row = $rs->fetch_assoc();
+					$obj = new TProducto($row['idProducto']);
+				
+					//$obj->setId($producto['id']);
+					$obj->setBazar($producto->bazar);
+					$obj->setCodigoBarras($producto->codigoBarras);
+					$obj->setCodigoInterno($producto->codigoInterno);
+					$obj->setDescripcion($producto->descripcion);
+					$obj->setColor($producto->color);
+					$obj->setTalla($producto->talla);
+					$obj->setUnidad($producto->unidad);
+					$obj->setCosto($producto->costo);
+					$obj->setDescuento($producto->descuento);
+					$obj->setExistencias($producto->existencias);
+					$obj->setPrecio($producto->precio);
+					
+					$obj->guardar();
+				}
+				
+				$smarty->assign("json", array("band" => true));
 			break;
 		}
 	break;

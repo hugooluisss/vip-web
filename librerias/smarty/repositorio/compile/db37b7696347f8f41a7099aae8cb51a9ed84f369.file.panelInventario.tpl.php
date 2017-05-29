@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-28 13:09:30
+<?php /* Smarty version Smarty-3.1.11, created on 2017-05-29 11:33:37
          compiled from "templates/plantillas/modulos/bazares/panelInventario.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1873615140592a2415c58718-14796321%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'db37b7696347f8f41a7099aae8cb51a9ed84f369' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/panelInventario.tpl',
-      1 => 1495994969,
+      1 => 1496075615,
       2 => 'file',
     ),
   ),
@@ -29,13 +29,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 </div>
 
-<div class="btn-group  btn-group-xs">
-	<button type="button" class="btn btn-success">Importar xls</button>
-	<button type="button" class="btn btn-success">Exportar xls</button>
+<div class="btn-group btn-group-xs pull-right">
+	<button type="button" class="btn btn-success" id="btnExportar"><i class="fa fa-download" aria-hidden="true"></i> Exportar xls</button>
+	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar xls</button>
 </div>
 
 <div class="row">
-	<div class="col-xs-12 pull-right">
+	<div class="col-xs-12">
 		<ul id="panelTabs" class="nav nav-tabs ">
 		  <li class="active"><a data-toggle="tab" href="#listas">Lista</a></li>
 		  <li><a data-toggle="tab" href="#add">Agregar o Modificar</a></li>
@@ -115,4 +115,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</div>
 		</form>
 	</div>
-</div><?php }} ?>
+</div>
+
+
+<div class="modal fade" id="winUpload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Subir archivo</h4>
+			</div>
+			<div class="modal-body">
+				<form id="upload" method="post" action="?mod=cproductos&action=uploadfile" enctype="multipart/form-data">
+					<input type="file" name="upl" />
+				</form>
+				
+				<div class="row">
+					<div class="col-xs-12" id="dvProductsImport">
+					</div>
+				</div>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal --><?php }} ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-27 20:14:17
+<?php /* Smarty version Smarty-3.1.11, created on 2017-05-29 12:03:30
          compiled from "templates/plantillas/modulos/bazares/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1483661084592a1fe86a7b83-17490916%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '56643b30d45b998ebf34dba5c2b47c1cd7922918' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/lista.tpl',
-      1 => 1495933992,
+      1 => 1496077406,
       2 => 'file',
     ),
   ),
@@ -49,7 +49,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<td style="color: <?php if ($_smarty_tpl->tpl_vars['row']->value['estado']==1){?>blue<?php }else{ ?>red<?php }?>"><?php if ($_smarty_tpl->tpl_vars['row']->value['estado']==1){?>Activo<?php }else{ ?>Inactivo<?php }?></td>
 						<td style="text-align: right">
 							<a href="inventario/<?php echo $_smarty_tpl->tpl_vars['row']->value['idBazar'];?>
--bazar/" class="btn btn-default" title="Inventario"><i class="fa fa-product-hunt"></i></a>
+-bazar/" class="btn btn-default" title="Inventario">I</a>
 							
 							<button type="button" class="btn btn-success" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>

@@ -44,4 +44,11 @@ $conf['listaProductos'] = array(
 	'descripcion' => 'Lista de productos',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+$conf['productosImportar'] = array(
+	'controlador' => 'productos.php',
+	'vista' => 'bazares/listaProductosImportar.tpl',
+	'descripcion' => 'Lista de productos a importar',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>
