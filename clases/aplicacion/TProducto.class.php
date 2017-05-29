@@ -8,9 +8,9 @@
 
 class TProducto{
 	private $idProducto;
-	public $empresa;
-	private $codigobarras;
-	private $codigointerno;
+	private $idBazar;
+	private $codigoBarras;
+	private $codigoInterno;
 	private $descripcion;
 	private $color;
 	private $talla;
@@ -28,7 +28,7 @@ class TProducto{
 	* @param int $id identificador del objeto
 	*/
 	public function TProducto($id = ''){
-		$this->empresa = new TEmpresa;
+		$this->bazar = new TBazar;
 		$this->setId($id);		
 		return true;
 	}
@@ -50,9 +50,6 @@ class TProducto{
 		
 		foreach($rs->fetch_assoc() as $field => $val){
 			switch($field){
-				case 'idEmpresa':
-					$this->empresa = new TEmpresa($val);
-				break;
 				default:
 					$this->$field = $val;
 				break;
@@ -98,6 +95,32 @@ class TProducto{
 	
 	public function getCodigoBarras(){
 		return $this->codigoBarras;
+	}
+	
+	/**
+	* Establece el identificador del bazar
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setBazar($val = ""){
+		$this->idBazar = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el identificador del bazar
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getBazar(){
+		return $this->idBazar;
 	}
 	
 	/**
@@ -343,16 +366,16 @@ class TProducto{
 	*/
 	
 	public function guardar(){
-		if ($this->empresa->getId() == '') return false;
+		if ($this->getBazar() == '') return false;
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$sql = "INSERT INTO producto(idEmpresa) VALUES('".$this->empresa->getId()."');";
+			$sql = "INSERT INTO producto(idBazar) VALUES('".$this->getBazar()."');";
 			$rs = $db->query($sql) or errorMySQL($db, $sql);
 			
 			if (!$rs) return false;
 				
-			$this->idMetodo = $db->insert_id;
+			$this->idProducto = $db->insert_id;
 		}		
 		
 		if ($this->getId() == '')
@@ -369,7 +392,7 @@ class TProducto{
 				costo = ".$this->getCosto().",
 				descuento = ".$this->getDescuento().",
 				existencias = ".$this->getExistencias().",
-				precio = ".$this->getPrecio().",
+				precio = ".$this->getPrecio()."
 			WHERE idProducto = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
@@ -389,7 +412,7 @@ class TProducto{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$sql = "update producgto set visible = false where idProducto = ".$this->getId();
+		$sql = "update producto set visible = false where idProducto = ".$this->getId();
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		
 		return $rs?true:false;

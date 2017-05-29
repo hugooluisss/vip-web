@@ -321,7 +321,7 @@ class TEmpresa{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->query("update usuario set visible = false where idUsuario = ".$this->getId());
+		$rs = $db->query("update empresa set visible = false where idEmpresa = ".$this->getId());
 		
 		return $rs?true:false;
 	}

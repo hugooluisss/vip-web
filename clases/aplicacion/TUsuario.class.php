@@ -13,6 +13,8 @@ class TUsuario{
 	private $email;
 	private $pass;
 	private $visible;
+	public $empresa;
+	
 	/**
 	* Constructor de la clase
 	*

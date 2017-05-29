@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-18 11:28:32
+<?php /* Smarty version Smarty-3.1.11, created on 2017-05-27 20:03:46
          compiled from "templates/plantillas/modulos/metodospago/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:909368582591dcbb065e4f0-37329315%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a033618a053ccc82e81cc201a993554807f80b06' => 
     array (
       0 => 'templates/plantillas/modulos/metodospago/panel.tpl',
-      1 => 1495124156,
+      1 => 1495931049,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_591dcbb07d3d37_20682387',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_591dcbb07d3d37_20682387')) {function content_591dcbb07d3d37_20682387($_smarty_tpl) {?><div class="row">
 	<div class="col-lg-12">

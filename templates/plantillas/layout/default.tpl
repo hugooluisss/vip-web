@@ -109,7 +109,7 @@
 					</li>
 					{/if}
 					{if in_array($PAGE.usuario->getPerfil(), array(2))}
-					<li class="{if in_array($PAGE.modulo, array('miEmpresa', 'misUsuarios'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('miEmpresa', 'misUsuarios', 'bazares', 'inventario'))}active{/if} treeview">
 						<a href="#">
 							<i class="fa fa-dashboard"></i>
 							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
@@ -117,6 +117,7 @@
 						<ul class="treeview-menu">
 							<li {if $PAGE.modulo eq 'miEmpresa'}class="active"{/if}><a href="miEmpresa"><i class="fa fa-university"></i> Mi empresa</a></li>
 							<li {if $PAGE.modulo eq 'misUsuarios'}class="active"{/if}><a href="misUsuarios"><i class="fa fa-users"></i> Mis usuarios</a></li>
+							<li {if in_array($PAGE.modulo, array('bazares', 'inventario'))}class="active"{/if}><a href="bazares"><i class="fa fa-cart-arrow-down"></i> Bazares</a></li>
 						</ul>
 					</li>
 					<br />
@@ -127,7 +128,6 @@
 						</a>
 						<ul class="treeview-menu">
 							<li {if $PAGE.modulo eq 'metodospago'}class="active"{/if}><a href="metodospago"><i class="fa fa-credit-card"></i> Métodos de pago</a></li>
-							<li {if $PAGE.modulo eq 'productos'}class="active"{/if}><a href="productos"><i class="fa fa-cube"></i> Productos</a></li>
 						</ul>
 					</li>
 					{/if}
