@@ -1,6 +1,21 @@
 <?php
 global $objModulo;
 switch($objModulo->getId()){
+	case 'bazares':
+		$db = TBase::conectaDB();
+		global $userSesion;
+		
+		$rs = $db->query("select a.*, c.nombre as perfil from usuario a join usuarioempresa b using(idUsuario) join tipoUsuario c on a.idTipo = c.idTipoUsuario and b.idEmpresa = ".$userSesion->getEmpresa());
+		$datos = array();
+		while($row = $rs->fetch_assoc()){
+			$row['json'] = json_encode($row);
+			
+			array_push($datos, $row);
+		}
+		$smarty->assign("usuarios", $datos);
+	break;
+	case 'inventario':
+		$smarty->assign("bazar", $_GET['id']);
 	case 'listaBazares':
 		$db = TBase::conectaDB();
 		global $userSesion;
@@ -14,19 +29,16 @@ switch($objModulo->getId()){
 		}
 		$smarty->assign("lista", $datos);
 	break;
-	case 'inventario':
-		$smarty->assign("bazar", $_GET['id']);
-	break;
 	case 'cbazares':
 		switch($objModulo->getAction()){
 			case 'add':
 				global $userSesion;
-				$db = TBase::conectaDB();
 				$obj = new TBazar();
 				
 				$obj->setId($_POST['id']);
 				$obj->setInicio($_POST['inicio']);
 				$obj->setEstado($_POST['estado']);
+				$obj->setNombre($_POST['nombre']);
 				$obj->setEmpresa($userSesion->getEmpresa());
 				
 				$smarty->assign("json", array("band" => $obj->guardar()));
@@ -34,6 +46,25 @@ switch($objModulo->getId()){
 			case 'del':
 				$obj = new TBazar($_POST['id']);
 				$smarty->assign("json", array("band" => $obj->eliminar()));
+			break;
+			case 'getUsuarios':
+				$db = TBase::conectaDB();
+				$sql = "select * from usuariobazar where idBazar = ".$_POST['id'].";";
+				$rs = $db->query($sql) or errorMySQL($db, $sql);
+				$datos = array();
+				while($row = $rs->fetch_assoc()){
+					array_push($datos, $row);
+				}
+				
+				$smarty->assign("json", array("usuarios" => $datos));
+			break;
+			case 'setUsuario':
+				$obj = new TBazar($_POST['id']);
+				$smarty->assign("json", array("band" => $obj->addUsuario($_POST['usuario'])));
+			break;
+			case 'delUsuario':
+				$obj = new TBazar($_POST['id']);
+				$smarty->assign("json", array("band" => $obj->delUsuario($_POST['usuario'])));
 			break;
 		}
 	break;

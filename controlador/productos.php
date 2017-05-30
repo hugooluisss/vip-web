@@ -103,7 +103,7 @@ switch($objModulo->getId()){
 			case 'importar':
 				$productos = json_decode($_POST['productos']);
 				$db = TBase::conectaDB();
-				
+				$cont = 0;
 				foreach($productos as $producto){
 					$sql = "select * from producto where idBazar = ".$_POST['bazar']." and codigoBarras = ".$producto->codigoBarras;
 					$rs = $db->query($sql);
@@ -111,7 +111,7 @@ switch($objModulo->getId()){
 					$obj = new TProducto($row['idProducto']);
 				
 					//$obj->setId($producto['id']);
-					$obj->setBazar($producto->bazar);
+					$obj->setBazar($_POST['bazar']);
 					$obj->setCodigoBarras($producto->codigoBarras);
 					$obj->setCodigoInterno($producto->codigoInterno);
 					$obj->setDescripcion($producto->descripcion);
@@ -123,10 +123,10 @@ switch($objModulo->getId()){
 					$obj->setExistencias($producto->existencias);
 					$obj->setPrecio($producto->precio);
 					
-					$obj->guardar();
+					$cont += $obj->guardar()?1:0;
 				}
 				
-				$smarty->assign("json", array("band" => true));
+				$smarty->assign("json", array("band" => true, "importados" => $cont));
 			break;
 		}
 	break;

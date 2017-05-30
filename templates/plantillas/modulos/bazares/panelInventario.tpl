@@ -1,12 +1,23 @@
 <div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">Inventario</h1>
+	<div class="col-sm-3">
+		<h1 class="page-header">Inventario del bazar </h1>
+	</div>
+	<div class="col-sm-4 page-header">
+		<select class="form-control" id="bazar" name="bazar">
+			{foreach from=$lista item="row"}
+				<option value="{$row.idBazar}" {if $bazar eq $row.idBazar}selected{/if}>{$row.nombre}</option>
+			{/foreach}
+		</select>
 	</div>
 </div>
 
-<div class="btn-group btn-group-xs pull-right">
-	<button type="button" class="btn btn-success" id="btnExportar"><i class="fa fa-download" aria-hidden="true"></i> Exportar xls</button>
-	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar xls</button>
+<div class="row">
+	<div class="col-md-12">
+		<div class="btn-group btn-group-xs pull-right">
+			<button type="button" class="btn btn-success" id="btnExportar"><i class="fa fa-download" aria-hidden="true"></i> Exportar xls</button>
+			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar xls</button>
+		</div>
+	</div>
 </div>
 
 <div class="row">
@@ -84,7 +95,6 @@
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
 					<button type="submit" class="btn btn-info pull-right">Guardar</button>
 					<input type="hidden" id="id"/>
-					<input type="hidden" id="bazar" value="{$bazar}"/>
 				</div>
 			</div>
 		</form>

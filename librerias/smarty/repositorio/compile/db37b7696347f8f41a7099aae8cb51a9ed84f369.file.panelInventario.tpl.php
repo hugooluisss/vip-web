@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-29 11:33:37
+<?php /* Smarty version Smarty-3.1.11, created on 2017-05-30 09:19:38
          compiled from "templates/plantillas/modulos/bazares/panelInventario.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1873615140592a2415c58718-14796321%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'db37b7696347f8f41a7099aae8cb51a9ed84f369' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/panelInventario.tpl',
-      1 => 1496075615,
+      1 => 1496153943,
       2 => 'file',
     ),
   ),
@@ -19,19 +19,38 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_592a2415c6f611_15581483',
   'variables' => 
   array (
+    'lista' => 0,
+    'row' => 0,
     'bazar' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_592a2415c6f611_15581483')) {function content_592a2415c6f611_15581483($_smarty_tpl) {?><div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">Inventario</h1>
+	<div class="col-sm-3">
+		<h1 class="page-header">Inventario del bazar </h1>
+	</div>
+	<div class="col-sm-4 page-header">
+		<select class="form-control" id="bazar" name="bazar">
+			<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['lista']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars["row"]->value){
+$_smarty_tpl->tpl_vars["row"]->_loop = true;
+?>
+				<option value="<?php echo $_smarty_tpl->tpl_vars['row']->value['idBazar'];?>
+" <?php if ($_smarty_tpl->tpl_vars['bazar']->value==$_smarty_tpl->tpl_vars['row']->value['idBazar']){?>selected<?php }?>><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
+</option>
+			<?php } ?>
+		</select>
 	</div>
 </div>
 
-<div class="btn-group btn-group-xs pull-right">
-	<button type="button" class="btn btn-success" id="btnExportar"><i class="fa fa-download" aria-hidden="true"></i> Exportar xls</button>
-	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar xls</button>
+<div class="row">
+	<div class="col-md-12">
+		<div class="btn-group btn-group-xs pull-right">
+			<button type="button" class="btn btn-success" id="btnExportar"><i class="fa fa-download" aria-hidden="true"></i> Exportar xls</button>
+			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar xls</button>
+		</div>
+	</div>
 </div>
 
 <div class="row">
@@ -109,8 +128,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
 					<button type="submit" class="btn btn-info pull-right">Guardar</button>
 					<input type="hidden" id="id"/>
-					<input type="hidden" id="bazar" value="<?php echo $_smarty_tpl->tpl_vars['bazar']->value;?>
-"/>
 				</div>
 			</div>
 		</form>

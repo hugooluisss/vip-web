@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-29 09:55:28
+<?php /* Smarty version Smarty-3.1.11, created on 2017-05-30 09:27:14
          compiled from "templates/plantillas/modulos/bazares/listaProductos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:730996178592a2a650c3a81-06598528%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '450dd57fb5cdea049dbb3bbd78eb5b9bbeb7252d' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/listaProductos.tpl',
-      1 => 1496068761,
+      1 => 1496154430,
       2 => 'file',
     ),
   ),
@@ -29,8 +29,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<table id="tblDatos" class="table table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>CB</th>
+					<th>Barras</th>
 					<th>Descripción</th>
+					<th>Existencias</th>
+					<th>Precio</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
@@ -45,7 +47,11 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['descripcion'];?>
 </td>
-						<td style="text-align: right">
+						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['existencias'];?>
+</td>
+						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['precio'];?>
+</td>
+						<td class="text-right">
 							<button type="button" class="btn btn-success" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>
 							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idProducto'];?>

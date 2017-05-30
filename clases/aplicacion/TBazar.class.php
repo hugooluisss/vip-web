@@ -9,6 +9,7 @@
 class TBazar{
 	private $idBazar;
 	private $idEmpresa;
+	private $nombre;
 	private $estado;
 	private $inicio;
 	
@@ -110,6 +111,32 @@ class TBazar{
 	}
 	
 	/**
+	* Establece el nombre
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setNombre($val = ""){
+		$this->nombre = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el nombre
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getNombre(){
+		return $this->nombre;
+	}
+	
+	/**
 	* Establece el identificador de la empresa
 	*
 	* @autor Hugo
@@ -162,6 +189,7 @@ class TBazar{
 		$sql = "UPDATE bazar
 			SET
 				estado = ".$this->getEstado().",
+				nombre = '".$this->getNombre()."',
 				inicio = '".$this->getInicio()."'
 			WHERE idBazar = ".$this->getId();
 			
@@ -185,6 +213,50 @@ class TBazar{
 		$rs = $db->query("update bazar set visible = false where idEmpresa = ".$this->getId());
 		
 		return $rs?true:false;
+	}
+	
+	/**
+	* Agrega un usuario a la empresa
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function addUsuario($usuario = ''){
+		if ($usuario == '') return false;
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		
+		$sql = "INSERT INTO usuariobazar(idUsuario, idBazar) VALUES(".$usuario.", ".$this->getId().");";
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		
+		if (!$rs) return false;
+		#$this->getUsuarios();
+		return true;
+	}
+	
+	/**
+	* Quita un usuario a la empresa
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function delUsuario($usuario = ''){
+		if ($usuario == '') return false;
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		
+		$sql = "delete from usuariobazar where idUsuario = ".$usuario." and idBazar = ".$this->getId()."";
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		
+		if (!$rs) return false;
+		#$this->getUsuarios();
+		return true;
 	}
 }
 ?>

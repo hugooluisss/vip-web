@@ -7,6 +7,10 @@ $(document).ready(function(){
 		$("form:not(.filter) :input:visible:enabled:first").focus();
 	});
 	
+	$("#bazar").change(function(){
+		getLista();
+	});
+	
 	$("#btnReset").click(function(){
 		$('#panelTabs a[href="#listas"]').tab('show');
 	});
@@ -187,6 +191,7 @@ $(document).ready(function(){
 							if (data.band){
 								$("#dvProductsImport").html("");
 								alert("Catálogo actualizado");
+								getLista();
 							}else
 								alert("Ocurrió un error al importar");
 						}, "json");

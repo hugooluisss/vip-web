@@ -8,6 +8,7 @@ TBazar = function(){
 				"id": datos.id,
 				"inicio": datos.inicio,
 				"estado": datos.estado, 
+				"nombre": datos.nombre,
 				"action": "add"
 			}, function(data){
 				if (data.band == 'false')
@@ -17,7 +18,6 @@ TBazar = function(){
 					datos.fn.after(data);
 			}, "json");
 	};
-	
 	
 	this.del = function(id, fn){
 		$.post('cbazares', {
@@ -30,5 +30,37 @@ TBazar = function(){
 				alert("Ocurrió un error al eliminar el registro");
 			}
 		}, "json");
+	};
+	
+	this.setUsuario = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		
+		$.post('cbazares', {
+				"id": datos.bazar,
+				"usuario": datos.usuario,
+				"action": "setUsuario"
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (datos.fn.after !== undefined)
+					datos.fn.after(data);
+			}, "json");
+	};
+	
+	this.delUsuario = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		
+		$.post('cbazares', {
+				"id": datos.bazar,
+				"usuario": datos.usuario,
+				"action": "delUsuario"
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (datos.fn.after !== undefined)
+					datos.fn.after(data);
+			}, "json");
 	};
 };

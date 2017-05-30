@@ -17,7 +17,13 @@
 	<div id="add" class="tab-pane fade">
 		<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;">
 			<div class="box">
-				<div class="box-body">			
+				<div class="box-body">
+					<div class="form-group">
+						<label for="txtNombre" class="col-sm-2">Nombre</label>
+						<div class="col-sm-6">
+							<input class="form-control" id="txtNombre" name="txtNombre">
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="txtInicio" class="col-sm-2">Inicio</label>
 						<div class="col-sm-3">
@@ -43,3 +49,23 @@
 		</form>
 	</div>
 </div>
+
+<div class="modal fade" id="winUsuarios" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" identificador="">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Usuarios</h4>
+			</div>
+			<div class="modal-body">
+				<p>
+					A continuación se presenta la lista de usuarios registrados en el sistema, los marcados son los que tienen acceso al bazar
+				</p>
+				{foreach from=$usuarios item="row"}
+					<label><input type="checkbox" class="usuario" value="{$row.idUsuario}"> <span class="text-primary">{$row.nombre}</span> <small><span class="text-muted">{$row.perfil}</span></small></label>
+					<br />
+				{/foreach}
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
