@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-29 09:55:15
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-01 09:38:16
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6823998275911fc6bf042b5-57055635%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1496068761,
+      1 => 1496327887,
       2 => 'file',
     ),
   ),
@@ -158,25 +158,34 @@ img/logo.png" alt="User Image" style="background: white"/>
 					</li>
 					<?php }?>
 					<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getPerfil(),array(2))){?>
-					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('miEmpresa','misUsuarios','bazares','inventario'))){?>active<?php }?> treeview">
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('miEmpresa','misUsuarios','bazares','inventario','metodospago'))){?>active<?php }?> treeview">
 						<a href="#">
-							<i class="fa fa-dashboard"></i>
+							<i class="fa fa-university"></i>
 							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='miEmpresa'){?>class="active"<?php }?>><a href="miEmpresa"><i class="fa fa-university"></i> Mi empresa</a></li>
-							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='misUsuarios'){?>class="active"<?php }?>><a href="misUsuarios"><i class="fa fa-users"></i> Mis usuarios</a></li>
-							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('bazares','inventario'))){?>class="active"<?php }?>><a href="bazares"><i class="fa fa-cart-arrow-down"></i> Bazares</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='miEmpresa'){?>class="active"<?php }?>><a href="miEmpresa">Mi empresa</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='misUsuarios'){?>class="active"<?php }?>><a href="misUsuarios">Mis usuarios</a></li>
+							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('bazares','inventario'))){?>class="active"<?php }?>><a href="bazares">Bazares</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='metodospago'){?>class="active"<?php }?>><a href="metodospago">Métodos de pago</a></li>
 						</ul>
 					</li>
-					<br />
-					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('metodospago','productos'))){?>active<?php }?> treeview">
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('inventario'))){?>active<?php }?> treeview">
 						<a href="#">
 							<i class="fa fa-book" aria-hidden="true"></i>
 							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='metodospago'){?>class="active"<?php }?>><a href="metodospago"><i class="fa fa-credit-card"></i> Métodos de pago</a></li>
+							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('inventario'))){?>class="active"<?php }?>><a href="inventario">Inventario</a></li>
+						</ul>
+					</li>
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('puntoventa'))){?>active<?php }?> treeview">
+						<a href="#">
+							<i class="fa fa-tachometer"></i> 
+							<span>Ventas</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('puntoventa'))){?>active<?php }?>"><a href="puntoventa">Punto de venta</a></li>
 						</ul>
 					</li>
 					<?php }?>

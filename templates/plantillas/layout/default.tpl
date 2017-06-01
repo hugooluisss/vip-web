@@ -109,25 +109,34 @@
 					</li>
 					{/if}
 					{if in_array($PAGE.usuario->getPerfil(), array(2))}
-					<li class="{if in_array($PAGE.modulo, array('miEmpresa', 'misUsuarios', 'bazares', 'inventario'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('miEmpresa', 'misUsuarios', 'bazares', 'inventario', 'metodospago'))}active{/if} treeview">
 						<a href="#">
-							<i class="fa fa-dashboard"></i>
+							<i class="fa fa-university"></i>
 							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li {if $PAGE.modulo eq 'miEmpresa'}class="active"{/if}><a href="miEmpresa"><i class="fa fa-university"></i> Mi empresa</a></li>
-							<li {if $PAGE.modulo eq 'misUsuarios'}class="active"{/if}><a href="misUsuarios"><i class="fa fa-users"></i> Mis usuarios</a></li>
-							<li {if in_array($PAGE.modulo, array('bazares', 'inventario'))}class="active"{/if}><a href="bazares"><i class="fa fa-cart-arrow-down"></i> Bazares</a></li>
+							<li {if $PAGE.modulo eq 'miEmpresa'}class="active"{/if}><a href="miEmpresa">Mi empresa</a></li>
+							<li {if $PAGE.modulo eq 'misUsuarios'}class="active"{/if}><a href="misUsuarios">Mis usuarios</a></li>
+							<li {if in_array($PAGE.modulo, array('bazares', 'inventario'))}class="active"{/if}><a href="bazares">Bazares</a></li>
+							<li {if $PAGE.modulo eq 'metodospago'}class="active"{/if}><a href="metodospago">Métodos de pago</a></li>
 						</ul>
 					</li>
-					<br />
-					<li class="{if in_array($PAGE.modulo, array('metodospago', 'productos'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('inventario'))}active{/if} treeview">
 						<a href="#">
 							<i class="fa fa-book" aria-hidden="true"></i>
 							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li {if $PAGE.modulo eq 'metodospago'}class="active"{/if}><a href="metodospago"><i class="fa fa-credit-card"></i> Métodos de pago</a></li>
+							<li {if in_array($PAGE.modulo, array('inventario'))}class="active"{/if}><a href="inventario">Inventario</a></li>
+						</ul>
+					</li>
+					<li class="{if in_array($PAGE.modulo, array('puntoventa'))}active{/if} treeview">
+						<a href="#">
+							<i class="fa fa-tachometer"></i> 
+							<span>Ventas</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li class="{if in_array($PAGE.modulo, array('puntoventa'))}active{/if}"><a href="puntoventa">Punto de venta</a></li>
 						</ul>
 					</li>
 					{/if}

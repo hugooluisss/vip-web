@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-30 09:19:38
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-01 09:39:19
          compiled from "templates/plantillas/modulos/bazares/panelInventario.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1873615140592a2415c58718-14796321%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'db37b7696347f8f41a7099aae8cb51a9ed84f369' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/panelInventario.tpl',
-      1 => 1496153943,
+      1 => 1496327954,
       2 => 'file',
     ),
   ),
@@ -71,56 +71,59 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			<div class="box">
 				<div class="box-body">			
 					<div class="form-group">
-						<label for="txtCodigoBarras" class="col-md-2">Código Barras</label>
+						<label for="txtCodigoBarras" class="col-md-2 text-right">Código Barras</label>
 						<div class="col-md-4">
 							<input class="form-control" id="txtCodigoBarras" name="txtCodigoBarras">
 						</div>
-						<label for="txtCodigoInterno" class="col-md-2">Código Interno</label>
+						<label for="txtCodigoInterno" class="col-md-2 text-right">Código Interno</label>
 						<div class="col-md-4">
 							<input class="form-control" id="txtCodigoInterno" name="txtCodigoInterno">
 						</div>
 					</div>
 					<hr />
 					<div class="form-group">
-						<label for="txtDescripcion" class="col-md-2">Descripción</label>
+						<label for="txtDescripcion" class="col-md-2 text-right">Descripción</label>
 						<div class="col-md-10">
 							<input class="form-control" id="txtDescripcion" name="txtDescripcion">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtColor" class="col-md-2">Color</label>
-						<div class="col-md-2">
+						<label for="txtColor" class="col-md-2 text-right">Color</label>
+						<div class="col-md-2 text-right">
 							<input class="form-control" id="txtColor" name="txtColor">
 						</div>
-						<label for="txtTalla" class="col-md-2">Talla</label>
-						<div class="col-md-2">
+						<label for="txtTalla" class="col-md-2 text-right">Talla</label>
+						<div class="col-md-2 text-right">
 							<input class="form-control" id="txtTalla" name="txtTalla">
 						</div>
-						<label for="txtUnidad" class="col-md-2">Unidad</label>
-						<div class="col-md-2">
+						<label for="txtUnidad" class="col-md-2 text-right">Unidad</label>
+						<div class="col-md-2 text-right">
 							<input class="form-control" id="txtUnidad" name="txtUnidad">
 						</div>
 					</div>
 					<hr />
 					<div class="form-group">
-						<label for="txtPrecio" class="col-md-2">Precio</label>
+						<label for="txtPrecio" class="col-md-2 text-right">Precio público</label>
 						<div class="col-md-3">
 							<input class="form-control" id="txtPrecio" name="txtPrecio" type="number">
 						</div>
-						<label for="txtCosto" class="col-md-offset-1 col-md-2">Costo</label>
+						<label for="txtCosto" class="col-md-offset-1 col-md-2 text-right">Costo</label>
 						<div class="col-md-3">
-							<input class="form-control" id="txtCosto" name="txtCosto" type="number">
+							<input class="form-control" id="txtCosto" name="txtCosto" type="number" value="0">
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label for="txtCosto" class="col-md-2">Existencias</label>
+						<label for="txtCosto" class="col-md-2 text-right">Existencia</label>
 						<div class="col-md-3">
 							<input class="form-control" id="txtExistencias" name="txtExistencias" type="number">
 						</div>
-						<label for="txtDescuento" class="col-md-offset-1 col-md-2">Descuento</label>
+						<label for="txtDescuento" class="col-md-offset-1 col-md-2 text-right">Descuento</label>
 						<div class="col-md-3">
-							<input class="form-control" id="txtDescuento" name="txtDescuento" type="number">
+							<div class="input-group">
+								<input class="form-control" id="txtDescuento" name="txtDescuento" type="number" aria-describedby="basic-addon1">
+								<span class="input-group-addon" id="basic-addon1">%</span>
+							</div>
 						</div>
 					</div>
 				</div>

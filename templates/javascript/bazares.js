@@ -83,6 +83,14 @@ $(document).ready(function(){
 				"info": true,
 				"autoWidth": false
 			});
+			
+			$("#showAll").click(function(){
+				$("#tblDatos").find("[activo=0]").show();
+			});
+			
+			$("#hideInactive").click(function(){
+				$("#tblDatos").find("[activo=0]").hide();
+			});
 		});
 	}
 	

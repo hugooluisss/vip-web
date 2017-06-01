@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-30 09:27:14
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-01 09:13:27
          compiled from "templates/plantillas/modulos/bazares/listaProductos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:730996178592a2a650c3a81-06598528%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '450dd57fb5cdea049dbb3bbd78eb5b9bbeb7252d' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/listaProductos.tpl',
-      1 => 1496154430,
+      1 => 1496326229,
       2 => 'file',
     ),
   ),
@@ -29,9 +29,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<table id="tblDatos" class="table table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>Barras</th>
+					<th>Código Barras</th>
+					<th>Código Interno</th>
 					<th>Descripción</th>
-					<th>Existencias</th>
+					<th>Color</th>
+					<th>Talla</th>
+					<th>Existencia</th>
 					<th>Precio</th>
 					<th>&nbsp;</th>
 				</tr>
@@ -45,7 +48,13 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 					<tr>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['codigoBarras'];?>
 </td>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['codigoInterno'];?>
+</td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['descripcion'];?>
+</td>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['color'];?>
+</td>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['talla'];?>
 </td>
 						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['existencias'];?>
 </td>

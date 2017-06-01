@@ -38,56 +38,59 @@
 			<div class="box">
 				<div class="box-body">			
 					<div class="form-group">
-						<label for="txtCodigoBarras" class="col-md-2">Código Barras</label>
+						<label for="txtCodigoBarras" class="col-md-2 text-right">Código Barras</label>
 						<div class="col-md-4">
 							<input class="form-control" id="txtCodigoBarras" name="txtCodigoBarras">
 						</div>
-						<label for="txtCodigoInterno" class="col-md-2">Código Interno</label>
+						<label for="txtCodigoInterno" class="col-md-2 text-right">Código Interno</label>
 						<div class="col-md-4">
 							<input class="form-control" id="txtCodigoInterno" name="txtCodigoInterno">
 						</div>
 					</div>
 					<hr />
 					<div class="form-group">
-						<label for="txtDescripcion" class="col-md-2">Descripción</label>
+						<label for="txtDescripcion" class="col-md-2 text-right">Descripción</label>
 						<div class="col-md-10">
 							<input class="form-control" id="txtDescripcion" name="txtDescripcion">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtColor" class="col-md-2">Color</label>
-						<div class="col-md-2">
+						<label for="txtColor" class="col-md-2 text-right">Color</label>
+						<div class="col-md-2 text-right">
 							<input class="form-control" id="txtColor" name="txtColor">
 						</div>
-						<label for="txtTalla" class="col-md-2">Talla</label>
-						<div class="col-md-2">
+						<label for="txtTalla" class="col-md-2 text-right">Talla</label>
+						<div class="col-md-2 text-right">
 							<input class="form-control" id="txtTalla" name="txtTalla">
 						</div>
-						<label for="txtUnidad" class="col-md-2">Unidad</label>
-						<div class="col-md-2">
+						<label for="txtUnidad" class="col-md-2 text-right">Unidad</label>
+						<div class="col-md-2 text-right">
 							<input class="form-control" id="txtUnidad" name="txtUnidad">
 						</div>
 					</div>
 					<hr />
 					<div class="form-group">
-						<label for="txtPrecio" class="col-md-2">Precio</label>
+						<label for="txtPrecio" class="col-md-2 text-right">Precio público</label>
 						<div class="col-md-3">
 							<input class="form-control" id="txtPrecio" name="txtPrecio" type="number">
 						</div>
-						<label for="txtCosto" class="col-md-offset-1 col-md-2">Costo</label>
+						<label for="txtCosto" class="col-md-offset-1 col-md-2 text-right">Costo</label>
 						<div class="col-md-3">
-							<input class="form-control" id="txtCosto" name="txtCosto" type="number">
+							<input class="form-control" id="txtCosto" name="txtCosto" type="number" value="0">
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label for="txtCosto" class="col-md-2">Existencias</label>
+						<label for="txtCosto" class="col-md-2 text-right">Existencia</label>
 						<div class="col-md-3">
 							<input class="form-control" id="txtExistencias" name="txtExistencias" type="number">
 						</div>
-						<label for="txtDescuento" class="col-md-offset-1 col-md-2">Descuento</label>
+						<label for="txtDescuento" class="col-md-offset-1 col-md-2 text-right">Descuento</label>
 						<div class="col-md-3">
-							<input class="form-control" id="txtDescuento" name="txtDescuento" type="number">
+							<div class="input-group">
+								<input class="form-control" id="txtDescuento" name="txtDescuento" type="number" aria-describedby="basic-addon1">
+								<span class="input-group-addon" id="basic-addon1">%</span>
+							</div>
 						</div>
 					</div>
 				</div>

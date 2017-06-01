@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-05-30 11:32:48
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-01 09:27:16
          compiled from "templates/plantillas/modulos/bazares/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1483661084592a1fe86a7b83-17490916%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '56643b30d45b998ebf34dba5c2b47c1cd7922918' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/lista.tpl',
-      1 => 1496161420,
+      1 => 1496327192,
       2 => 'file',
     ),
   ),
@@ -26,6 +26,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_592a1fe87438d0_82728751')) {function content_592a1fe87438d0_82728751($_smarty_tpl) {?><div class="box">
 	<div class="box-body">
+		<div class="btn-group" role="group" aria-label="...">
+			<button class="btn btn-xs btn-success" id="showAll">Todos</button>
+			<button class="btn btn-xs btn-danger" id="hideInactive">Solo activos</button>
+		</div>
 		<table id="tblDatos" class="table table-bordered table-hover">
 			<thead>
 				<tr>
@@ -42,7 +46,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars["row"]->value){
 $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
-					<tr>
+					<tr activo="<?php echo $_smarty_tpl->tpl_vars['row']->value['estado'];?>
+">
 						<td style="border-left: 2px solid <?php if ($_smarty_tpl->tpl_vars['row']->value['estado']==1){?>blue<?php }else{ ?>red<?php }?>"><?php echo $_smarty_tpl->tpl_vars['row']->value['idBazar'];?>
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>

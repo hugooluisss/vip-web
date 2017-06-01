@@ -1,5 +1,9 @@
 <div class="box">
 	<div class="box-body">
+		<div class="btn-group" role="group" aria-label="...">
+			<button class="btn btn-xs btn-success" id="showAll">Todos</button>
+			<button class="btn btn-xs btn-danger" id="hideInactive">Solo activos</button>
+		</div>
 		<table id="tblDatos" class="table table-bordered table-hover">
 			<thead>
 				<tr>
@@ -12,7 +16,7 @@
 			</thead>
 			<tbody>
 				{foreach from=$lista item="row"}
-					<tr>
+					<tr activo="{$row.estado}">
 						<td style="border-left: 2px solid {if $row.estado eq 1}blue{else}red{/if}">{$row.idBazar}</td>
 						<td>{$row.nombre}</td>
 						<td>{$row.inicio}</td>
