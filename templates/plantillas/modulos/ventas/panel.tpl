@@ -42,6 +42,17 @@
 
 <div class="row">
 	<div class="col-sm-6 col-sm-offset-3">
+		<div class="alert alert-success">
+			<div class="row">
+				<div class="col-xs-4 h3">Total</div>
+				<div class="col-xs-8 h3 text-right" id="dvTotal"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-6 col-sm-offset-3">
 		<div class="box">
 			<div class="box-body">
 				<div class="btn-group btn-group-justified">
