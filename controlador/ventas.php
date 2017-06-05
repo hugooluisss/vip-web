@@ -1,9 +1,23 @@
 <?php
 global $objModulo;
 switch($objModulo->getId()){
+	case 'puntoventa':
+		global $userSesion;
+		$db = TBase::conectaDB();
+		$sql = "select * from bazar a join usuariobazar b using(idBazar) where idUsuario = ".$userSesion->getId()." and a.visible = 1 and estado = 1";
+		
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		$datos = array();
+		while($row = $rs->fetch_assoc()){
+			$row['json'] = json_encode($row);
+			
+			array_push($datos, $row);
+		}
+		
+		$smarty->assign("bazares", $datos);
+	break;
 	case 'listaVentas':
 		$db = TBase::conectaDB();
-		global $sesion;
 		
 		$rs = $db->query("select * from empresa a where a.visible = true");
 		$datos = array();

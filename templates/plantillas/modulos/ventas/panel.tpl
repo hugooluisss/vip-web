@@ -3,9 +3,15 @@
 		<h1 class="page-header">Venta</h1>
 	</div>
 </div>
-
 <div class="row">
-	<div class="col-xs-12 text-right">
+	<div class="col-xs-12 col-sm-4">
+		<select class="form-control" id="selBazar" name="selBazar">
+			{foreach from=$bazares item="row"}
+				<option value="{$row.idBazar}">{$row.nombre}</option>
+			{/foreach}
+		</select>
+	</div>
+	<div class="col-xs-12 col-sm-8 text-right">
 		<div class="btn-group btn-group-xs">
 			<button class="btn btn-primary btnNuevaVenta">Nueva venta</button>
 		</div>
@@ -14,6 +20,12 @@
 <br />
 <div class="box">
 	<div class="box-body">
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-8 col-sm-3 col-sm-offset-9 text-right">
+				<input type="date" class="form-control text-right" id="txtFecha" name="txtFecha" value="{$smarty.now|date_format:"%Y-%m-%d"}" readonly="true" placerholder="Fecha" />
+			</div>
+		</div>
+		<br />
 		<div class="input-group">
 			<span class="input-group-addon" id="basic-addon1">Cliente</span>
 			<input class="form-control" id="txtCliente" name="txtCliente" placeholder="Nombre del cliente">
@@ -21,6 +33,7 @@
 				<button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
 			</span>
 		</div>
+		<br />
 	</div>
 </div>
 
@@ -30,7 +43,7 @@
 			<span class="input-group-addon" id="basic-addon1">Producto</span>
 			<input class="form-control" id="txtProducto" name="txtProducto" placeholder="Código de barras, código interno o descripción del producto">
 			<span class="input-group-btn">
-				<button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+				<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#winProductos"><i class="fa fa-search" aria-hidden="true"></i></button>
 			</span>
 		</div>
 	</div>
@@ -67,3 +80,5 @@
 		</div>
 	</div>
 </div>
+
+{include file=$PAGE.rutaModulos|cat:"modulos/ventas/winProductos.tpl"}

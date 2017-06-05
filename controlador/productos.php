@@ -13,6 +13,7 @@ switch($objModulo->getId()){
 			array_push($datos, $row);
 		}
 		$smarty->assign("lista", $datos);
+		$smarty->assign("select", $_POST['select']);
 	break;
 	case 'productosImportar':
 		$data = new Spreadsheet_Excel_Reader();
