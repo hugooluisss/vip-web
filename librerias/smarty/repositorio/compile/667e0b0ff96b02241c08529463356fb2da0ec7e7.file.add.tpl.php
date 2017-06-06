@@ -1,4 +1,25 @@
-<div class="form-horizontal">
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-06 12:55:46
+         compiled from "templates/plantillas/modulos/clientes/add.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:17785734355936e561c3ae36-86049067%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '667e0b0ff96b02241c08529463356fb2da0ec7e7' => 
+    array (
+      0 => 'templates/plantillas/modulos/clientes/add.tpl',
+      1 => 1496771744,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '17785734355936e561c3ae36-86049067',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_5936e561c3d126_27926295',
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5936e561c3d126_27926295')) {function content_5936e561c3d126_27926295($_smarty_tpl) {?><div class="form-horizontal">
 	<div class="form-group">
 		<label class="col-sm-2 text-right" for="txtNombre">Nombre</label>
 		<div class="col-sm-10">
@@ -66,4 +87,4 @@
 			</select>
 		</div>
 	</div>
-</div>
+</div><?php }} ?>

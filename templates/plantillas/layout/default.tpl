@@ -128,6 +128,7 @@
 						</a>
 						<ul class="treeview-menu">
 							<li {if in_array($PAGE.modulo, array('inventario'))}class="active"{/if}><a href="inventario">Inventario</a></li>
+							<li {if in_array($PAGE.modulo, array('clientes'))}class="active"{/if}><a href="clientes">Clientes</a></li>
 						</ul>
 					</li>
 					<li class="{if in_array($PAGE.modulo, array('puntoventa'))}active{/if} treeview">

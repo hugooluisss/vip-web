@@ -45,6 +45,13 @@ $conf['listaProductos'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 	
+$conf['listaProductosAutocomplete'] = array(
+	'controlador' => 'productos.php',
+	'vista' => 'bazares/listaProductos.tpl',
+	'descripcion' => 'Lista de productos',
+	'seguridad' => true,
+	'capa' => LAYOUT_JSON);
+	
 $conf['productosImportar'] = array(
 	'controlador' => 'productos.php',
 	'vista' => 'bazares/listaProductosImportar.tpl',

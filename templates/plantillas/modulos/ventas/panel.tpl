@@ -30,7 +30,7 @@
 			<span class="input-group-addon" id="basic-addon1">Cliente</span>
 			<input class="form-control" id="txtCliente" name="txtCliente" placeholder="Nombre del cliente">
 			<span class="input-group-btn">
-				<button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+				<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#winClientes"><i class="fa fa-search" aria-hidden="true"></i></button>
 			</span>
 		</div>
 		<br />
@@ -82,3 +82,4 @@
 </div>
 
 {include file=$PAGE.rutaModulos|cat:"modulos/ventas/winProductos.tpl"}
+{include file=$PAGE.rutaModulos|cat:"modulos/ventas/winClientes.tpl"}

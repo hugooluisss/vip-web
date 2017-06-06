@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-05 12:15:49
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-06 13:07:10
          compiled from "templates/plantillas/modulos/ventas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1496810297593053b41bc3a5-11811133%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b3ba611b730975d98c27112c204a40ab3938a2de' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/panel.tpl',
-      1 => 1496682948,
+      1 => 1496772429,
       2 => 'file',
     ),
   ),
@@ -65,7 +65,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			<span class="input-group-addon" id="basic-addon1">Cliente</span>
 			<input class="form-control" id="txtCliente" name="txtCliente" placeholder="Nombre del cliente">
 			<span class="input-group-btn">
-				<button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+				<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#winClientes"><i class="fa fa-search" aria-hidden="true"></i></button>
 			</span>
 		</div>
 		<br />
@@ -117,4 +117,6 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </div>
 
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/ventas/winProductos.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/ventas/winClientes.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 <?php }} ?>

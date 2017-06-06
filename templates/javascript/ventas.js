@@ -8,18 +8,75 @@ $(document).ready(function(){
 		}
 	});
 	
-	$("#selBazar").change(function(){
-		nuevaVenta();
+	$("#txtCliente").change(function(){
+		$(this).attr("identificador", "");
+		console.log("Identificador del cliente eliminado");
+	}).blur(function(){
+		if ($(this).attr("identificador") == '')
+			$(this).val("");
+	}).autocomplete({
+		source: "?mod=listaClientesAutocomplete",
+		minLength: 3, 
+		select: function(event, ui){
+			$("#txtCliente").val(ui.item.nombre);
+			$("#txtCliente").attr("identificador", ui.item.identificador);
+			console.log("Cliente seleccionado", ui.item.identificador);
+		}
 	});
 	
-	$("#winProductos").on('show.bs.modal', function(e){
+	$("#txtProductos").blur(function(){
+		$(this).val("");
+	})
+	var autocompleteProductos = $("#txtProducto").autocomplete({
+		source: "?mod=listaProductosAutocomplete&bazar=" + $("#selBazar").val(),
+		minLength: 3, 
+		select: function(event, ui){
+			
+			venta.add(jQuery.parseJSON(ui.item.json));
+			console.log("Producto seleccionado", ui.item.json);
+			$("#txtProducto").select();
+			
+			pintarVenta();
+		}
+	});
+	
+	$("#selBazar").change(function(){
+		nuevaVenta();
+		autocompleteProductos.source = "?mod=listaProductosAutocomplete&bazar=" + $("#selBazar").val();
 	});
 	
 	nuevaVenta();
-	pintarVenta();
+	
+	function reloadClientes(){
+		var ventana = $("#winClientes");
+		ventana.find(".moda-body").html('Estamos actualizando la lista de clientes <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>');
+		$.post("listaClientes", {
+			"select": true
+		}, function( data ){
+			ventana.find(".modal-body").html(data);
+			
+			ventana.find("tbody").find("tr").click(function(){
+				var datos = jQuery.parseJSON($(this).attr("json"));
+				$("#txtCliente").attr("identificador", datos.idCliente);
+				$("#txtCliente").val(datos.nombre);
+				ventana.modal("hide");
+				pintarVenta();
+			});
+			
+			ventana.find("#tblDatos").DataTable({
+				"responsive": true,
+				"language": espaniol,
+				"paging": true,
+				"lengthChange": false,
+				"ordering": true,
+				"info": true,
+				"autoWidth": false
+			});
+		});
+	}
 	
 	function nuevaVenta(){
-		ventana = $("#winProductos");
+		var ventana = $("#winProductos");
 		ventana.find(".moda-body").html('Estamos actualizando la lista de productos <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>');
 		
 		$.post("listaProductos", {
@@ -34,7 +91,7 @@ $(document).ready(function(){
 				pintarVenta();
 			});
 			
-			$("#tblDatos").DataTable({
+			ventana.find("#tblDatos").DataTable({
 				"responsive": true,
 				"language": espaniol,
 				"paging": true,
@@ -44,6 +101,9 @@ $(document).ready(function(){
 				"autoWidth": false
 			});
 		});
+		
+		pintarVenta();
+		reloadClientes();
 	}
 	
 	function pintarVenta(){

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-05 11:19:09
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-06 12:09:04
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6823998275911fc6bf042b5-57055635%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1496679539,
+      1 => 1496768940,
       2 => 'file',
     ),
   ),
@@ -177,6 +177,7 @@ img/logo.png" alt="User Image" style="background: white"/>
 						</a>
 						<ul class="treeview-menu">
 							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('inventario'))){?>class="active"<?php }?>><a href="inventario">Inventario</a></li>
+							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('clientes'))){?>class="active"<?php }?>><a href="clientes">Clientes</a></li>
 						</ul>
 					</li>
 					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('puntoventa'))){?>active<?php }?> treeview">

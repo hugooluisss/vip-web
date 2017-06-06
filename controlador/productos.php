@@ -15,6 +15,23 @@ switch($objModulo->getId()){
 		$smarty->assign("lista", $datos);
 		$smarty->assign("select", $_POST['select']);
 	break;
+	case 'listaProductosAutocomplete':
+		$db = TBase::conectaDB();
+		global $sesion;
+		
+		$rs = $db->query("select * from producto a where a.visible = true and idBazar = ".$_GET['bazar']);
+		$datos = array();
+		while($row = $rs->fetch_assoc()){
+			$aux = array();
+			$aux["label"] = $row['descripcion'];
+			$aux['identificador'] = $row['idProducto'];
+			$aux['value'] = " ";
+			$aux['json'] = json_encode($row);
+			
+			array_push($datos, $aux);
+		}
+		$smarty->assign("json", $datos);
+	break;
 	case 'productosImportar':
 		$data = new Spreadsheet_Excel_Reader();
 
