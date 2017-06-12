@@ -24,20 +24,50 @@ $(document).ready(function(){
 		}
 	});
 	
-	$("#txtProductos").blur(function(){
+	$("#txtProducto").blur(function(){
 		$(this).val("");
-	})
+	});
+	
 	var autocompleteProductos = $("#txtProducto").autocomplete({
 		source: "?mod=listaProductosAutocomplete&bazar=" + $("#selBazar").val(),
-		minLength: 3, 
-		select: function(event, ui){
-			
+		minLength: 1, 
+		select: function(event, ui){			
 			venta.add(jQuery.parseJSON(ui.item.json));
 			console.log("Producto seleccionado", ui.item.json);
 			$("#txtProducto").select();
 			
 			pintarVenta();
 		}
+	});
+	
+	$("#txtProducto").keypress(function(e){
+		if (e.which == 13){
+			var producto = new TProducto;
+			producto.get({
+				"codigo": $("#txtProducto").val(),
+				"bazar": $("#selBazar").val(),
+				fn: {
+					before: function(){
+						$(this).prop("disabled", true);
+					}, after: function(producto){
+						$(this).prop("disabled", false);
+						$("#txtProducto").val("");
+						
+						console.log(producto);
+						if (producto.band == false){
+							alert("Código no encontrado");
+							$("#winProductos").modal();
+						}else{
+							venta.add(producto);
+							pintarVenta();
+						}
+						
+						return false;
+					}
+				}
+			});
+		}
+			
 	});
 	
 	$("#selBazar").change(function(){
@@ -75,6 +105,54 @@ $(document).ready(function(){
 		});
 	}
 	
+	$("#winAddCliente").on("show", function(event){
+		var ventana = $("#winAddCliente");
+		$("#frmAddCliente").get(0).reset();
+		ventana.find("#txtNombre").focus();
+	});
+	
+	$("#frmAddCliente").validate({
+		debug: true,
+		rules: {
+			txtNombre: "required",
+			txtRazonSocial: "required"
+		},
+		wrapper: 'span', 
+		submitHandler: function(form){
+			var obj = new TCliente;
+			obj.add({
+				id: $("#id").val(), 
+				nombre: $("#txtNombre").val(), 
+				razonSocial: $("#txtRazonSocial").val(), 
+				domicilio: $("#txtDomicilio").val(), 
+				exterior: $("#txtExterior").val(), 
+				interior: $("#txtInterior").val(), 
+				colonia: $("#txtColonia").val(), 
+				municipio: $("#txtMunicipio").val(), 
+				ciudad: $("#txtCiudad").val(), 
+				estado: $("#txtEstado").val(), 
+				rfc: $("#txtRFC").val(), 
+				correo: $("#txtCorreo").val(), 
+				telefono: $("#txtTelefono").val(), 
+				promociones: $("#selPromociones").val(), 
+				fn: {
+					after: function(datos){
+						if (datos.band){
+							$("#txtCliente").attr("identificador", datos.id);
+							$("#txtCliente").val($("#txtNombre").val());
+							
+							$("#frmAddCliente").get(0).reset();
+							$("#winAddCliente").modal("hide");
+						}else{
+							alert("No se pudo guardar el registro");
+						}
+					}
+				}
+			});
+        }
+
+    });
+	
 	function nuevaVenta(){
 		var ventana = $("#winProductos");
 		ventana.find(".moda-body").html('Estamos actualizando la lista de productos <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>');
@@ -111,21 +189,34 @@ $(document).ready(function(){
 		$("#dvProductos").append(venta.getTable());
 		
 		$("#dvProductos").find(".cantidad").change(function(){
-			if ($(this).val() < 0){
+			if ($(this).val() <= 0 || $(this).val() == ''){
 				alert("Debe de ser mayor a 0");
 				$(this).val(venta.productos[$(this).attr("indice")].cantidad);
 			}else{
 				venta.productos[$(this).attr("indice")].cantidad = $(this).val();
+				console.log("Entregados", $(this).parent().parent().find(".entregados").val());
+				if($(this).val() < $(this).parent().parent().find(".entregados").val()){
+					$(this).parent().parent().find(".entregados").val($(this).val());
+					venta.productos[$(this).attr("indice")].entregados = $(this).val();
+				}
+				
+				$(".totalCantidad").html(venta.getTotalCantidad());
 			}
 		});
 		
 		$("#dvProductos").find(".entregados").change(function(){
-			if ($(this).val() < 0){
-				alert("Debe de ser mayor a 0");
+			console.log($(this).val(), venta.productos[$(this).attr("indice")].cantidad, $(this).val() > venta.productos[$(this).attr("indice")].cantidad);
+			cantidad = parseInt($(this).val());
+			
+			if($(this).val() == '' || cantidad > venta.productos[$(this).attr("indice")].cantidad){
+				alert("No puede ser 0 ni menor a la cantidad vendida");
+				
 				$(this).val(venta.productos[$(this).attr("indice")].entregado);
 			}else{
 				venta.productos[$(this).attr("indice")].entregado = $(this).val();
 			}
+			
+			$(".totalEntregados").html(venta.getTotalEntregado());
 		});
 		
 		$("#dvProductos").find(".btn-danger").click(function(){
@@ -138,7 +229,7 @@ $(document).ready(function(){
 		$("#tblProductos").DataTable({
 			"responsive": true,
 			"language": espaniol,
-			"paging": true,
+			"paging": false,
 			"lengthChange": false,
 			"ordering": true,
 			"info": true,

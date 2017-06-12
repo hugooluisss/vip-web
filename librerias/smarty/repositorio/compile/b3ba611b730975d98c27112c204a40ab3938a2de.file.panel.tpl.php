@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-06 13:07:10
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-12 13:58:37
          compiled from "templates/plantillas/modulos/ventas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1496810297593053b41bc3a5-11811133%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b3ba611b730975d98c27112c204a40ab3938a2de' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/panel.tpl',
-      1 => 1496772429,
+      1 => 1497293916,
       2 => 'file',
     ),
   ),
@@ -48,6 +48,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 	<div class="col-xs-12 col-sm-8 text-right">
 		<div class="btn-group btn-group-xs">
 			<button class="btn btn-primary btnNuevaVenta">Nueva venta</button>
+			<button class="btn btn-success btnNuevoCliente" data-toggle="modal" data-target="#winAddCliente">Registrar cliente</button>
 		</div>
 	</div>
 </div>
@@ -89,26 +90,43 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </div>
 
 <div class="row">
-	<div class="col-sm-6 col-sm-offset-3">
-		<div class="alert alert-success">
-			<div class="row">
-				<div class="col-xs-4 h3">Total</div>
-				<div class="col-xs-8 h3 text-right" id="dvTotal"></div>
+	<div class="col-sm-6">
+		<div class="box">
+			<div class="box-body">
+				Comentarios
+				<textarea id="txtComentario" name="txtComentario" class="form-control"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="box">
+			<div class="box-body">
+				<div class="alert alert-success">
+					<div class="row">
+						<div class="col-xs-4 h3">Total</div>
+						<div class="col-xs-8 h3 text-right" id="dvTotal"></div>
+					</div>
+				</div>
+				<div class="text-center">
+					<button class="btn btn-primary" data-toggle="modal" data-target="#winPago">Pagar</button>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
 <div class="row">
 	<div class="col-sm-6 col-sm-offset-3">
 		<div class="box">
 			<div class="box-body">
 				<div class="btn-group btn-group-justified">
 					<div class="btn-group">
-						<button class="btn btn-primary">Pagar</button>
+						<button class="btn btn-primary">Guardar</button>
 					</div>
 					<div class="btn-group">
-						<button class="btn btn-secondary btnNuevaVenta">Cancelar</button>
+						<button class="btn btn-danger">Cancelar</button>
+					</div>
+					<div class="btn-group">
+						<button class="btn btn-success btnNuevaVenta">Cerrar y enviar</button>
 					</div>
 				</div>
 			</div>
@@ -119,4 +137,6 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/ventas/winProductos.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/ventas/winClientes.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/ventas/winPago.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 <?php }} ?>

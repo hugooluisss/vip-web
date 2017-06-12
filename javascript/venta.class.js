@@ -1,6 +1,7 @@
 TVenta = function(){
 	var self = this;
 	this.productos = new Array();
+	this.pagos = new Array();
 	this.total = 0;
 	
 	this.add = function(datos){
@@ -30,25 +31,25 @@ TVenta = function(){
 			tr.append($('<td><input type="number" class="form-control text-right cantidad" value="' + producto.cantidad + '" indice="' + cont + '" /></td>'));
 			tr.append($('<td class="text-right">' + producto.precio + '</td>'));
 			tr.append($('<td class="text-right">' + producto.descuento + '</td>'));
-			tr.append($('<td class="text-right">' + (producto.cantidad * producto.precio * (100 - producto.descuento / 100)) + '</td>'));
+			tr.append($('<td class="text-right">' + (producto.cantidad * producto.precio * (100 - producto.descuento / 100)).toFixed(2) + '</td>'));
 			tr.append($('<td><input type="number" class="form-control text-right entregados" value="' + producto.entregado + '" indice="' + cont + '"/></td>'));
 			tr.append($('<td class="text-right"><button type="button" class="btn btn-danger" indice="' + cont + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>'));
 			
 			plantilla.find("tbody").append(tr);
 			
-			sumaCantidad += producto.cantidad;
+			sumaCantidad += parseInt(producto.cantidad);
 			sumaTotal += (producto.cantidad * producto.precio * (100 - producto.descuento / 100));
-			sumaEntregados += producto.entregado * 1;
+			sumaEntregados += parseInt(producto.entregado) * 1;
 			cont++;
 		});
 		
 		self.total = sumaTotal;
 		
 		plantilla.find("tfoot").find("tr").append($('<td colspan="2">&nbsp;</td>'));
-		plantilla.find("tfoot").find("tr").append($('<td class="text-right">' + sumaCantidad + '</td>'));
+		plantilla.find("tfoot").find("tr").append($('<td class="text-right totalCantidad">' + sumaCantidad + '</td>'));
 		plantilla.find("tfoot").find("tr").append($('<td colspan="2">&nbsp;</td>'));
-		plantilla.find("tfoot").find("tr").append($('<td class="text-right">' + sumaTotal + '</td>'));
-		plantilla.find("tfoot").find("tr").append($('<td class="text-right">' + sumaEntregados + '</td>'));
+		plantilla.find("tfoot").find("tr").append($('<td class="text-right">' + sumaTotal.toFixed(2) + '</td>'));
+		plantilla.find("tfoot").find("tr").append($('<td class="text-right totalEntregados">' + sumaEntregados + '</td>'));
 		plantilla.find("tfoot").find("tr").append($('<td>&nbsp;</td>'));
 		
 		return plantilla;
@@ -64,5 +65,27 @@ TVenta = function(){
 		});
 		
 		return self.total.toFixed(2);
+	}
+	
+	this.getTotalCantidad = function(){
+		var total = 0;
+		$(self.productos).each(function(){
+			producto = this;
+			
+			total += producto.cantidad;
+		});
+		
+		return parseInt(total);
+	}
+	
+	this.getTotalEntregado = function(){
+		var total = 0;
+		$(self.productos).each(function(){
+			producto = this;
+			
+			total += producto.entregado;
+		});
+		
+		return parseInt(total);
 	}
 };

@@ -15,6 +15,18 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("bazares", $datos);
+		
+		$db = TBase::conectaDB();
+		global $userSesion;
+		
+		$rs = $db->query("select * from metodopago a where idEmpresa = ".$userSesion->getEmpresa());
+		$datos = array();
+		while($row = $rs->fetch_assoc()){
+			$row['json'] = json_encode($row);
+			
+			array_push($datos, $row);
+		}
+		$smarty->assign("metodosPago", $datos);
 	break;
 	case 'listaVentas':
 		$db = TBase::conectaDB();
