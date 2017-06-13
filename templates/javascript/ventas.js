@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	$("#txtCliente").select();
+	$("#txtFecha").datepicker({ dateFormat: 'yy-mm-dd' });
 	var venta = new TVenta;
 	
 	$(".btnNuevaVenta").click(function(){

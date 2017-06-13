@@ -58,7 +58,7 @@
 		<div class="col-sm-2">
 			<input class="form-control input-sm" id="txtTelefono" name="txtTelefono" />
 		</div>
-		<label class="col-sm-2 text-right" for="txtTelefono">¿Promociones?</label>
+		<label class="col-sm-2 text-right" for="txtTelefono">¿Recibir promociones?</label>
 		<div class="col-sm-2">
 			<select id="selPromociones" name="selPromociones" class="form-control">
 				<option value="0">No</option>

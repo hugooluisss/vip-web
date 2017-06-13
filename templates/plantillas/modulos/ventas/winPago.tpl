@@ -24,7 +24,7 @@
 						Monto
 					</div>
 					<div class="col-xs-12 col-sm-3">
-						<input class="form-control" id="txtMonto" name="txtMonto" value="0" type="number" />
+						<input class="form-control text-right" id="txtMonto" name="txtMonto" value="0" type="number" />
 					</div>
 				</div>
 			</div>
