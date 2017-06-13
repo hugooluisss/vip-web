@@ -11,6 +11,8 @@ class TBazar{
 	private $idEmpresa;
 	private $nombre;
 	private $estado;
+	private $folio;
+	private $inicial;
 	private $inicio;
 	
 	/**
@@ -163,6 +165,58 @@ class TBazar{
 	}
 	
 	/**
+	* Establece el número de folio
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setFolio($val = 0){
+		$this->folio = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el folio
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getFolio(){
+		return $this->folio;
+	}
+	
+	/**
+	* Establece la inicial para los folios
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setInicial($val = ""){
+		$this->inicial = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el identificador de la empresa
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getInicial(){
+		return $this->inicial;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -190,7 +244,9 @@ class TBazar{
 			SET
 				estado = ".$this->getEstado().",
 				nombre = '".$this->getNombre()."',
-				inicio = '".$this->getInicio()."'
+				inicio = '".$this->getInicio()."',
+				folio = ".$this->getFolio().",
+				inicial = '".$this->getInicial()."'
 			WHERE idBazar = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
@@ -257,6 +313,27 @@ class TBazar{
 		if (!$rs) return false;
 		#$this->getUsuarios();
 		return true;
+	}
+	
+	/**
+	* Retorna el siguiente folio
+	*
+	* @autor Hugo
+	* @access public
+	* @param booleand $establecer false Si este es true entonces se guarda el siguiente folio
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function getNextFolio($establecer = false){
+		if ($this->getId() == '') return false;
+		
+		$this->folio++;
+		
+		if ($establecer){
+			if (!$this->guardar()) return false;
+		}
+		
+		return $this->getFolio();
 	}
 }
 ?>

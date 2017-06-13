@@ -6,7 +6,7 @@ $conf['puntoventa'] = array(
 	'vista' => 'ventas/panel.tpl',
 	'descripcion' => 'Ventas',
 	'seguridad' => true,
-	'js' => array('venta.class.js', 'producto.class.js', 'cliente.class.js'),
+	'js' => array('venta.class.js', 'producto.class.js', 'cliente.class.js', 'bazar.class.js'),
 	'jsTemplate' => array('ventas.js'),
 	'capa' => LAYOUT_DEFECTO);
 

@@ -9,6 +9,8 @@ TBazar = function(){
 				"inicio": datos.inicio,
 				"estado": datos.estado, 
 				"nombre": datos.nombre,
+				"folio": datos.folio,
+				"inicial": datos.inicial,
 				"action": "add"
 			}, function(data){
 				if (data.band == 'false')
@@ -63,4 +65,19 @@ TBazar = function(){
 					datos.fn.after(data);
 			}, "json");
 	};
+	
+	this.getFolio = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		
+		$.post('cbazares', {
+				"id": datos.bazar,
+				"action": "getFolio"
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (datos.fn.after !== undefined)
+					datos.fn.after(data);
+			}, "json");
+	}
 };

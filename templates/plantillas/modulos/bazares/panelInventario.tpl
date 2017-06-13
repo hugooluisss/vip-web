@@ -93,6 +93,13 @@
 							</div>
 						</div>
 					</div>
+					
+					<div class="form-group">
+						<label for="txtObservacion" class="col-md-2 text-right">Observaciones</label>
+						<div class="col-md-10">
+							<textarea rows="5" class="form-control" id="txtObservacion" name="txtObservacion"></textarea>
+						</div>
+					</div>
 				</div>
 				<div class="box-footer">
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>

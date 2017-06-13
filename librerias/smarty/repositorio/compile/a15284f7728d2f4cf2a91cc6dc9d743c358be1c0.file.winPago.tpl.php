@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-12 14:02:56
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-13 09:27:45
          compiled from "templates/plantillas/modulos/ventas/winPago.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:952086302593ee45d913464-29694283%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a15284f7728d2f4cf2a91cc6dc9d743c358be1c0' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/winPago.tpl',
-      1 => 1497294175,
+      1 => 1497363371,
       2 => 'file',
     ),
   ),
@@ -55,8 +55,8 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 					<div class="col-xs-12 col-sm-3">
 						Monto
 					</div>
-					<div class="col-xs-12 col-sm-9">
-						<input class="form-control" id="txtMonto" name="txtMonto" value="0" type="number" />
+					<div class="col-xs-12 col-sm-3">
+						<input class="form-control text-right" id="txtMonto" name="txtMonto" value="0" type="number" />
 					</div>
 				</div>
 			</div>

@@ -60,7 +60,7 @@ $(document).ready(function(){
 				"descuento": $("#txtDescuento").val(),
 				"existencias": $("#txtExistencias").val(),
 				"precio": $("#txtPrecio").val(),
-				"action": "add",
+				"observacion": $("#txtObservacion").val(),
 				fn: {
 					after: function(datos){
 						if (datos.band){
@@ -108,6 +108,7 @@ $(document).ready(function(){
 				$("#txtDescuento").val(el.descuento);
 				$("#txtExistencias").val(el.existencias);
 				$("#txtPrecio").val(el.precio);
+				$("#txtObservacion").val(el.observacion);
 				
 				$('#panelTabs a[href="#add"]').tab('show');
 			});

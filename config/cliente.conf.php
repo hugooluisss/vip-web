@@ -6,7 +6,7 @@ $conf['clientes'] = array(
 	'vista' => 'clientes/panel.tpl',
 	'descripcion' => 'Clientes',
 	'seguridad' => true,
-	'js' => array('cliente.class.js'),
+	'js' => array('cliente.class.js', 'empresa.class.js'),
 	'jsTemplate' => array('clientes.js'),
 	'capa' => LAYOUT_DEFECTO);
 

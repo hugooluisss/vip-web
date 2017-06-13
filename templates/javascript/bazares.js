@@ -17,7 +17,14 @@ $(document).ready(function(){
 		rules: {
 			txtNombre: "required",
 			txtInicio: "required",
-			selEstado: "required"
+			selEstado: "required",
+			txtFolio: {
+				required: true,
+				digits: true
+			},
+			txtInicial: {
+				maxlength: 2
+			}
 		},
 		wrapper: 'span', 
 		submitHandler: function(form){
@@ -27,6 +34,8 @@ $(document).ready(function(){
 				inicio: $("#txtInicio").val(), 
 				estado: $("#selEstado").val(), 
 				nombre: $("#txtNombre").val(), 
+				inicial: $("#txtInicial").val(),
+				folio: $("#txtFolio").val(),
 				fn: {
 					after: function(datos){
 						if (datos.band){
@@ -70,6 +79,8 @@ $(document).ready(function(){
 				$("#txtInicio").val(el.inicio);
 				$("#selEstado").val(el.estado);
 				$("#txtNombre").val(el.nombre);
+				$("#txtInicial").val(el.inicial);
+				$("#txtFolio").val(el.folio);
 				
 				$('#panelTabs a[href="#add"]').tab('show');
 			});

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-12 13:58:37
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-13 13:29:49
          compiled from "templates/plantillas/modulos/ventas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1496810297593053b41bc3a5-11811133%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b3ba611b730975d98c27112c204a40ab3938a2de' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/panel.tpl',
-      1 => 1497293916,
+      1 => 1497378587,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'bazares' => 0,
     'row' => 0,
+    'clienteDefecto' => 0,
     'PAGE' => 0,
   ),
   'has_nocache_code' => false,
@@ -56,17 +57,26 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 <div class="box">
 	<div class="box-body">
 		<div class="row">
-			<div class="col-xs-4 col-xs-offset-8 col-sm-3 col-sm-offset-9 text-right">
+			<div class="col-xs-4 col-sm-2">
+				<input type="text" class="form-control" id="txtFolio" name="txtFolio" value="" readonly="true" title="Folio" />
+			</div>
+			<div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-8 text-right">
 				<input type="date" class="form-control text-right" id="txtFecha" name="txtFecha" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
-" readonly="true" placerholder="Fecha" />
+" readonly="true" placerholder="Fecha" title="Fecha" />
 			</div>
 		</div>
 		<br />
 		<div class="input-group">
 			<span class="input-group-addon" id="basic-addon1">Cliente</span>
-			<input class="form-control" id="txtCliente" name="txtCliente" placeholder="Nombre del cliente">
+			<input class="form-control" id="txtCliente" name="txtCliente" placeholder="Nombre del cliente" value="<?php echo $_smarty_tpl->tpl_vars['clienteDefecto']->value['nombre'];?>
+" identificador="<?php echo $_smarty_tpl->tpl_vars['clienteDefecto']->value['idCliente'];?>
+" jsonDefault='<?php echo json_encode($_smarty_tpl->tpl_vars['clienteDefecto']->value);?>
+'>
 			<span class="input-group-btn">
 				<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#winClientes"><i class="fa fa-search" aria-hidden="true"></i></button>
+			</span>
+			<span class="input-group-btn">
+				<button class="btn btn-primary" type="button" id="setClienteDefecto">D</button>
 			</span>
 		</div>
 		<br />
@@ -75,6 +85,14 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 
 <div class="box">
 	<div class="box-body">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 text-right">
+				<div class="btn-group btn-group-xs">
+					<button class="btn btn-primary btnNuevoProducto" data-toggle="modal" data-target="#winNuevoProducto">Nuevo producto</button>
+				</div>
+			</div>
+		</div>
+		<br />
 		<div class="input-group">
 			<span class="input-group-addon" id="basic-addon1">Producto</span>
 			<input class="form-control" id="txtProducto" name="txtProducto" placeholder="Código de barras, código interno o descripción del producto">
@@ -103,12 +121,22 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			<div class="box-body">
 				<div class="alert alert-success">
 					<div class="row">
-						<div class="col-xs-4 h3">Total</div>
-						<div class="col-xs-8 h3 text-right" id="dvTotal"></div>
+						<div class="col-xs-4 h5">Subtotal</div>
+						<div class="col-xs-8 h5 text-right" id="dvSubtotal"></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4 h5">Descuento(%)</div>
+						<div class="col-xs-3 col-xs-offset-5 h5 text-right">
+							<input type="text" value="" class="form-control text-right" id="txtDescuento" name="txtDescuento"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4 h4">Total</div>
+						<div class="col-xs-8 h4 text-right" id="dvTotal"></div>
 					</div>
 				</div>
 				<div class="text-center">
-					<button class="btn btn-primary" data-toggle="modal" data-target="#winPago">Pagar</button>
+					<button class="btn btn-primary">Guardar y pagar</button>
 				</div>
 			</div>
 		</div>

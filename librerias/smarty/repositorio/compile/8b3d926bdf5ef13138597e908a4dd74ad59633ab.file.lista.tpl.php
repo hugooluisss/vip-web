@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-06 13:12:06
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-13 12:48:41
          compiled from "templates/plantillas/modulos/clientes/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17614526095936e1fc58c7f0-61411206%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b3d926bdf5ef13138597e908a4dd74ad59633ab' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/lista.tpl',
-      1 => 1496772723,
+      1 => 1497376118,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'select' => 0,
     'lista' => 0,
     'row' => 0,
+    'parametros' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -35,6 +36,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<th>#</th>
 					<th>Nombre</th>
 					<th>Razón Social</th>
+					<th>Default</th>
 					<?php if ($_smarty_tpl->tpl_vars['select']->value!=true){?>
 					<th>&nbsp;</th>
 					<?php }?>
@@ -54,8 +56,13 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['razonsocial'];?>
 </td>
+						<td class="text-center"><?php if ($_smarty_tpl->tpl_vars['row']->value['idCliente']==$_smarty_tpl->tpl_vars['parametros']->value['clienteDefault']){?><i class="fa fa-check" aria-hidden="true"></i><?php }?></td>
 						<?php if ($_smarty_tpl->tpl_vars['select']->value!=true){?>
 						<td style="text-align: right">
+							<?php if ($_smarty_tpl->tpl_vars['row']->value['idCliente']!=$_smarty_tpl->tpl_vars['parametros']->value['clienteDefault']){?>
+								<button type="button" class="btn btn-default" action="default" title="Establecer como cliente por defecto para las ventas" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idCliente'];?>
+">D</button>
+							<?php }?>
 							<button type="button" class="btn btn-success" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>
 							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idCliente'];?>

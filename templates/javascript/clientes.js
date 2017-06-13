@@ -87,6 +87,29 @@ $(document).ready(function(){
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
 			
+			$("[action=default]").click(function(){
+				if (confirm("¿Seguro de establecer como cliente por defecto?")){
+					var empresa = new TEmpresa;
+					empresa.setParametros({
+						cliente: $(this).attr("identificador"),
+						fn: {
+							before: function(){
+								$(this).prop("disabled", true);
+							},
+							after: function(resp){
+								if (resp.band)
+									getLista();
+								else{
+									$(this).prop("disabled", false);
+									alert("No se pudo realizar la asignación");
+								}
+									
+							}
+						}
+					});
+				}
+			});
+			
 			$("#tblDatos").DataTable({
 				"responsive": true,
 				"language": espaniol,

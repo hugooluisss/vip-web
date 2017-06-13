@@ -27,6 +27,11 @@ switch($objModulo->getId()){
 			array_push($datos, $row);
 		}
 		$smarty->assign("metodosPago", $datos);
+		
+		$empresa = new TEmpresa($userSesion->getEmpresa());
+		$parametros = $empresa->getParametros();
+		$clienteDefecto = new TCliente($parametros['clienteDefault']);
+		$smarty->assign("clienteDefecto", array("nombre" => $clienteDefecto->getNombre(), "idCliente" => $clienteDefecto->getId()));
 	break;
 	case 'listaVentas':
 		$db = TBase::conectaDB();

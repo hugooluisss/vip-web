@@ -36,4 +36,19 @@ TEmpresa = function(){
 			}
 		}, "json");
 	};
+	
+	this.setParametros = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		
+		$.post('cempresas', {
+				"clienteDefault": datos.cliente,
+				"action": "setParametros"
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (datos.fn.after !== undefined)
+					datos.fn.after(data);
+			}, "json");
+	};
 };

@@ -17,6 +17,7 @@ TProducto = function(){
 				"descuento": datos.descuento,
 				"existencias": datos.existencias,
 				"precio": datos.precio,
+				"observacion": datos.observacion,
 				"action": "add"
 			}, function(data){
 				if (data.band == 'false')

@@ -22,16 +22,22 @@
 <div class="box">
 	<div class="box-body">
 		<div class="row">
-			<div class="col-xs-4 col-xs-offset-8 col-sm-3 col-sm-offset-9 text-right">
-				<input type="date" class="form-control text-right" id="txtFecha" name="txtFecha" value="{$smarty.now|date_format:"%Y-%m-%d"}" readonly="true" placerholder="Fecha" />
+			<div class="col-xs-4 col-sm-2">
+				<input type="text" class="form-control" id="txtFolio" name="txtFolio" value="" readonly="true" title="Folio" />
+			</div>
+			<div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-8 text-right">
+				<input type="date" class="form-control text-right" id="txtFecha" name="txtFecha" value="{$smarty.now|date_format:"%Y-%m-%d"}" readonly="true" placerholder="Fecha" title="Fecha" />
 			</div>
 		</div>
 		<br />
 		<div class="input-group">
 			<span class="input-group-addon" id="basic-addon1">Cliente</span>
-			<input class="form-control" id="txtCliente" name="txtCliente" placeholder="Nombre del cliente">
+			<input class="form-control" id="txtCliente" name="txtCliente" placeholder="Nombre del cliente" value="{$clienteDefecto.nombre}" identificador="{$clienteDefecto['idCliente']}" jsonDefault='{json_encode($clienteDefecto)}'>
 			<span class="input-group-btn">
 				<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#winClientes"><i class="fa fa-search" aria-hidden="true"></i></button>
+			</span>
+			<span class="input-group-btn">
+				<button class="btn btn-primary" type="button" id="setClienteDefecto">D</button>
 			</span>
 		</div>
 		<br />
@@ -40,6 +46,14 @@
 
 <div class="box">
 	<div class="box-body">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 text-right">
+				<div class="btn-group btn-group-xs">
+					<button class="btn btn-primary btnNuevoProducto" data-toggle="modal" data-target="#winNuevoProducto">Nuevo producto</button>
+				</div>
+			</div>
+		</div>
+		<br />
 		<div class="input-group">
 			<span class="input-group-addon" id="basic-addon1">Producto</span>
 			<input class="form-control" id="txtProducto" name="txtProducto" placeholder="Código de barras, código interno o descripción del producto">
@@ -68,12 +82,22 @@
 			<div class="box-body">
 				<div class="alert alert-success">
 					<div class="row">
-						<div class="col-xs-4 h3">Total</div>
-						<div class="col-xs-8 h3 text-right" id="dvTotal"></div>
+						<div class="col-xs-4 h5">Subtotal</div>
+						<div class="col-xs-8 h5 text-right" id="dvSubtotal"></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4 h5">Descuento(%)</div>
+						<div class="col-xs-3 col-xs-offset-5 h5 text-right">
+							<input type="text" value="" class="form-control text-right" id="txtDescuento" name="txtDescuento"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4 h4">Total</div>
+						<div class="col-xs-8 h4 text-right" id="dvTotal"></div>
 					</div>
 				</div>
 				<div class="text-center">
-					<button class="btn btn-primary" data-toggle="modal" data-target="#winPago">Pagar</button>
+					<button class="btn btn-primary" id="btnPagar">Guardar y pagar</button>
 				</div>
 			</div>
 		</div>

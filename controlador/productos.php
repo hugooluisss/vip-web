@@ -49,7 +49,8 @@ switch($objModulo->getId()){
 			7 => "costo",
 			8 => "descuento",
 			9 => "existencias",
-			10 => "precio"
+			10 => "precio",
+			10 => "observacion"
 		);
 		
 		for($j = 6 ; $j <= max(array_keys($hoja['cells'])) ; $j++){
@@ -83,8 +84,9 @@ switch($objModulo->getId()){
 				$obj->setDescuento($_POST['descuento']);
 				$obj->setExistencias($_POST['existencias']);
 				$obj->setPrecio($_POST['precio']);
+				$obj->setObservacion($_POST['observacion']);
 				
-				$smarty->assign("json", array("band" => $obj->guardar()));
+				$smarty->assign("json", array("band" => $obj->guardar(), "id" => $obj->getId()));
 			break;
 			case 'del':
 				$obj = new TProducto($_POST['id']);
@@ -140,6 +142,7 @@ switch($objModulo->getId()){
 					$obj->setDescuento($producto->descuento);
 					$obj->setExistencias($producto->existencias);
 					$obj->setPrecio($producto->precio);
+					$obj->setObservacion($producto->observacion);
 					
 					$cont += $obj->guardar()?1:0;
 				}

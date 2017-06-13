@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-01 09:39:19
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-13 12:12:39
          compiled from "templates/plantillas/modulos/bazares/panelInventario.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1873615140592a2415c58718-14796321%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'db37b7696347f8f41a7099aae8cb51a9ed84f369' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/panelInventario.tpl',
-      1 => 1496327954,
+      1 => 1497370887,
       2 => 'file',
     ),
   ),
@@ -124,6 +124,13 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 								<input class="form-control" id="txtDescuento" name="txtDescuento" type="number" aria-describedby="basic-addon1">
 								<span class="input-group-addon" id="basic-addon1">%</span>
 							</div>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="txtObservacion" class="col-md-2 text-right">Observaciones</label>
+						<div class="col-md-10">
+							<textarea rows="5" class="form-control" id="txtObservacion" name="txtObservacion"></textarea>
 						</div>
 					</div>
 				</div>

@@ -40,6 +40,8 @@ switch($objModulo->getId()){
 				$obj->setEstado($_POST['estado']);
 				$obj->setNombre($_POST['nombre']);
 				$obj->setEmpresa($userSesion->getEmpresa());
+				$obj->setFolio($_POST['folio']);
+				$obj->setInicial($_POST['inicial']);
 				
 				$smarty->assign("json", array("band" => $obj->guardar()));
 			break;
@@ -65,6 +67,10 @@ switch($objModulo->getId()){
 			case 'delUsuario':
 				$obj = new TBazar($_POST['id']);
 				$smarty->assign("json", array("band" => $obj->delUsuario($_POST['usuario'])));
+			break;
+			case 'getFolio':
+				$obj = new TBazar($_POST['id']);
+				$smarty->assign("json", array("folio" => sprintf("%08s", $obj->getNextFolio()), "inicial" => $obj->getInicial()));
 			break;
 		}
 	break;

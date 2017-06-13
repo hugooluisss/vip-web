@@ -24,21 +24,22 @@ TVenta = function(){
 		$(self.productos).each(function(){
 			producto = this;
 			plantilla.find("tbody").append();
+			producto.descuento = producto.descuento == ''?0:producto.descuento;
 			
 			var tr = $("<tr />").attr("identificador", producto.idProducto)
 			tr.append($('<td>' + producto.codigoBarras + '</td>'));
 			tr.append($('<td>' + producto.descripcion + '</td>'));
 			tr.append($('<td><input type="number" class="form-control text-right cantidad" value="' + producto.cantidad + '" indice="' + cont + '" /></td>'));
 			tr.append($('<td class="text-right">' + producto.precio + '</td>'));
-			tr.append($('<td class="text-right">' + producto.descuento + '</td>'));
-			tr.append($('<td class="text-right">' + (producto.cantidad * producto.precio * (100 - producto.descuento / 100)).toFixed(2) + '</td>'));
+			tr.append($('<td class="text-right"><input type="number" class="form-control text-right descuento" value="' + (producto.descuento == 0?'':producto.descuento) + '" indice="' + cont + '"/></td>'));
+			tr.append($('<td class="text-right total">' + (producto.cantidad * producto.precio * ((100 - producto.descuento) / 100)).toFixed(2) + '</td>'));
 			tr.append($('<td><input type="number" class="form-control text-right entregados" value="' + producto.entregado + '" indice="' + cont + '"/></td>'));
 			tr.append($('<td class="text-right"><button type="button" class="btn btn-danger" indice="' + cont + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>'));
 			
 			plantilla.find("tbody").append(tr);
 			
 			sumaCantidad += parseInt(producto.cantidad);
-			sumaTotal += (producto.cantidad * producto.precio * (100 - producto.descuento / 100));
+			sumaTotal += (producto.cantidad * producto.precio * ((100 - producto.descuento) / 100));
 			sumaEntregados += parseInt(producto.entregado) * 1;
 			cont++;
 		});
@@ -48,9 +49,24 @@ TVenta = function(){
 		plantilla.find("tfoot").find("tr").append($('<td colspan="2">&nbsp;</td>'));
 		plantilla.find("tfoot").find("tr").append($('<td class="text-right totalCantidad">' + sumaCantidad + '</td>'));
 		plantilla.find("tfoot").find("tr").append($('<td colspan="2">&nbsp;</td>'));
-		plantilla.find("tfoot").find("tr").append($('<td class="text-right">' + sumaTotal.toFixed(2) + '</td>'));
+		plantilla.find("tfoot").find("tr").append($('<td class="text-right totalMonto">' + self.getTotalVenta() + '</td>'));
 		plantilla.find("tfoot").find("tr").append($('<td class="text-right totalEntregados">' + sumaEntregados + '</td>'));
 		plantilla.find("tfoot").find("tr").append($('<td>&nbsp;</td>'));
+		
+		plantilla.find("tbody").find(".descuento").change(function(){
+			if ($(this).val() > 100){
+				alert("No puede ser mayor a 100");
+				$(this).val(100);
+			}
+			
+			if ($(this).val() < 0){
+				alert("No puede ser menor a 0");
+				$(this).val("");
+			}
+			
+			if ($(this).val() == 0)
+				$(this).val("");
+		});
 		
 		return plantilla;
 	}
@@ -61,10 +77,10 @@ TVenta = function(){
 		$(self.productos).each(function(){
 			producto = this;
 			
-			total += producto.precio;
+			total += producto.precio * producto.cantidad * ((100 - producto.descuento) / 100);
 		});
 		
-		return self.total.toFixed(2);
+		return total.toFixed(2);
 	}
 	
 	this.getTotalCantidad = function(){

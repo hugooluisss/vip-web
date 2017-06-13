@@ -19,6 +19,7 @@ class TProducto{
 	private $descuento;
 	private $precio;
 	private $existencias;
+	private $observacion;
 	
 	/**
 	* Constructor de la clase
@@ -276,7 +277,7 @@ class TProducto{
 	*/
 	
 	public function getCosto(){
-		return $this->costo;
+		return $this->costo == ''?0:$this->costo;
 	}
 	
 	/**
@@ -302,7 +303,7 @@ class TProducto{
 	*/
 	
 	public function getDescuento(){
-		return $this->descuento;
+		return $this->descuento == ''?0:$this->descuento;
 	}
 	
 	/**
@@ -328,7 +329,7 @@ class TProducto{
 	*/
 	
 	public function getExistencias(){
-		return $this->existencias;
+		return $this->existencias == ''?0:$this->existencias;
 	}
 	
 	/**
@@ -354,7 +355,33 @@ class TProducto{
 	*/
 	
 	public function getPrecio(){
-		return $this->precio;
+		return $this->precio == ''?0:$this->precio;
+	}
+	
+	/**
+	* Establece la observación
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setObservacion($val = ""){
+		$this->observacion = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna la observacion
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getObservacion(){
+		return $this->observacion;
 	}
 	
 	/**
@@ -392,7 +419,8 @@ class TProducto{
 				costo = ".$this->getCosto().",
 				descuento = ".$this->getDescuento().",
 				existencias = ".$this->getExistencias().",
-				precio = ".$this->getPrecio()."
+				precio = ".$this->getPrecio().",
+				observacion = '".$this->getObservacion()."'
 			WHERE idProducto = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);

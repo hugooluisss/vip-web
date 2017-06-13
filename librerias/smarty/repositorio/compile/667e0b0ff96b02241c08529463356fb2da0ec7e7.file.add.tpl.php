@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-06 12:55:46
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-13 09:27:45
          compiled from "templates/plantillas/modulos/clientes/add.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17785734355936e561c3ae36-86049067%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '667e0b0ff96b02241c08529463356fb2da0ec7e7' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/add.tpl',
-      1 => 1496771744,
+      1 => 1497363371,
       2 => 'file',
     ),
   ),
@@ -79,7 +79,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="col-sm-2">
 			<input class="form-control input-sm" id="txtTelefono" name="txtTelefono" />
 		</div>
-		<label class="col-sm-2 text-right" for="txtTelefono">¿Promociones?</label>
+		<label class="col-sm-2 text-right" for="txtTelefono">¿Recibir promociones?</label>
 		<div class="col-sm-2">
 			<select id="selPromociones" name="selPromociones" class="form-control">
 				<option value="0">No</option>

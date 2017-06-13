@@ -39,6 +39,20 @@
 							</select>
 						</div>
 					</div>
+					<hr />
+					<div class="form-group">
+						<label for="txtInicial" class="col-sm-2">Inicial</label>
+						<div class="col-sm-1">
+							<input class="form-control" id="txtInicial" name="txtInicial">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtFolio" class="col-sm-2">Folio</label>
+						<div class="col-sm-3">
+							<input class="form-control" id="txtFolio" name="txtFolio">
+							<p class="help-block">Último entregado</p>
+						</div>
+					</div>
 				</div>
 				<div class="box-footer">
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>

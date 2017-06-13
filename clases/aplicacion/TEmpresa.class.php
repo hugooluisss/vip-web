@@ -271,6 +271,36 @@ class TEmpresa{
 	}
 	
 	/**
+	* Establece los parámetros adicionales
+	*
+	* @autor Hugo
+	* @access public
+	* @param mixed $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setParametros($val = ""){
+		$this->parametros = json_encode($val);
+		return true;
+	}
+	
+	/**
+	* Retorna los parametros
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getParametros(){
+		try{
+			return json_decode($this->parametros, true);
+		}catch(Exception $e){
+			return array();
+		}
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -301,7 +331,8 @@ class TEmpresa{
 				telefono = '".$this->getTelefono()."',
 				email = '".$this->getEmail()."',
 				rfc = '".$this->getRFC()."',
-				activo = ".($this->getActivo() == false?0:1)."
+				activo = ".($this->getActivo() == false?0:1).",
+				parametros = '".$this->parametros."'
 			WHERE idEmpresa = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
@@ -326,7 +357,6 @@ class TEmpresa{
 		return $rs?true:false;
 	}
 	
-	
 	/**
 	* Agrega un usuario a la empresa
 	*
@@ -341,7 +371,7 @@ class TEmpresa{
 		
 		$db = TBase::conectaDB();
 		
-		$sql = "INSERT INTO usuarioempresa(idUsuario, idEmpresa) VALUES(".$usuario.", ".$this->getId().");";
+		$sql = "INSERT INTO usuarioempresa(idUsuario, idEmpresa, parametros) VALUES(".$usuario.", ".$this->getId().", '".json_encode(array())."');";
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		
 		if (!$rs) return false;

@@ -78,6 +78,12 @@ $(document).ready(function(){
 	
 	nuevaVenta();
 	
+	$("#setClienteDefecto").click(function(){
+		var clienteDefault = jQuery.parseJSON($("#txtCliente").attr("jsonDefault"));
+		
+		$("#txtCliente").val(clienteDefault.nombre).attr("identificador", clienteDefault.idCliente);
+	});
+	
 	function reloadClientes(){
 		var ventana = $("#winClientes");
 		ventana.find(".moda-body").html('Estamos actualizando la lista de clientes <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>');
@@ -106,7 +112,7 @@ $(document).ready(function(){
 		});
 	}
 	
-	$("#winAddCliente").on("show", function(event){
+	$("#winAddCliente").on("show.bs.modal", function(event){
 		var ventana = $("#winAddCliente");
 		$("#frmAddCliente").get(0).reset();
 		ventana.find("#txtNombre").focus();
@@ -155,6 +161,23 @@ $(document).ready(function(){
     });
 	
 	function nuevaVenta(){
+		var clienteDefault = jQuery.parseJSON($("#txtCliente").attr("jsonDefault"));
+		
+		$("#txtCliente").val(clienteDefault.nombre).attr("identificador", clienteDefault.idCliente);
+	
+		var bazar = new TBazar;
+		
+		bazar.getFolio({
+			bazar: $("#selBazar").val(),
+			fn: {
+				before: function(){
+					$("#txtFolio").val("");
+				},
+				after: function(resp){
+					$("#txtFolio").val(resp.inicial + "-" + resp.folio).attr("folio", resp.folio).attr("inicial", resp.inicial);
+				}
+			}
+		});
 		var ventana = $("#winProductos");
 		ventana.find(".moda-body").html('Estamos actualizando la lista de productos <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>');
 		
@@ -196,12 +219,39 @@ $(document).ready(function(){
 			}else{
 				venta.productos[$(this).attr("indice")].cantidad = $(this).val();
 				console.log("Entregados", $(this).parent().parent().find(".entregados").val());
+				
 				if($(this).val() < $(this).parent().parent().find(".entregados").val()){
 					$(this).parent().parent().find(".entregados").val($(this).val());
 					venta.productos[$(this).attr("indice")].entregados = $(this).val();
 				}
 				
 				$(".totalCantidad").html(venta.getTotalCantidad());
+				monto = (producto.cantidad * producto.precio * ((100 - producto.descuento) / 100)).toFixed(2);
+				$(this).parent().parent().find(".total").html(monto);
+				
+				calcularMonto();
+			}
+		});
+		
+		$("#dvProductos").find(".descuento").change(function(){
+			if ($(this).val() < 0){
+				alert("Debe de ser mayor a 0");
+				$(this).val(venta.productos[$(this).attr("indice")].descuento);
+			}else if ($(this).val() > 100){
+				alert("Debe de ser menor o igual a 100");
+				$(this).val(venta.productos[$(this).attr("indice")].descuento);
+			}else{
+				var descuento = $(this).val();
+				venta.productos[$(this).attr("indice")].descuento = descuento;
+				if (descuento == 0)
+					$(this).val("");
+					
+				var producto = venta.productos[$(this).attr("indice")];
+					
+				monto = (producto.cantidad * producto.precio * ((100 - producto.descuento) / 100)).toFixed(2);
+				$(this).parent().parent().find(".total").html(monto);
+				
+				calcularMonto();
 			}
 		});
 		
@@ -237,6 +287,87 @@ $(document).ready(function(){
 			"autoWidth": false
 		});
 	
-		$("#dvTotal").html(venta.getTotalVenta());
+		calcularMonto();
 	}
+	
+	$("#txtDescuento").change(function(){
+		calcularMonto();
+	});
+	
+	function calcularMonto(){
+		$("#dvSubtotal").html(venta.getTotalVenta());
+		$("#dvProductos").find(".totalMonto").html(venta.getTotalVenta());
+		
+		var descuento = $("#txtDescuento").val() == ''?0:$("#txtDescuento").val();
+		descuento = (100 - descuento) / 100;
+		$("#dvTotal").html((venta.getTotalVenta() * descuento).toFixed(2));
+	}
+	
+	$("#winNuevoProducto").on("shown.bs.modal", function(event){
+		var codigo = Math.random() * (99999999 - 1) + 1;
+		$("#winNuevoProducto").find("#txtCodigo").val(parseInt(codigo));
+		console.log("Código", codigo);
+		
+		$("#winNuevoProducto").find("#txtDescripcion").val("").focus();
+	});
+	
+	$("#frmAddProducto").validate({
+		debug: true,
+		rules: {
+			txtCodigo: "required",
+			txtDescripcion: "required",
+			txtPrecio: {
+				required: true,
+				number: true,
+				min: 0
+			},
+		},
+		wrapper: 'span', 
+		submitHandler: function(form){
+			var obj = new TProducto;
+			obj.add({
+				"bazar": $("#selBazar").val(),
+				"codigoInterno": $("#txtCodigo").val(), 
+				"descripcion": $("#txtDescripcion").val(),
+				"precio": $("#txtPrecio").val(),
+				"observacion": "Pedido",
+				fn: {
+					after: function(datos){
+						if (datos.band){
+							$("#")
+							$("#winNuevoProducto").modal("hide");
+							
+							var ventana = $("#frmAddProducto");
+							var producto = {};
+							
+							producto.descripcion = ventana.find("#txtDescripcion").val();
+							producto.codigoInterno = ventana.find("#txtCodigo").val();
+							producto.precio = ventana.find("#txtPrecio").val();
+							producto.descuento = 0;
+							producto.codigoBarras = "";
+							
+							
+							venta.add(producto);
+							pintarVenta();
+						}else{
+							alert("No se pudo guardar el registro");
+						}
+					}
+				}
+			});
+        }
+
+    });
+    
+    
+    
+    /*Proceso de pagos y guardar*/
+    $("#btnPagar").click(function(){
+    	guardar();
+    });
+    
+    function guardar(){
+	    
+    }
+    
 });

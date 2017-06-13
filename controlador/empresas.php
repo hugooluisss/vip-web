@@ -21,7 +21,6 @@ switch($objModulo->getId()){
 	case 'cempresas':
 		switch($objModulo->getAction()){
 			case 'add':
-				$db = TBase::conectaDB();
 				$obj = new TEmpresa();
 				
 				$obj->setId($_POST['id']);
@@ -38,6 +37,17 @@ switch($objModulo->getId()){
 			case 'del':
 				$obj = new TEmpresa($_POST['id']);
 				$smarty->assign("json", array("band" => $obj->eliminar()));
+			break;
+			case 'setParametros':
+				global $userSesion;
+				$obj = new TEmpresa($userSesion->getEmpresa());
+				$parametros = $obj->getParametros();
+				
+				$parametros["clienteDefault"] = $_POST['clienteDefault'] == ''?$parametros["clienteDefault"]:$_POST['clienteDefault'];
+				
+				$obj->setParametros($parametros);
+				
+				$smarty->assign("json", array("band" => $obj->guardar()));
 			break;
 		}
 	break;
