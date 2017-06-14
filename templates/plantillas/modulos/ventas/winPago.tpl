@@ -25,6 +25,7 @@
 					</div>
 					<div class="col-xs-12 col-sm-3">
 						<input class="form-control text-right" id="txtMonto" name="txtMonto" value="0" type="number" />
+						<input id="montoMaximo" name="montoMaximo" value="0" type="hidden" />
 					</div>
 				</div>
 			</div>

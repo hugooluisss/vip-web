@@ -14,6 +14,7 @@
 	<div class="col-xs-12 col-sm-8 text-right">
 		<div class="btn-group btn-group-xs">
 			<button class="btn btn-primary btnNuevaVenta">Nueva venta</button>
+			<button class="btn btn-default" data-toggle="modal" data-target="#winVentas">Historial de ventas</button>
 			<button class="btn btn-success btnNuevoCliente" data-toggle="modal" data-target="#winAddCliente">Registrar cliente</button>
 		</div>
 	</div>
@@ -73,7 +74,7 @@
 		<div class="box">
 			<div class="box-body">
 				Comentarios
-				<textarea id="txtComentario" name="txtComentario" class="form-control"></textarea>
+				<textarea id="txtComentario" name="txtComentario" class="form-control" rows="5"></textarea>
 			</div>
 		</div>
 	</div>
@@ -109,7 +110,7 @@
 			<div class="box-body">
 				<div class="btn-group btn-group-justified">
 					<div class="btn-group">
-						<button class="btn btn-primary">Guardar</button>
+						<button class="btn btn-primary" id="btnGuardar">Guardar</button>
 					</div>
 					<div class="btn-group">
 						<button class="btn btn-danger">Cancelar</button>
@@ -126,3 +127,4 @@
 {include file=$PAGE.rutaModulos|cat:"modulos/ventas/winProductos.tpl"}
 {include file=$PAGE.rutaModulos|cat:"modulos/ventas/winClientes.tpl"}
 {include file=$PAGE.rutaModulos|cat:"modulos/ventas/winPago.tpl"}
+{include file=$PAGE.rutaModulos|cat:"modulos/ventas/winVentas.tpl"}

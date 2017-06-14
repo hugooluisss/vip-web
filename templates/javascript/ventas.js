@@ -54,7 +54,6 @@ $(document).ready(function(){
 						$(this).prop("disabled", false);
 						$("#txtProducto").val("");
 						
-						console.log(producto);
 						if (producto.band == false){
 							alert("Código no encontrado");
 							$("#winProductos").modal();
@@ -162,6 +161,7 @@ $(document).ready(function(){
 	
 	function nuevaVenta(){
 		var clienteDefault = jQuery.parseJSON($("#txtCliente").attr("jsonDefault"));
+		venta = new TVenta;
 		
 		$("#txtCliente").val(clienteDefault.nombre).attr("identificador", clienteDefault.idCliente);
 	
@@ -334,7 +334,6 @@ $(document).ready(function(){
 				fn: {
 					after: function(datos){
 						if (datos.band){
-							$("#")
 							$("#winNuevoProducto").modal("hide");
 							
 							var ventana = $("#frmAddProducto");
@@ -355,19 +354,113 @@ $(document).ready(function(){
 					}
 				}
 			});
-        }
-
-    });
-    
-    
-    
-    /*Proceso de pagos y guardar*/
-    $("#btnPagar").click(function(){
-    	guardar();
-    });
-    
-    function guardar(){
-	    
-    }
-    
+		}
+	});
+	
+	
+	/*Proces guardar*/
+	$("#btnGuardar").click(function(){
+		guardar({
+			before: function(){
+				$("#btnGuardar").prop("disabled", true);
+		    	$("#btnPagar").prop("disabled", true);
+		    },
+		    after: function(resp){
+		    	$("#btnGuardar").prop("disabled", false);
+		    	$("#btnPagar").prop("disabled", false);
+		    }
+		});
+	});
+	
+	
+	/*Proceso de pagos y guardar*/
+	$("#btnPagar").click(function(){
+		guardar({
+			before: function(){
+				$("#btnGuardar").prop("disabled", true);
+		    	$("#btnPagar").prop("disabled", true);
+		    },
+		    after: function(resp){
+		    	$("#btnGuardar").prop("disabled", false);
+		    	$("#btnPagar").prop("disabled", false);
+			    $("#winPago").modal();
+		    }
+		});
+	});
+	
+	function guardar(fn){
+		if ($("#txtCliente").attr("identificador") == ''){
+			alert("Indica un cliente");
+			$("#txtCliente").select();
+		}else if(venta.productos.length < 1){
+			alert("Agrega un producto");
+			$("#txtProducto").focus();
+		}else{
+			venta.guardar({
+				fecha: $("#txtFecha").val(),
+				bazar: $("#selBazar").val(),
+				cliente: $("#txtCliente").attr("identificador"),
+				comentario: $("#txtComentario").val(), 
+				descuento: $("#txtDescuento").val(), 
+				fn: {
+					before: function(){
+				    	if (fn.before !== undefined) fn.before();
+					}, after: function(resp){
+				    	if (resp.band){
+					    	if ($("#txtFolio").val() != resp.folio){
+					    		$("#txtFolio").val(resp.folio);
+					    	}
+				    	}
+				    	
+				    	if (fn.after !== undefined) fn.after(resp);
+				   }
+				}
+			});
+		}
+	}	
+	
+	
+	$("#winVentas").on("show.bs.modal", function(event){
+		$("#winVentas").find(".modal-body").html('Espera mientras actualizamos la lista');
+		$.post("listaVentas", {
+			bazar: $("#selBazar").val()
+		}, function( data ) {
+			$("#winVentas").find(".modal-body").html(data);
+			
+			$("[action=cargar]").click(function(){
+				nuevaVenta();
+				var el = jQuery.parseJSON($(this).attr("datos"));
+				$("#txtCliente").val(el.nombreCliente).attr("identificador", el.idCliente);
+				$("#txtComentario").val(el.comentario);
+				$("#txtDescuento").val(el.descuento);
+				venta.id = el.idVenta;
+				venta.getProductos({
+					fn: {
+						after: function(productos){
+							pintarVenta();
+							$("#winVentas").modal("hide");
+							
+							$("#txtFolio").val(el.folio);
+						}
+					}
+				});
+			});
+			
+			$("#tblVentas").DataTable({
+				"responsive": true,
+				"language": espaniol,
+				"paging": true,
+				"lengthChange": false,
+				"ordering": true,
+				"info": true,
+				"autoWidth": false
+			});
+		});
+	});
+	
+	$("#winPago").on("show.bs.modal", function(event){
+		var ventana = $("#winPago");
+		ventana.find("#txtMonto").val($("#dvTotal").html());
+		ventana.find("#montoMaximo").val($("#dvTotal").html());
+	});
 });

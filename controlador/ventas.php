@@ -36,7 +36,7 @@ switch($objModulo->getId()){
 	case 'listaVentas':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->query("select * from empresa a where a.visible = true");
+		$rs = $db->query("select a.*, b.nombre as nombreCliente from venta a join cliente b using(idCliente) where idBazar = ".$_POST['bazar']);
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
 			$row['json'] = json_encode($row);
@@ -45,26 +45,44 @@ switch($objModulo->getId()){
 		}
 		$smarty->assign("lista", $datos);
 	break;
-	case 'cempresas':
+	case 'cventas':
 		switch($objModulo->getAction()){
-			case 'add':
-				$db = TBase::conectaDB();
-				$obj = new TEmpresa();
+			case 'guardar':
+				$obj = new TVenta();
 				
 				$obj->setId($_POST['id']);
-				$obj->setRazonSocial($_POST['razonSocial']);
-				$obj->setSlogan($_POST['slogan']);
-				$obj->setDireccion($_POST['direccion']);
-				$obj->setTelefono($_POST['telefono']);
-				$obj->setEmail($_POST['email']);
-				$obj->setRFC($_POST['rfc']);
-				$obj->setActivo($_POST['activo']);
+				if ($_POST['id'] == ''){
+					$obj->bazar = new TBazar($_POST['bazar']);
+					$obj->setFolio();
+				}
 				
-				$smarty->assign("json", array("band" => $obj->guardar()));
+				$obj->cliente = new TCliente($_POST['cliente']);
+				$obj->setFecha($_POST['fecha']);
+				$obj->setComentario($_POST['comentario']);
+				$obj->setDescuento($_POST['descuento']);
+				
+				$band = $obj->guardar();
+				
+				if ($band){#si se guardó el encabezado entonces se guarda el detalle
+					$obj->clearDetalle();
+					foreach($_POST['productos'] as $producto)
+						$obj->addMovimiento($producto['idProducto'], $producto['descripcion'], $producto['cantidad'], $producto['precio'], $producto['descuento'], $producto['entregado'], json_encode($producto));
+				}
+				
+				$smarty->assign("json", array("band" => $band, "folio" => $obj->getFolio(), "id" => $obj->getId()));
 			break;
 			case 'del':
 				$obj = new TEmpresa($_POST['id']);
 				$smarty->assign("json", array("band" => $obj->eliminar()));
+			break;
+			case 'getProductos':
+				$db = TBase::conectaDB();
+				$rs = $db->query("select json from movimiento where idVenta = ".$_POST['id']);
+				$datos = array();
+				while($row = $rs->fetch_assoc()){
+					array_push($datos, json_decode($row['json']));
+				}
+				$smarty->assign("json", $datos);
 			break;
 		}
 	break;

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-13 13:29:49
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-14 12:16:53
          compiled from "templates/plantillas/modulos/ventas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1496810297593053b41bc3a5-11811133%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b3ba611b730975d98c27112c204a40ab3938a2de' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/panel.tpl',
-      1 => 1497378587,
+      1 => 1497460612,
       2 => 'file',
     ),
   ),
@@ -49,6 +49,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 	<div class="col-xs-12 col-sm-8 text-right">
 		<div class="btn-group btn-group-xs">
 			<button class="btn btn-primary btnNuevaVenta">Nueva venta</button>
+			<button class="btn btn-default" data-toggle="modal" data-target="#winVentas">Historial de ventas</button>
 			<button class="btn btn-success btnNuevoCliente" data-toggle="modal" data-target="#winAddCliente">Registrar cliente</button>
 		</div>
 	</div>
@@ -112,7 +113,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 		<div class="box">
 			<div class="box-body">
 				Comentarios
-				<textarea id="txtComentario" name="txtComentario" class="form-control"></textarea>
+				<textarea id="txtComentario" name="txtComentario" class="form-control" rows="5"></textarea>
 			</div>
 		</div>
 	</div>
@@ -136,7 +137,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 					</div>
 				</div>
 				<div class="text-center">
-					<button class="btn btn-primary">Guardar y pagar</button>
+					<button class="btn btn-primary" id="btnPagar">Guardar y pagar</button>
 				</div>
 			</div>
 		</div>
@@ -148,7 +149,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			<div class="box-body">
 				<div class="btn-group btn-group-justified">
 					<div class="btn-group">
-						<button class="btn btn-primary">Guardar</button>
+						<button class="btn btn-primary" id="btnGuardar">Guardar</button>
 					</div>
 					<div class="btn-group">
 						<button class="btn btn-danger">Cancelar</button>
@@ -167,4 +168,6 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/ventas/winClientes.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/ventas/winPago.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/ventas/winVentas.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 <?php }} ?>

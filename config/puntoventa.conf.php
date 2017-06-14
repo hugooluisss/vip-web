@@ -18,8 +18,8 @@ $conf['listaVentas'] = array(
 	'capa' => LAYOUT_AJAX);
 	
 $conf['cventas'] = array(
-	'controlador' => 'bazares.php',
-	'descripcion' => 'Controlador de bazares',
+	'controlador' => 'ventas.php',
+	'descripcion' => 'Controlador del punto de venta',
 	'seguridad' => true,
 	'capa' => LAYOUT_JSON);
 ?>

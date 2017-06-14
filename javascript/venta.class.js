@@ -1,13 +1,24 @@
 TVenta = function(){
 	var self = this;
-	this.productos = new Array();
-	this.pagos = new Array();
+	this.productos = new Array;
+	this.pagos = new Array;
 	this.total = 0;
+	this.id = null;
 	
 	this.add = function(datos){
 		datos.cantidad = 1;
 		datos.entregado = 0;
-		self.productos.push(datos);
+		var band = true;
+		
+		$.each(self.productos, function(i, el){
+			if(el.idProducto == datos.idProducto){
+				self.productos[i].cantidad++;
+				band = false;
+			}
+		})
+		
+		if (band)
+			self.productos.push(datos);
 	}
 	
 	this.del = function(indice){
@@ -88,7 +99,7 @@ TVenta = function(){
 		$(self.productos).each(function(){
 			producto = this;
 			
-			total += producto.cantidad;
+			total += parseInt(producto.cantidad);
 		});
 		
 		return parseInt(total);
@@ -99,9 +110,47 @@ TVenta = function(){
 		$(self.productos).each(function(){
 			producto = this;
 			
-			total += producto.entregado;
+			total += parseInt(producto.entregado);
 		});
 		
 		return parseInt(total);
+	}
+	
+	this.guardar = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		
+		$.post('cventas', {
+			"id": self.id,
+			"bazar": datos.bazar,
+			"cliente": datos.cliente,
+			"fecha": datos.fecha, 
+			"comentario": datos.comentario,
+			"descuento": datos.descuento,
+			"productos": self.productos,
+			"action": "guardar"
+		}, function(data){
+			if (data.band == 'false')
+				console.log(data.mensaje);
+			else{
+				self.id = data.id;
+			}
+				
+			if (datos.fn.after !== undefined)
+				datos.fn.after(data);
+		}, "json");
+	}
+	
+	this.getProductos = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		
+		$.post('cventas', {
+				"id": self.id,
+				"action": "getProductos"
+			}, function(data){
+				self.productos = data;
+								
+				if (datos.fn.after !== undefined)
+					datos.fn.after(data);
+			}, "json");
 	}
 };
