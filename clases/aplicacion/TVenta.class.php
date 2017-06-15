@@ -14,6 +14,7 @@ class TVenta{
 	private $folio;
 	private $comentario;
 	private $descuento;
+	private $idEstado;
 	
 	/**
 	* Constructor de la clase
@@ -25,6 +26,7 @@ class TVenta{
 	public function TVenta($id = ''){
 		$this->bazar = new TBazar;
 		$this->cliente = new TCliente;
+		$this->estado = 1;
 		
 		$this->setId($id);		
 		return true;
@@ -185,6 +187,32 @@ class TVenta{
 	}
 	
 	/**
+	* Establece el estado
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setEstado($val = 1){
+		$this->estado = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el estado
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getEstado(){
+		return $this->estado;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -198,7 +226,7 @@ class TVenta{
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$sql = "INSERT INTO venta(idBazar, idCliente) VALUES(".$this->bazar->getId().", ".$this->cliente->getId().");";
+			$sql = "INSERT INTO venta(idBazar, idCliente, idEstado) VALUES(".$this->bazar->getId().", ".$this->cliente->getId().", ".$this->getEstado().");";
 			$rs = $db->query($sql) or errorMySQL($db, $sql);
 			
 			if (!$rs) return false;
@@ -215,7 +243,8 @@ class TVenta{
 				fecha = '".$this->getFecha()."',
 				folio = '".$this->getFolio()."',
 				comentario = '".$this->getComentario()."',
-				descuento = ".$this->getDescuento()."
+				descuento = ".$this->getDescuento().",
+				idEstado = ".$this->getEstado()."
 			WHERE idVenta = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);

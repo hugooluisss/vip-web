@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-14 12:16:53
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-15 13:26:20
          compiled from "templates/plantillas/modulos/ventas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1496810297593053b41bc3a5-11811133%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b3ba611b730975d98c27112c204a40ab3938a2de' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/panel.tpl',
-      1 => 1497460612,
+      1 => 1497551175,
       2 => 'file',
     ),
   ),
@@ -134,6 +134,18 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 					<div class="row">
 						<div class="col-xs-4 h4">Total</div>
 						<div class="col-xs-8 h4 text-right" id="dvTotal"></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4 h5">Pagos</div>
+						<div class="col-xs-8 h5 text-right" id="dvTotalPagos"></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4 h4">Saldo</div>
+						<div class="col-xs-8 h4 text-right" id="dvSaldo"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12" id="dvPagos">
 					</div>
 				</div>
 				<div class="text-center">

@@ -36,7 +36,7 @@ switch($objModulo->getId()){
 	case 'listaVentas':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->query("select a.*, b.nombre as nombreCliente from venta a join cliente b using(idCliente) where idBazar = ".$_POST['bazar']);
+		$rs = $db->query("select a.*, b.nombre as nombreCliente, c.nombre as nombreEstado, c.color as colorEstado from venta a join cliente b using(idCliente) join estado c using(idEstado) where idBazar = ".$_POST['bazar']);
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
 			$row['json'] = json_encode($row);

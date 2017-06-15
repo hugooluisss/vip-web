@@ -9,7 +9,7 @@
 	</thead>
 	<tbody>
 		{foreach from=$lista item="row"}
-			<tr json='{$row.json}'>
+			<tr json='{$row.json}' style="border-left: 4px solid {$row.colorEstado}" title="{$row.nombreEstado}">
 				<td>{$row.folio}</td>
 				<td>{$row.fecha}</td>
 				<td>{$row.nombreCliente}</td>

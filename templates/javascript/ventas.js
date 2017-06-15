@@ -21,6 +21,7 @@ $(document).ready(function(){
 		select: function(event, ui){
 			$("#txtCliente").val(ui.item.nombre);
 			$("#txtCliente").attr("identificador", ui.item.identificador);
+			$("#txtCliente").attr("email", ui.item.correo);
 			console.log("Cliente seleccionado", ui.item.identificador);
 		}
 	});
@@ -80,7 +81,7 @@ $(document).ready(function(){
 	$("#setClienteDefecto").click(function(){
 		var clienteDefault = jQuery.parseJSON($("#txtCliente").attr("jsonDefault"));
 		
-		$("#txtCliente").val(clienteDefault.nombre).attr("identificador", clienteDefault.idCliente);
+		$("#txtCliente").val(clienteDefault.nombre).attr("identificador", clienteDefault.idCliente).attr("email", clienteDefault.correo);
 	});
 	
 	function reloadClientes(){
@@ -94,6 +95,7 @@ $(document).ready(function(){
 			ventana.find("tbody").find("tr").click(function(){
 				var datos = jQuery.parseJSON($(this).attr("json"));
 				$("#txtCliente").attr("identificador", datos.idCliente);
+				$("#txtCliente").attr("email", datos.correo);
 				$("#txtCliente").val(datos.nombre);
 				ventana.modal("hide");
 				pintarVenta();
@@ -145,6 +147,7 @@ $(document).ready(function(){
 					after: function(datos){
 						if (datos.band){
 							$("#txtCliente").attr("identificador", datos.id);
+							$("#txtCliente").attr("email", $("#txtCorreo").val());
 							$("#txtCliente").val($("#txtNombre").val());
 							
 							$("#frmAddCliente").get(0).reset();
@@ -163,7 +166,7 @@ $(document).ready(function(){
 		var clienteDefault = jQuery.parseJSON($("#txtCliente").attr("jsonDefault"));
 		venta = new TVenta;
 		
-		$("#txtCliente").val(clienteDefault.nombre).attr("identificador", clienteDefault.idCliente);
+		$("#txtCliente").val(clienteDefault.nombre).attr("identificador", clienteDefault.idCliente).attr("email", clienteDefault.correo);
 	
 		var bazar = new TBazar;
 		
@@ -287,7 +290,9 @@ $(document).ready(function(){
 			"autoWidth": false
 		});
 	
-		calcularMonto();
+		//calcularMonto();
+		
+		getListaPagos();
 	}
 	
 	$("#txtDescuento").change(function(){
@@ -301,6 +306,8 @@ $(document).ready(function(){
 		var descuento = $("#txtDescuento").val() == ''?0:$("#txtDescuento").val();
 		descuento = (100 - descuento) / 100;
 		$("#dvTotal").html((venta.getTotalVenta() * descuento).toFixed(2));
+		$("#dvTotalPagos").html(($("#deuda").val() == '' || $("#deuda").val() == undefined?0.00:$("#deuda").val()));
+		$("#dvSaldo").html(($("#dvTotal").html() - $("#dvTotalPagos").html()).toFixed(2));
 	}
 	
 	$("#winNuevoProducto").on("shown.bs.modal", function(event){
@@ -368,6 +375,11 @@ $(document).ready(function(){
 		    after: function(resp){
 		    	$("#btnGuardar").prop("disabled", false);
 		    	$("#btnPagar").prop("disabled", false);
+		    	
+		    	if (resp.band)
+		    		alert("Venta guardada");
+		    	else
+		    		alert("Ocurrió un error al guardar la venta");
 		    }
 		});
 	});
@@ -410,6 +422,8 @@ $(document).ready(function(){
 					    	if ($("#txtFolio").val() != resp.folio){
 					    		$("#txtFolio").val(resp.folio);
 					    	}
+					    	
+					    	getListaPagos();
 				    	}
 				    	
 				    	if (fn.after !== undefined) fn.after(resp);
@@ -421,6 +435,7 @@ $(document).ready(function(){
 	
 	
 	$("#winVentas").on("show.bs.modal", function(event){
+		$("#winVentas").find(".modal-body").find("#tblVentas").remove();
 		$("#winVentas").find(".modal-body").html('Espera mientras actualizamos la lista');
 		$.post("listaVentas", {
 			bazar: $("#selBazar").val()
@@ -433,9 +448,13 @@ $(document).ready(function(){
 				$("#txtCliente").val(el.nombreCliente).attr("identificador", el.idCliente);
 				$("#txtComentario").val(el.comentario);
 				$("#txtDescuento").val(el.descuento);
+				$(this).prop("disabled", true);
 				venta.id = el.idVenta;
 				venta.getProductos({
 					fn: {
+						before: function(){
+							$(this).prop("disabled", true);
+						},
 						after: function(productos){
 							pintarVenta();
 							$("#winVentas").modal("hide");
@@ -446,7 +465,7 @@ $(document).ready(function(){
 				});
 			});
 			
-			$("#tblVentas").DataTable({
+			$("#winVentas").find("#tblVentas").DataTable({
 				"responsive": true,
 				"language": espaniol,
 				"paging": true,
@@ -460,7 +479,90 @@ $(document).ready(function(){
 	
 	$("#winPago").on("show.bs.modal", function(event){
 		var ventana = $("#winPago");
-		ventana.find("#txtMonto").val($("#dvTotal").html());
-		ventana.find("#montoMaximo").val($("#dvTotal").html());
+		ventana.find("#txtMonto").val($("#dvSaldo").html());
+		ventana.find("#montoMaximo").val($("#dvSaldo").html() < 0?0:$("#dvSaldo").html());
+		
+	});
+	
+	$("#winPago").on("shown.bs.modal", function(event){
+		var ventana = $("#winPago");
+		ventana.find("#txtMonto").select();
+	});
+	
+	$("#frmPago").validate({
+		debug: true,
+		rules: {
+			txtMonto: {
+				required: true,
+				min: 1,
+			}
+		},
+		wrapper: 'span', 
+		submitHandler: function(form){
+			console.log($("#txtMonto").val(), $("#montoMaximo").val());
+			if (parseFloat($("#txtMonto").val()) > parseFloat($("#montoMaximo").val())){
+				alert("El pago no debe de ser mayor a " + $("#montoMaximo").val());
+
+				$("#txtMonto").val($("#montoMaximo").val()).select();
+			}else{
+				var obj = new TPago;
+				obj.add({
+					id: $("#id").val(), 
+					venta: venta.id, 
+					metodo: $("#selMetodoPago").val(), 
+					monto: $("#txtMonto").val(), 
+					referencia: $("#txtReferencia").val(), 
+					fn: {
+						after: function(datos){
+							if (datos.band){
+								$("#frmPago").get(0).reset();
+								$("#winPago").modal("hide");
+								
+								getListaPagos();
+							}else{
+								alert("No se pudo guardar el registro");
+							}
+						}
+					}
+				});
+			}
+        }
+
+    });
+    
+    getListaPagos();
+    
+    function getListaPagos(){
+	    $.post("listaPagos", {
+			"venta": venta.id
+		}, function(data) {
+			$("#dvPagos").html(data);
+			
+			calcularMonto();
+		});
+	}
+    
+	/*Cerrar venta*/
+	$("#btnCerrar").click(function(){
+		if(confirm("¿Seguro?")){
+	    	var email = prompt("¿A que correo deseas enviar la nota de venta?", $("#txtCliente").attr("email"));
+	    	
+	    	venta.cerrar({
+	    		"email": email,
+	    		fn: {
+		    		before: function(){
+			    		$("#btnCerrar").prop("disabled", true);
+		    		}, after: function(resp){
+			    		$("#btnCerrar").prop("disabled", false);
+			    		
+			    		if (resp.band){
+			    			alert("La venta ha sido cerrada");
+			    			nuevaVenta();
+			    		}else
+			    			alert("La venta no pudo ser cerrada");
+		    		}
+	    		}
+	    	});
+		}
 	});
 });

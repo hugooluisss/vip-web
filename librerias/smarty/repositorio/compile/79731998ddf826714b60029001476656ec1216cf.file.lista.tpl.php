@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-14 12:51:34
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-15 13:42:20
          compiled from "templates/plantillas/modulos/ventas/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24709900594170788a2064-44980558%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '79731998ddf826714b60029001476656ec1216cf' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/lista.tpl',
-      1 => 1497462048,
+      1 => 1497552137,
       2 => 'file',
     ),
   ),
@@ -40,7 +40,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars[
 $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
 			<tr json='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
-'>
+' style="border-left: 4px solid <?php echo $_smarty_tpl->tpl_vars['row']->value['colorEstado'];?>
+" title="<?php echo $_smarty_tpl->tpl_vars['row']->value['nombreEstado'];?>
+">
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['folio'];?>
 </td>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['fecha'];?>

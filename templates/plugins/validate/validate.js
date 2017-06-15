@@ -79,3 +79,11 @@ $.validator.addMethod("phoneMX", function( value, element, param ) {
     return phone_number.length > 9 &&
         phone_number.match(/^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/);
 }, "Please enter a valid phone number.");
+
+
+$.validator.addMethod('lessThanEqual', function(value, element, param) {
+    if (this.optional(element)) return true;
+    var i = parseInt(value);
+    var j = parseInt($(param).val());
+    return i <= j;
+}, "The value {0} must be less than {1}");

@@ -96,6 +96,18 @@
 						<div class="col-xs-4 h4">Total</div>
 						<div class="col-xs-8 h4 text-right" id="dvTotal"></div>
 					</div>
+					<div class="row">
+						<div class="col-xs-4 h5">Pagos</div>
+						<div class="col-xs-8 h5 text-right" id="dvTotalPagos"></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4 h4">Saldo</div>
+						<div class="col-xs-8 h4 text-right" id="dvSaldo"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12" id="dvPagos">
+					</div>
 				</div>
 				<div class="text-center">
 					<button class="btn btn-primary" id="btnPagar">Guardar y pagar</button>
@@ -116,7 +128,7 @@
 						<button class="btn btn-danger">Cancelar</button>
 					</div>
 					<div class="btn-group">
-						<button class="btn btn-success btnNuevaVenta">Cerrar y enviar</button>
+						<button class="btn btn-success btnCerrar">Cerrar y enviar</button>
 					</div>
 				</div>
 			</div>

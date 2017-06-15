@@ -31,6 +31,7 @@ switch($objModulo->getId()){
 			
 			$aux["label"] = $row['nombre'];
 			$aux['identificador'] = $row['idCliente'];
+			$aux['correo'] = $row['correo'];
 			
 			array_push($datos, $aux);
 		}
