@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-16 21:03:37
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-20 09:46:52
          compiled from "templates/plantillas/modulos/ventas/winProductos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:23196336259448df9b6a0e7-26020233%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '04fcee4ab2a3223e347c5df045ae612a82134ceb' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/winProductos.tpl',
-      1 => 1497662297,
+      1 => 1497965910,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_59448df9b6e4d9_89642597',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59448df9b6e4d9_89642597')) {function content_59448df9b6e4d9_89642597($_smarty_tpl) {?><div class="modal fade" id="winProductos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog modal-lg" role="document">

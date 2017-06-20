@@ -11,18 +11,27 @@ class RTicket extends tFPDF{
 		$this->AddFont('Sans','B', 'DejaVuSans-Bold.ttf', true);
 		$this->AddFont('Sans','U', 'DejaVuSans-Oblique.ttf', true);
 		$this->AddFont('Sans','BU', 'DejaVuSans-BoldOblique.ttf', true);
+		$this->total = 0;
+		
 		$this->cleanFiles();
 	}	
 	
-	public function Header($nombre){   	
-    	//$this->Image('repositorio/img/logo.jpg');
-    	$this->SetFont('Sans', '', 10);
+	public function Header($nombre){
+		$y = $this->GetY();
+		if (file_exists("repositorio/empresas/empresa".$this->empresa->getId().".jpg"))
+	    	$this->Image("repositorio/empresas/empresa".$this->empresa->getId().".jpg", null, 37, 35, 35);
+	    else
+		    $this->Image("templates/img/no-camara.jpg", null, 37, 35, 35);
+		
+		
+		$this->SetY($y);
+    	$this->SetFont('Sans', 'B', 12);
     	$this->SetTextColor(255, 0, 0);
     	$y = $this->GetY();
     	$this->Ln(5);
-    	$this->Cell(140, 5, "Nota de venta", 0, 0, 'C');
+    	$this->Cell(0, 5, "Nota de venta", 0, 0, 'C');
     	$this->SetTextColor(0, 0, 0);
-    	
+    	$this->SetFont('Sans', '', 10);
     	$this->SetXY(150, $y);
     	$this->Cell(20, 5, "# de Nota: ");
     	
@@ -68,36 +77,129 @@ class RTicket extends tFPDF{
     	$this->Cell(15, 5, "Correo: ");
     	$this->Cell(50, 5, $this->empresa->getCiudad(), 'B');
     	$this->Cell(10, 5, "Tel: ");
-    	$this->Cell(40, 5, $this->empresa->getEstado(), 'B');
-    	$this->Ln(5);
+    	$this->Cell(45, 5, $this->empresa->getEstado(), 'B');
+    	$this->Ln(15);
+    	
+    	#Datos del cliente
+    	$this->SetFont('Sans', 'B', 10);
+    	$this->Cell(140, 5, "Datos del cliente");
+    	$this->SetFont('Sans', '', 10);
+    	$this->Ln(10);
+    	$this->Cell(18, 5, "Nombre: ");
+    	$this->Cell(0, 5, $this->venta->cliente->getNombre(), 'B', 1);
+    	$this->Cell(25, 5, "Razón social: ");
+    	$this->Cell(0, 5, $this->venta->cliente->getRazonSocial(), 'B', 1);
+    	$this->Cell(20, 5, "Domicilio: ");
+    	$this->Cell(120, 5, $this->venta->cliente->getDomicilio(), 'B');
+    	$this->Cell(13, 5, "#Ext: ");
+    	$this->Cell(15, 5, $this->venta->cliente->getExterior(), 'B');
+    	$this->Cell(13, 5, "#Int: ");
+    	$this->Cell(15, 5, $this->venta->cliente->getInterior(), 'B', 1);
+    	$this->Cell(16, 5, "Colonia: ");
+    	$this->Cell(80, 5, $this->venta->cliente->getColonia(), 'B');
+    	$this->Cell(20, 5, "Municipio: ");
+    	$this->Cell(80, 5, $this->venta->cliente->getMunicipio(), 'B', 1);
+    	$this->Cell(16, 5, "Ciudad: ");
+    	$this->Cell(50, 5, $this->venta->cliente->getCiudad(), 'B');
+    	$this->Cell(16, 5, "Estado: ");
+    	$this->Cell(50, 5, $this->venta->cliente->getEstado(), 'B');
+    	$this->Cell(10, 5, "RFC: ");
+    	$this->Cell(55, 5, $this->venta->cliente->getRFC(), 'B', 1);
+    	$this->Cell(16, 5, "Correo: ");
+    	$this->Cell(50, 5, $this->venta->cliente->getCorreo(), 'B');
+    	$this->Cell(10, 5, "Tel: ");
+    	$this->Cell(55, 5, $this->venta->cliente->getTelefono(), 'B', 1);
+    	
     	
     	$this->Ln(5);
+    	#Inicio del detalle de la venta
+    	$this->SetFont('Sans', '', 6);
+    	$this->SetFillColor(160);
+    	$y = $this->GetY();
+    	$x = $this->GetX();
+    	$this->SetY($y); $this->MultiCell(5, 10, "#", 0, 'C', true);
+    	$x += 5;
+    	$this->SetXY($x, $y); $this->MultiCell(20, 5, "Código de barras", 0, 'C', true);
+    	$x += 20; $this->SetXY($x, $y); $this->MultiCell(68, 10, "Descripción", 0, 'C', true);
+    	$x += 68; $this->SetXY($x, $y); $this->MultiCell(15, 10, "Cantidad", 0, 'C', true);
+    	$x += 15; $this->SetXY($x, $y); $this->MultiCell(25, 10, "Precio u.", 0, 'C', true);
+    	$x += 25; $this->SetXY($x, $y); $this->MultiCell(25, 10, "Descuento", 0, 'C', true);
+    	$x += 25; $this->SetXY($x, $y); $this->MultiCell(25, 10, "Precio total", 0, 'C', true);
+    	$x += 25; $this->SetXY($x, $y); $this->MultiCell(15, 5, "Cantidad entregada", 0, 'C', true);
 	}
 	
 	public function generar($id){
 		$this->AddPage();
 		
-		$cotizacion = $this->cotizacion;
-		$this->Ln(10);
-		$this->Write(5, utf8_decode("Estimado cliente, por medio del presente, le hago entrega de la cotización que nos ha solicitado. Cualquier duda favor de contactarnos, con gusto se las resolveremos"));
+		$this->SetFont('Sans', '', 6);
+		$db = TBase::conectaDB();
+		global $sesion;
 		
-				
+		$rs = $db->query("select * from movimiento a where a.idVenta = ".$this->venta->getId());
+		$datos = array();
+		$cont = 1;
+		$cantidad = 0;
+		$total = 0;
+		$entregados = 0;
+		while($row = $rs->fetch_assoc()){
+			$x = $this->GetX();
+			$y = $this->GetY();
+			
+			if ($cont % 2 == 0)
+				$this->SetFillColor(230);
+			else
+				$this->SetFillColor(255);
+			
+			$otro = json_decode($row['json']);
+			$this->Cell(5, 4, "".$cont++, 0, 0, 'L', true);
+			$this->Cell(20, 4, $otro->codigoBarras, 0, 0, 'L', true);
+	    	$this->MultiCell(68, 4, $row['descripcion'], 0, 0, true);
+	    	$linea = $this->GetY() - $y;
+	    	$this->SetY($y);
+	    	$this->SetX($x + 68 + 25);
+	    	$this->Cell(15, 4, $row['cantidad'], 0, 0, 'R', true);
+	    	$this->Cell(25, 4, number_format($row['precio'], 2, '.', ','), 0, 0, 'R', true);
+	    	$this->Cell(25, 4, $row['descuento']."%", 0, 0, 'R', true);
+	    	$this->Cell(25, 4, number_format($row['cantidad'] * ($row['precio'] * (1 - $row['descuento'] / 100)), 2, '.', ','), 0, 0, 'R', true);
+	    	$this->Cell(15, 4, $row['entregado'], 0, 0, 'R', true);
+	    	
+	    	$cantidad += $row['cantidad'];
+	    	$total += $row['cantidad'] * ($row['precio'] * (1 - $row['descuento'] / 100));
+	    	$entregados += $row['entregado'];
+	    	$this->total = $total;
+	    	$this->Ln(4);
+			array_push($datos, $row);
+		}
+		
 		$this->SetFont('Sans', 'B', 6);
-		$this->Cell(165, 8, "Cargos por servicios adicionales", 0, 0, 'R');
-		
+		$this->Cell(93, 4, "Cantidad total", 'T', 0, 'R');
+		$this->Cell(15, 4, $cantidad, 'T', 0, 'R');
+		$this->Cell(50, 4, "Precio total", 'T', 0, 'R');
+		$this->Cell(25, 4, number_format($total, 2, '.', ','), 'T', 0, 'R');
+		$this->Cell(15, 4, "".$entregados, 'T', 0, 'R');
 	}
 	
 	function Footer(){
-		$this->SetY(-15);
-		$this->SetFont('Arial', 'I', 8);
-		$this->Cell(0, 10, utf8_decode('Página ').$this->PageNo(), 0, 0, 'C');
+		$monto = $this->total;
+		$descuento = $monto * ($this->venta->getDescuento() / 100);
+		$total = $monto - $descuento;
 		
 		$this->SetY(-30);
-		$this->write(5, utf8_decode("Estos precios están sujetos a cambios sin previo aviso. La presenta aplica para cualquier forma de pago. La cotización no representa forma alguna, reserva de inventario"));
-		
-		$this->SetY(-55);
-		$this->Cell(0, 5, "______________________________________________", 0, 1, 'C');
-		global $sesion;
+		$this->SetFont('Arial', 'I', 8);
+		$this->SetY(-30);
+		$y = $this->GetY();
+		$this->MultiCell(100, 5, "Comentarios: ".$this->venta->getComentario());
+		$this->SetXY(160, $y);
+		$this->Cell(30, 5, "Subtotal");
+		$this->Cell(0, 5, number_format($monto, 2, '.', ','), 0, 0, 'R');
+		$this->Ln(5); $y += 5;
+		$this->SetXY(160, $y);
+		$this->Cell(30, 5, "Descuento (".$this->venta->getDescuento()."%)");
+		$this->Cell(0, 5, number_format($descuento, 2, '.', ','), 0, 0, 'R');
+		$this->Ln(5); $y += 5;
+		$this->SetXY(160, $y);
+		$this->Cell(30, 5, "Total");
+		$this->Cell(0, 5, number_format($total, 2, '.', ','), 0, 0, 'R');
 	}
 	
 	private function cleanFiles(){

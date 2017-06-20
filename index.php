@@ -71,7 +71,7 @@ $userSesion = $pageSesion;
 $datosPlantilla = array(
 	"ruta" => DIR_PLANTILLAS."/",
 	"css" => DIR_PLANTILLAS."/css/",
-	"iconos" => DIR_PLANTILLAS."/iconos/",
+	"imagenes" => DIR_PLANTILLAS."/img/",
 	"sesion" => $_SESSION[SISTEMA],
 	"debug" => strtoupper($ini['sistema']['debug']) == "ON",
 	"sesionIniciada" => $bandSesion?'1':'0',

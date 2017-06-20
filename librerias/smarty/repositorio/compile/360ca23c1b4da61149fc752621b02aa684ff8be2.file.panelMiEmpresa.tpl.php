@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-16 20:55:07
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-20 09:42:42
          compiled from "templates/plantillas/modulos/empresas/panelMiEmpresa.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:84928952594484f80ab332-32821012%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '360ca23c1b4da61149fc752621b02aa684ff8be2' => 
     array (
       0 => 'templates/plantillas/modulos/empresas/panelMiEmpresa.tpl',
-      1 => 1497664506,
+      1 => 1497969758,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'empresa' => 0,
+    'PAGE' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -31,7 +32,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;">
 	<div class="box">
-		<div class="box-body">			
+		<div class="box-body">	
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<a href="#" data-toggle="modal" data-target="#winFotografia">
+						<img src="repositorio/empresas/empresa<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getId();?>
+.jpg" id="logotipo" onerror="javascript: $(this).prop('src', '<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+no-camara.jpg')"/>
+						<br />
+						<small class="text-info">Click para cambiar</small>
+					</a>
+				</div>
+			</div>
 			<div class="form-group">
 				<label for="txtRazonSocial" class="col-sm-2">Razon social</label>
 				<div class="col-sm-10">
@@ -117,4 +129,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<input type="hidden" id="activo" value="1"/>
 		</div>
 	</div>
-</form><?php }} ?>
+</form>
+
+
+<div class="modal fade" id="winFotografia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Actualizar logotipo de la empresa</h4>
+			</div>
+			<div class="modal-body">
+				<form id="upload" method="post" action="?mod=cempresas&action=uploadfile&empresa=<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getId();?>
+" enctype="multipart/form-data">
+					<input type="file" name="upl" accept="image/jpg,image/jpeg"/>
+					<ul class="elementos list-group">
+					<!-- The file list will be shown here -->
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+</div><?php }} ?>

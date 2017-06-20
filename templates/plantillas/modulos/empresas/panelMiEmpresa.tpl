@@ -6,7 +6,16 @@
 
 <form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;">
 	<div class="box">
-		<div class="box-body">			
+		<div class="box-body">	
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<a href="#" data-toggle="modal" data-target="#winFotografia">
+						<img src="repositorio/empresas/empresa{$empresa->getId()}.jpg" id="logotipo" onerror="javascript: $(this).prop('src', '{$PAGE.imagenes}no-camara.jpg')"/>
+						<br />
+						<small class="text-info">Click para cambiar</small>
+					</a>
+				</div>
+			</div>
 			<div class="form-group">
 				<label for="txtRazonSocial" class="col-sm-2">Razon social</label>
 				<div class="col-sm-10">
@@ -80,3 +89,23 @@
 		</div>
 	</div>
 </form>
+
+
+<div class="modal fade" id="winFotografia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Actualizar logotipo de la empresa</h4>
+			</div>
+			<div class="modal-body">
+				<form id="upload" method="post" action="?mod=cempresas&action=uploadfile&empresa={$empresa->getId()}" enctype="multipart/form-data">
+					<input type="file" name="upl" accept="image/jpg,image/jpeg"/>
+					<ul class="elementos list-group">
+					<!-- The file list will be shown here -->
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
