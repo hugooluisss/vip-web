@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-15 13:42:20
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-18 21:02:18
          compiled from "templates/plantillas/modulos/ventas/lista.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:24709900594170788a2064-44980558%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:83260548659472e841e9063-68918287%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '79731998ddf826714b60029001476656ec1216cf' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/lista.tpl',
-      1 => 1497552137,
+      1 => 1497837733,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '24709900594170788a2064-44980558',
+  'nocache_hash' => '83260548659472e841e9063-68918287',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_594170788ea810_74455395',
+  'unifunc' => 'content_59472e84283392_88939080',
   'variables' => 
   array (
     'lista' => 0,
@@ -24,7 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_594170788ea810_74455395')) {function content_594170788ea810_74455395($_smarty_tpl) {?><table id="tblVentas" class="table table-bordered table-hover">
+<?php if ($_valid && !is_callable('content_59472e84283392_88939080')) {function content_59472e84283392_88939080($_smarty_tpl) {?><table id="tblVentas" class="table table-bordered table-hover">
 	<thead>
 		<tr>
 			<th>Folio</th>
@@ -50,8 +50,14 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombreCliente'];?>
 </td>
 				<td style="text-align: right">
+					<?php if ($_smarty_tpl->tpl_vars['row']->value['idEstado']==1){?>
 					<button type="button" class="btn btn-success btn-xs" action="cargar" title="Cargar y modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>
+					<?php }?>
+					<?php if ($_smarty_tpl->tpl_vars['row']->value['idEstado']==2){?>
+					<button type="button" class="btn btn-primary btn-xs" action="imprimir" title="Imprimir" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'><i class="fa fa-file-pdf-o"></i></button>
+					<?php }?>
 				</td>
 			</tr>
 		<?php } ?>

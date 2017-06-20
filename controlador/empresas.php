@@ -27,6 +27,12 @@ switch($objModulo->getId()){
 				$obj->setRazonSocial($_POST['razonSocial']);
 				$obj->setSlogan($_POST['slogan']);
 				$obj->setDireccion($_POST['direccion']);
+				$obj->setExterno($_POST['externo']);
+				$obj->setInterno($_POST['interno']);
+				$obj->setColonia($_POST['colonia']);
+				$obj->setMunicipio($_POST['municipio']);
+				$obj->setCiudad($_POST['ciudad']);
+				$obj->setEstado($_POST['estado']);
 				$obj->setTelefono($_POST['telefono']);
 				$obj->setEmail($_POST['email']);
 				$obj->setRFC($_POST['rfc']);

@@ -13,12 +13,18 @@ TVenta = function(){
 		$.each(self.productos, function(i, el){
 			if(el.idProducto == datos.idProducto){
 				self.productos[i].cantidad++;
+				if (self.productos[i].cantidad <= self.productos[i].existencias)
+					self.productos[i].entregado = self.productos[i].cantidad;
 				band = false;
 			}
-		})
+		});
 		
-		if (band)
+		if (band){
+			if (datos.cantidad <= datos.existencias)
+				datos.entregado = datos.cantidad;
+				
 			self.productos.push(datos);
+		}
 	}
 	
 	this.del = function(indice){
@@ -39,12 +45,12 @@ TVenta = function(){
 			
 			var tr = $("<tr />").attr("identificador", producto.idProducto)
 			tr.append($('<td>' + producto.codigoBarras + '</td>'));
-			tr.append($('<td>' + producto.descripcion + '</td>'));
-			tr.append($('<td><input type="number" class="form-control text-right cantidad" value="' + producto.cantidad + '" indice="' + cont + '" /></td>'));
-			tr.append($('<td class="text-right">' + producto.precio + '</td>'));
-			tr.append($('<td class="text-right"><input type="number" class="form-control text-right descuento" value="' + (producto.descuento == 0?'':producto.descuento) + '" indice="' + cont + '"/></td>'));
-			tr.append($('<td class="text-right total">' + (producto.cantidad * producto.precio * ((100 - producto.descuento) / 100)).toFixed(2) + '</td>'));
-			tr.append($('<td><input type="number" class="form-control text-right entregados" value="' + producto.entregado + '" indice="' + cont + '"/></td>'));
+			tr.append($('<td style="width: 40%">' + producto.descripcion + '</td>'));
+			tr.append($('<td><input style="width: 100px;" type="number" size="3" class="text-right cantidad" value="' + producto.cantidad + '" indice="' + cont + '" /></td>'));
+			tr.append($('<td class="text-right">' + formatNumber.new(producto.precio) + '</td>'));
+			tr.append($('<td class="text-right"><input style="width: 100px;" type="number" size="3" class="text-right descuento" value="' + (producto.descuento == 0?'':producto.descuento) + '" indice="' + cont + '"/></td>'));
+			tr.append($('<td class="text-right total">' + formatNumber.new((producto.cantidad * producto.precio * ((100 - producto.descuento) / 100)).toFixed(2)) + '</td>'));
+			tr.append($('<td><input type="number" style="width: 100px;" class="text-right entregados" size="3" value="' + producto.entregado + '" indice="' + cont + '"/></td>'));
 			tr.append($('<td class="text-right"><button type="button" class="btn btn-danger" indice="' + cont + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>'));
 			
 			plantilla.find("tbody").append(tr);
@@ -60,7 +66,7 @@ TVenta = function(){
 		plantilla.find("tfoot").find("tr").append($('<td colspan="2">&nbsp;</td>'));
 		plantilla.find("tfoot").find("tr").append($('<td class="text-right totalCantidad">' + sumaCantidad + '</td>'));
 		plantilla.find("tfoot").find("tr").append($('<td colspan="2">&nbsp;</td>'));
-		plantilla.find("tfoot").find("tr").append($('<td class="text-right totalMonto">' + self.getTotalVenta() + '</td>'));
+		plantilla.find("tfoot").find("tr").append($('<td class="text-right totalMonto">' + formatNumber.new(self.getTotalVenta()) + '</td>'));
 		plantilla.find("tfoot").find("tr").append($('<td class="text-right totalEntregados">' + sumaEntregados + '</td>'));
 		plantilla.find("tfoot").find("tr").append($('<td>&nbsp;</td>'));
 		
@@ -153,4 +159,50 @@ TVenta = function(){
 					datos.fn.after(data);
 			}, "json");
 	}
+	
+	this.cerrar = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		
+		$.post('cventas', {
+				"id": self.id,
+				"correo": datos.email,
+				"action": "cerrar"
+			}, function(data){
+				if (datos.fn.after !== undefined)
+					datos.fn.after(data);
+			}, "json");
+	}
+	
+	this.imprimir = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		
+		$.post('cventas', {
+				"id": self.id,
+				"action": "imprimir"
+			}, function(data){
+				if (datos.fn.after !== undefined)
+					datos.fn.after(data);
+			}, "json");
+	}
 };
+
+var formatNumber = {
+	separador: ",", // separador para los miles
+	sepDecimal: '.', // separador para los decimales
+	
+	formatear:function (num){
+		num +='';
+		var splitStr = num.split('.');
+		var splitLeft = splitStr[0];
+		var splitRight = splitStr.length > 1 ? this.sepDecimal + splitStr[1] : '';
+		var regx = /(\d+)(\d{3})/;
+		while (regx.test(splitLeft)) {
+			splitLeft = splitLeft.replace(regx, '$1' + this.separador + '$2');
+		}
+		return this.simbol + splitLeft  +splitRight;
+	},
+	new:function(num, simbol){
+		this.simbol = simbol ||'';
+		return this.formatear(num);
+	}
+}

@@ -1,30 +1,30 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-15 12:31:26
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-16 21:03:37
          compiled from "templates/plantillas/modulos/ventas/winPago.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:952086302593ee45d913464-29694283%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:99215638859448df9bbf948-03404581%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'a15284f7728d2f4cf2a91cc6dc9d743c358be1c0' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/winPago.tpl',
-      1 => 1497547843,
+      1 => 1497553455,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '952086302593ee45d913464-29694283',
+  'nocache_hash' => '99215638859448df9bbf948-03404581',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_593ee45d914b37_69817349',
   'variables' => 
   array (
     'metodosPago' => 0,
     'row' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_59448df9bf6d52_74569169',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_593ee45d914b37_69817349')) {function content_593ee45d914b37_69817349($_smarty_tpl) {?><form role="form" id="frmPago" class="form-horizontal" onsubmit="javascript: return false;">
+<?php if ($_valid && !is_callable('content_59448df9bf6d52_74569169')) {function content_59448df9bf6d52_74569169($_smarty_tpl) {?><form role="form" id="frmPago" class="form-horizontal" onsubmit="javascript: return false;">
 	<div class="modal fade" id="winPago" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">

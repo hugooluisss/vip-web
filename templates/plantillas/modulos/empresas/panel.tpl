@@ -22,41 +22,66 @@
 				<div class="box-body">			
 					<div class="form-group">
 						<label for="txtRazonSocial" class="col-sm-2">Razon social</label>
-						<div class="col-sm-8">
-							<input class="form-control" id="txtRazonSocial" name="txtRazonSocial">
+						<div class="col-sm-10">
+							<input class="form-control" id="txtRazonSocial" name="txtRazonSocial" value="" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="txtSlogan" class="col-sm-2">Slogan</label>
-						<div class="col-sm-8">
-							<input class="form-control" id="txtSlogan" name="txtSlogan">
+						<div class="col-sm-10">
+							<input class="form-control" id="txtSlogan" name="txtSlogan" value=""/>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtDireccion" class="col-sm-2">Dirección</label>
+						<label for="txtDireccion" class="col-sm-2">Domicilio</label>
 						<div class="col-sm-8">
-							<input class="form-control" id="txtDireccion" name="txtDireccion">
+							<input class="form-control" id="txtDireccion" name="txtDireccion" value=""/>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtTelefono" class="col-sm-2">Teléfono</label>
+						<label for="txtExterno" class="col-sm-2">#Ext</label>
+						<div class="col-sm-2">
+							<input class="form-control" id="txtExterno" name="txtExterno" value=""/>
+						</div>
+						<label for="txtInterno" class="col-sm-2 col-sm-offset-2">#Int</label>
+						<div class="col-sm-2">
+							<input class="form-control" id="txtInterno" name="txtInterno" value=""/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtColonia" class="col-sm-2">Colonia</label>
 						<div class="col-sm-3">
-							<input class="form-control" id="txtTelefono" name="txtTelefono">
+							<input class="form-control" id="txtColonia" name="txtColonia" value=""/>
+						</div>
+						<label for="txtMunicipio" class="col-sm-2 col-sm-offset-1">Municipio</label>
+						<div class="col-sm-3">
+							<input class="form-control" id="txtMunicipio" name="txtMunicipio" value=""/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtCiudad" class="col-sm-2">Ciudad</label>
+						<div class="col-sm-3">
+							<input class="form-control" id="txtCiudad" name="txtCiudad" value=""/>
+						</div>
+						<label for="txtEstado" class="col-sm-2 col-sm-offset-1">Estado</label>
+						<div class="col-sm-3">
+							<input class="form-control" id="txtEstado" name="txtEstado" value=""/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtRFC" class="col-sm-2">R. F. C.</label>
+						<div class="col-sm-4">
+							<input class="form-control" id="txtRFC" name="txtRFC" value=""/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="txtEmail" class="col-sm-2">Correo electrónico</label>
 						<div class="col-sm-3">
-							<input class="form-control" id="txtEmail" name="txtEmail">
+							<input class="form-control" id="txtEmail" name="txtEmail" value=""/>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="selActivo" class="col-sm-2">Activo</label>
-						<div class="col-sm-2">
-							<select id="selActivo" name="selActivo" class="form-control">
-								<option value="1">Si</option>
-								<option value="0">No</option>
-							</select>
+						<label for="txtTelefono" class="col-sm-2 col-sm-offset-1">Teléfono</label>
+						<div class="col-sm-3">
+							<input class="form-control" id="txtTelefono" name="txtTelefono" value=""/>
 						</div>
 					</div>
 				</div>

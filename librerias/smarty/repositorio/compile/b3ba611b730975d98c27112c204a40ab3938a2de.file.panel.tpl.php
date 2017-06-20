@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-15 13:26:20
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-16 21:03:37
          compiled from "templates/plantillas/modulos/ventas/panel.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1496810297593053b41bc3a5-11811133%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:162072958459448df9a9a2a9-18731015%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'b3ba611b730975d98c27112c204a40ab3938a2de' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/panel.tpl',
-      1 => 1497551175,
+      1 => 1497662179,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1496810297593053b41bc3a5-11811133',
+  'nocache_hash' => '162072958459448df9a9a2a9-18731015',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_593053b4209913_93809395',
   'variables' => 
   array (
     'bazares' => 0,
@@ -25,8 +23,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'PAGE' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_59448df9b62730_18210028',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_593053b4209913_93809395')) {function content_593053b4209913_93809395($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/Library/WebServer/Documents/vip-web/librerias/smarty/plugins/modifier.date_format.php';
+<?php if ($_valid && !is_callable('content_59448df9b62730_18210028')) {function content_59448df9b62730_18210028($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/Library/WebServer/Documents/vip-web/librerias/smarty/plugins/modifier.date_format.php';
 ?><div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Venta</h1>
@@ -58,12 +58,18 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 <div class="box">
 	<div class="box-body">
 		<div class="row">
-			<div class="col-xs-4 col-sm-2">
-				<input type="text" class="form-control" id="txtFolio" name="txtFolio" value="" readonly="true" title="Folio" />
+			<div class="col-xs-4 col-sm-3">
+				<div class="input-group">
+					<span class="input-group-addon" id="sizing-addon2">Folio</span>
+					<input type="text" class="form-control" id="txtFolio" name="txtFolio" value="" readonly="true" title="Folio" />
+				</div>
 			</div>
-			<div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-8 text-right">
-				<input type="date" class="form-control text-right" id="txtFecha" name="txtFecha" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
+			<div class="col-xs-4 col-xs-offset-4 col-sm-3 col-sm-offset-6 text-right">
+				<div class="input-group">
+					<span class="input-group-addon" id="sizing-addon2">Fecha</span>
+					<input type="date" class="form-control text-right" id="txtFecha" name="txtFecha" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
 " readonly="true" placerholder="Fecha" title="Fecha" />
+				</div>
 			</div>
 		</div>
 		<br />
@@ -164,10 +170,10 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<button class="btn btn-primary" id="btnGuardar">Guardar</button>
 					</div>
 					<div class="btn-group">
-						<button class="btn btn-danger">Cancelar</button>
+						<button class="btn btn-danger" id="btnCancelar">Cancelar</button>
 					</div>
 					<div class="btn-group">
-						<button class="btn btn-success btnNuevaVenta">Cerrar y enviar</button>
+						<button class="btn btn-success btnCerrar">Cerrar y enviar</button>
 					</div>
 				</div>
 			</div>

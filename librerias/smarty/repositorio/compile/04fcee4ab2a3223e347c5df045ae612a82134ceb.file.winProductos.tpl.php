@@ -1,25 +1,25 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-13 12:01:34
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-16 21:03:37
          compiled from "templates/plantillas/modulos/ventas/winProductos.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:189719280659358fcf67f497-03087632%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:23196336259448df9b6a0e7-26020233%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '04fcee4ab2a3223e347c5df045ae612a82134ceb' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/winProductos.tpl',
-      1 => 1497373293,
+      1 => 1497662297,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '189719280659358fcf67f497-03087632',
+  'nocache_hash' => '23196336259448df9b6a0e7-26020233',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_59358fcf681027_87652616',
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_59448df9b6e4d9_89642597',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_59358fcf681027_87652616')) {function content_59358fcf681027_87652616($_smarty_tpl) {?><div class="modal fade" id="winProductos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<?php if ($_valid && !is_callable('content_59448df9b6e4d9_89642597')) {function content_59448df9b6e4d9_89642597($_smarty_tpl) {?><div class="modal fade" id="winProductos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -42,12 +42,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</div>
 			<div class="modal-body">
 				<form role="form" id="frmAddProducto" class="form-horizontal" onsubmit="javascript: return false;">
+					<!--
 					<div class="form-group">
 						<label for="txtCodigo" class="col-md-2 text-right">Código</label>
 						<div class="col-md-3">
 							<input class="form-control" id="txtCodigo" name="txtCodigo">
 						</div>
 					</div>
+					-->
 					<div class="form-group">
 						<label for="txtDescripcion" class="col-md-2 text-right">Descripción</label>
 						<div class="col-md-10">

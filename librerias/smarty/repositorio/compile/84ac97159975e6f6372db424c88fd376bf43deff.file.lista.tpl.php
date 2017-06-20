@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-15 12:13:55
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-16 21:03:38
          compiled from "templates/plantillas/modulos/pagos/lista.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1286480915942bde899b513-34774840%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:149740891159448dfa7e11f2-18658618%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '84ac97159975e6f6372db424c88fd376bf43deff' => 
     array (
       0 => 'templates/plantillas/modulos/pagos/lista.tpl',
-      1 => 1497546598,
+      1 => 1497661862,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1286480915942bde899b513-34774840',
+  'nocache_hash' => '149740891159448dfa7e11f2-18658618',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_5942bde89e0a56_49718618',
   'variables' => 
   array (
     'lista' => 0,
@@ -24,8 +22,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'total' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_59448dfa85d2b8_51711069',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5942bde89e0a56_49718618')) {function content_5942bde89e0a56_49718618($_smarty_tpl) {?><table id="tblVentas" class="table table-responsive table-bordered table-hover">
+<?php if ($_valid && !is_callable('content_59448dfa85d2b8_51711069')) {function content_59448dfa85d2b8_51711069($_smarty_tpl) {?><table id="tblVentas" class="table table-responsive table-bordered table-hover">
 	<thead>
 		<tr>
 			<th>Fecha</th>
@@ -46,7 +46,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombreMetodo'];?>
 </td>
-				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['monto'];?>
+				<td class="text-right"><?php echo number_format($_smarty_tpl->tpl_vars['row']->value['monto'],2,".",",");?>
 </td>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['referencia'];?>
 </td>

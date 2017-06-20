@@ -12,7 +12,7 @@
 			<tr json='{$row.json}'>
 				<td>{$row.fecha}</td>
 				<td>{$row.nombreMetodo}</td>
-				<td>{$row.monto}</td>
+				<td class="text-right">{$row.monto|number_format:2:".":","}</td>
 				<td>{$row.referencia}</td>
 			</tr>
 		{/foreach}

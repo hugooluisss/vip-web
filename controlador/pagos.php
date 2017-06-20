@@ -9,7 +9,7 @@ switch($objModulo->getId()){
 		$datos = array();
 		$total = 0;
 		if ($_POST['venta'] <> ''){
-			$rs = $db->query("select a.*, b.nombre as nombreMetodo from pago a join metodoPago b using(idMetodo) where a.visible = true and idVenta = ".$_POST['venta']);
+			$rs = $db->query("select a.*, b.nombre as nombreMetodo from pago a join metodopago b using(idMetodo) where a.visible = true and idVenta = ".$_POST['venta']);
 			while($row = $rs->fetch_assoc()){
 				$row['json'] = json_encode($row);
 				$total += $row['monto'];

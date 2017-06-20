@@ -41,7 +41,7 @@
 					</div>
 					<hr />
 					<div class="form-group">
-						<label for="txtInicial" class="col-sm-2">Inicial</label>
+						<label for="txtInicial" class="col-sm-2">Identificador</label>
 						<div class="col-sm-1">
 							<input class="form-control" id="txtInicial" name="txtInicial">
 						</div>

@@ -21,12 +21,14 @@
 			</div>
 			<div class="modal-body">
 				<form role="form" id="frmAddProducto" class="form-horizontal" onsubmit="javascript: return false;">
+					<!--
 					<div class="form-group">
 						<label for="txtCodigo" class="col-md-2 text-right">Código</label>
 						<div class="col-md-3">
 							<input class="form-control" id="txtCodigo" name="txtCodigo">
 						</div>
 					</div>
+					-->
 					<div class="form-group">
 						<label for="txtDescripcion" class="col-md-2 text-right">Descripción</label>
 						<div class="col-md-10">

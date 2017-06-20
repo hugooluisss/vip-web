@@ -28,6 +28,13 @@ $(document).ready(function(){
 				razonSocial: $("#txtRazonSocial").val(), 
 				slogan: $("#txtSlogan").val(), 
 				direccion: $("#txtDireccion").val(), 
+				externo: $("#txtExterno").val(), 
+				interno: $("#txtInterno").val(), 
+				colonia: $("#txtColonia").val(), 
+				municipio: $("#txtMunicipio").val(), 
+				ciudad: $("#txtCiudad").val(), 
+				estado: $("#txtEstado").val(), 
+				rfc: $("#txtRFC").val(), 
 				telefono: $("#txtTelefono").val(), 
 				email: $("#txtEmail").val(), 
 				activo: $("#selActivo").val(),
@@ -69,6 +76,13 @@ $(document).ready(function(){
 				$("#txtRazonSocial").val(el.razonsocial);
 				$("#txtSlogan").val(el.slogan);
 				$("#txtDireccion").val(el.direccion);
+				$("#txtExterno").val(el.externo);
+				$("#txtInterno").val(el.interno);
+				$("#txtColonia").val(el.colonia);
+				$("#txtMunicipio").val(el.municipio);
+				$("#txtCiudad").val(el.ciudad);
+				$("#txtEstado").val(el.estado);
+				$("#txtRFC").val(el.rfc);
 				$("#txtTelefono").val(el.telefono);
 				$("#txtEmail").val(el.email);
 				$("#selActivo").val(el.activo);

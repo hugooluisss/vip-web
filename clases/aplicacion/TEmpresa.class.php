@@ -11,6 +11,12 @@ class TEmpresa{
 	private $razonsocial;
 	private $slogan;
 	private $direccion;
+	private $externo;
+	private $interno;
+	private $colonia;
+	private $municipio;
+	private $ciudad;
+	private $estado;
 	private $telefono;
 	private $email;
 	private $rfc;
@@ -164,6 +170,162 @@ class TEmpresa{
 	
 	public function getDireccion(){
 		return $this->direccion;
+	}
+	
+	/**
+	* Establece el número externo
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setExterno($val = ""){
+		$this->externo = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el número externo
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getExterno(){
+		return $this->externo;
+	}
+	
+	/**
+	* Establece el número interno
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setInterno($val = ""){
+		$this->interno = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el número interno
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getInterno(){
+		return $this->interno;
+	}
+	
+	/**
+	* Establece colonia
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setColonia($val = ""){
+		$this->colonia = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna colonia
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getColonia(){
+		return $this->colonia;
+	}
+	
+	/**
+	* Establece municipio
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setMunicipio($val = ""){
+		$this->municipio = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna municipio
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getMunicipio(){
+		return $this->municipio;
+	}
+	
+	/**
+	* Establece ciudad
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setCiudad($val = ""){
+		$this->ciudad = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna ciudad
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getCiudad(){
+		return $this->ciudad;
+	}
+	
+	/**
+	* Establece estado
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setEstado($val = ""){
+		$this->estado = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna estado
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getEstado(){
+		return $this->estado;
 	}
 	
 	/**
@@ -328,6 +490,12 @@ class TEmpresa{
 				razonsocial = '".$this->getRazonSocial()."',
 				slogan = '".$this->getSlogan()."',
 				direccion = '".$this->getDireccion()."',
+				externo = '".$this->getExterno()."',
+				interno = '".$this->getInterno()."',
+				colonia = '".$this->getColonia()."',
+				municipio = '".$this->getMunicipio()."',
+				ciudad = '".$this->getCiudad()."',
+				estado = '".$this->getEstado()."',
 				telefono = '".$this->getTelefono()."',
 				email = '".$this->getEmail()."',
 				rfc = '".$this->getRFC()."',

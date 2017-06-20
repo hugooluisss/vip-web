@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	var ventanaImpresion;
+	
 	$("#txtCliente").select();
 	$("#txtFecha").datepicker({ dateFormat: 'yy-mm-dd' });
 	var venta = new TVenta;
@@ -166,6 +168,8 @@ $(document).ready(function(){
 		var clienteDefault = jQuery.parseJSON($("#txtCliente").attr("jsonDefault"));
 		venta = new TVenta;
 		
+		$("#txtComentario").val("");
+		$("#txtDescuento").val("");
 		$("#txtCliente").val(clienteDefault.nombre).attr("identificador", clienteDefault.idCliente).attr("email", clienteDefault.correo);
 	
 		var bazar = new TBazar;
@@ -230,7 +234,7 @@ $(document).ready(function(){
 				
 				$(".totalCantidad").html(venta.getTotalCantidad());
 				monto = (producto.cantidad * producto.precio * ((100 - producto.descuento) / 100)).toFixed(2);
-				$(this).parent().parent().find(".total").html(monto);
+				$(this).parent().parent().find(".total").html(formatNumber.new(monto));
 				
 				calcularMonto();
 			}
@@ -252,7 +256,7 @@ $(document).ready(function(){
 				var producto = venta.productos[$(this).attr("indice")];
 					
 				monto = (producto.cantidad * producto.precio * ((100 - producto.descuento) / 100)).toFixed(2);
-				$(this).parent().parent().find(".total").html(monto);
+				$(this).parent().parent().find(".total").html(formatNumber.new(monto));
 				
 				calcularMonto();
 			}
@@ -300,20 +304,23 @@ $(document).ready(function(){
 	});
 	
 	function calcularMonto(){
-		$("#dvSubtotal").html(venta.getTotalVenta());
-		$("#dvProductos").find(".totalMonto").html(venta.getTotalVenta());
+		$("#dvSubtotal").html(formatNumber.new(venta.getTotalVenta()));
+		$("#dvProductos").find(".totalMonto").html(formatNumber.new(venta.getTotalVenta()));
 		
 		var descuento = $("#txtDescuento").val() == ''?0:$("#txtDescuento").val();
 		descuento = (100 - descuento) / 100;
-		$("#dvTotal").html((venta.getTotalVenta() * descuento).toFixed(2));
-		$("#dvTotalPagos").html(($("#deuda").val() == '' || $("#deuda").val() == undefined?0.00:$("#deuda").val()));
-		$("#dvSaldo").html(($("#dvTotal").html() - $("#dvTotalPagos").html()).toFixed(2));
+		var total = (venta.getTotalVenta() * descuento).toFixed(2);
+		var totalPagos = $("#deuda").val() == '' || $("#deuda").val() == undefined?0.00:$("#deuda").val();
+		var saldo = (total - totalPagos).toFixed(2);
+		$("#dvTotal").html(formatNumber.new(total));
+		$("#dvTotalPagos").html(formatNumber.new(totalPagos));
+		$("#dvSaldo").html(formatNumber.new(saldo));
 	}
 	
 	$("#winNuevoProducto").on("shown.bs.modal", function(event){
-		var codigo = Math.random() * (99999999 - 1) + 1;
-		$("#winNuevoProducto").find("#txtCodigo").val(parseInt(codigo));
-		console.log("Código", codigo);
+		//var codigo = Math.random() * (99999999 - 1) + 1;
+		//$("#winNuevoProducto").find("#txtCodigo").val(parseInt(codigo));
+		//console.log("Código", codigo);
 		
 		$("#winNuevoProducto").find("#txtDescripcion").val("").focus();
 	});
@@ -321,7 +328,7 @@ $(document).ready(function(){
 	$("#frmAddProducto").validate({
 		debug: true,
 		rules: {
-			txtCodigo: "required",
+			//txtCodigo: "required",
 			txtDescripcion: "required",
 			txtPrecio: {
 				required: true,
@@ -334,7 +341,7 @@ $(document).ready(function(){
 			var obj = new TProducto;
 			obj.add({
 				"bazar": $("#selBazar").val(),
-				"codigoInterno": $("#txtCodigo").val(), 
+				//"codigoInterno": $("#txtCodigo").val(), 
 				"descripcion": $("#txtDescripcion").val(),
 				"precio": $("#txtPrecio").val(),
 				"observacion": "Pedido",
@@ -465,6 +472,31 @@ $(document).ready(function(){
 				});
 			});
 			
+			$("#winVentas").find("[action=imprimir]").click(function(){
+				var el = $(this);
+				var json = jQuery.parseJSON(el.attr("datos"));
+				var objVenta = new TVenta;
+				
+				objVenta.id = json.idVenta;
+				objVenta.imprimir({
+					fn: {
+						before: function(){
+							el.prop("disabled", true);
+						}, after: function(resp){
+							el.prop("disabled", false);
+							try{
+								if (ventanaImpresion == undefined)
+									ventanaImpresion = window.open(resp.url, "Ticket");
+								else
+									ventanaImpresion.location.href = resp.url;
+							}catch(err){
+								ventanaImpresion = window.open(resp.url, "Ticket");
+							}
+						}
+					}
+				});
+			});
+			
 			$("#winVentas").find("#tblVentas").DataTable({
 				"responsive": true,
 				"language": espaniol,
@@ -543,26 +575,45 @@ $(document).ready(function(){
 	}
     
 	/*Cerrar venta*/
-	$("#btnCerrar").click(function(){
+	$(".btnCerrar").click(function(){
 		if(confirm("¿Seguro?")){
-	    	var email = prompt("¿A que correo deseas enviar la nota de venta?", $("#txtCliente").attr("email"));
-	    	
-	    	venta.cerrar({
-	    		"email": email,
-	    		fn: {
-		    		before: function(){
-			    		$("#btnCerrar").prop("disabled", true);
-		    		}, after: function(resp){
-			    		$("#btnCerrar").prop("disabled", false);
-			    		
-			    		if (resp.band){
-			    			alert("La venta ha sido cerrada");
-			    			nuevaVenta();
-			    		}else
-			    			alert("La venta no pudo ser cerrada");
-		    		}
-	    		}
-	    	});
+	    	guardar({
+				before: function(){
+					$("#btnGuardar").prop("disabled", true);
+			    	$("#btnPagar").prop("disabled", true);
+			    },
+			    after: function(resp){
+			    	$("#btnGuardar").prop("disabled", false);
+			    	$("#btnPagar").prop("disabled", false);
+			    	
+			    	var email = prompt("¿A que correo deseas enviar la nota de venta?", $("#txtCliente").attr("email"));
+			    	
+			    	if (resp.band){
+			    		venta.cerrar({
+				    		"email": email,
+				    		fn: {
+					    		before: function(){
+						    		$("#btnCerrar").prop("disabled", true);
+					    		}, after: function(resp){
+						    		$("#btnCerrar").prop("disabled", false);
+						    		
+						    		if (resp.band){
+						    			alert("La venta ha sido cerrada");
+						    			nuevaVenta();
+						    		}else
+						    			alert("La venta no pudo ser cerrada");
+					    		}
+				    		}
+				    	});
+			    	}else
+			    		alert("Ocurrió un error al guardar la venta");
+			    }
+			});
 		}
+	});
+	
+	$("#btnCancelar").click(function(){
+		if (confirm("¿Seguro?"))
+			nuevaVenta();
 	});
 });

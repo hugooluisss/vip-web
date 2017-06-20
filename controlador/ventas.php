@@ -59,7 +59,7 @@ switch($objModulo->getId()){
 				$obj->cliente = new TCliente($_POST['cliente']);
 				$obj->setFecha($_POST['fecha']);
 				$obj->setComentario($_POST['comentario']);
-				$obj->setDescuento($_POST['descuento']);
+				$obj->setDescuento($_POST['descuento'] == ''?0:$_POST['descuento']);
 				
 				$band = $obj->guardar();
 				
@@ -83,6 +83,21 @@ switch($objModulo->getId()){
 					array_push($datos, json_decode($row['json']));
 				}
 				$smarty->assign("json", $datos);
+			break;
+			case 'cerrar':
+				$obj = new TVenta($_POST['id']);
+				$obj->setEstado(2); #Esto pone la venta en estado cerrada
+				
+				$smarty->assign("json", array("band" => $obj->guardar()));
+			break;
+			case 'imprimir':
+				require_once(getcwd()."/repositorio/pdf/ticket.php");
+				$pdf = new RTicket($_POST['id']);
+				$pdf->generar();
+				
+				$documento = $pdf->Output();
+				
+				$smarty->assign("json", array("band" => true, "url" => $documento));
 			break;
 		}
 	break;

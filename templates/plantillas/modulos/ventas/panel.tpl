@@ -23,11 +23,17 @@
 <div class="box">
 	<div class="box-body">
 		<div class="row">
-			<div class="col-xs-4 col-sm-2">
-				<input type="text" class="form-control" id="txtFolio" name="txtFolio" value="" readonly="true" title="Folio" />
+			<div class="col-xs-4 col-sm-3">
+				<div class="input-group">
+					<span class="input-group-addon" id="sizing-addon2">Folio</span>
+					<input type="text" class="form-control" id="txtFolio" name="txtFolio" value="" readonly="true" title="Folio" />
+				</div>
 			</div>
-			<div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-8 text-right">
-				<input type="date" class="form-control text-right" id="txtFecha" name="txtFecha" value="{$smarty.now|date_format:"%Y-%m-%d"}" readonly="true" placerholder="Fecha" title="Fecha" />
+			<div class="col-xs-4 col-xs-offset-4 col-sm-3 col-sm-offset-6 text-right">
+				<div class="input-group">
+					<span class="input-group-addon" id="sizing-addon2">Fecha</span>
+					<input type="date" class="form-control text-right" id="txtFecha" name="txtFecha" value="{$smarty.now|date_format:"%Y-%m-%d"}" readonly="true" placerholder="Fecha" title="Fecha" />
+				</div>
 			</div>
 		</div>
 		<br />
@@ -125,7 +131,7 @@
 						<button class="btn btn-primary" id="btnGuardar">Guardar</button>
 					</div>
 					<div class="btn-group">
-						<button class="btn btn-danger">Cancelar</button>
+						<button class="btn btn-danger" id="btnCancelar">Cancelar</button>
 					</div>
 					<div class="btn-group">
 						<button class="btn btn-success btnCerrar">Cerrar y enviar</button>
