@@ -519,6 +519,22 @@ $(document).ready(function(){
 	$("#winPago").on("shown.bs.modal", function(event){
 		var ventana = $("#winPago");
 		ventana.find("#txtMonto").select();
+		
+		var pagos = jQuery.parseJSON($("#selMetodoCobro").val());
+		$("#selMetodoPago").find("option").remove();
+		$("#selMetodoPago").append('<option value="" selected>Seleccionar</option>');
+		$.each(pagos, function(i, el){
+			$("#selMetodoPago").append('<option value="' + el.idPago + '">' + el.nombre + '</option>');
+		});
+	});
+	
+	$("#selMetodoCobro").change(function(){
+		var pagos = jQuery.parseJSON($("#selMetodoCobro").val());
+		$("#selMetodoPago").find("option").remove();
+		$("#selMetodoPago").append('<option value="" selected>Seleccionar</option>');
+		$.each(pagos, function(i, el){
+			$("#selMetodoPago").append('<option value="' + el.idMetodo + '">' + el.nombre + '</option>');
+		});
 	});
 	
 	$("#frmPago").validate({
@@ -527,6 +543,9 @@ $(document).ready(function(){
 			txtMonto: {
 				required: true,
 				min: 1,
+			},
+			selMetodoPago: {
+				required: true
 			}
 		},
 		wrapper: 'span', 
@@ -599,6 +618,26 @@ $(document).ready(function(){
 						    		
 						    		if (resp.band){
 						    			alert("La venta ha sido cerrada");
+						    			var objVenta = new TVenta;
+				
+										objVenta.id = venta.id;
+										objVenta.imprimir({
+											fn: {
+												before: function(){
+													el.prop("disabled", true);
+												}, after: function(resp){
+													el.prop("disabled", false);
+													try{
+														if (ventanaImpresion == undefined)
+															ventanaImpresion = window.open(resp.url, "Ticket");
+														else
+															ventanaImpresion.location.href = resp.url;
+													}catch(err){
+														ventanaImpresion = window.open(resp.url, "Ticket");
+													}
+												}
+											}
+										});
 						    			nuevaVenta();
 						    		}else
 						    			alert("La venta no pudo ser cerrada");

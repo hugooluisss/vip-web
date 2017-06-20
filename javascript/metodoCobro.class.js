@@ -1,15 +1,13 @@
-TMetodoPago = function(){
+TMetodoCobro = function(){
 	var self = this;
 	
 	this.add = function(datos){
 		if (datos.fn.before !== undefined) datos.fn.before();
 		
-		$.post('cmetodospago', {
+		$.post('cmetodoscobro', {
 				"id": datos.id,
-				"nombre": datos.nombre,
-				"cobro": datos.cobro,
-				"referencia": datos.referencia, 
-				"devoluciones": datos.devoluciones,
+				"tipo": datos.tipo,
+				"destino": datos.destino, 
 				"action": "add"
 			}, function(data){
 				if (data.band == 'false')
@@ -22,7 +20,7 @@ TMetodoPago = function(){
 	
 	
 	this.del = function(id, fn){
-		$.post('cmetodospago', {
+		$.post('cmetodoscobro', {
 			"id": id,
 			"action": "del"
 		}, function(data){

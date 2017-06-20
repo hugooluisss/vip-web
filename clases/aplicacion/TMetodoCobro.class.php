@@ -1,16 +1,16 @@
 <?php
 /**
-* TMetodoPago
-* Usuarios del sistema
+* TMetodoCobro
+* Definición de metodos de cobros
 * @package aplicacion
 * @autor Hugo Santiago hugooluisss@gmail.com
 **/
 
-class TMetodoPago{
-	private $idMetodo;
-	public $cobro;
-	private $nombre;
-	private $referencia;
+class TMetodoCobro{
+	private $idCobro;
+	public $empresa;
+	private $tipo;
+	private $destino;
 	
 	/**
 	* Constructor de la clase
@@ -19,8 +19,8 @@ class TMetodoPago{
 	* @access public
 	* @param int $id identificador del objeto
 	*/
-	public function TMetodoPago($id = ''){
-		$this->cobro = new TMetodoCobro;
+	public function TMetodoCobro($id = ''){
+		$this->empresa = new TEmpresa;
 		$this->setId($id);		
 		return true;
 	}
@@ -38,12 +38,12 @@ class TMetodoPago{
 		if ($id == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->query("select * from metodopago where idMetodo = ".$id);
+		$rs = $db->query("select * from metodocobro where idCobro = ".$id);
 		
 		foreach($rs->fetch_assoc() as $field => $val){
 			switch($field){
-				case 'idCobro':
-					$this->cobro = new TMetodoCobro($val);
+				case 'idEmpresa':
+					$this->empresa = new TEmpresa($val);
 				break;
 				default:
 					$this->$field = $val;
@@ -63,11 +63,11 @@ class TMetodoPago{
 	*/
 	
 	public function getId(){
-		return $this->idMetodo;
+		return $this->idCobro;
 	}
 	
 	/**
-	* Establece nombre
+	* Establece el tipo
 	*
 	* @autor Hugo
 	* @access public
@@ -75,25 +75,25 @@ class TMetodoPago{
 	* @return boolean True si se realizó sin problemas
 	*/
 	
-	public function setNombre($val = ""){
-		$this->nombre = $val;
+	public function setTipo($val = ""){
+		$this->tipo = $val;
 		return true;
 	}
 	
 	/**
-	* Retorna razon social
+	* Retorna el tipo
 	*
 	* @autor Hugo
 	* @access public
 	* @return string Texto
 	*/
 	
-	public function getNombre(){
-		return $this->nombre;
+	public function getTipo(){
+		return $this->tipo;
 	}
 		
 	/**
-	* Establece si debe de existir referencia
+	* Establece el destino
 	*
 	* @autor Hugo
 	* @access public
@@ -101,21 +101,21 @@ class TMetodoPago{
 	* @return boolean True si se realizó sin problemas
 	*/
 	
-	public function setReferencia($val = 0){
-		$this->referencia = $val;
+	public function setDestino($val = ""){
+		$this->destino = $val;
 		return true;
 	}
 	
 	/**
-	* Retorna si se requiere referencia
+	* Retorna el destino
 	*
 	* @autor Hugo
 	* @access public
 	* @return string Texto
 	*/
 	
-	public function getReferencia(){
-		return $this->referencia;
+	public function getDestino(){
+		return $this->destino;
 	}
 	
 	/**
@@ -127,27 +127,26 @@ class TMetodoPago{
 	*/
 	
 	public function guardar(){
-		if ($this->cobro->getId() == '') return false;
+		if ($this->empresa->getId() == '') return false;
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$sql = "INSERT INTO metodopago(idCobro) VALUES('".$this->cobro->getId()."');";
+			$sql = "INSERT INTO metodocobro(idEmpresa) VALUES('".$this->empresa->getId()."');";
 			$rs = $db->query($sql) or errorMySQL($db, $sql);
 			
 			if (!$rs) return false;
 				
-			$this->idMetodo = $db->insert_id;
+			$this->idCobro = $db->insert_id;
 		}		
 		
 		if ($this->getId() == '')
 			return false;
 		
-		$sql = "UPDATE metodopago
+		$sql = "UPDATE metodocobro
 			SET
-				nombre = '".$this->getNombre()."',
-				referencia = ".$this->getReferencia().",
-				idCobro = ".$this->cobro->getId()."
-			WHERE idMetodo = ".$this->getId();
+				tipo = '".$this->getTipo()."',
+				destino = '".$this->getDestino()."'
+			WHERE idCobro = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 			
@@ -166,7 +165,7 @@ class TMetodoPago{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$sql = "delete from metodopago where idMetodo = ".$this->getId();
+		$sql = "delete from metodocobro where idCobro = ".$this->getId();
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		
 		return $rs?true:false;

@@ -8,12 +8,19 @@
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
+						<label for="selMetodoCobro" class="col-sm-3">Método de cobro</label>
+						<div class="col-sm-9">
+							<select class="form-control" id="selMetodoCobro" name="selMetodoCobro">
+								{foreach from=$metodosCobro item="row"}
+									<option value='{$row.pagos}'>{$row.tipo} - {$row.destino}</option>
+								{/foreach}
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="selMetodoPago" class="col-sm-3">Método de pago</label>
 						<div class="col-sm-9">
 							<select class="form-control" id="selMetodoPago" name="selMetodoPago">
-								{foreach from=$metodosPago item="row"}
-									<option value="{$row.idMetodo}">{$row.nombre}</option>
-								{/foreach}
 							</select>
 						</div>
 					</div>

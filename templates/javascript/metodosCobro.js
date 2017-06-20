@@ -14,17 +14,16 @@ $(document).ready(function(){
 	$("#frmAdd").validate({
 		debug: true,
 		rules: {
-			txtNombre: "required"
+			txtTipo: "required"
 		},
 		wrapper: 'span', 
 		submitHandler: function(form){
 		
-			var obj = new TMetodoPago;
+			var obj = new TMetodoCobro;
 			obj.add({
 				id: $("#id").val(), 
-				nombre: $("#txtNombre").val(), 
-				referencia: $("#selReferencia").val(),
-				cobro: $("#selCobro").val(),
+				tipo: $("#txtTipo").val(), 
+				destino: $("#txtDestino").val(),
 				fn: {
 					after: function(datos){
 						if (datos.band){
@@ -38,16 +37,15 @@ $(document).ready(function(){
 				}
 			});
         }
-
     });
 		
 	function getLista(){
-		$.post("listaMetodosPago", function( data ) {
+		$.post("listaMetodosCobro", function( data ) {
 			$("#dvLista").html(data);
 			
 			$("[action=eliminar]").click(function(){
 				if(confirm("¿Seguro?")){
-					var obj = new TMetodoPago;
+					var obj = new TMetodoCobro;
 					obj.del($(this).attr("identificador"), {
 						after: function(data){
 							getLista();
@@ -59,10 +57,9 @@ $(document).ready(function(){
 			$("[action=modificar]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
 				
-				$("#id").val(el.idMetodo);
-				$("#txtNombre").val(el.nombre);
-				$("#selReferencia").val(el.referencia);
-				$("#selCobro").val(el.idCobro);
+				$("#id").val(el.idCobro);
+				$("#txtTipo").val(el.tipo);
+				$("#txtDestino").val(el.destino);
 				
 				$('#panelTabs a[href="#add"]').tab('show');
 			});

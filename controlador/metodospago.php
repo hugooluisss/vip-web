@@ -1,11 +1,23 @@
 <?php
 global $objModulo;
 switch($objModulo->getId()){
+	case 'metodospago':
+		$db = TBase::conectaDB();
+		global $userSesion;
+		$rs = $db->query("select * from metodocobro b where idEmpresa = ".$userSesion->getEmpresa());
+		$datos = array();
+		while($row = $rs->fetch_assoc()){
+			$row['json'] = json_encode($row);
+			
+			array_push($datos, $row);
+		}
+		$smarty->assign("metodosCobro", $datos);
+	break;
 	case 'listaMetodosPago':
 		$db = TBase::conectaDB();
 		global $userSesion;
 		
-		$rs = $db->query("select * from metodopago a where idEmpresa = ".$userSesion->getEmpresa());
+		$rs = $db->query("select * from metodopago a join metodocobro b using(idCobro) where idEmpresa = ".$userSesion->getEmpresa());
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
 			$row['json'] = json_encode($row);
@@ -22,11 +34,8 @@ switch($objModulo->getId()){
 				$obj = new TMetodoPago();
 				
 				$obj->setId($_POST['id']);
-				if ($_POST['id'] == '')
-					$obj->empresa->setId($userSesion->getEmpresa());
-					
+				$obj->cobro->setId($_POST['cobro']);
 				$obj->setNombre($_POST['nombre']);
-				$obj->setDevoluciones($_POST['devoluciones']);
 				$obj->setReferencia($_POST['referencia']);
 				
 				$smarty->assign("json", array("band" => $obj->guardar()));

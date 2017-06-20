@@ -19,14 +19,20 @@ switch($objModulo->getId()){
 		$db = TBase::conectaDB();
 		global $userSesion;
 		
-		$rs = $db->query("select * from metodopago a where idEmpresa = ".$userSesion->getEmpresa());
+		$rs = $db->query("select * from metodocobro where idEmpresa = ".$userSesion->getEmpresa());
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
-			$row['json'] = json_encode($row);
+			$rs2 = $db->query("select * from metodopago where idCobro = ".$row['idCobro']);
+			$datos2 = array();
+			while($row2 = $rs2->fetch_assoc()){
+				array_push($datos2, $row2);
+			}
+			
+			$row['pagos'] = json_encode($datos2);
 			
 			array_push($datos, $row);
 		}
-		$smarty->assign("metodosPago", $datos);
+		$smarty->assign("metodosCobro", $datos);
 		
 		$empresa = new TEmpresa($userSesion->getEmpresa());
 		$parametros = $empresa->getParametros();

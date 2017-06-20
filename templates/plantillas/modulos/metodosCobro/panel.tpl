@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Métodos de pago</h1>
+		<h1 class="page-header">Métodos de cobro</h1>
 	</div>
 </div>
 
@@ -21,28 +21,15 @@
 			<div class="box">
 				<div class="box-body">
 					<div class="form-group">
-						<label for="txtNombre" class="col-lg-2">Nombre</label>
+						<label for="txtTipo" class="col-lg-2">Tipo</label>
 						<div class="col-lg-6">
-							<input class="form-control" id="txtNombre" name="txtNombre">
+							<input class="form-control" id="txtTipo" name="txtTipo">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="selReferencia" class="col-lg-2">Metodo de cobro</label>
-						<div class="col-lg-4">
-							<select class="form-control" id="selCobro" name="selCobro">
-								{foreach from=$metodosCobro item="row"}
-									<option value="{$row.idCobro}">{$row.tipo} - {$row.destino}</option>
-								{/foreach}
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="selReferencia" class="col-lg-2">¿Requiere referencia?</label>
-						<div class="col-lg-4">
-							<select class="form-control" id="selReferencia" name="selReferencia">
-								<option value="1">Si</option>
-								<option value="0">No</option>
-							</select>
+						<label for="txtDestino" class="col-lg-2">Destino</label>
+						<div class="col-lg-6">
+							<input class="form-control" id="txtDestino" name="txtDestino">
 						</div>
 					</div>
 				</div>
