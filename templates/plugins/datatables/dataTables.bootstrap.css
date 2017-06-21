@@ -370,3 +370,11 @@ div.FixedHeader_Cloned table {
 	margin: 0 !important
 }
 
+
+.dataTables_wrapper .row:first-child ~ .row .col-sm-12{
+	overflow-y: scroll;
+}
+
+.dataTables_wrapper .row:first-child ~ .row .col-sm-12 table thead th {
+	text-align: center;
+}

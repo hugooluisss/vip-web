@@ -11,6 +11,7 @@ TProducto = function(){
 				"codigoInterno": datos.codigoInterno, 
 				"descripcion": datos.descripcion,
 				"color": datos.color,
+				"marca": datos.marca,
 				"talla": datos.talla,
 				"unidad": datos.unidad,
 				"costo": datos.costo,
@@ -18,6 +19,7 @@ TProducto = function(){
 				"existencias": datos.existencias,
 				"precio": datos.precio,
 				"observacion": datos.observacion,
+				"eliminar": datos.eliminar?true:false,
 				"action": "add"
 			}, function(data){
 				if (data.band == 'false')

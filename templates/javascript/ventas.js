@@ -345,6 +345,7 @@ $(document).ready(function(){
 				"descripcion": $("#txtDescripcion").val(),
 				"precio": $("#txtPrecio").val(),
 				"observacion": "Pedido",
+				"eliminar": true,
 				fn: {
 					after: function(datos){
 						if (datos.band){
@@ -352,7 +353,7 @@ $(document).ready(function(){
 							
 							var ventana = $("#frmAddProducto");
 							var producto = {};
-							
+							producto.idProducto = datos.id;
 							producto.descripcion = ventana.find("#txtDescripcion").val();
 							producto.codigoInterno = ventana.find("#txtCodigo").val();
 							producto.precio = ventana.find("#txtPrecio").val();

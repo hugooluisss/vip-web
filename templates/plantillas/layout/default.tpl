@@ -201,7 +201,7 @@
     <script type="text/javascript" src="{$PAGE.ruta}plugins/validate/validate.js"></script>
     
     <link rel="stylesheet" href="{$PAGE.ruta}plugins/datatables/dataTables.bootstrap.css">
-    <script src="{$PAGE.ruta}plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{$PAGE.ruta}plugins/datatables/jquery.dataTables.js"></script>
     <script src="{$PAGE.ruta}plugins/datatables/dataTables.bootstrap.min.js"></script>
     <script src="{$PAGE.ruta}plugins/datatables/lenguaje/ES-mx.js"></script>
     

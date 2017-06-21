@@ -99,6 +99,9 @@
 				<h4 class="modal-title" id="myModalLabel">Actualizar logotipo de la empresa</h4>
 			</div>
 			<div class="modal-body">
+				<div class="alert alert-info">
+					<p>Se sugiere el uso de imágenes en formato jpg con resolución de 255px por 255px
+				</div>
 				<form id="upload" method="post" action="?mod=cempresas&action=uploadfile&empresa={$empresa->getId()}" enctype="multipart/form-data">
 					<input type="file" name="upl" accept="image/jpg,image/jpeg"/>
 					<ul class="elementos list-group">

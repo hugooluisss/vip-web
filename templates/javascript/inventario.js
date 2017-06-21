@@ -60,6 +60,7 @@ $(document).ready(function(){
 				"descuento": $("#txtDescuento").val(),
 				"existencias": $("#txtExistencias").val(),
 				"precio": $("#txtPrecio").val(),
+				"marca": $("#txtMarca").val(),
 				"observacion": $("#txtObservacion").val(),
 				fn: {
 					after: function(datos){
@@ -108,6 +109,7 @@ $(document).ready(function(){
 				$("#txtDescuento").val(el.descuento);
 				$("#txtExistencias").val(el.existencias);
 				$("#txtPrecio").val(el.precio);
+				$("#txtMarca").val(el.marca);
 				$("#txtObservacion").val(el.observacion);
 				
 				$('#panelTabs a[href="#add"]').tab('show');

@@ -1,12 +1,45 @@
-<div class="row">
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-21 13:40:13
+         compiled from "templates/plantillas/modulos/bazares/panelInventario.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:1369250404594abd8df16092-78177837%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'db37b7696347f8f41a7099aae8cb51a9ed84f369' => 
+    array (
+      0 => 'templates/plantillas/modulos/bazares/panelInventario.tpl',
+      1 => 1497370887,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '1369250404594abd8df16092-78177837',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'lista' => 0,
+    'row' => 0,
+    'bazar' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_594abd8e1b0199_02081407',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_594abd8e1b0199_02081407')) {function content_594abd8e1b0199_02081407($_smarty_tpl) {?><div class="row">
 	<div class="col-sm-3">
 		<h1 class="page-header">Inventario del bazar </h1>
 	</div>
 	<div class="col-sm-4 page-header">
 		<select class="form-control" id="bazar" name="bazar">
-			{foreach from=$lista item="row"}
-				<option value="{$row.idBazar}" {if $bazar eq $row.idBazar}selected{/if}>{$row.nombre}</option>
-			{/foreach}
+			<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['lista']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars["row"]->value){
+$_smarty_tpl->tpl_vars["row"]->_loop = true;
+?>
+				<option value="<?php echo $_smarty_tpl->tpl_vars['row']->value['idBazar'];?>
+" <?php if ($_smarty_tpl->tpl_vars['bazar']->value==$_smarty_tpl->tpl_vars['row']->value['idBazar']){?>selected<?php }?>><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
+</option>
+			<?php } ?>
 		</select>
 	</div>
 </div>
@@ -24,7 +57,7 @@
 	<div class="col-xs-12">
 		<ul id="panelTabs" class="nav nav-tabs ">
 		  <li class="active"><a data-toggle="tab" href="#listas">Lista</a></li>
-		  <li><a data-toggle="tab" href="#add">Agregar</a></li>
+		  <li><a data-toggle="tab" href="#add">Agregar o Modificar</a></li>
 		</ul>
 	</div>
 </div>
@@ -66,12 +99,6 @@
 						<label for="txtUnidad" class="col-md-2 text-right">Unidad</label>
 						<div class="col-md-2 text-right">
 							<input class="form-control" id="txtUnidad" name="txtUnidad">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="txtMarca" class="col-md-2 text-right">Marca</label>
-						<div class="col-md-2 text-right">
-							<input class="form-control" id="txtMarca" name="txtMarca">
 						</div>
 					</div>
 					<hr />
@@ -137,4 +164,4 @@
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div><!-- /.modal --><?php }} ?>

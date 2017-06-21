@@ -15,7 +15,6 @@
 		<div class="btn-group btn-group-xs">
 			<button class="btn btn-primary btnNuevaVenta">Nueva venta</button>
 			<button class="btn btn-default" data-toggle="modal" data-target="#winVentas">Historial de ventas</button>
-			<button class="btn btn-success btnNuevoCliente" data-toggle="modal" data-target="#winAddCliente">Registrar cliente</button>
 		</div>
 	</div>
 </div>
@@ -23,17 +22,23 @@
 <div class="box">
 	<div class="box-body">
 		<div class="row">
-			<div class="col-xs-4 col-sm-3">
+			<div class="col-xs-12 col-sm-3">
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">Folio</span>
 					<input type="text" class="form-control" id="txtFolio" name="txtFolio" value="" readonly="true" title="Folio" />
 				</div>
 			</div>
-			<div class="col-xs-4 col-xs-offset-4 col-sm-3 col-sm-offset-6 text-right">
+			<div class="col-xs-12 col-sm-3 col-sm-offset-6 text-right">
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">Fecha</span>
 					<input type="date" class="form-control text-right" id="txtFecha" name="txtFecha" value="{$smarty.now|date_format:"%Y-%m-%d"}" readonly="true" placerholder="Fecha" title="Fecha" />
 				</div>
+			</div>
+		</div>
+		<br />
+		<div class="row">
+			<div class="col-xs-12 text-right">
+				<button class="btn btn-success btn-xs btnNuevoCliente" data-toggle="modal" data-target="#winAddCliente">Registrar cliente</button>
 			</div>
 		</div>
 		<br />
@@ -89,26 +94,26 @@
 			<div class="box-body">
 				<div class="alert alert-success">
 					<div class="row">
-						<div class="col-xs-4 h5">Subtotal</div>
-						<div class="col-xs-8 h5 text-right" id="dvSubtotal"></div>
+						<div class="col-xs-6 col-sm-4 h5">Subtotal</div>
+						<div class="col-xs-6 col-sm-8 h5 text-right" id="dvSubtotal"></div>
 					</div>
 					<div class="row">
-						<div class="col-xs-4 h5">Descuento(%)</div>
-						<div class="col-xs-3 col-xs-offset-5 h5 text-right">
+						<div class="col-xs-6 col-sm-4 h5">Descuento(%)</div>
+						<div class="col-xs-6 col-sm-3 col-sm-offset-5 h5 text-right">
 							<input type="text" value="" class="form-control text-right" id="txtDescuento" name="txtDescuento"/>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-4 h4">Total</div>
-						<div class="col-xs-8 h4 text-right" id="dvTotal"></div>
+						<div class="col-xs-6 col-sm-4 h4">Total</div>
+						<div class="col-xs-6 col-sm-8 h4 text-right" id="dvTotal"></div>
 					</div>
 					<div class="row">
-						<div class="col-xs-4 h5">Pagos</div>
-						<div class="col-xs-8 h5 text-right" id="dvTotalPagos"></div>
+						<div class="col-xs-6 col-sm-4 h5">Pagos</div>
+						<div class="col-xs-6 col-sm-8 h5 text-right" id="dvTotalPagos"></div>
 					</div>
 					<div class="row">
-						<div class="col-xs-4 h4">Saldo</div>
-						<div class="col-xs-8 h4 text-right" id="dvSaldo"></div>
+						<div class="col-xs-6 col-sm-4 h4">Saldo</div>
+						<div class="col-xs-6 col-sm-8 h4 text-right" id="dvSaldo"></div>
 					</div>
 				</div>
 				<div class="row">

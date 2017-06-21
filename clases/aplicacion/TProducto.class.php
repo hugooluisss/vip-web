@@ -307,6 +307,32 @@ class TProducto{
 	}
 	
 	/**
+	* Establece la marca
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setMarca($val = ""){
+		$this->marca = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna la marca
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getMarca(){
+		return $this->marca;
+	}
+	
+	/**
 	* Establece las existencias
 	*
 	* @autor Hugo
@@ -419,6 +445,7 @@ class TProducto{
 				costo = ".$this->getCosto().",
 				descuento = ".$this->getDescuento().",
 				existencias = ".$this->getExistencias().",
+				marca = '".$this->getMarca()."',
 				precio = ".$this->getPrecio().",
 				observacion = '".$this->getObservacion()."'
 			WHERE idProducto = ".$this->getId();

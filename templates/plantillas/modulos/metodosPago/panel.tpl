@@ -6,7 +6,7 @@
 
 <ul id="panelTabs" class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#listas">Lista</a></li>
-  <li><a data-toggle="tab" href="#add">Agregar o Modificar</a></li>
+  <li><a data-toggle="tab" href="#add">Agregar</a></li>
 </ul>
 
 <div class="tab-content">

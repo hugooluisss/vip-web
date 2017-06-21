@@ -84,9 +84,14 @@ switch($objModulo->getId()){
 				$obj->setDescuento($_POST['descuento']);
 				$obj->setExistencias($_POST['existencias']);
 				$obj->setPrecio($_POST['precio']);
+				$obj->setMarca($_POST['marca']);
 				$obj->setObservacion($_POST['observacion']);
 				
-				$smarty->assign("json", array("band" => $obj->guardar(), "id" => $obj->getId()));
+				$band = $obj->guardar();
+				if($_POST['eliminar'] and $band)
+					$obj->eliminar();
+				
+				$smarty->assign("json", array("band" => $band, "id" => $obj->getId()));
 			break;
 			case 'del':
 				$obj = new TProducto($_POST['id']);

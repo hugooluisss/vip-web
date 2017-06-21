@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-20 09:42:42
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-21 13:51:13
          compiled from "templates/plantillas/modulos/empresas/panelMiEmpresa.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:84928952594484f80ab332-32821012%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '360ca23c1b4da61149fc752621b02aa684ff8be2' => 
     array (
       0 => 'templates/plantillas/modulos/empresas/panelMiEmpresa.tpl',
-      1 => 1497969758,
+      1 => 1498071071,
       2 => 'file',
     ),
   ),
@@ -140,6 +140,9 @@ no-camara.jpg')"/>
 				<h4 class="modal-title" id="myModalLabel">Actualizar logotipo de la empresa</h4>
 			</div>
 			<div class="modal-body">
+				<div class="alert alert-info">
+					<p>Se sugiere el uso de imágenes en formato jpg con resolución de 255px por 255px
+				</div>
 				<form id="upload" method="post" action="?mod=cempresas&action=uploadfile&empresa=<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getId();?>
 " enctype="multipart/form-data">
 					<input type="file" name="upl" accept="image/jpg,image/jpeg"/>

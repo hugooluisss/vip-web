@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-16 21:03:38
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-21 13:09:43
          compiled from "templates/plantillas/modulos/bazares/listaProductos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:9824417359448dfa69ee19-76842920%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '450dd57fb5cdea049dbb3bbd78eb5b9bbeb7252d' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/listaProductos.tpl',
-      1 => 1496775790,
+      1 => 1498068477,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_59448dfa7527b2_16160947',
   'variables' => 
   array (
     'select' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'row' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_59448dfa7527b2_16160947',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59448dfa7527b2_16160947')) {function content_59448dfa7527b2_16160947($_smarty_tpl) {?><?php if ($_smarty_tpl->tpl_vars['select']->value!=true){?>
 <div class="box">
