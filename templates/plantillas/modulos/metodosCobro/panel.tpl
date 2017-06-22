@@ -21,15 +21,21 @@
 			<div class="box">
 				<div class="box-body">
 					<div class="form-group">
-						<label for="txtTipo" class="col-lg-2">Tipo</label>
-						<div class="col-lg-6">
-							<input class="form-control" id="txtTipo" name="txtTipo">
+						<label for="selTipo" class="col-lg-2">Tipo</label>
+						<div class="col-lg-4">
+							<select class="form-control" id="selTipo" name="selTipo">
+								{foreach from=$tipos item="row"}
+									<option value="{$row.idTipoCobro}">{$row.nombre}</option>
+								{/foreach}
+							</select>
+							<span class="help-block" title="El método de cobro es el medio utilizado por la empresa para cobrar al cliente y puede ser de varios tipos: Bancos, Caja, Virtual">¿Que es un método de cobro?</span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="txtDestino" class="col-lg-2">Destino</label>
 						<div class="col-lg-6">
 							<input class="form-control" id="txtDestino" name="txtDestino">
+							<span class="help-block">Personaliza tu método de cobro por ejemplo: “Bancomer -xxxx” o “Clip xxx</span>
 						</div>
 					</div>
 				</div>

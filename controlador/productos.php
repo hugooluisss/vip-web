@@ -99,12 +99,14 @@ switch($objModulo->getId()){
 			break;
 			case 'exportar':
 				include_once("repositorio/excel/exportarInventario.php");
-				$db = TBase::conectaDB();
-				
-				$rs = $db->query("select * from producto a where idBazar = ".$_POST['bazar']." and visible = true");
 				$datos = array();
-				while($row = $rs->fetch_assoc())
-					array_push($datos, $row);
+				if (!isset($_POST['limpio'])){
+					$db = TBase::conectaDB();
+					$rs = $db->query("select * from producto a where idBazar = ".$_POST['bazar']." and visible = true");
+					
+					while($row = $rs->fetch_assoc())
+						array_push($datos, $row);
+				}
 				
 				$obj = new RInventario($_POST['bazar']);
 				$obj->generar($datos);

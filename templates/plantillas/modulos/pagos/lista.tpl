@@ -11,7 +11,7 @@
 		{foreach from=$lista item="row"}
 			<tr json='{$row.json}'>
 				<td>{$row.fecha}</td>
-				<td>{$row.nombreMetodo}</td>
+				<td>{$row.nombrePago}</td>
 				<td class="text-right">{$row.monto|number_format:2:".":","}</td>
 				<td>{$row.referencia}</td>
 			</tr>

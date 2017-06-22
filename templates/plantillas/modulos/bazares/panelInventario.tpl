@@ -16,6 +16,7 @@
 		<div class="btn-group btn-group-xs pull-right">
 			<button type="button" class="btn btn-success" id="btnExportar"><i class="fa fa-download" aria-hidden="true"></i> Exportar xls</button>
 			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar xls</button>
+			<button type="button" class="btn btn-primary" id="btnPlantilla"><i class="fa fa-download" aria-hidden="true"></i> Descargar plantilla</button>
 		</div>
 	</div>
 </div>

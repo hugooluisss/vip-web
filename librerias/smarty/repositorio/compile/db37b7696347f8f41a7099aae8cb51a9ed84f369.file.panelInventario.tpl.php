@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-21 13:40:13
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-22 13:08:40
          compiled from "templates/plantillas/modulos/bazares/panelInventario.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1369250404594abd8df16092-78177837%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'db37b7696347f8f41a7099aae8cb51a9ed84f369' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/panelInventario.tpl',
-      1 => 1497370887,
+      1 => 1498154622,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_594abd8e1b0199_02081407',
   'variables' => 
   array (
     'lista' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bazar' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_594abd8e1b0199_02081407',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_594abd8e1b0199_02081407')) {function content_594abd8e1b0199_02081407($_smarty_tpl) {?><div class="row">
 	<div class="col-sm-3">
@@ -49,6 +49,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 		<div class="btn-group btn-group-xs pull-right">
 			<button type="button" class="btn btn-success" id="btnExportar"><i class="fa fa-download" aria-hidden="true"></i> Exportar xls</button>
 			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar xls</button>
+			<button type="button" class="btn btn-primary" id="btnPlantilla"><i class="fa fa-download" aria-hidden="true"></i> Descargar plantilla</button>
 		</div>
 	</div>
 </div>
@@ -57,7 +58,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 	<div class="col-xs-12">
 		<ul id="panelTabs" class="nav nav-tabs ">
 		  <li class="active"><a data-toggle="tab" href="#listas">Lista</a></li>
-		  <li><a data-toggle="tab" href="#add">Agregar o Modificar</a></li>
+		  <li><a data-toggle="tab" href="#add">Agregar</a></li>
 		</ul>
 	</div>
 </div>
@@ -99,6 +100,12 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<label for="txtUnidad" class="col-md-2 text-right">Unidad</label>
 						<div class="col-md-2 text-right">
 							<input class="form-control" id="txtUnidad" name="txtUnidad">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtMarca" class="col-md-2 text-right">Marca</label>
+						<div class="col-md-2 text-right">
+							<input class="form-control" id="txtMarca" name="txtMarca">
 						</div>
 					</div>
 					<hr />

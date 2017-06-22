@@ -9,7 +9,7 @@ switch($objModulo->getId()){
 		$datos = array();
 		$total = 0;
 		if ($_POST['venta'] <> ''){
-			$rs = $db->query("select a.*, b.nombre as nombreMetodo from pago a join metodopago b using(idMetodo) where a.visible = true and idVenta = ".$_POST['venta']);
+			$rs = $db->query("select a.*, b.destino as nombreCobro, c.nombre as nombrePago from pago a join metodocobro b using(idMetodoCobro) join metodopago c using(idMetodoPago) where a.visible = true and idVenta = ".$_POST['venta']);
 			while($row = $rs->fetch_assoc()){
 				$row['json'] = json_encode($row);
 				$total += $row['monto'];
@@ -28,7 +28,8 @@ switch($objModulo->getId()){
 				
 				$obj->setId($_POST['id']);
 				$obj->setVenta($_POST['venta']);
-				$obj->metodo = new TMetodoPago($_POST['metodo']);
+				$obj->metodoCobro = new TMetodoCobro($_POST['metodoCobro']);
+				$obj->metodoPago = new TMetodoPago($_POST['metodoPago']);
 				$obj->setMonto($_POST['monto']);
 				$obj->setReferencia($_POST['referencia']);
 				

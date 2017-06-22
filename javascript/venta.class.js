@@ -32,7 +32,7 @@ TVenta = function(){
 	}
 	
 	this.getTable = function(){
-		var plantilla = $('<table id="tblProductos" class="table table-bordered table-hover"><thead><tr><th>Código Barras</th><th>Descripción</th><th>Cantidad</th><th>Precio U.</th><th>Descuento (%)</th><th>Precio total</th><th>Cantidad entregada</th><th></th></tr></thead><tbody></tbody><tfoot><tr></tr></tfoot></table>');
+		var plantilla = $('<table id="tblProductos" class="table table-bordered table-hover"><thead><tr><th>Código Barras</th><th>Descripción</th><th>Cantidad</th><th>Precio U.</th><th>Descuento</th><th>Precio total</th><th>Cantidad entregada</th><th></th></tr></thead><tbody></tbody><tfoot><tr></tr></tfoot></table>');
 		var sumaCantidad = 0;
 		var sumaTotal = 0;
 		var sumaEntregados = 0;
@@ -48,7 +48,7 @@ TVenta = function(){
 			tr.append($('<td style="width: 40%">' + producto.descripcion + '</td>'));
 			tr.append($('<td><input style="width: 100px;" type="number" size="3" class="text-right cantidad" value="' + producto.cantidad + '" indice="' + cont + '" existencias="' + producto.existenciareales + '"/></td>'));
 			tr.append($('<td class="text-right">' + formatNumber.new(producto.precio) + '</td>'));
-			tr.append($('<td class="text-right"><input style="width: 100px;" type="number" size="3" class="text-right descuento" value="' + (producto.descuento == 0?'':producto.descuento) + '" indice="' + cont + '"/></td>'));
+			tr.append($('<td class="text-right"><div class="input-group"><input style="width: 100px;" type="number" size="3" class="text-right descuento" value="' + (producto.descuento == 0?'':producto.descuento) + '" indice="' + cont + '"/><span class="input-group-addon" id="basic-addon2">%</span></div></td>'));
 			tr.append($('<td class="text-right total">' + formatNumber.new((producto.cantidad * producto.precio * ((100 - producto.descuento) / 100)).toFixed(2)) + '</td>'));
 			tr.append($('<td><input type="number" style="width: 100px;" class="text-right entregados" size="3" value="' + producto.entregado + '" indice="' + cont + '"/></td>'));
 			tr.append($('<td class="text-right"><button type="button" class="btn btn-danger" indice="' + cont + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>'));

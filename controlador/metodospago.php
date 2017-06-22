@@ -4,7 +4,7 @@ switch($objModulo->getId()){
 	case 'metodospago':
 		$db = TBase::conectaDB();
 		global $userSesion;
-		$rs = $db->query("select * from metodocobro b where idEmpresa = ".$userSesion->getEmpresa());
+		$rs = $db->query("select * from metodocobro b where visible = true and idEmpresa = ".$userSesion->getEmpresa());
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
 			$row['json'] = json_encode($row);
@@ -17,9 +17,16 @@ switch($objModulo->getId()){
 		$db = TBase::conectaDB();
 		global $userSesion;
 		
-		$rs = $db->query("select * from metodopago a join metodocobro b using(idCobro) where idEmpresa = ".$userSesion->getEmpresa());
+		$rs = $db->query("select * from metodopago where visible = true and idEmpresa = ".$userSesion->getEmpresa());
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
+			$rs2 = $db->query("select idMetodoCobro from cobropago where idMetodoPago = ".$row['idMetodoPago']);
+			
+			$row['metodosCobro'] = array();
+			while($row2 = $rs2->fetch_assoc()){
+				array_push($row['metodosCobro'], $row2['idMetodoCobro']);
+			}
+			
 			$row['json'] = json_encode($row);
 			
 			array_push($datos, $row);
@@ -34,11 +41,20 @@ switch($objModulo->getId()){
 				$obj = new TMetodoPago();
 				
 				$obj->setId($_POST['id']);
-				$obj->cobro->setId($_POST['cobro']);
+				if ($_POST['id'] == '')
+					$obj->empresa->setId($userSesion->getEmpresa());
+					
 				$obj->setNombre($_POST['nombre']);
-				$obj->setReferencia($_POST['referencia']);
+				$band = $obj->guardar();
 				
-				$smarty->assign("json", array("band" => $obj->guardar()));
+				if ($band){
+					$obj->removeAllCobros();
+					foreach($_POST['cobros'] as $idCobro){
+						$obj->addMetodoCobro($idCobro);
+					}
+				}
+				
+				$smarty->assign("json", array("band" => $band));
 			break;
 			case 'del':
 				$obj = new TMetodoPago($_POST['id']);

@@ -14,7 +14,7 @@ $(document).ready(function(){
 	$("#frmAdd").validate({
 		debug: true,
 		rules: {
-			txtTipo: "required"
+			selTipo: "required"
 		},
 		wrapper: 'span', 
 		submitHandler: function(form){
@@ -22,7 +22,7 @@ $(document).ready(function(){
 			var obj = new TMetodoCobro;
 			obj.add({
 				id: $("#id").val(), 
-				tipo: $("#txtTipo").val(), 
+				tipo: $("#selTipo").val(), 
 				destino: $("#txtDestino").val(),
 				fn: {
 					after: function(datos){
@@ -57,8 +57,8 @@ $(document).ready(function(){
 			$("[action=modificar]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
 				
-				$("#id").val(el.idCobro);
-				$("#txtTipo").val(el.tipo);
+				$("#id").val(el.idMetodoCobro);
+				$("#txtTipo").val(el.idTipoCobro);
 				$("#txtDestino").val(el.destino);
 				
 				$('#panelTabs a[href="#add"]').tab('show');

@@ -100,7 +100,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="alert alert-info">
-					<p>Se sugiere el uso de imágenes en formato jpg con resolución de 255px por 255px
+					<p>Se sugiere el uso de imágenes en formato jpg con resolución de 255px por 255px</p>
 				</div>
 				<form id="upload" method="post" action="?mod=cempresas&action=uploadfile&empresa={$empresa->getId()}" enctype="multipart/form-data">
 					<input type="file" name="upl" accept="image/jpg,image/jpeg"/>

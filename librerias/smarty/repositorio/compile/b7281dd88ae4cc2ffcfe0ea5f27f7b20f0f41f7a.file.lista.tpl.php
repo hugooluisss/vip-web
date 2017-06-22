@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-20 21:50:15
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-22 12:55:04
          compiled from "templates/plantillas/modulos/metodoscobro/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:123259821459495cf0b3e163-50710761%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b7281dd88ae4cc2ffcfe0ea5f27f7b20f0f41f7a' => 
     array (
       0 => 'templates/plantillas/modulos/metodoscobro/lista.tpl',
-      1 => 1497985249,
+      1 => 1498151571,
       2 => 'file',
     ),
   ),
@@ -41,14 +41,14 @@ foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars[
 $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
 					<tr>
-						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['tipo'];?>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombretipo'];?>
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['destino'];?>
 </td>
 						<td style="text-align: right">
 							<button type="button" class="btn btn-primary" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-edit"></i></button>
-							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idCobro'];?>
+							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idMetodoCobro'];?>
 "><i class="fa fa-times"></i></button>
 						</td>
 					</tr>

@@ -98,7 +98,7 @@
 						<div class="col-xs-6 col-sm-8 h5 text-right" id="dvSubtotal"></div>
 					</div>
 					<div class="row">
-						<div class="col-xs-6 col-sm-4 h5">Descuento(%)</div>
+						<div class="col-xs-6 col-sm-4 h5">Descuento (%)</div>
 						<div class="col-xs-6 col-sm-3 col-sm-offset-5 h5 text-right">
 							<input type="text" value="" class="form-control text-right" id="txtDescuento" name="txtDescuento"/>
 						</div>

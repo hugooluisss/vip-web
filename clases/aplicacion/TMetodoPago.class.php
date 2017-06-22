@@ -7,10 +7,9 @@
 **/
 
 class TMetodoPago{
-	private $idMetodo;
-	public $cobro;
+	private $idMetodoPago;
+	public $empresa;
 	private $nombre;
-	private $referencia;
 	
 	/**
 	* Constructor de la clase
@@ -20,7 +19,7 @@ class TMetodoPago{
 	* @param int $id identificador del objeto
 	*/
 	public function TMetodoPago($id = ''){
-		$this->cobro = new TMetodoCobro;
+		$this->empresa = new TEmpresa;
 		$this->setId($id);		
 		return true;
 	}
@@ -38,12 +37,12 @@ class TMetodoPago{
 		if ($id == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->query("select * from metodopago where idMetodo = ".$id);
+		$rs = $db->query("select * from metodopago where idMetodoPago = ".$id);
 		
 		foreach($rs->fetch_assoc() as $field => $val){
 			switch($field){
-				case 'idCobro':
-					$this->cobro = new TMetodoCobro($val);
+				case 'idEmpresa':
+					$this->empresa = new TEmpresa($val);
 				break;
 				default:
 					$this->$field = $val;
@@ -63,7 +62,7 @@ class TMetodoPago{
 	*/
 	
 	public function getId(){
-		return $this->idMetodo;
+		return $this->idMetodoPago;
 	}
 	
 	/**
@@ -93,32 +92,6 @@ class TMetodoPago{
 	}
 		
 	/**
-	* Establece si debe de existir referencia
-	*
-	* @autor Hugo
-	* @access public
-	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
-	* @return boolean True si se realizó sin problemas
-	*/
-	
-	public function setReferencia($val = 0){
-		$this->referencia = $val;
-		return true;
-	}
-	
-	/**
-	* Retorna si se requiere referencia
-	*
-	* @autor Hugo
-	* @access public
-	* @return string Texto
-	*/
-	
-	public function getReferencia(){
-		return $this->referencia;
-	}
-	
-	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -127,16 +100,16 @@ class TMetodoPago{
 	*/
 	
 	public function guardar(){
-		if ($this->cobro->getId() == '') return false;
+		if ($this->empresa->getId() == '') return false;
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$sql = "INSERT INTO metodopago(idCobro) VALUES('".$this->cobro->getId()."');";
+			$sql = "INSERT INTO metodopago(idEmpresa) VALUES('".$this->empresa->getId()."');";
 			$rs = $db->query($sql) or errorMySQL($db, $sql);
 			
 			if (!$rs) return false;
 				
-			$this->idMetodo = $db->insert_id;
+			$this->idMetodoPago = $db->insert_id;
 		}		
 		
 		if ($this->getId() == '')
@@ -144,10 +117,8 @@ class TMetodoPago{
 		
 		$sql = "UPDATE metodopago
 			SET
-				nombre = '".$this->getNombre()."',
-				referencia = ".$this->getReferencia().",
-				idCobro = ".$this->cobro->getId()."
-			WHERE idMetodo = ".$this->getId();
+				nombre = '".$this->getNombre()."'
+			WHERE idMetodoPago = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 			
@@ -166,8 +137,50 @@ class TMetodoPago{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$sql = "delete from metodopago where idMetodo = ".$this->getId();
+		$sql = "update metodopago set visible = 0 where idMetodoPago = ".$this->getId();
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		
+		return $rs?true:false;
+	}
+	
+	/**
+	* Borra todos los cobros
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function removeAllCobros(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$sql = "delete from cobropago where idMetodoPago = ".$this->getId();
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		
+		return $rs?true:false;
+	}
+	
+	/**
+	* Agrega un metodo de cobro
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function addMetodoCobro($id = ''){
+		if ($this->getId() == '') return false;
+		if ($id == '') return false;
+		
+		$db = TBase::conectaDB();
+		$sql = "select idCobro from cobropago where idMetodoPago = ".$this->getId()." and idMetodoCobro = ".$id;
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		
+		if ($rs->num_rows < 1){
+			$sql = "insert into cobropago(idMetodoPago, idMetodoCobro) values (".$this->getId().", ".$id.")";
+			$rs = $db->query($sql) or errorMySQL($db, $sql);
+		}
 		
 		return $rs?true:false;
 	}

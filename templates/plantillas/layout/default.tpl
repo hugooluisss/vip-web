@@ -122,7 +122,7 @@
 							<li {if $PAGE.modulo eq 'metodospago'}class="active"{/if}><a href="metodospago">Métodos de pago</a></li>
 						</ul>
 					</li>
-					<li class="{if in_array($PAGE.modulo, array('inventario'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('inventario', 'clientes'))}active{/if} treeview">
 						<a href="#">
 							<i class="fa fa-book" aria-hidden="true"></i>
 							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
@@ -138,7 +138,7 @@
 							<span>Ventas</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li class="{if in_array($PAGE.modulo, array('puntoventa'))}active{/if}"><a href="puntoventa">Punto de venta</a></li>
+							<li class="{if in_array($PAGE.modulo, array('puntoventa'))}active{/if}"><a href="puntoventa">Nota de venta</a></li>
 						</ul>
 					</li>
 					{/if}

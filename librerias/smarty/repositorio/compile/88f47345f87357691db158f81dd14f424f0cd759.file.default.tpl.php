@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-21 12:53:59
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-22 13:21:48
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1503113349594484f7c43587-42411099%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1498067637,
+      1 => 1498155474,
       2 => 'file',
     ),
   ),
@@ -171,7 +171,7 @@ img/logo.png" alt="User Image" style="background: white"/>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='metodospago'){?>class="active"<?php }?>><a href="metodospago">Métodos de pago</a></li>
 						</ul>
 					</li>
-					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('inventario'))){?>active<?php }?> treeview">
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('inventario','clientes'))){?>active<?php }?> treeview">
 						<a href="#">
 							<i class="fa fa-book" aria-hidden="true"></i>
 							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
@@ -187,7 +187,7 @@ img/logo.png" alt="User Image" style="background: white"/>
 							<span>Ventas</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('puntoventa'))){?>active<?php }?>"><a href="puntoventa">Punto de venta</a></li>
+							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('puntoventa'))){?>active<?php }?>"><a href="puntoventa">Nota de venta</a></li>
 						</ul>
 					</li>
 					<?php }?>

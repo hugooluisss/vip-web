@@ -139,6 +139,19 @@ $(document).ready(function(){
 		}, "json");
 	});
 	
+	$("#btnPlantilla").click(function(){
+		var btn = $(this);
+		btn.prop("disabled", true);
+		$.post('cproductos', {
+			"bazar": $("#bazar").val(),
+			"limpio": true,
+			"action": "exportar"
+		}, function(data){
+			btn.prop("disabled", false);
+			window.open(data.archivo, "Nómina", "location=no, menubar=no, scrollbars=yes, statusbar=no, tittlebar=yes, width=400, height=400");
+		}, "json");
+	});
+	
 	$('#upload').fileupload({
 		// This function is called when a file is added to the queue
 		dataType: 'json',

@@ -7,9 +7,7 @@ TMetodoPago = function(){
 		$.post('cmetodospago', {
 				"id": datos.id,
 				"nombre": datos.nombre,
-				"cobro": datos.cobro,
-				"referencia": datos.referencia, 
-				"devoluciones": datos.devoluciones,
+				"cobros": datos.cobro,
 				"action": "add"
 			}, function(data){
 				if (data.band == 'false')

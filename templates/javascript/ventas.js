@@ -468,6 +468,8 @@ $(document).ready(function(){
 							$("#winVentas").modal("hide");
 							
 							$("#txtFolio").val(el.folio);
+							
+							calcularMonto();
 						}
 					}
 				});
@@ -521,20 +523,20 @@ $(document).ready(function(){
 		var ventana = $("#winPago");
 		ventana.find("#txtMonto").select();
 		
-		var pagos = jQuery.parseJSON($("#selMetodoCobro").val());
-		$("#selMetodoPago").find("option").remove();
-		$("#selMetodoPago").append('<option value="" selected>Seleccionar</option>');
+		var pagos = jQuery.parseJSON($("#selMetodoPago option:selected").attr("json"));
+		$("#selMetodoCobro").find("option").remove();
+		$("#selMetodoCobro").append('<option value="" selected>Seleccionar</option>');
 		$.each(pagos, function(i, el){
-			$("#selMetodoPago").append('<option value="' + el.idPago + '">' + el.nombre + '</option>');
+			$("#selMetodoCobro").append('<option value="' + el.idMetodoCobro + '">' + el.destino + '</option>');
 		});
 	});
 	
-	$("#selMetodoCobro").change(function(){
-		var pagos = jQuery.parseJSON($("#selMetodoCobro").val());
-		$("#selMetodoPago").find("option").remove();
-		$("#selMetodoPago").append('<option value="" selected>Seleccionar</option>');
+	$("#selMetodoPago").change(function(){
+		var pagos = jQuery.parseJSON($("#selMetodoPago option:selected").attr("json"));
+		$("#selMetodoCobro").find("option").remove();
+		$("#selMetodoCobro").append('<option value="" selected>Seleccionar</option>');
 		$.each(pagos, function(i, el){
-			$("#selMetodoPago").append('<option value="' + el.idMetodo + '">' + el.nombre + '</option>');
+			$("#selMetodoCobro").append('<option value="' + el.idMetodoCobro + '">' + el.destino + '</option>');
 		});
 	});
 	
@@ -544,6 +546,9 @@ $(document).ready(function(){
 			txtMonto: {
 				required: true,
 				min: 1,
+			},
+			selMetodoCobro: {
+				required: true
 			},
 			selMetodoPago: {
 				required: true
@@ -561,7 +566,8 @@ $(document).ready(function(){
 				obj.add({
 					id: $("#id").val(), 
 					venta: venta.id, 
-					metodo: $("#selMetodoPago").val(), 
+					metodoCobro: $("#selMetodoCobro").val(), 
+					metodoPago: $("#selMetodoPago").val(), 
 					monto: $("#txtMonto").val(), 
 					referencia: $("#txtReferencia").val(), 
 					fn: {

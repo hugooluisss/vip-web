@@ -14,17 +14,16 @@ $(document).ready(function(){
 	$("#frmAdd").validate({
 		debug: true,
 		rules: {
-			txtNombre: "required"
+			txtNombre: "required",
+			selMetodoCobro: "required"
 		},
 		wrapper: 'span', 
 		submitHandler: function(form){
-		
 			var obj = new TMetodoPago;
 			obj.add({
 				id: $("#id").val(), 
 				nombre: $("#txtNombre").val(), 
-				referencia: $("#selReferencia").val(),
-				cobro: $("#selCobro").val(),
+				cobro: $("#selMetodoCobro").val(),
 				fn: {
 					after: function(datos){
 						if (datos.band){
@@ -58,11 +57,12 @@ $(document).ready(function(){
 			
 			$("[action=modificar]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
-				
-				$("#id").val(el.idMetodo);
+				console.log(el);
+				$("#id").val(el.idMetodoPago);
 				$("#txtNombre").val(el.nombre);
-				$("#selReferencia").val(el.referencia);
-				$("#selCobro").val(el.idCobro);
+				$.each(el.metodosCobro, function(i, e){
+					$("#selMetodoCobro option[value='" + e + "']").prop("selected", true);
+				});
 				
 				$('#panelTabs a[href="#add"]').tab('show');
 			});

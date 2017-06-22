@@ -7,7 +7,8 @@ TPago = function(){
 		$.post('cpagos', {
 				"id": datos.id,
 				"venta": datos.venta,
-				"metodo": datos.metodo, 
+				"metodoCobro": datos.metodoCobro, 
+				"metodoPago": datos.metodoPago, 
 				"monto": datos.monto,
 				"referencia": datos.referencia,
 				"action": "add"

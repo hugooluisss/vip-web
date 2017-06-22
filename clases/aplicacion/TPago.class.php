@@ -10,7 +10,8 @@ class TPago{
 	private $idPago;
 	private $fecha;
 	private $idVenta;
-	public $metodo;
+	public $metodoCobro;
+	public $metodoPago;
 	private $monto;
 	private $referencia;
 	
@@ -41,8 +42,19 @@ class TPago{
 		$db = TBase::conectaDB();
 		$rs = $db->query("select * from pago where idPago = ".$id);
 		
-		foreach($rs->fetch_assoc() as $field => $val)
-			$this->$field = $val;
+		foreach($rs->fetch_assoc() as $field => $val){
+			switch($field){
+				case 'idMetodoCobro':
+					$this->metodoCobro = new TMetodoCobro($val);
+				break;
+				case 'idMetodoPago':
+					$this->metodoPago = new TMetodoPago($val);
+				break;
+				default:
+					$this->$field = $val;
+				break;
+			}
+		}
 		
 		return true;
 	}
@@ -173,12 +185,14 @@ class TPago{
 	
 	public function guardar(){
 		if ($this->getVenta() == '') return false;
-		if ($this->metodo->getId() == '') return false;
+		if ($this->metodoCobro->getId() == '') return false;
+		if ($this->metodoPago->getId() == '') return false;
+		
 		
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$sql = "INSERT INTO pago(idMetodo, idVenta) VALUES(".$this->metodo->getId().", ".$this->getVenta().");";
+			$sql = "INSERT INTO pago(idMetodoCobro, idMetodoPago, idVenta) VALUES(".$this->metodoCobro->getId().", ".$this->metodoPago->getId().", ".$this->getVenta().");";
 			$rs = $db->query($sql) or errorMySQL($db, $sql);
 			
 			if (!$rs) return false;
@@ -191,7 +205,8 @@ class TPago{
 		
 		$sql = "UPDATE pago
 			SET
-				idMetodo = ".$this->metodo->getId().",
+				idMetodoCobro = ".$this->metodoCobro->getId().",
+				idMetodoPago = ".$this->metodoPago->getId().",
 				fecha = '".$this->getFecha()."',
 				monto = ".$this->getMonto().",
 				referencia = '".$this->getReferencia()."'

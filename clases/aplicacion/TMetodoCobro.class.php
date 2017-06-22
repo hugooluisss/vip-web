@@ -7,9 +7,9 @@
 **/
 
 class TMetodoCobro{
-	private $idCobro;
+	private $idMetodoCobro;
 	public $empresa;
-	private $tipo;
+	private $idTipoCobro;
 	private $destino;
 	
 	/**
@@ -38,7 +38,7 @@ class TMetodoCobro{
 		if ($id == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->query("select * from metodocobro where idCobro = ".$id);
+		$rs = $db->query("select * from metodocobro where idMetodoCobro = ".$id);
 		
 		foreach($rs->fetch_assoc() as $field => $val){
 			switch($field){
@@ -63,7 +63,7 @@ class TMetodoCobro{
 	*/
 	
 	public function getId(){
-		return $this->idCobro;
+		return $this->idMetodoCobro;
 	}
 	
 	/**
@@ -76,7 +76,7 @@ class TMetodoCobro{
 	*/
 	
 	public function setTipo($val = ""){
-		$this->tipo = $val;
+		$this->idMetodoCobro = $val;
 		return true;
 	}
 	
@@ -89,7 +89,24 @@ class TMetodoCobro{
 	*/
 	
 	public function getTipo(){
-		return $this->tipo;
+		return $this->idTipoCobro;
+	}
+	
+	/**
+	* Retorna el nombre del tipo
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getNombreTipo(){
+		if ($this->getTipo() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$rs = $db->query("select nombre from tipocobro where idTipoCobro = ".$id);
+		$row = $rs->fetch_assoc();
+		return $row['nombre'];
 	}
 		
 	/**
@@ -128,15 +145,16 @@ class TMetodoCobro{
 	
 	public function guardar(){
 		if ($this->empresa->getId() == '') return false;
+		if ($this->getTipo() == '') return false;
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$sql = "INSERT INTO metodocobro(idEmpresa) VALUES('".$this->empresa->getId()."');";
+			$sql = "INSERT INTO metodocobro(idEmpresa, idTipoCobro) VALUES('".$this->empresa->getId()."', ".$this->getTipo().");";
 			$rs = $db->query($sql) or errorMySQL($db, $sql);
 			
 			if (!$rs) return false;
 				
-			$this->idCobro = $db->insert_id;
+			$this->idMetodoCobro = $db->insert_id;
 		}		
 		
 		if ($this->getId() == '')
@@ -144,9 +162,9 @@ class TMetodoCobro{
 		
 		$sql = "UPDATE metodocobro
 			SET
-				tipo = '".$this->getTipo()."',
+				idTipoCobro = '".$this->getTipo()."',
 				destino = '".$this->getDestino()."'
-			WHERE idCobro = ".$this->getId();
+			WHERE idMetodoCobro = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 			
@@ -165,7 +183,7 @@ class TMetodoCobro{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$sql = "delete from metodocobro where idCobro = ".$this->getId();
+		$sql = "delete from metodocobro where idMetodoCobro = ".$this->getId();
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		
 		return $rs?true:false;
