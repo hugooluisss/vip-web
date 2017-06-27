@@ -4,29 +4,22 @@ switch($objModulo->getId()){
 	case 'metodospago':
 		$db = TBase::conectaDB();
 		global $userSesion;
-		$rs = $db->query("select * from metodocobro b where visible = true and idEmpresa = ".$userSesion->getEmpresa());
+		$rs = $db->query("select * from tipocobro b");
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
 			$row['json'] = json_encode($row);
 			
 			array_push($datos, $row);
 		}
-		$smarty->assign("metodosCobro", $datos);
+		$smarty->assign("tipos", $datos);
 	break;
 	case 'listaMetodosPago':
 		$db = TBase::conectaDB();
 		global $userSesion;
 		
-		$rs = $db->query("select * from metodopago where visible = true and idEmpresa = ".$userSesion->getEmpresa());
+		$rs = $db->query("select a.*, b.nombre as nombrecobro from metodopago a join tipocobro b using(idTipoCobro) where visible = true and a.idEmpresa = ".$userSesion->getEmpresa());
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
-			$rs2 = $db->query("select idMetodoCobro from cobropago where idMetodoPago = ".$row['idMetodoPago']);
-			
-			$row['metodosCobro'] = array();
-			while($row2 = $rs2->fetch_assoc()){
-				array_push($row['metodosCobro'], $row2['idMetodoCobro']);
-			}
-			
 			$row['json'] = json_encode($row);
 			
 			array_push($datos, $row);
@@ -45,14 +38,8 @@ switch($objModulo->getId()){
 					$obj->empresa->setId($userSesion->getEmpresa());
 					
 				$obj->setNombre($_POST['nombre']);
+				$obj->setTipoCobro($_POST['cobros']);
 				$band = $obj->guardar();
-				
-				if ($band){
-					$obj->removeAllCobros();
-					foreach($_POST['cobros'] as $idCobro){
-						$obj->addMetodoCobro($idCobro);
-					}
-				}
 				
 				$smarty->assign("json", array("band" => $band));
 			break;

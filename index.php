@@ -88,6 +88,7 @@ $datosPlantilla = array(
 	"modulo" => $modulo,
 	"scriptsJS" => $objModulo->getScriptsJS(),
 	"usuario" => $pageSesion,
+	"empresa" => new TEmpresa($userSesion->getEmpresa()),
 	"url" => $ini['sistema']['url'],
 	"maps" => $ini['sistema']['maps']);
 

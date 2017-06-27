@@ -45,6 +45,9 @@
 				<!-- mini logo for sidebar mini 50x50 pixels -->
 				<span class="logo-lg">
 					<img src="{$PAGE.ruta}img/logo_transparencia.png" alt="VIP" style="width: 65px;"/>
+					{if file_exists("repositorio/empresas/empresa"|cat:$PAGE.empresa->getId()|cat:".jpg")}
+					 <img src="repositorio/empresas/empresa{$PAGE.empresa->getId()}.jpg" alt="VIP" style="width: 65px;"/>
+					{/if}
 				</span>
 				<!-- logo for regular state and mobile devices -->
 				<span class="logo-mini"><b>VIP</b></span>

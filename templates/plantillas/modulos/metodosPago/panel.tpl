@@ -30,9 +30,9 @@
 					<div class="form-group">
 						<label for="selMetodoCobro" class="col-lg-2">Metodo de cobro</label>
 						<div class="col-lg-4">
-							<select class="form-control" id="selMetodoCobro" name="selMetodoCobro" multiple="true">
-								{foreach from=$metodosCobro item="row"}
-									<option value="{$row.idMetodoCobro}">{$row.destino}</option>
+							<select class="form-control" id="selTipoCobro" name="selTipoCobro">
+								{foreach from=$tipos item="row"}
+									<option value="{$row.idTipoCobro}">{$row.nombre}</option>
 								{/foreach}
 							</select>
 						</div>

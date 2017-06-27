@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-22 21:58:54
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-27 14:01:18
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1503113349594484f7c43587-42411099%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1498157756,
+      1 => 1498590076,
       2 => 'file',
     ),
   ),
@@ -90,6 +90,10 @@ plugins/upload/css/jquery.fileupload.css">
 				<span class="logo-lg">
 					<img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 img/logo_transparencia.png" alt="VIP" style="width: 65px;"/>
+					<?php if (file_exists((("repositorio/empresas/empresa").($_smarty_tpl->tpl_vars['PAGE']->value['empresa']->getId())).(".jpg"))){?>
+					 <img src="repositorio/empresas/empresa<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['empresa']->getId();?>
+.jpg" alt="VIP" style="width: 65px;"/>
+					<?php }?>
 				</span>
 				<!-- logo for regular state and mobile devices -->
 				<span class="logo-mini"><b>VIP</b></span>

@@ -13,7 +13,6 @@ class TUsuario{
 	private $email;
 	private $pass;
 	private $visible;
-	public $empresa;
 	
 	/**
 	* Constructor de la clase
@@ -45,9 +44,6 @@ class TUsuario{
 		
 		foreach($rs->fetch_assoc() as $field => $val){
 			switch($field){
-				case 'idSucursal':
-					$this->sucursal = new TSucursal($val);
-				break;
 				default:
 					$this->$field = $val;
 			}

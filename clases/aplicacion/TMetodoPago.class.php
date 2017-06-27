@@ -8,6 +8,7 @@
 
 class TMetodoPago{
 	private $idMetodoPago;
+	private $idTipoCobro;
 	public $empresa;
 	private $nombre;
 	
@@ -90,6 +91,32 @@ class TMetodoPago{
 	public function getNombre(){
 		return $this->nombre;
 	}
+	
+	/**
+	* Establece el tipo de cobro
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setTipoCobro($val = ""){
+		$this->idTipoCobro = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el tipo de cobro
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getTipoCobro(){
+		return $this->idTipoCobro;
+	}
 		
 	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
@@ -101,10 +128,11 @@ class TMetodoPago{
 	
 	public function guardar(){
 		if ($this->empresa->getId() == '') return false;
+		if ($this->getTipoCobro() == '') return false;
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$sql = "INSERT INTO metodopago(idEmpresa) VALUES('".$this->empresa->getId()."');";
+			$sql = "INSERT INTO metodopago(idEmpresa, idTipoCobro) VALUES('".$this->empresa->getId()."', ".$this->getTipoCobro().");";
 			$rs = $db->query($sql) or errorMySQL($db, $sql);
 			
 			if (!$rs) return false;
@@ -117,7 +145,8 @@ class TMetodoPago{
 		
 		$sql = "UPDATE metodopago
 			SET
-				nombre = '".$this->getNombre()."'
+				nombre = '".$this->getNombre()."',
+				idTipoCobro = ".$this->getTipoCobro()."
 			WHERE idMetodoPago = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
@@ -139,48 +168,6 @@ class TMetodoPago{
 		$db = TBase::conectaDB();
 		$sql = "update metodopago set visible = 0 where idMetodoPago = ".$this->getId();
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
-		
-		return $rs?true:false;
-	}
-	
-	/**
-	* Borra todos los cobros
-	*
-	* @autor Hugo
-	* @access public
-	* @return boolean True si se realizó sin problemas
-	*/
-	
-	public function removeAllCobros(){
-		if ($this->getId() == '') return false;
-		
-		$db = TBase::conectaDB();
-		$sql = "delete from cobropago where idMetodoPago = ".$this->getId();
-		$rs = $db->query($sql) or errorMySQL($db, $sql);
-		
-		return $rs?true:false;
-	}
-	
-	/**
-	* Agrega un metodo de cobro
-	*
-	* @autor Hugo
-	* @access public
-	* @return boolean True si se realizó sin problemas
-	*/
-	
-	public function addMetodoCobro($id = ''){
-		if ($this->getId() == '') return false;
-		if ($id == '') return false;
-		
-		$db = TBase::conectaDB();
-		$sql = "select idCobro from cobropago where idMetodoPago = ".$this->getId()." and idMetodoCobro = ".$id;
-		$rs = $db->query($sql) or errorMySQL($db, $sql);
-		
-		if ($rs->num_rows < 1){
-			$sql = "insert into cobropago(idMetodoPago, idMetodoCobro) values (".$this->getId().", ".$id.")";
-			$rs = $db->query($sql) or errorMySQL($db, $sql);
-		}
 		
 		return $rs?true:false;
 	}

@@ -15,7 +15,7 @@ $(document).ready(function(){
 		debug: true,
 		rules: {
 			txtNombre: "required",
-			selMetodoCobro: "required"
+			selTipoCobro: "required"
 		},
 		wrapper: 'span', 
 		submitHandler: function(form){
@@ -23,7 +23,7 @@ $(document).ready(function(){
 			obj.add({
 				id: $("#id").val(), 
 				nombre: $("#txtNombre").val(), 
-				cobro: $("#selMetodoCobro").val(),
+				cobro: $("#selTipoCobro").val(),
 				fn: {
 					after: function(datos){
 						if (datos.band){
@@ -60,9 +60,7 @@ $(document).ready(function(){
 				console.log(el);
 				$("#id").val(el.idMetodoPago);
 				$("#txtNombre").val(el.nombre);
-				$.each(el.metodosCobro, function(i, e){
-					$("#selMetodoCobro option[value='" + e + "']").prop("selected", true);
-				});
+				$("#selTipoCobro").val(el.idTipoCobro);
 				
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
