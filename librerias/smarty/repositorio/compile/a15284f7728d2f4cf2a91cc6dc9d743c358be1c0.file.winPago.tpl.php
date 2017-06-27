@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-22 12:49:23
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-22 21:58:59
          compiled from "templates/plantillas/modulos/ventas/winPago.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:99215638859448df9bbf948-03404581%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a15284f7728d2f4cf2a91cc6dc9d743c358be1c0' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/winPago.tpl',
-      1 => 1498153761,
+      1 => 1498157756,
       2 => 'file',
     ),
   ),

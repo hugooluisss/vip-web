@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-21 13:59:12
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-22 21:58:59
          compiled from "templates/plantillas/modulos/ventas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:162072958459448df9a9a2a9-18731015%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b3ba611b730975d98c27112c204a40ab3938a2de' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/panel.tpl',
-      1 => 1498071550,
+      1 => 1498157756,
       2 => 'file',
     ),
   ),
@@ -137,7 +137,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<div class="col-xs-6 col-sm-8 h5 text-right" id="dvSubtotal"></div>
 					</div>
 					<div class="row">
-						<div class="col-xs-6 col-sm-4 h5">Descuento(%)</div>
+						<div class="col-xs-6 col-sm-4 h5">Descuento (%)</div>
 						<div class="col-xs-6 col-sm-3 col-sm-offset-5 h5 text-right">
 							<input type="text" value="" class="form-control text-right" id="txtDescuento" name="txtDescuento"/>
 						</div>

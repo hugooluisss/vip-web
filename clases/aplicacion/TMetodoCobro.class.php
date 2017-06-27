@@ -76,7 +76,7 @@ class TMetodoCobro{
 	*/
 	
 	public function setTipo($val = ""){
-		$this->idMetodoCobro = $val;
+		$this->idTipoCobro = $val;
 		return true;
 	}
 	
