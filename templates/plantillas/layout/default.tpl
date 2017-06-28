@@ -112,7 +112,7 @@
 					</li>
 					{/if}
 					{if in_array($PAGE.usuario->getPerfil(), array(2))}
-					<li class="{if in_array($PAGE.modulo, array('miEmpresa', 'misUsuarios', 'bazares', 'inventario', 'metodospago', 'metodoscobro'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('miEmpresa', 'misUsuarios', 'bazares', 'inventario', 'metodospago', 'metodoscobro', 'clientes'))}active{/if} treeview">
 						<a href="#">
 							<i class="fa fa-university"></i>
 							<span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
@@ -123,16 +123,17 @@
 							<li {if in_array($PAGE.modulo, array('bazares', 'inventario'))}class="active"{/if}><a href="bazares">Bazares</a></li>
 							<li {if $PAGE.modulo eq 'metodoscobro'}class="active"{/if}><a href="metodoscobro">Métodos de cobro</a></li>
 							<li {if $PAGE.modulo eq 'metodospago'}class="active"{/if}><a href="metodospago">Métodos de pago</a></li>
+							<li {if in_array($PAGE.modulo, array('clientes'))}class="active"{/if}><a href="clientes">Clientes</a></li>
 						</ul>
 					</li>
-					<li class="{if in_array($PAGE.modulo, array('inventario', 'clientes'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('inventario', 'entradassalidas'))}active{/if} treeview">
 						<a href="#">
 							<i class="fa fa-book" aria-hidden="true"></i>
-							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
+							<span>Almacen</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li {if in_array($PAGE.modulo, array('inventario'))}class="active"{/if}><a href="inventario">Inventario</a></li>
-							<li {if in_array($PAGE.modulo, array('clientes'))}class="active"{/if}><a href="clientes">Clientes</a></li>
+							<li {if in_array($PAGE.modulo, array('inventario'))}class="active"{/if}><a href="inventario">Productos</a></li>
+							<li {if in_array($PAGE.modulo, array('entradassalidas'))}class="active"{/if}><a href="entradassalidas">Entradas / Salidas</a></li>
 						</ul>
 					</li>
 					<li class="{if in_array($PAGE.modulo, array('puntoventa'))}active{/if} treeview">
