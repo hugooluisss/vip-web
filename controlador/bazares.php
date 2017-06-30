@@ -14,7 +14,7 @@ switch($objModulo->getId()){
 		}
 		$smarty->assign("usuarios", $datos);
 	break;
-	case 'inventario':
+	case 'productos':
 		$smarty->assign("bazar", $_GET['id']);
 	case 'listaBazares':
 		$db = TBase::conectaDB();

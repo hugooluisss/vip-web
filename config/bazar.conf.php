@@ -23,7 +23,7 @@ $conf['cbazares'] = array(
 	'seguridad' => true,
 	'capa' => LAYOUT_JSON);
 	
-$conf['inventario'] = array(
+$conf['productos'] = array(
 	'controlador' => 'bazares.php',
 	'vista' => 'bazares/panelInventario.tpl',
 	'descripcion' => 'Inventario',

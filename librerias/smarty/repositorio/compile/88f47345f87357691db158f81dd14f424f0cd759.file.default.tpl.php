@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-28 10:42:15
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-30 10:02:41
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1503113349594484f7c43587-42411099%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1498664534,
+      1 => 1498834960,
       2 => 'file',
     ),
   ),
@@ -170,7 +170,7 @@ img/logo.png" alt="User Image" style="background: white"/>
 						<ul class="treeview-menu">
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='miEmpresa'){?>class="active"<?php }?>><a href="miEmpresa">Mi empresa</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='misUsuarios'){?>class="active"<?php }?>><a href="misUsuarios">Mis usuarios</a></li>
-							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('bazares','inventario'))){?>class="active"<?php }?>><a href="bazares">Bazares</a></li>
+							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('bazares','productos'))){?>class="active"<?php }?>><a href="bazares">Bazares</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='metodoscobro'){?>class="active"<?php }?>><a href="metodoscobro">Métodos de cobro</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='metodospago'){?>class="active"<?php }?>><a href="metodospago">Métodos de pago</a></li>
 							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('clientes'))){?>class="active"<?php }?>><a href="clientes">Clientes</a></li>
@@ -182,8 +182,8 @@ img/logo.png" alt="User Image" style="background: white"/>
 							<span>Almacen</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('inventario'))){?>class="active"<?php }?>><a href="inventario">Productos</a></li>
-							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('entradassalidas'))){?>class="active"<?php }?>><a href="entradassalidas">Entradas / Salidas</a></li>
+							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('productos'))){?>class="active"<?php }?>><a href="productos">Productos</a></li>
+							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('controlinventario'))){?>class="active"<?php }?>><a href="controlinventario">Control de inventario</a></li>
 						</ul>
 					</li>
 					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('puntoventa'))){?>active<?php }?> treeview">

@@ -88,7 +88,7 @@ switch($objModulo->getId()){
 				$obj->setObservacion($_POST['observacion']);
 				
 				$band = $obj->guardar();
-				if($_POST['eliminar'] and $band)
+				if($_POST['eliminar'] != 'false' and $band)
 					$obj->eliminar();
 				
 				$smarty->assign("json", array("band" => $band, "id" => $obj->getId()));

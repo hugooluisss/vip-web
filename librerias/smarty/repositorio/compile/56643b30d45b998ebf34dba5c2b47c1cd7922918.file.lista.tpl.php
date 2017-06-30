@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-28 10:39:34
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-30 10:05:18
          compiled from "templates/plantillas/modulos/bazares/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4629580245953cdb630b635-21281453%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '56643b30d45b998ebf34dba5c2b47c1cd7922918' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/lista.tpl',
-      1 => 1496327192,
+      1 => 1498835117,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_5953cdb63d1ba0_35730339',
   'variables' => 
   array (
     'lista' => 0,
     'row' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_5953cdb63d1ba0_35730339',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5953cdb63d1ba0_35730339')) {function content_5953cdb63d1ba0_35730339($_smarty_tpl) {?><div class="box">
 	<div class="box-body">
@@ -56,8 +56,8 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 						<td style="color: <?php if ($_smarty_tpl->tpl_vars['row']->value['estado']==1){?>blue<?php }else{ ?>red<?php }?>"><?php if ($_smarty_tpl->tpl_vars['row']->value['estado']==1){?>Activo<?php }else{ ?>Inactivo<?php }?></td>
 						<td style="text-align: right">
-							<a href="inventario/<?php echo $_smarty_tpl->tpl_vars['row']->value['idBazar'];?>
--bazar/" class="btn btn-primary" title="Inventario">I</a>
+							<a href="productos/<?php echo $_smarty_tpl->tpl_vars['row']->value['idBazar'];?>
+-bazar/" class="btn btn-primary" title="Catálogo de productos">P</a>
 							
 							<button type="button" class="btn btn-primary" title="Usuarios en el bazar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 ' data-toggle="modal" data-target="#winUsuarios" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idBazar'];?>
