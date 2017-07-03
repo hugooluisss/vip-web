@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-30 13:54:53
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-30 22:30:05
          compiled from "templates/plantillas/modulos/operaciones/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1814794655956949debdb24-07555179%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b905c7324ba0317c6567b97bad200e048d296c93' => 
     array (
       0 => 'templates/plantillas/modulos/operaciones/lista.tpl',
-      1 => 1498848890,
+      1 => 1498879799,
       2 => 'file',
     ),
   ),
@@ -44,15 +44,19 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 '>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['fecha'];?>
 </td>
-				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['codigoBorras'];?>
+				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['codigoBarras'];?>
 </td>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['descripcion'];?>
 </td>
-				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['cantidad'];?>
-</td>
+				<td class="text-right">
+					<input type="number" cantidad="<?php echo $_smarty_tpl->tpl_vars['row']->value['cantidad'];?>
+" class="form-control text-right" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['cantidad'];?>
+" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idOperacion'];?>
+"/>
+				</td>
 				<td style="text-align: right">
-					<button type="button" class="btn btn-success btn-xs" action="cargar" title="Cargar y modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
-'><i class="fa fa-pencil"></i></button>
+					<button type="button" class="btn btn-danger btn-xs" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idOperacion'];?>
+"><i class="fa fa-times"></i></button>
 				</td>
 			</tr>
 		<?php } ?>

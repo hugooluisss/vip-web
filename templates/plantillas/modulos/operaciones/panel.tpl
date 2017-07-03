@@ -50,3 +50,5 @@
 		</div>
 	</div>
 </div>
+
+{include file=$PAGE.rutaModulos|cat:"modulos/ventas/winProductos.tpl"}

@@ -40,11 +40,10 @@ class TOperacion{
 		
 		$db = TBase::conectaDB();
 		$rs = $db->query("select * from operacion where idOperacion = ".$id);
-		
 		foreach($rs->fetch_assoc() as $field => $val){
 			switch($field){
 				case 'idProducto':
-					$this->productos = new TProducto($val);
+					$this->producto = new TProducto($val);
 				break;
 				default: 
 					$this->$field = $val;

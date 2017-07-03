@@ -27,7 +27,7 @@ switch($objModulo->getId()){
 	break;
 	case 'listaOperaciones':
 		$db = TBase::conectaDB();
-		$rs = $db->query("select * from operacion a join producto b using(idProducto) where a.visible = true");
+		$rs = $db->query("select * from operacion a join producto b using(idProducto) where a.visible = true and idTipo = ".$_POST['tipo']." and b.idBazar = ".$_POST['bazar']);
 		
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
@@ -51,6 +51,11 @@ switch($objModulo->getId()){
 			case 'del':
 				$obj = new TOperacion($_POST['id']);
 				$smarty->assign("json", array("band" => $obj->eliminar()));
+			break;
+			case 'setCantidad':
+				$obj = new TOperacion($_POST['id']);
+				$obj->setCantidad($_POST['cantidad']);
+				$smarty->assign("json", array("band" => $obj->guardar()));
 			break;
 		}
 	break;

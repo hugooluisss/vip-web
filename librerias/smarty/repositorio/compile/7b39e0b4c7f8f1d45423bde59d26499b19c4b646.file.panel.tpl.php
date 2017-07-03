@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-30 13:22:15
+<?php /* Smarty version Smarty-3.1.11, created on 2017-06-30 20:37:26
          compiled from "templates/plantillas/modulos/operaciones/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:53401678359568b1a0e4d11-76621903%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7b39e0b4c7f8f1d45423bde59d26499b19c4b646' => 
     array (
       0 => 'templates/plantillas/modulos/operaciones/panel.tpl',
-      1 => 1498846934,
+      1 => 1498873043,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'row' => 0,
     'bazar' => 0,
     'tipos' => 0,
+    'PAGE' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -89,4 +90,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			</div>
 		</div>
 	</div>
-</div><?php }} ?>
+</div>
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/ventas/winProductos.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>

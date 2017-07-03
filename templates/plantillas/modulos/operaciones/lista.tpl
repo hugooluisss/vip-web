@@ -12,11 +12,13 @@
 		{foreach from=$operaciones item="row"}
 			<tr json='{$row.json}'>
 				<td>{$row.fecha}</td>
-				<td>{$row.codigoBorras}</td>
+				<td>{$row.codigoBarras}</td>
 				<td>{$row.descripcion}</td>
-				<td>{$row.cantidad}</td>
+				<td class="text-right">
+					<input type="number" cantidad="{$row.cantidad}" class="form-control text-right" value="{$row.cantidad}" identificador="{$row.idOperacion}"/>
+				</td>
 				<td style="text-align: right">
-					<button type="button" class="btn btn-success btn-xs" action="cargar" title="Cargar y modificar" datos='{$row.json}'><i class="fa fa-pencil"></i></button>
+					<button type="button" class="btn btn-danger btn-xs" action="eliminar" title="Eliminar" identificador="{$row.idOperacion}"><i class="fa fa-times"></i></button>
 				</td>
 			</tr>
 		{/foreach}

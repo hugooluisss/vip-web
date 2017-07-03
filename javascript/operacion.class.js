@@ -18,6 +18,22 @@ TOperacion = function(){
 			}, "json");
 	};
 	
+	this.setCantidad = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		
+		$.post('coperaciones', {
+				"id": datos.identificador,
+				"cantidad": datos.cantidad,
+				"action": "setCantidad"
+			}, function(data){
+				if (data.band == 'false')
+					console.log(data.mensaje);
+					
+				if (datos.fn.after !== undefined)
+					datos.fn.after(data);
+			}, "json");
+	};
+	
 	this.del = function(id, fn){
 		$.post('coperaciones', {
 			"id": id,
