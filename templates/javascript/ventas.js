@@ -263,16 +263,22 @@ $(document).ready(function(){
 		});
 		
 		$("#dvProductos").find(".entregados").change(function(){
-			console.log($(this).val(), venta.productos[$(this).attr("indice")].cantidad, $(this).val() > venta.productos[$(this).attr("indice")].cantidad);
+			console.log($(this).val(), venta.productos[$(this).attr("indice")].inventario);
 			cantidad = parseInt($(this).val());
 			
 			if($(this).val() == '' || cantidad > venta.productos[$(this).attr("indice")].cantidad){
 				alert("No puede ser 0 ni menor a la cantidad vendida");
 				
 				$(this).val(venta.productos[$(this).attr("indice")].entregado);
-			}else{
+			}else if(cantidad > venta.productos[$(this).attr("indice")].inventario){
+				if(confirm("Solo existen " + venta.productos[$(this).attr("indice")].inventario + " disponibles en el inventario ¿Seguro de entregar?"))
+					venta.productos[$(this).attr("indice")].entregado = cantidad;
+				else{
+					venta.productos[$(this).attr("indice")].entregado = venta.productos[$(this).attr("indice")].inventario;
+					$(this).val(venta.productos[$(this).attr("indice")].inventario);
+				}
+			}else
 				venta.productos[$(this).attr("indice")].entregado = $(this).val();
-			}
 			
 			$(".totalEntregados").html(venta.getTotalEntregado());
 		});

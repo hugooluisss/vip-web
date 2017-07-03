@@ -19,10 +19,11 @@ switch($objModulo->getId()){
 		$db = TBase::conectaDB();
 		global $sesion;
 		
-		$rs = $db->query("select * from producto a where a.visible = true and idBazar = ".$_GET['bazar']." and (descripcion like '%".$_GET['term']."%' or codigoBarras like '%".$_GET['term']."%' or codigoInterno like '%".$_GET['term']."%')");
+		$rs = $db->query("select descripcion, idProducto from producto a where a.visible = true and idBazar = ".$_GET['bazar']." and (descripcion like '%".$_GET['term']."%' or codigoBarras like '%".$_GET['term']."%' or codigoInterno like '%".$_GET['term']."%')");
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
 			$aux = array();
+			
 			$aux["label"] = $row['descripcion'];
 			$aux['identificador'] = $row['idProducto'];
 			$aux['value'] = " ";
@@ -162,7 +163,13 @@ switch($objModulo->getId()){
 				$rs = $db->query($sql);
 				$row = $rs->fetch_assoc();
 				
-				$row["band"] = $row['idProducto'] <> '';
+				$row["band"] = false;
+				if ($row['idProducto'] <> ''){
+					$row["band"] = true;
+					$obj = new TProducto($row['idProducto']);
+					$row['inventario'] = $obj->getInventarioDisponible();
+				}
+				
 				$smarty->assign("json", $row);
 			break;
 		}

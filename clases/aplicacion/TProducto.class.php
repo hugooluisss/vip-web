@@ -355,7 +355,39 @@ class TProducto{
 	*/
 	
 	public function getExistencias(){
-		return $this->existencias == ''?0:$this->existencias;
+			return $this->existencias == ''?0:$this->existencias;
+	}
+	
+	/**
+	* Retorna el inventario disponible
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getInventarioDisponible(){
+		if ($this->getId() == '')
+			return $this->getExistencias();
+		else{
+			$db = TBase::conectaDB();
+			$inventario = $this->getExistencias();
+			
+			$sql = "select sum(cast(a.cantidad as signed)*b.signo) as total from operacion a join tipooperacion b using(idTipo) where idProducto = ".$this->getId()." and visible = 1;";
+			$rs = $db->query($sql) or errorMySQL($db, $sql);
+			$row = $rs->fetch_assoc();
+			$total = $row['total'];
+			
+			$total = $total == ''?0:$total;
+			
+			$sql = "select entregado from movimiento where idProducto = ".$this->getId();
+			$rs = $db->query($sql) or errorMySQL($db, $sql);
+			$row = $rs->fetch_assoc();
+			$entregado = $row['entregado'] == ''?0:$row['entregado'];
+			
+			$disponible = $this->getExistencias() + $total - $entregado;
+			return $disponible < 0?0:$disponible;
+		}
 	}
 	
 	/**

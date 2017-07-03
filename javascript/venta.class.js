@@ -13,14 +13,14 @@ TVenta = function(){
 		$.each(self.productos, function(i, el){
 			if(el.idProducto == datos.idProducto){
 				self.productos[i].cantidad++;
-				if (self.productos[i].cantidad <= self.productos[i].existencias)
+				if (self.productos[i].cantidad <= self.productos[i].inventario)
 					self.productos[i].entregado = self.productos[i].cantidad;
 				band = false;
 			}
 		});
 		
 		if (band){
-			if (datos.cantidad <= datos.existencias)
+			if (datos.cantidad <= datos.inventario)
 				datos.entregado = datos.cantidad;
 				
 			self.productos.push(datos);

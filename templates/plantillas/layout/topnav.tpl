@@ -150,6 +150,8 @@
 					</div>
 					<div class="modal-body">
 						<form action="#" id="frmLogin" method="post">
+							<center><img src="{$PAGE.ruta}img/logo.png" class="img-responsive"/></center>
+							<br />
 							<div class="form-group has-feedback">
 								<input type="text" class="form-control" placeholder="Email" id="txtUsuario" name="txtUsuario">
 								<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
