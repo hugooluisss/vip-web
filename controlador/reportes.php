@@ -2,6 +2,19 @@
 global $objModulo;
 switch($objModulo->getId()){
 	case 'reporteventas':
+		$db = TBase::conectaDB();
+		$sql = "select * from estado";
+		
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		$datos = array();
+		while($row = $rs->fetch_assoc()){
+			$row['json'] = json_encode($row);
+			
+			array_push($datos, $row);
+		}
+		
+		$smarty->assign("estados", $datos);
+	case 'reporteexistencias':
 		global $userSesion;
 		$db = TBase::conectaDB();
 		$sql = "select * from bazar a join usuariobazar b using(idBazar) where idUsuario = ".$userSesion->getId()." and a.visible = 1 and estado = 1";
@@ -15,18 +28,6 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("bazares", $datos);
-		
-		$sql = "select * from estado";
-		
-		$rs = $db->query($sql) or errorMySQL($db, $sql);
-		$datos = array();
-		while($row = $rs->fetch_assoc()){
-			$row['json'] = json_encode($row);
-			
-			array_push($datos, $row);
-		}
-		
-		$smarty->assign("estados", $datos);
 
 	break;
 	case 'listaReporteVentas':
@@ -41,19 +42,56 @@ switch($objModulo->getId()){
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
-			$row['json'] = json_encode($row);
-			
 			$sql = "select sum(precio * cantidad * (1-descuento/100)) as total from movimiento where idVenta = ".$row['idVenta'];
 			
 			$rs2 = $db->query($sql) or errorMySQL($db, $sql);
 			$row2 = $rs2->fetch_assoc();
 			$row['total'] = $row2['total'] * (1 - $row['descuento'] / 100);
 			$row['total'] = number_format($row['total'], 2, '.', ',');
+			
+			$row['json'] = json_encode($row);
 			array_push($datos, $row);
 		}
 		
 		$smarty->assign("lista", $datos);
 		$smarty->assign("bazar", $_POST['bazar']);
+	break;
+	case 'listaReporteExistencias':
+		$db = TBase::conectaDB();
+		
+		if ($_POST['bazar'] == ''){
+			global $userSesion;
+			$sql = "select a.*, b.nombre as bazar from producto a join bazar b using(idBazar) where b.idEmpresa = ".$userSesion->getEmpresa()." and a.visible = true and b.visible = true";
+		}else
+			$sql = "select a.*, b.nombre as bazar from producto a join bazar b using(idBazar) where a.idBazar = ".$_POST['bazar']." and a.visible = true";
+			
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		$datos = array();
+		while($row = $rs->fetch_assoc()){
+			$producto = new TProducto($row['idProducto']);
+			$row['inventario'] = $producto->getInventarioDisponible();
+			$row['json'] = json_encode($row);
+			
+			array_push($datos, $row);
+		}
+		
+		$smarty->assign("lista", $datos);
+		$smarty->assign("bazar", $_POST['bazar']);
+	break;
+	case 'listaReporteVentasProducto':
+		$db = TBase::conectaDB();
+		
+		$sql = "select b.*, cantidad, entregado, c.nombre as cliente from movimiento a join venta b using(idVenta) join cliente c using(idCliente) where idProducto = ".$_POST['producto']." order by fecha desc";
+			
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		$datos = array();
+		while($row = $rs->fetch_assoc()){
+			$row['json'] = json_encode($row);
+			
+			array_push($datos, $row);
+		}
+		
+		$smarty->assign("lista", $datos);
 	break;
 }
 ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-03 10:10:05
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-04 09:57:18
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1503113349594484f7c43587-42411099%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1499094602,
+      1 => 1499180236,
       2 => 'file',
     ),
   ),
@@ -196,13 +196,14 @@ img/logo.png" alt="User Image" style="background: white"/>
 						</ul>
 					</li>
 					
-					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reporteventas'))){?>active<?php }?> treeview">
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reporteventas','reporteexistencias'))){?>active<?php }?> treeview">
 						<a href="#">
 							<i class="fa fa-list-alt"></i> 
 							<span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
 							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reporteventas'))){?>active<?php }?>"><a href="reporteventas">Ventas</a></li>
+							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reporteexistencias'))){?>active<?php }?>"><a href="reporteexistencias">Existencias</a></li>
 						</ul>
 					</li>
 					<?php }?>

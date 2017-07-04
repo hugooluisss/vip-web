@@ -16,4 +16,27 @@ $conf['listaReporteVentas'] = array(
 	'descripcion' => 'Lista de ventas para el reporte de ventas',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+$conf['reporteexistencias'] = array(
+	'controlador' => 'reportes.php',
+	'vista' => 'reportes/existencias.tpl',
+	'descripcion' => 'Reporte de existencias',
+	'seguridad' => true,
+	'js' => array('venta.class.js'),
+	'jsTemplate' => array('reporteexistencias.js'),
+	'capa' => LAYOUT_DEFECTO);
+	
+$conf['listaReporteExistencias'] = array(
+	'controlador' => 'reportes.php',
+	'vista' => 'reportes/listaExistencias.tpl',
+	'descripcion' => 'Lista de existencias',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaReporteVentasProducto'] = array(
+	'controlador' => 'reportes.php',
+	'vista' => 'reportes/listaVentasProducto.tpl',
+	'descripcion' => 'Lista de ventas de un producto',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

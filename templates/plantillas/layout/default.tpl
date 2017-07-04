@@ -146,13 +146,14 @@
 						</ul>
 					</li>
 					
-					<li class="{if in_array($PAGE.modulo, array('reporteventas'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('reporteventas', 'reporteexistencias'))}active{/if} treeview">
 						<a href="#">
 							<i class="fa fa-list-alt"></i> 
 							<span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
 							<li class="{if in_array($PAGE.modulo, array('reporteventas'))}active{/if}"><a href="reporteventas">Ventas</a></li>
+							<li class="{if in_array($PAGE.modulo, array('reporteexistencias'))}active{/if}"><a href="reporteexistencias">Existencias</a></li>
 						</ul>
 					</li>
 					{/if}
