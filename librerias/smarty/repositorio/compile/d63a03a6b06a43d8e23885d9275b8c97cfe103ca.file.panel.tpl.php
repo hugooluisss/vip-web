@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-28 10:38:45
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-06 12:36:46
          compiled from "templates/plantillas/modulos/empresas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:173194414459448ce5bd1997-01961569%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd63a03a6b06a43d8e23885d9275b8c97cfe103ca' => 
     array (
       0 => 'templates/plantillas/modulos/empresas/panel.tpl',
-      1 => 1498071345,
+      1 => 1499362604,
       2 => 'file',
     ),
   ),
@@ -51,6 +51,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<label for="txtSlogan" class="col-sm-2">Slogan</label>
 						<div class="col-sm-10">
 							<input class="form-control" id="txtSlogan" name="txtSlogan" value=""/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="selActivo" class="col-sm-2">Situación</label>
+						<div class="col-sm-3">
+							<select id="selActivo" name="selActivo" class="form-control">
+								<option value="1">Activo</option>
+								<option value="0">Inactivo</option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">

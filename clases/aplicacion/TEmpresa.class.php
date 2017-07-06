@@ -480,6 +480,51 @@ class TEmpresa{
 			if (!$rs) return false;
 				
 			$this->idEmpresa = $db->insert_id;
+			
+			#aquí se agrega todo la configuración inicial
+			
+			#Se crea el cliente por default
+			$cliente = new TCliente;
+			$cliente->setNombre("Cliente de mostrador");
+			$cliente->setEmpresa($this->getId());
+			$cliente->guardar();
+			
+			$parametros["clienteDefault"] = $cliente->getId();	
+			$this->setParametros($parametros);
+			$this->guardar();
+			
+			$catalogo = array(
+				array("nombre" => "Terminal bancaria", "tipo" => 2), 
+				array("nombre" => "Banco", "tipo" => 3), 
+				array("nombre" => "Caja", "tipo" => 1), 
+				array("nombre" => "Terminal Virtual", "tipo" => 4)
+			);
+			
+			foreach($catalogo as $el){
+				$mc = new TMetodoCobro;
+				$mc->empresa = new TEmpresa($this->getId());
+				$mc->setDestino($el['nombre']);
+				$mc->setTipo($el['tipo']);
+				$mc->guardar();
+			}
+			
+			$catalogo = array(
+				array("nombre" => "Efectivo", "tipo" => 1), 
+				array("nombre" => "Cheque", "tipo" => 1), 
+				array("nombre" => "Tarjeta de débito", "tipo" => 2), 
+				array("nombre" => "Tarjeta de crédito", "tipo" => 2), 
+				array("nombre" => "Transferencia", "tipo" => 3)
+			);
+			
+			foreach($catalogo as $el){
+				$mc = new TMetodoPago;
+				$mc->empresa = new TEmpresa($this->getId());
+				$mc->setNombre($el['nombre']);
+				$mc->setTipoCobro($el['tipo']);
+				$mc->guardar();
+			}
+			
+			
 		}		
 		
 		if ($this->getId() == '')
@@ -539,7 +584,7 @@ class TEmpresa{
 		
 		$db = TBase::conectaDB();
 		
-		$sql = "INSERT INTO usuarioempresa(idUsuario, idEmpresa, parametros) VALUES(".$usuario.", ".$this->getId().", '".json_encode(array())."');";
+		$sql = "INSERT INTO usuarioempresa(idUsuario, idEmpresa) VALUES(".$usuario.", ".$this->getId().");";
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		
 		if (!$rs) return false;

@@ -114,7 +114,7 @@ class TMetodoCobro{
 	*
 	* @autor Hugo
 	* @access public
-	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @param string $val Valor a asignar
 	* @return boolean True si se realizó sin problemas
 	*/
 	

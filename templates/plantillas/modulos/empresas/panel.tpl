@@ -33,6 +33,15 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="selActivo" class="col-sm-2">Situación</label>
+						<div class="col-sm-3">
+							<select id="selActivo" name="selActivo" class="form-control">
+								<option value="1">Activo</option>
+								<option value="0">Inactivo</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="txtDireccion" class="col-sm-2">Domicilio</label>
 						<div class="col-sm-8">
 							<input class="form-control" id="txtDireccion" name="txtDireccion" value=""/>
