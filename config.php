@@ -64,7 +64,7 @@ $conf['cusuarios'] = array(
 	'capa' => LAYOUT_JSON);
 	
 $conf['panelPrincipal'] = array(
-	#'controlador' => 'index.php',
+	'controlador' => 'index.php',
 	'vista' => 'inicio.tpl',
 	'descripcion' => 'Vista del panel',
 	'seguridad' => true,
