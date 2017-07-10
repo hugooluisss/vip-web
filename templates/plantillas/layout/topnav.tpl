@@ -52,7 +52,7 @@
 						<li><a href="#">Page 2</a></li>
 					</ul>-->
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#" class="text-primary">Registrate</a></li>
+						<li><a href="#" class="text-primary" data-toggle="modal" data-target="#winRegistro">Registrate</a></li>
 						<li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#winSesion">Iniciar sesión</a></li>
 					</ul>
 				</div>
@@ -170,6 +170,53 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		
+		<div id="winRegistro" class="modal fade" role="dialog">
+			<form action="#" id="frmRegistro" method="post" class="form-horizontal" onsubmit="javascript: return false;">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Registrate</h4>
+						</div>
+						<div class="modal-body">
+							<center><img src="{$PAGE.ruta}img/logo.png" class="img-responsive"/></center>
+							<br />
+							<div class="form-group">
+								<label for="txtRazonSocial" class="col-sm-4">Razón social</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="txtRazonSocial" name="txtRazonSocial">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="txtEmail" class="col-sm-4">Correo electrónico</label>
+								<div class="col-sm-8">
+									<input class="form-control" type="email" id="txtEmail" name="txtEmail">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="txtPass" class="col-sm-4">Contraseña</label>
+								<div class="col-sm-8">
+									<input class="form-control" type="password" id="txtPassRegistro" name="txtPassRegistro">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="txtConfirmar" class="col-sm-4">Confirmar</label>
+								<div class="col-sm-8">
+									<input class="form-control" type="password" id="txtConfirmar" name="txtConfirmar">
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">Registrarme</button>
+							<button type="cancel" class="btn btn-secondary btn-right" data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
     
 	    <!-- jQuery 2.1.4 -->

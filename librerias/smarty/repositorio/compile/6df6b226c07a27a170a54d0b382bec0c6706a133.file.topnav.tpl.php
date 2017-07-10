@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-03 09:08:37
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-10 12:46:52
          compiled from "templates/plantillas/layout/topnav.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:10597828559448cd8539745-02858050%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6df6b226c07a27a170a54d0b382bec0c6706a133' => 
     array (
       0 => 'templates/plantillas/layout/topnav.tpl',
-      1 => 1499090915,
+      1 => 1499708807,
       2 => 'file',
     ),
   ),
@@ -96,7 +96,7 @@ img/logo.png" class="logo"/>
 						<li><a href="#">Page 2</a></li>
 					</ul>-->
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#" class="text-primary">Registrate</a></li>
+						<li><a href="#" class="text-primary" data-toggle="modal" data-target="#winRegistro">Registrate</a></li>
 						<li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#winSesion">Iniciar sesión</a></li>
 					</ul>
 				</div>
@@ -218,6 +218,54 @@ img/logo.png" class="img-responsive"/></center>
 					</div>
 				</div>
 			</div>
+		</div>
+		
+		<div id="winRegistro" class="modal fade" role="dialog">
+			<form action="#" id="frmRegistro" method="post" class="form-horizontal" onsubmit="javascript: return false;">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Registrate</h4>
+						</div>
+						<div class="modal-body">
+							<center><img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+img/logo.png" class="img-responsive"/></center>
+							<br />
+							<div class="form-group">
+								<label for="txtRazonSocial" class="col-sm-4">Razón social</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="txtRazonSocial" name="txtRazonSocial">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="txtEmail" class="col-sm-4">Correo electrónico</label>
+								<div class="col-sm-8">
+									<input class="form-control" type="email" id="txtEmail" name="txtEmail">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="txtPass" class="col-sm-4">Contraseña</label>
+								<div class="col-sm-8">
+									<input class="form-control" type="password" id="txtPassRegistro" name="txtPassRegistro">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="txtConfirmar" class="col-sm-4">Confirmar</label>
+								<div class="col-sm-8">
+									<input class="form-control" type="password" id="txtConfirmar" name="txtConfirmar">
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">Registrarme</button>
+							<button type="cancel" class="btn btn-secondary btn-right" data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
     
 	    <!-- jQuery 2.1.4 -->

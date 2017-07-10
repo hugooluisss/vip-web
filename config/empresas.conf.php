@@ -20,6 +20,6 @@ $conf['listaEmpresas'] = array(
 $conf['cempresas'] = array(
 	'controlador' => 'empresas.php',
 	'descripcion' => 'Controlador de empresas',
-	'seguridad' => true,
+	'seguridad' => false,
 	'capa' => LAYOUT_JSON);
 ?>

@@ -15,11 +15,69 @@ $(document).ready(function(){
 			
 			obj.login($("#txtUsuario").val(), $("#txtPass").val(), {
 				after: function(datos){
-					$("[type=submit]").prop("disabled", false);
+					$("#frmLogin").find("[type=submit]").prop("disabled", false);
 					if (datos.band)
 						location.href = "panelPrincipal";
 					else{
 						alert("Los datos son incorrectos, corrigelos y vuelve a intentarlo");
+					}
+				}
+			});
+        }
+
+    });
+	
+});
+
+$(document).ready(function(){
+	$("form:not(.filter) :input:visible:enabled:first").focus();
+	
+	$("#frmRegistro").validate({
+		debug: true,
+		rules: {
+			txtEmail: "required",
+			txtPassRegistro: "required",
+			txtRazonSocial: "required",
+			txtConfirmar: {
+				equalTo: "#txtPassRegistro"
+			}
+		},
+		wrapper: 'span', 
+		submitHandler: function(form){
+			var obj = new TEmpresa;
+			
+			$("#frmRegistro").find("[type=submit]").prop("disabled", true);
+			
+			obj.add({
+				"razonSocial": $("#txtRazonSocial").val(), 
+				"email": $("#txtEmail").val(), 
+				fn: {
+					after: function(datos){
+						if (datos.band){
+							var user = new TUsuario;
+							user.add({
+								"nombre": $("#txtRazonSocial").val(),
+								"pass": $("#txtPassRegistro").val(),
+								"email": $("#txtEmail").val(),
+								"tipo": 2,
+								"empresa": datos.id,
+								fn: {
+									after: function(respuesta){
+										$("#frmRegistro").find("[type=submit]").prop("disabled", false);
+										
+										if (respuesta.band){
+											$("#winRegistro").modal("hide");
+											$("#winSesion").modal();
+											$("#winSesion").modal();
+											$("#winSesion").find("#txtUsuario").val($("#txtEmail").val());
+											alert("Tu cuenta está lista, puedes iniciar sesión");
+										}
+									}
+								}
+							});
+						}else{
+							$("#frmRegistro").find("[type=submit]").prop("disabled", false);
+						}
 					}
 				}
 			});

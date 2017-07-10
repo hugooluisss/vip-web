@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-04 09:57:18
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-10 10:35:59
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1503113349594484f7c43587-42411099%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1499180236,
+      1 => 1499700952,
       2 => 'file',
     ),
   ),
@@ -159,6 +159,15 @@ img/logo.png" alt="User Image" style="background: white"/>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='admonUsuarios'){?>class="active"<?php }?>><a href="admonUsuarios"><i class="fa fa-users"></i> Usuarios</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='empresas'){?>class="active"<?php }?>><a href="empresas"><i class="fa fa-university"></i> Empresas</a></li>
 						</ul>
+						<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('admonreporteventasempresa'))){?>active<?php }?> treeview">
+						<a href="#">
+							<i class="fa fa-list-alt"></i> 
+							<span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('admonreporteventasempresa'))){?>active<?php }?>"><a href="admonreporteventasempresa">Ventas por empresa</a></li>
+						</ul>
+					</li>
 					</li>
 					<?php }?>
 					<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getPerfil(),array(2))){?>

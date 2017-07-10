@@ -109,6 +109,15 @@
 							<li {if $PAGE.modulo eq 'admonUsuarios'}class="active"{/if}><a href="admonUsuarios"><i class="fa fa-users"></i> Usuarios</a></li>
 							<li {if $PAGE.modulo eq 'empresas'}class="active"{/if}><a href="empresas"><i class="fa fa-university"></i> Empresas</a></li>
 						</ul>
+						<li class="{if in_array($PAGE.modulo, array('admonreporteventasempresa'))}active{/if} treeview">
+						<a href="#">
+							<i class="fa fa-list-alt"></i> 
+							<span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li class="{if in_array($PAGE.modulo, array('admonreporteventasempresa'))}active{/if}"><a href="admonreporteventasempresa">Ventas por empresa</a></li>
+						</ul>
+					</li>
 					</li>
 					{/if}
 					{if in_array($PAGE.usuario->getPerfil(), array(2))}

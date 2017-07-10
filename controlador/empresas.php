@@ -38,7 +38,7 @@ switch($objModulo->getId()){
 				$obj->setRFC($_POST['rfc']);
 				$obj->setActivo($_POST['activo']);
 				
-				$smarty->assign("json", array("band" => $obj->guardar()));
+				$smarty->assign("json", array("band" => $obj->guardar(), "id" => $obj->getId()));
 			break;
 			case 'del':
 				$obj = new TEmpresa($_POST['id']);

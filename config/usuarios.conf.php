@@ -20,6 +20,6 @@ $conf['listaUsuarios'] = array(
 $conf['cusuarios'] = array(
 	'controlador' => 'usuarios.php',
 	'descripcion' => 'Controlador de usuarios',
-	'seguridad' => true,
+	'seguridad' => false,
 	'capa' => LAYOUT_JSON);
 ?>
