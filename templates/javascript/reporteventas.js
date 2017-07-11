@@ -42,6 +42,17 @@ $(document).ready(function(){
 				});
 			});
 			
+			$("#dvListaVentas").find("[action=getListaPagos]").click(function(){
+				$(this).prop("disabled", true);
+				$.post("listaReportesPagosPorVenta", {
+					"venta": $(this).attr("idVenta"),
+				},
+				function(resp){
+					$("#winPagos").find(".modal-body").html(resp);
+					$("#winPagos").modal();
+				});
+			});
+			
 			$("#tblDatos").DataTable({
 				"responsive": true,
 				"language": espaniol,

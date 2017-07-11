@@ -184,6 +184,18 @@ TVenta = function(){
 					datos.fn.after(data);
 			}, "json");
 	}
+	
+	this.setBazar = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		
+		$.post('cventas', {
+				"id": datos.id,
+				"action": "setBazar"
+			}, function(data){
+				if (datos.fn.after !== undefined)
+					datos.fn.after(data);
+			}, "json");
+	}
 };
 
 var formatNumber = {

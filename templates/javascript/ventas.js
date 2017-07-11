@@ -1,9 +1,10 @@
 $(document).ready(function(){
 	var ventanaImpresion;
+	var venta = new TVenta;
+	venta.setBazar({"id": $("#selBazar").val(), fn: {}});
 	
 	$("#txtCliente").select();
 	$("#txtFecha").datepicker({ dateFormat: 'yy-mm-dd' });
-	var venta = new TVenta;
 	
 	$(".btnNuevaVenta").click(function(){
 		if (confirm("¿Seguro?")){
@@ -75,6 +76,7 @@ $(document).ready(function(){
 	
 	$("#selBazar").change(function(){
 		nuevaVenta();
+		venta.setBazar({"id": $("#selBazar").val(), fn: {}});
 		autocompleteProductos.source = "?mod=listaProductosAutocomplete&bazar=" + $("#selBazar").val();
 	});
 	

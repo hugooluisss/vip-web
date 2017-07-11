@@ -38,6 +38,9 @@ switch($objModulo->getId()){
 		$parametros = $empresa->getParametros();
 		$clienteDefecto = new TCliente($parametros['clienteDefault']);
 		$smarty->assign("clienteDefecto", array("nombre" => $clienteDefecto->getNombre(), "idCliente" => $clienteDefecto->getId()));
+		
+		
+		$smarty->assign("bazarCookie", $_GET['tipo'] == 'bazar'?$_GET['id']:$_COOKIE['bazar']);
 	break;
 	case 'listaVentas':
 		$db = TBase::conectaDB();
@@ -49,6 +52,7 @@ switch($objModulo->getId()){
 			
 			array_push($datos, $row);
 		}
+		
 		$smarty->assign("lista", $datos);
 	break;
 	case 'cventas':
@@ -88,6 +92,7 @@ switch($objModulo->getId()){
 				while($row = $rs->fetch_assoc()){
 					array_push($datos, json_decode($row['json']));
 				}
+				
 				$smarty->assign("json", $datos);
 			break;
 			case 'cerrar':
@@ -104,6 +109,11 @@ switch($objModulo->getId()){
 				$documento = $pdf->Output();
 				
 				$smarty->assign("json", array("band" => true, "url" => $documento));
+			break;
+			case 'setBazar':
+				setcookie("bazar", $_POST['id']);
+				
+				$smarty->assign("json", array("band" => true));
 			break;
 		}
 	break;

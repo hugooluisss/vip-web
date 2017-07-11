@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-10 22:00:50
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-11 10:29:56
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1503113349594484f7c43587-42411099%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1499741849,
+      1 => 1499786995,
       2 => 'file',
     ),
   ),
@@ -185,7 +185,7 @@ img/logo.png" alt="User Image" style="background: white"/>
 							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('clientes'))){?>class="active"<?php }?>><a href="clientes">Clientes</a></li>
 						</ul>
 					</li>
-					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('inventario','entradassalidas'))){?>active<?php }?> treeview">
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('productos','controlinventario'))){?>active<?php }?> treeview">
 						<a href="#">
 							<i class="fa fa-book" aria-hidden="true"></i>
 							<span>Almacen</span> <i class="fa fa-angle-left pull-right"></i>
@@ -195,6 +195,28 @@ img/logo.png" alt="User Image" style="background: white"/>
 							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('controlinventario'))){?>class="active"<?php }?>><a href="controlinventario">Control de inventario</a></li>
 						</ul>
 					</li>
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('puntoventa'))){?>active<?php }?> treeview">
+						<a href="#">
+							<i class="fa fa-tachometer"></i> 
+							<span>Ventas</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('puntoventa'))){?>active<?php }?>"><a href="puntoventa">Nota de venta</a></li>
+						</ul>
+					</li>
+					
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reporteventas','reporteexistencias'))){?>active<?php }?> treeview">
+						<a href="#">
+							<i class="fa fa-list-alt"></i> 
+							<span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reporteventas'))){?>active<?php }?>"><a href="reporteventas">Ventas</a></li>
+							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reporteexistencias'))){?>active<?php }?>"><a href="reporteexistencias">Existencias</a></li>
+						</ul>
+					</li>
+					<?php }?>
+					<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getPerfil(),array(3))){?>
 					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('puntoventa'))){?>active<?php }?> treeview">
 						<a href="#">
 							<i class="fa fa-tachometer"></i> 

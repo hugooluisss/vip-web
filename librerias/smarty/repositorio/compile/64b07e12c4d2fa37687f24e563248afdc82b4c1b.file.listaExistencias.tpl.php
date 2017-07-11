@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-04 13:11:59
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-11 09:58:43
          compiled from "templates/plantillas/modulos/reportes/listaExistencias.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:920093192595badefb3ea78-70335118%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '64b07e12c4d2fa37687f24e563248afdc82b4c1b' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/listaExistencias.tpl',
-      1 => 1499191902,
+      1 => 1499785058,
       2 => 'file',
     ),
   ),
@@ -66,8 +66,11 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['precio'];?>
 </td>
 				<?php if ($_smarty_tpl->tpl_vars['bazar']->value==''){?>
-				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['bazar'];?>
-</td>
+					<td>
+						<a href="productos/<?php echo $_smarty_tpl->tpl_vars['row']->value['idBazar'];?>
+-bazar/" class="" role="button" action="ticket" title="Comprobante de venta"> <?php echo $_smarty_tpl->tpl_vars['row']->value['bazar'];?>
+</a>
+					</td>
 				<?php }?>
 				<td style="text-align: right">
 					<button type="button" class="btn btn-primary btn-xs" action="ventas" title="Comprobante de venta" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>

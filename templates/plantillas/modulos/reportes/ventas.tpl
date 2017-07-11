@@ -60,3 +60,5 @@
 	<div class="panel-body" id="dvListaVentas">
 	</div>
 </div>
+
+{include file=$PAGE.rutaModulos|cat:"modulos/reportes/winPagos.tpl"}

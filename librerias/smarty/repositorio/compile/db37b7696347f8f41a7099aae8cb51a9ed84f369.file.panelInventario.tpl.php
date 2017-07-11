@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-01 23:13:39
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-11 10:37:45
          compiled from "templates/plantillas/modulos/bazares/panelInventario.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1369250404594abd8df16092-78177837%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'db37b7696347f8f41a7099aae8cb51a9ed84f369' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/panelInventario.tpl',
-      1 => 1498157756,
+      1 => 1499785686,
       2 => 'file',
     ),
   ),
@@ -46,6 +46,9 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 
 <div class="row">
 	<div class="col-md-12">
+		<div class="btn-group btn-group-xs pull-left">
+			<a href="controlinventario" class="btn btn-primary"><i class="fa fa-arrow-right" aria-hidden="true"></i> Ir a control de inventario</a>
+		</div>
 		<div class="btn-group btn-group-xs pull-right">
 			<button type="button" class="btn btn-success" id="btnExportar"><i class="fa fa-download" aria-hidden="true"></i> Exportar xls</button>
 			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar xls</button>

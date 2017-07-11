@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-03 13:52:01
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-11 09:52:15
          compiled from "templates/plantillas/modulos/reportes/listaVentas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:853882315595a6899623151-96343687%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a03d8e78d17ba2c986a3c8fb90ebff902f2dd580' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/listaVentas.tpl',
-      1 => 1499107895,
+      1 => 1499784453,
       2 => 'file',
     ),
   ),
@@ -32,11 +32,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<th>Folio</th>
 			<th>Cliente</th>
 			<th>Monto</th>
+			<th>Pagado</th>
 			<?php if ($_smarty_tpl->tpl_vars['bazar']->value==''){?>
 			<th>Bazar</th>
 			<?php }?>
-			
-			<th>&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -48,21 +47,33 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			<tr>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['fecha'];?>
 </td>
-				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['folio'];?>
-</td>
+				<td>
+					<a href="#" class="" role="button" action="ticket" title="Comprobante de venta" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+' idVenta="<?php echo $_smarty_tpl->tpl_vars['row']->value['idVenta'];?>
+" onclick="javascript: return false;"><?php echo $_smarty_tpl->tpl_vars['row']->value['folio'];?>
+</a>
+				</td>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['cliente'];?>
 </td>
 				<td class="text-right">$ <?php echo $_smarty_tpl->tpl_vars['row']->value['total'];?>
 </td>
-				<?php if ($_smarty_tpl->tpl_vars['bazar']->value==''){?>
-				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['bazar'];?>
-</td>
-				<?php }?>
-				<td style="text-align: right">
-					<button type="button" class="btn btn-success" action="ticket" title="Comprobante de venta" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
-' idVenta="<?php echo $_smarty_tpl->tpl_vars['row']->value['idVenta'];?>
-"><i class="fa fa-file-pdf-o"></i></button>
+				<td class="text-right">
+					<?php if ($_smarty_tpl->tpl_vars['row']->value['pagos']>0){?>
+					<a href="#" class="" role="button" action="getListaPagos" title="Detalle de pagos" idVenta="<?php echo $_smarty_tpl->tpl_vars['row']->value['idVenta'];?>
+" onclick="javascript: return false;">$ <?php echo $_smarty_tpl->tpl_vars['row']->value['pagos'];?>
+</a>
+					<?php }else{ ?>
+					$ <?php echo $_smarty_tpl->tpl_vars['row']->value['pagos'];?>
+
+					<?php }?>
 				</td>
+				<?php if ($_smarty_tpl->tpl_vars['bazar']->value==''){?>
+				<td>
+					<a href="puntoventa/<?php echo $_smarty_tpl->tpl_vars['row']->value['idBazar'];?>
+-bazar/" class="" role="button" action="ticket" title="Comprobante de venta"> <?php echo $_smarty_tpl->tpl_vars['row']->value['bazar'];?>
+</a>
+				</td>
+				<?php }?>
 			</tr>
 		<?php } ?>
 	</tbody>

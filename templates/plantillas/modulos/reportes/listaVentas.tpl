@@ -5,26 +5,33 @@
 			<th>Folio</th>
 			<th>Cliente</th>
 			<th>Monto</th>
+			<th>Pagado</th>
 			{if $bazar eq ''}
 			<th>Bazar</th>
 			{/if}
-			
-			<th>&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
 		{foreach from=$lista item="row"}
 			<tr>
 				<td>{$row.fecha}</td>
-				<td>{$row.folio}</td>
+				<td>
+					<a href="#" class="" role="button" action="ticket" title="Comprobante de venta" datos='{$row.json}' idVenta="{$row.idVenta}" onclick="javascript: return false;">{$row.folio}</a>
+				</td>
 				<td>{$row.cliente}</td>
 				<td class="text-right">$ {$row.total}</td>
-				{if $bazar eq ''}
-				<td>{$row.bazar}</td>
-				{/if}
-				<td style="text-align: right">
-					<button type="button" class="btn btn-success" action="ticket" title="Comprobante de venta" datos='{$row.json}' idVenta="{$row.idVenta}"><i class="fa fa-file-pdf-o"></i></button>
+				<td class="text-right">
+					{if $row.pagos > 0}
+					<a href="#" class="" role="button" action="getListaPagos" title="Detalle de pagos" idVenta="{$row.idVenta}" onclick="javascript: return false;">$ {$row.pagos}</a>
+					{else}
+					$ {$row.pagos}
+					{/if}
 				</td>
+				{if $bazar eq ''}
+				<td>
+					<a href="puntoventa/{$row.idBazar}-bazar/" class="" role="button" action="ticket" title="Comprobante de venta"> {$row.bazar}</a>
+				</td>
+				{/if}
 			</tr>
 		{/foreach}
 	</tbody>

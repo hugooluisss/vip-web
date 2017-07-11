@@ -304,5 +304,32 @@ class TVenta{
 		
 		return $rs?true:false;
 	}
+	
+	/**
+	* Retorna el monto de la venta
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function getMonto(){
+		if ($this->getId() == '') return false;
+		
+		$db = TBase::conectaDB();
+		$sql = "select descuento from venta where idVenta = ".$this->getId();
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		$row = $rs->fetch_assoc();
+		
+		$sql = "select * from movimiento where idVenta = ".$this->getId();
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		
+		$total = 0;
+		while($rowMov = $rs->fetch_assoc()){
+			$total += $rowMov['precio'] * $rowMov['cantidad'] * (1-$rowMov['descuento']/100);
+		}
+		
+		return $total * (1-$row['descuento'] / 100);
+	}
 }
 ?>

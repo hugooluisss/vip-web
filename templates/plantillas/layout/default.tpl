@@ -135,7 +135,7 @@
 							<li {if in_array($PAGE.modulo, array('clientes'))}class="active"{/if}><a href="clientes">Clientes</a></li>
 						</ul>
 					</li>
-					<li class="{if in_array($PAGE.modulo, array('inventario', 'entradassalidas'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('productos', 'controlinventario'))}active{/if} treeview">
 						<a href="#">
 							<i class="fa fa-book" aria-hidden="true"></i>
 							<span>Almacen</span> <i class="fa fa-angle-left pull-right"></i>
@@ -145,6 +145,28 @@
 							<li {if in_array($PAGE.modulo, array('controlinventario'))}class="active"{/if}><a href="controlinventario">Control de inventario</a></li>
 						</ul>
 					</li>
+					<li class="{if in_array($PAGE.modulo, array('puntoventa'))}active{/if} treeview">
+						<a href="#">
+							<i class="fa fa-tachometer"></i> 
+							<span>Ventas</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li class="{if in_array($PAGE.modulo, array('puntoventa'))}active{/if}"><a href="puntoventa">Nota de venta</a></li>
+						</ul>
+					</li>
+					
+					<li class="{if in_array($PAGE.modulo, array('reporteventas', 'reporteexistencias'))}active{/if} treeview">
+						<a href="#">
+							<i class="fa fa-list-alt"></i> 
+							<span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li class="{if in_array($PAGE.modulo, array('reporteventas'))}active{/if}"><a href="reporteventas">Ventas</a></li>
+							<li class="{if in_array($PAGE.modulo, array('reporteexistencias'))}active{/if}"><a href="reporteexistencias">Existencias</a></li>
+						</ul>
+					</li>
+					{/if}
+					{if in_array($PAGE.usuario->getPerfil(), array(3))}
 					<li class="{if in_array($PAGE.modulo, array('puntoventa'))}active{/if} treeview">
 						<a href="#">
 							<i class="fa fa-tachometer"></i> 

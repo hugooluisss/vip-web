@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-30 13:51:50
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-11 08:36:02
          compiled from "templates/plantillas/modulos/ventas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:162072958459448df9a9a2a9-18731015%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b3ba611b730975d98c27112c204a40ab3938a2de' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/panel.tpl',
-      1 => 1498846149,
+      1 => 1499780147,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'bazares' => 0,
     'row' => 0,
+    'bazarCookie' => 0,
     'clienteDefecto' => 0,
     'PAGE' => 0,
   ),
@@ -41,7 +42,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars[
 $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
 				<option value="<?php echo $_smarty_tpl->tpl_vars['row']->value['idBazar'];?>
-"><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
+" <?php if ($_smarty_tpl->tpl_vars['row']->value['idBazar']==$_smarty_tpl->tpl_vars['bazarCookie']->value){?>selected<?php }?>><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </option>
 			<?php } ?>
 		</select>

@@ -13,6 +13,9 @@
 
 <div class="row">
 	<div class="col-md-12">
+		<div class="btn-group btn-group-xs pull-left">
+			<a href="controlinventario" class="btn btn-primary"><i class="fa fa-arrow-right" aria-hidden="true"></i> Ir a control de inventario</a>
+		</div>
 		<div class="btn-group btn-group-xs pull-right">
 			<button type="button" class="btn btn-success" id="btnExportar"><i class="fa fa-download" aria-hidden="true"></i> Exportar xls</button>
 			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar xls</button>

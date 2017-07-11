@@ -7,7 +7,7 @@
 	<div class="col-xs-12 col-sm-4">
 		<select class="form-control" id="selBazar" name="selBazar">
 			{foreach from=$bazares item="row"}
-				<option value="{$row.idBazar}">{$row.nombre}</option>
+				<option value="{$row.idBazar}" {if $row.idBazar eq $bazarCookie}selected{/if}>{$row.nombre}</option>
 			{/foreach}
 		</select>
 	</div>

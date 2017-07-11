@@ -39,4 +39,11 @@ $conf['listaReporteVentasProducto'] = array(
 	'descripcion' => 'Lista de ventas de un producto',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+$conf['listaReportesPagosPorVenta'] = array(
+	'controlador' => 'reportes.php',
+	'vista' => 'reportes/listaPagos.tpl',
+	'descripcion' => 'Lista de pagos por venta',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

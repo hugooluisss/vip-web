@@ -27,7 +27,9 @@
 				<td>{$row.inventario}</td>
 				<td>{$row.precio}</td>
 				{if $bazar eq ''}
-				<td>{$row.bazar}</td>
+					<td>
+						<a href="productos/{$row.idBazar}-bazar/" class="" role="button" action="ticket" title="Comprobante de venta"> {$row.bazar}</a>
+					</td>
 				{/if}
 				<td style="text-align: right">
 					<button type="button" class="btn btn-primary btn-xs" action="ventas" title="Comprobante de venta" datos='{$row.json}' idProducto="{$row.idProducto}" data-toggle="modal" data-target="#winVentas"><i class="fa fa-bar-chart" aria-hidden="true"></i></button>

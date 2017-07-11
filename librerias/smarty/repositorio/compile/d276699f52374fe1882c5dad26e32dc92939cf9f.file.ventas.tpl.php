@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-03 10:52:51
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-11 09:05:32
          compiled from "templates/plantillas/modulos/reportes/ventas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1273032186595a5ed28ac366-22650336%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd276699f52374fe1882c5dad26e32dc92939cf9f' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/ventas.tpl',
-      1 => 1499097158,
+      1 => 1499781931,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bazares' => 0,
     'row' => 0,
     'estados' => 0,
+    'PAGE' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -101,4 +102,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 <div class="panel panel-default">
 	<div class="panel-body" id="dvListaVentas">
 	</div>
-</div><?php }} ?>
+</div>
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/reportes/winPagos.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>
