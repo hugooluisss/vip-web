@@ -68,7 +68,8 @@ $conf['panelPrincipal'] = array(
 	'vista' => 'inicio.tpl',
 	'descripcion' => 'Vista del panel',
 	'seguridad' => true,
-	'js' => array(),
+	'js' => array('venta.class.js'),
+	'jsTemplate' => array('home.js'),
 	'capa' => LAYOUT_DEFECTO);	
 	
 $conf['chome'] = array(
