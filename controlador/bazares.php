@@ -16,6 +16,14 @@ switch($objModulo->getId()){
 	break;
 	case 'productos':
 		$smarty->assign("bazar", $_GET['id']);
+		
+		$db = TBase::conectaDB();
+		global $userSesion;
+		
+		$rs = $db->query("select count(*) as total from usuario a join usuariobazar b using(idUsuario) where b.idUsuario = ".$userSesion->getId());
+		$row = $rs->fetch_assoc();
+		
+		$smarty->assign("totalBazares", $row['total'] > 0);
 	case 'listaBazares':
 		$db = TBase::conectaDB();
 		global $userSesion;
@@ -43,7 +51,11 @@ switch($objModulo->getId()){
 				$obj->setFolio($_POST['folio']);
 				$obj->setInicial($_POST['inicial']);
 				
-				$smarty->assign("json", array("band" => $obj->guardar()));
+				$band = $obj->guardar();
+				if ($band and $_POST['id'] == ''){
+					$obj->addUsuario($userSesion->getId());
+				}
+				$smarty->assign("json", array("band" => $band));
 			break;
 			case 'del':
 				$obj = new TBazar($_POST['id']);

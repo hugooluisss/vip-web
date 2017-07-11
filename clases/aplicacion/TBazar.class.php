@@ -266,7 +266,7 @@ class TBazar{
 		if ($this->getId() == '') return false;
 		
 		$db = TBase::conectaDB();
-		$rs = $db->query("update bazar set visible = false where idEmpresa = ".$this->getId());
+		$rs = $db->query("update bazar set visible = false where idBazar = ".$this->getId());
 		
 		return $rs?true:false;
 	}

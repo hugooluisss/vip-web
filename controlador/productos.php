@@ -1,17 +1,31 @@
 <?php
 global $objModulo;
 switch($objModulo->getId()){
+	case 'productos':
+		$db = TBase::conectaDB();
+		global $userSesion;
+		
+		$rs = $db->query("select count(*) as total from usuario a join usuariobazar b using(idUsuario) where b.idUsuario = ".$userSesion->getId());
+		echo "select count(*) as total from usuario a join usuariobazar b using(idUsuario) where b.idUsuario = ".$userSesion->getId();
+		$row = $rs->fetch_assoc();
+		
+		$smarty->assign("totalBazares", $row['total'] > 0);
+	break;
 	case 'listaProductos':
 		$db = TBase::conectaDB();
 		global $sesion;
-		
-		$rs = $db->query("select * from producto a where a.visible = true and idBazar = ".$_POST['bazar']);
 		$datos = array();
-		while($row = $rs->fetch_assoc()){
-			$row['json'] = json_encode($row);
-			
-			array_push($datos, $row);
+		
+		if ($_POST['bazar'] <> ''){
+			$rs = $db->query("select * from producto a where a.visible = true and idBazar = ".$_POST['bazar']);
+			$datos = array();
+			while($row = $rs->fetch_assoc()){
+				$row['json'] = json_encode($row);
+				
+				array_push($datos, $row);
+			}
 		}
+		
 		$smarty->assign("lista", $datos);
 		$smarty->assign("select", $_POST['select']);
 	break;

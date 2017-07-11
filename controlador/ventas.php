@@ -2,8 +2,14 @@
 global $objModulo;
 switch($objModulo->getId()){
 	case 'puntoventa':
-		global $userSesion;
 		$db = TBase::conectaDB();
+		global $userSesion;
+		
+		$rs = $db->query("select count(*) as total from usuario a join usuariobazar b using(idUsuario) where b.idUsuario = ".$userSesion->getId());
+		$row = $rs->fetch_assoc();
+		
+		$smarty->assign("totalBazares", $row['total'] > 0);
+	
 		$sql = "select * from bazar a join usuariobazar b using(idBazar) where idUsuario = ".$userSesion->getId()." and a.visible = 1 and estado = 1";
 		
 		$rs = $db->query($sql) or errorMySQL($db, $sql);

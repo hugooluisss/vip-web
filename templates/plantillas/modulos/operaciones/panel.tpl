@@ -1,3 +1,4 @@
+{if $totalBazares}
 <div class="row">
 	<div class="col-sm-3">
 		<h1 class="page-header">Operaciones</h1>
@@ -52,3 +53,10 @@
 </div>
 
 {include file=$PAGE.rutaModulos|cat:"modulos/ventas/winProductos.tpl"}
+{else}
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-3 col-sm-6">
+			{include file=$PAGE.rutaModulos|cat:"modulos/error/bazares.tpl"}
+		</div>
+	</div>
+{/if}

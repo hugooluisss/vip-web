@@ -4,6 +4,9 @@ switch($objModulo->getId()){
 	case 'controlinventario':
 		$db = TBase::conectaDB();
 		global $userSesion;
+		$rs = $db->query("select count(*) as total from usuario a join usuariobazar b using(idUsuario) where b.idUsuario = ".$userSesion->getId());
+		$row = $rs->fetch_assoc();
+		$smarty->assign("totalBazares", $row['total'] > 0);
 		
 		$smarty->assign("bazar", $_GET['id']);
 		
