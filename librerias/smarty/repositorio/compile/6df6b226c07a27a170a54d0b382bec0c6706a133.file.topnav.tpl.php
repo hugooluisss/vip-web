@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-10 22:00:08
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 10:46:46
          compiled from "templates/plantillas/layout/topnav.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:10597828559448cd8539745-02858050%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6df6b226c07a27a170a54d0b382bec0c6706a133' => 
     array (
       0 => 'templates/plantillas/layout/topnav.tpl',
-      1 => 1499741849,
+      1 => 1499874314,
       2 => 'file',
     ),
   ),
@@ -96,7 +96,7 @@ img/logo.png" class="logo"/>
 						<li><a href="#">Page 2</a></li>
 					</ul>-->
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#" class="text-primary" data-toggle="modal" data-target="#winRegistro">Registrate</a></li>
+						<li><a href="#" class="text-primary" data-toggle="modal" data-target="#winRegistro">Regístrate</a></li>
 						<li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#winSesion">Iniciar sesión</a></li>
 					</ul>
 				</div>
@@ -239,7 +239,12 @@ img/logo.png" class="img-responsive"/></center>
 									<input class="form-control" id="txtRazonSocial" name="txtRazonSocial">
 								</div>
 							</div>
-							
+							<div class="form-group">
+								<label for="txtNombre" class="col-sm-4">Nombre del usuario</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="txtNombre" name="txtNombre">
+								</div>
+							</div>
 							<div class="form-group">
 								<label for="txtEmail" class="col-sm-4">Correo electrónico</label>
 								<div class="col-sm-8">

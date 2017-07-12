@@ -14,6 +14,7 @@ class TBazar{
 	private $folio;
 	private $inicial;
 	private $inicio;
+	private $fin;
 	
 	/**
 	* Constructor de la clase
@@ -110,6 +111,32 @@ class TBazar{
 	
 	public function getInicio(){
 		return $this->inicio;
+	}
+	
+	/**
+	* Establece la fecha de fin
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setFin($val = ""){
+		$this->fin = $val == ''?date("Y-m-d"):$val;
+		return true;
+	}
+	
+	/**
+	* Retorna el fin
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getFin(){
+		return $this->fin;
 	}
 	
 	/**
@@ -245,6 +272,7 @@ class TBazar{
 				estado = ".$this->getEstado().",
 				nombre = '".$this->getNombre()."',
 				inicio = '".$this->getInicio()."',
+				fin = '".$this->getFin()."',
 				folio = ".$this->getFolio().",
 				inicial = '".$this->getInicial()."'
 			WHERE idBazar = ".$this->getId();

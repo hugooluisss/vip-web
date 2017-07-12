@@ -38,6 +38,7 @@ $(document).ready(function(){
 			txtEmail: "required",
 			txtPassRegistro: "required",
 			txtRazonSocial: "required",
+			txtNombre: "required",
 			txtConfirmar: {
 				equalTo: "#txtPassRegistro"
 			}
@@ -56,7 +57,7 @@ $(document).ready(function(){
 						if (datos.band){
 							var user = new TUsuario;
 							user.add({
-								"nombre": $("#txtRazonSocial").val(),
+								"nombre": $("#txtNombre").val(),
 								"pass": $("#txtPassRegistro").val(),
 								"email": $("#txtEmail").val(),
 								"tipo": 2,
@@ -77,6 +78,7 @@ $(document).ready(function(){
 							});
 						}else{
 							$("#frmRegistro").find("[type=submit]").prop("disabled", false);
+							alert("Este correo se encuentra registrado para un usuario de una empresa... intenta con otro");
 						}
 					}
 				}

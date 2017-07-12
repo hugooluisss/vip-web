@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-11 08:37:18
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 11:07:42
          compiled from "templates/plantillas/modulos/bazares/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:7513394415953cdb55d7d20-91734581%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd265e09f1a9058ebfe6162618e06d7655cb819a1' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/panel.tpl',
-      1 => 1499705780,
+      1 => 1499875660,
       2 => 'file',
     ),
   ),
@@ -45,15 +45,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<div class="box">
 				<div class="box-body">
 					<div class="form-group">
-						<label for="txtNombre" class="col-sm-2">Nombre</label>
+						<label for="txtNombre" class="col-sm-2">Nombre *</label>
 						<div class="col-sm-6">
 							<input class="form-control" id="txtNombre" name="txtNombre">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtInicio" class="col-sm-2">Inicio</label>
+						<label for="txtInicio" class="col-sm-2">Inicia *</label>
 						<div class="col-sm-3">
 							<input class="form-control" id="txtInicio" name="txtInicio">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtFin" class="col-sm-2">Termina *</label>
+						<div class="col-sm-3">
+							<input class="form-control" id="txtFin" name="txtFin">
 						</div>
 					</div>
 					<div class="form-group">
@@ -67,13 +73,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					</div>
 					<hr />
 					<div class="form-group">
-						<label for="txtInicial" class="col-sm-2">Identificador</label>
+						<label for="txtInicial" class="col-sm-2">Identificador *</label>
 						<div class="col-sm-1">
 							<input class="form-control" id="txtInicial" name="txtInicial">
+							<p class="help-block">Inicial con la que se identifica el folio</p>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtFolio" class="col-sm-2">Folio</label>
+						<label for="txtFolio" class="col-sm-2">Folio *</label>
 						<div class="col-sm-3">
 							<input class="form-control" id="txtFolio" name="txtFolio">
 							<p class="help-block">Último entregado</p>

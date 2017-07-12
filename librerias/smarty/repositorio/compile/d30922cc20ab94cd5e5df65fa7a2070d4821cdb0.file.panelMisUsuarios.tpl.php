@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-27 13:38:47
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 11:03:01
          compiled from "templates/plantillas/modulos/usuarios/panelMisUsuarios.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17633950565952a637d420a5-78897802%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd30922cc20ab94cd5e5df65fa7a2070d4821cdb0' => 
     array (
       0 => 'templates/plantillas/modulos/usuarios/panelMisUsuarios.tpl',
-      1 => 1498071380,
+      1 => 1499875380,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_5952a637da72f3_87658394',
   'variables' => 
   array (
     'tipos' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'item' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_5952a637da72f3_87658394',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5952a637da72f3_87658394')) {function content_5952a637da72f3_87658394($_smarty_tpl) {?><div class="row">
 	<div class="col-lg-12">
@@ -66,21 +66,27 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtNombre" class="col-lg-2">Nombre</label>
+						<label for="txtNombre" class="col-lg-2">Nombre *</label>
 						<div class="col-lg-6">
 							<input class="form-control" id="txtNombre" name="txtNombre">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtEmail" class="col-lg-2">Correo electrónico</label>
+						<label for="txtEmail" class="col-lg-2">Correo electrónico *</label>
 						<div class="col-lg-3">
 							<input class="form-control" id="txtEmail" name="txtEmail" type="email">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtPass" class="col-lg-2">Contraseña</label>
+						<label for="txtPass" class="col-lg-2">Contraseña *</label>
 						<div class="col-lg-3">
 							<input class="form-control" id="txtPass" name="txtPass" type="password">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtPass2" class="col-lg-2">Confirmar *</label>
+						<div class="col-lg-3">
+							<input class="form-control" id="txtPass2" name="txtPass2" type="password">
 						</div>
 					</div>
 				</div>

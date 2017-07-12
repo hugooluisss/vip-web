@@ -19,15 +19,21 @@
 			<div class="box">
 				<div class="box-body">
 					<div class="form-group">
-						<label for="txtNombre" class="col-sm-2">Nombre</label>
+						<label for="txtNombre" class="col-sm-2">Nombre *</label>
 						<div class="col-sm-6">
 							<input class="form-control" id="txtNombre" name="txtNombre">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtInicio" class="col-sm-2">Inicio</label>
+						<label for="txtInicio" class="col-sm-2">Inicia *</label>
 						<div class="col-sm-3">
 							<input class="form-control" id="txtInicio" name="txtInicio">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtFin" class="col-sm-2">Termina *</label>
+						<div class="col-sm-3">
+							<input class="form-control" id="txtFin" name="txtFin">
 						</div>
 					</div>
 					<div class="form-group">
@@ -41,13 +47,14 @@
 					</div>
 					<hr />
 					<div class="form-group">
-						<label for="txtInicial" class="col-sm-2">Identificador</label>
+						<label for="txtInicial" class="col-sm-2">Identificador *</label>
 						<div class="col-sm-1">
 							<input class="form-control" id="txtInicial" name="txtInicial">
+							<p class="help-block">Inicial con la que se identifica el folio</p>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtFolio" class="col-sm-2">Folio</label>
+						<label for="txtFolio" class="col-sm-2">Folio *</label>
 						<div class="col-sm-3">
 							<input class="form-control" id="txtFolio" name="txtFolio">
 							<p class="help-block">Último entregado</p>

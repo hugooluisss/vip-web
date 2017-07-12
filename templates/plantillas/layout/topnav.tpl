@@ -52,7 +52,7 @@
 						<li><a href="#">Page 2</a></li>
 					</ul>-->
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#" class="text-primary" data-toggle="modal" data-target="#winRegistro">Registrate</a></li>
+						<li><a href="#" class="text-primary" data-toggle="modal" data-target="#winRegistro">Regístrate</a></li>
 						<li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#winSesion">Iniciar sesión</a></li>
 					</ul>
 				</div>
@@ -190,7 +190,12 @@
 									<input class="form-control" id="txtRazonSocial" name="txtRazonSocial">
 								</div>
 							</div>
-							
+							<div class="form-group">
+								<label for="txtNombre" class="col-sm-4">Nombre del usuario</label>
+								<div class="col-sm-8">
+									<input class="form-control" id="txtNombre" name="txtNombre">
+								</div>
+							</div>
 							<div class="form-group">
 								<label for="txtEmail" class="col-sm-4">Correo electrónico</label>
 								<div class="col-sm-8">

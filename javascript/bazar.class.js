@@ -7,6 +7,7 @@ TBazar = function(){
 		$.post('cbazares', {
 				"id": datos.id,
 				"inicio": datos.inicio,
+				"fin": datos.fin,
 				"estado": datos.estado, 
 				"nombre": datos.nombre,
 				"folio": datos.folio,

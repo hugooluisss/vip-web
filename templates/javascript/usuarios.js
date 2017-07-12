@@ -15,8 +15,12 @@ $(document).ready(function(){
 		debug: true,
 		rules: {
 			txtEmail: "required",
+			txtNombre: "required",
 			txtPass: "required",
-			txtClave: "required"
+			txtClave: "required",
+			txtPass2: {
+				equalTo: "#txtPass"
+			}
 		},
 		wrapper: 'span', 
 		submitHandler: function(form){
@@ -67,6 +71,7 @@ $(document).ready(function(){
 				$("#txtNombre").val(el.nombre);
 				$("#txtEmail").val(el.email);
 				$("#txtPass").val(el.pass);
+				$("#txtPass2").val(el.pass);
 				$("#selTipo").val(el.idTipo);
 				$('#panelTabs a[href="#add"]').tab('show');
 			});

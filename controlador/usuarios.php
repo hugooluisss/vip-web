@@ -104,7 +104,9 @@ switch($objModulo->getId()){
 				$obj->setId($_POST['id']);
 				$obj->setNombre($_POST['nombre']);
 				$obj->setEmail($_POST['email']);
-				$obj->setPass($_POST['pass']);
+				if ($_POST['pass'] <> '')
+					$obj->setPass($_POST['pass']);
+					
 				$obj->setTipo($_POST['tipo']);
 				$band = $obj->guardar();
 				

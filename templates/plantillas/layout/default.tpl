@@ -45,9 +45,6 @@
 				<!-- mini logo for sidebar mini 50x50 pixels -->
 				<span class="logo-lg">
 					<img src="{$PAGE.ruta}img/logo_transparencia.png" alt="VIP" style="width: 65px;"/>
-					{if file_exists("repositorio/empresas/empresa"|cat:$PAGE.empresa->getId()|cat:".jpg")}
-					 <img src="repositorio/empresas/empresa{$PAGE.empresa->getId()}.jpg" alt="VIP" style="width: 65px;"/>
-					{/if}
 				</span>
 				<!-- logo for regular state and mobile devices -->
 				<span class="logo-mini"><b>VIP</b></span>
@@ -98,6 +95,14 @@
 			<!-- Sidebar user panel -->
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
+					{if file_exists("repositorio/empresas/empresa"|cat:$PAGE.empresa->getId()|cat:".jpg")}
+					<br />
+					<center>
+						<img src="repositorio/empresas/empresa{$PAGE.empresa->getId()}.jpg" alt="VIP" style="width: 65px;"/>
+					</center>
+					 <br />
+					{/if}
+					
 					<li class="header">MENÚ PRINCIPAL</li>
 					{if $PAGE.usuario->getPerfil() eq 1}
 					<li class="{if in_array($PAGE.modulo, array('admonUsuarios', 'empresas'))}active{/if} treeview">

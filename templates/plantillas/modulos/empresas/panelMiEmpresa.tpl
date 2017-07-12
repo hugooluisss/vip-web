@@ -10,14 +10,20 @@
 			<div class="row">
 				<div class="col-xs-12 text-center">
 					<a href="#" data-toggle="modal" data-target="#winFotografia">
-						<img src="repositorio/empresas/empresa{$empresa->getId()}.jpg" id="logotipo" onerror="javascript: $(this).prop('src', '{$PAGE.imagenes}no-camara.jpg')"/>
+						{assign var="img" value="repositorio/empresas/empresa"|cat:$empresa->getId()|cat:".jpg"} 
+
+						{if file_exists($img)}
+						<img src="repositorio/empresas/empresa{$empresa->getId()}.jpg" id="logotipo" style="height: 100px;"/>
+						{else}
+						<img src="{$PAGE.imagenes}no-camara.jpg" id="logotipo" style="height: 100px;"/>
+						{/if}
 						<br />
-						<small class="text-info">Click para cambiar</small>
+						<small class="text-info">Click para cambiar el logotipo de la empresa</small>
 					</a>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="txtRazonSocial" class="col-sm-2">Razon social</label>
+				<label for="txtRazonSocial" class="col-sm-2">Razon social *</label>
 				<div class="col-sm-10">
 					<input class="form-control" id="txtRazonSocial" name="txtRazonSocial" value="{$empresa->getRazonSocial()}" />
 				</div>

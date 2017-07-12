@@ -9,7 +9,8 @@
 				<tr>
 					<th>#</th>
 					<th>Nombre</th>
-					<th>Inicio</th>
+					<th>Inicia</th>
+					<th>Termina</th>
 					<th>Estado</th>
 					<th>&nbsp;</th>
 				</tr>
@@ -20,6 +21,7 @@
 						<td style="border-left: 2px solid {if $row.estado eq 1}blue{else}red{/if}">{$row.idBazar}</td>
 						<td>{$row.nombre}</td>
 						<td>{$row.inicio}</td>
+						<td>{$row.fin}</td>
 						<td style="color: {if $row.estado eq 1}blue{else}red{/if}">{if $row.estado eq 1}Activo{else}Inactivo{/if}</td>
 						<td style="text-align: right">
 							<a href="productos/{$row.idBazar}-bazar/" class="btn btn-primary" title="Catálogo de productos">P</a>

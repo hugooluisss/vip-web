@@ -21,24 +21,36 @@ switch($objModulo->getId()){
 	case 'cempresas':
 		switch($objModulo->getAction()){
 			case 'add':
-				$obj = new TEmpresa();
+				$band = true;
+				if ($_POST['id'] == ''){
+					$db = TBase::conectaDB();
+					
+					$rs = $db->query("select * from usuario where upper(email) = upper('".$_POST['email']."')");
+					
+					$band = $rs->num_rows == 0;
+				}
 				
-				$obj->setId($_POST['id']);
-				$obj->setRazonSocial($_POST['razonSocial']);
-				$obj->setSlogan($_POST['slogan']);
-				$obj->setDireccion($_POST['direccion']);
-				$obj->setExterno($_POST['externo']);
-				$obj->setInterno($_POST['interno']);
-				$obj->setColonia($_POST['colonia']);
-				$obj->setMunicipio($_POST['municipio']);
-				$obj->setCiudad($_POST['ciudad']);
-				$obj->setEstado($_POST['estado']);
-				$obj->setTelefono($_POST['telefono']);
-				$obj->setEmail($_POST['email']);
-				$obj->setRFC($_POST['rfc']);
-				$obj->setActivo($_POST['activo']);
-				
-				$smarty->assign("json", array("band" => $obj->guardar(), "id" => $obj->getId()));
+				if ($band){
+					$obj = new TEmpresa();
+					
+					$obj->setId($_POST['id']);
+					$obj->setRazonSocial($_POST['razonSocial']);
+					$obj->setSlogan($_POST['slogan']);
+					$obj->setDireccion($_POST['direccion']);
+					$obj->setExterno($_POST['externo']);
+					$obj->setInterno($_POST['interno']);
+					$obj->setColonia($_POST['colonia']);
+					$obj->setMunicipio($_POST['municipio']);
+					$obj->setCiudad($_POST['ciudad']);
+					$obj->setEstado($_POST['estado']);
+					$obj->setTelefono($_POST['telefono']);
+					$obj->setEmail($_POST['email']);
+					$obj->setRFC($_POST['rfc']);
+					$obj->setActivo($_POST['activo']);
+					
+					$smarty->assign("json", array("band" => $obj->guardar(), "id" => $obj->getId()));
+				}else
+					$smarty->assign("json", array("band" => $band));
 			break;
 			case 'del':
 				$obj = new TEmpresa($_POST['id']);

@@ -45,6 +45,7 @@ switch($objModulo->getId()){
 				
 				$obj->setId($_POST['id']);
 				$obj->setInicio($_POST['inicio']);
+				$obj->setFin($_POST['fin']);
 				$obj->setEstado($_POST['estado']);
 				$obj->setNombre($_POST['nombre']);
 				$obj->setEmpresa($userSesion->getEmpresa());

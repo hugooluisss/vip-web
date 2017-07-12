@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	getLista();
 	$("#txtInicio").datepicker();
+	$("#txtFin").datepicker();
 	
 	$("#panelTabs li a[href=#add]").click(function(){
 		$("#frmAdd").get(0).reset();
@@ -18,6 +19,9 @@ $(document).ready(function(){
 			txtNombre: "required",
 			txtInicio: "required",
 			selEstado: "required",
+			txtInicio: "required",
+			txtFin: "required",
+			txtInicial: "required",
 			txtFolio: {
 				required: true,
 				digits: true
@@ -32,6 +36,7 @@ $(document).ready(function(){
 			obj.add({
 				id: $("#id").val(), 
 				inicio: $("#txtInicio").val(), 
+				fin: $("#txtFin").val(), 
 				estado: $("#selEstado").val(), 
 				nombre: $("#txtNombre").val(), 
 				inicial: $("#txtInicial").val(),
@@ -77,6 +82,7 @@ $(document).ready(function(){
 				
 				$("#id").val(el.idBazar);
 				$("#txtInicio").val(el.inicio);
+				$("#txtFin").val(el.fin);
 				$("#selEstado").val(el.estado);
 				$("#txtNombre").val(el.nombre);
 				$("#txtInicial").val(el.inicial);

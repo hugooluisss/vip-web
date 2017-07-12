@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-27 13:38:45
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 10:57:14
          compiled from "templates/plantillas/modulos/empresas/panelMiEmpresa.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:84928952594484f80ab332-32821012%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '360ca23c1b4da61149fc752621b02aa684ff8be2' => 
     array (
       0 => 'templates/plantillas/modulos/empresas/panelMiEmpresa.tpl',
-      1 => 1498141024,
+      1 => 1499875030,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'empresa' => 0,
+    'img' => 0,
     'PAGE' => 0,
   ),
   'has_nocache_code' => false,
@@ -36,11 +37,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<div class="row">
 				<div class="col-xs-12 text-center">
 					<a href="#" data-toggle="modal" data-target="#winFotografia">
+						<?php $_smarty_tpl->tpl_vars["img"] = new Smarty_variable((("repositorio/empresas/empresa").($_smarty_tpl->tpl_vars['empresa']->value->getId())).(".jpg"), null, 0);?> 
+
+						<?php if (file_exists($_smarty_tpl->tpl_vars['img']->value)){?>
 						<img src="repositorio/empresas/empresa<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getId();?>
-.jpg" id="logotipo" onerror="javascript: $(this).prop('src', '<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
-no-camara.jpg')"/>
+.jpg" id="logotipo" style="height: 100px;"/>
+						<?php }else{ ?>
+						<img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+no-camara.jpg" id="logotipo" style="height: 100px;"/>
+						<?php }?>
 						<br />
-						<small class="text-info">Click para cambiar</small>
+						<small class="text-info">Click para cambiar el logotipo de la empresa</small>
 					</a>
 				</div>
 			</div>

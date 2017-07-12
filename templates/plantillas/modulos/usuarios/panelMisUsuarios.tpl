@@ -31,21 +31,27 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtNombre" class="col-lg-2">Nombre</label>
+						<label for="txtNombre" class="col-lg-2">Nombre *</label>
 						<div class="col-lg-6">
 							<input class="form-control" id="txtNombre" name="txtNombre">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtEmail" class="col-lg-2">Correo electrónico</label>
+						<label for="txtEmail" class="col-lg-2">Correo electrónico *</label>
 						<div class="col-lg-3">
 							<input class="form-control" id="txtEmail" name="txtEmail" type="email">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtPass" class="col-lg-2">Contraseña</label>
+						<label for="txtPass" class="col-lg-2">Contraseña *</label>
 						<div class="col-lg-3">
 							<input class="form-control" id="txtPass" name="txtPass" type="password">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtPass2" class="col-lg-2">Confirmar *</label>
+						<div class="col-lg-3">
+							<input class="form-control" id="txtPass2" name="txtPass2" type="password">
 						</div>
 					</div>
 				</div>

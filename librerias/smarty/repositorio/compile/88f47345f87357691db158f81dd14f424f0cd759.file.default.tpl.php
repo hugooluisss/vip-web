@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-11 11:23:38
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 10:10:28
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1503113349594484f7c43587-42411099%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1499789020,
+      1 => 1499872227,
       2 => 'file',
     ),
   ),
@@ -90,10 +90,6 @@ plugins/upload/css/jquery.fileupload.css">
 				<span class="logo-lg">
 					<img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 img/logo_transparencia.png" alt="VIP" style="width: 65px;"/>
-					<?php if (file_exists((("repositorio/empresas/empresa").($_smarty_tpl->tpl_vars['PAGE']->value['empresa']->getId())).(".jpg"))){?>
-					 <img src="repositorio/empresas/empresa<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['empresa']->getId();?>
-.jpg" alt="VIP" style="width: 65px;"/>
-					<?php }?>
 				</span>
 				<!-- logo for regular state and mobile devices -->
 				<span class="logo-mini"><b>VIP</b></span>
@@ -148,6 +144,15 @@ img/logo.png" alt="User Image" style="background: white"/>
 			<!-- Sidebar user panel -->
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
+					<?php if (file_exists((("repositorio/empresas/empresa").($_smarty_tpl->tpl_vars['PAGE']->value['empresa']->getId())).(".jpg"))){?>
+					<br />
+					<center>
+						<img src="repositorio/empresas/empresa<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['empresa']->getId();?>
+.jpg" alt="VIP" style="width: 65px;"/>
+					</center>
+					 <br />
+					<?php }?>
+					
 					<li class="header">MENÚ PRINCIPAL</li>
 					<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getPerfil()==1){?>
 					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('admonUsuarios','empresas'))){?>active<?php }?> treeview">
