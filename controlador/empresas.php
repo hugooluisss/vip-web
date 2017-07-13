@@ -36,6 +36,7 @@ switch($objModulo->getId()){
 					$obj->setId($_POST['id']);
 					$obj->setRazonSocial($_POST['razonSocial']);
 					$obj->setSlogan($_POST['slogan']);
+					$obj->setMarca($_POST['marca']);
 					$obj->setDireccion($_POST['direccion']);
 					$obj->setExterno($_POST['externo']);
 					$obj->setInterno($_POST['interno']);

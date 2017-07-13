@@ -33,6 +33,12 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="txtMarca" class="col-sm-2">Marca</label>
+						<div class="col-sm-10">
+							<input class="form-control" id="txtMarca" name="txtMarca" value=""/>
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="selActivo" class="col-sm-2">Situación</label>
 						<div class="col-sm-3">
 							<select id="selActivo" name="selActivo" class="form-control">

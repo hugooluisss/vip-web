@@ -9,10 +9,10 @@ $(document).ready(function(){
 		$.post("listaReportePedidos", {
 			"bazar": $("#selBazar").val(),
 		}, function(resp){
-			$("#dvListaVentas").html("");
-			$("#dvListaVentas").html(resp);
+			$("#dvLista").html("");
+			$("#dvLista").html(resp);
 			
-			$("#dvListaVentas").find("[action=ticket]").click(function(){
+			$("#dvLista").find("[action=ticket]").click(function(){
 				var objVenta = new TVenta;
 				var el = $(this);
 				
@@ -36,7 +36,7 @@ $(document).ready(function(){
 				});
 			});
 			
-			$("#dvListaVentas").find("[action=getListaPagos]").click(function(){
+			$("#dvLista").find("[action=getListaPagos]").click(function(){
 				$(this).prop("disabled", true);
 				$.post("listaReportesPagosPorVenta", {
 					"venta": $(this).attr("idVenta"),

@@ -35,6 +35,12 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label for="txtMarca" class="col-sm-2">Marca</label>
+				<div class="col-sm-10">
+					<input class="form-control" id="txtMarca" name="txtMarca" value="{$empresa->getMarca()}"/>
+				</div>
+			</div>
+			<div class="form-group">
 				<label for="txtDireccion" class="col-sm-2">Domicilio</label>
 				<div class="col-sm-8">
 					<input class="form-control" id="txtDireccion" name="txtDireccion" value="{$empresa->getDireccion()}"/>

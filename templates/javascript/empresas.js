@@ -27,6 +27,7 @@ $(document).ready(function(){
 				id: $("#id").val(), 
 				razonSocial: $("#txtRazonSocial").val(), 
 				slogan: $("#txtSlogan").val(), 
+				marca: $("#txtMarca").val(), 
 				direccion: $("#txtDireccion").val(), 
 				externo: $("#txtExterno").val(), 
 				interno: $("#txtInterno").val(), 
@@ -75,6 +76,7 @@ $(document).ready(function(){
 				$("#id").val(el.idEmpresa);
 				$("#txtRazonSocial").val(el.razonsocial);
 				$("#txtSlogan").val(el.slogan);
+				$("#txtMarca").val(el.marca);
 				$("#txtDireccion").val(el.direccion);
 				$("#txtExterno").val(el.externo);
 				$("#txtInterno").val(el.interno);

@@ -65,12 +65,11 @@ switch($objModulo->getId()){
 		
 		if ($_POST['bazar'] == ''){
 			global $userSesion;
-			$sql = "select distinct a.idVenta, fecha, a.folio, b.nombre as bazar, b.idBazar, c.nombre as cliente from venta a join bazar b using(idBazar) join cliente c using(idCliente) join movimiento d using(idVenta) where b.idEmpresa = ".$userSesion->getEmpresa()." and b.visible = 1 and a.idEstado = 1 and d.cantidad > d.entregado order by fecha desc";
+			$sql = "select a.idVenta, fecha, a.folio, b.nombre as bazar, b.idBazar, c.nombre as cliente, d.descripcion, d.cantidad, d.entregado from venta a join bazar b using(idBazar) join cliente c using(idCliente) join movimiento d using(idVenta) where b.idEmpresa = ".$userSesion->getEmpresa()." and b.visible = 1 and a.idEstado = 1 and d.cantidad > d.entregado order by fecha desc";
 		}else
-			$sql = "select distinct a.idVenta, fecha, a.folio, b.nombre as bazar, b.idBazar, c.nombre as cliente from venta a join bazar b using(idBazar) join cliente c using(idCliente) join movimiento d using(idVenta) where a.idBazar = ".$_POST['bazar']." and b.visible = 1 and a.idEstado = 1 and d.cantidad > d.entregado order by fecha desc;";
+			$sql = "select a.idVenta, fecha, a.folio, b.nombre as bazar, b.idBazar, c.nombre as cliente, d.descripcion, d.cantidad, d.entregado from venta a join bazar b using(idBazar) join cliente c using(idCliente) join movimiento d using(idVenta) where a.idBazar = ".$_POST['bazar']." and b.visible = 1 and a.idEstado = 1 and d.cantidad > d.entregado order by fecha desc;";
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
-		echo $sql;
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
 			$sql = "select sum(precio * cantidad * (1-descuento/100)) as total from movimiento where idVenta = ".$row['idVenta'];

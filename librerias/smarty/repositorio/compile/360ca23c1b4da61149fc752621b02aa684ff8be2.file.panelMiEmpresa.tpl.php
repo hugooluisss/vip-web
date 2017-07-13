@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 10:57:14
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-13 09:46:33
          compiled from "templates/plantillas/modulos/empresas/panelMiEmpresa.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:84928952594484f80ab332-32821012%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '360ca23c1b4da61149fc752621b02aa684ff8be2' => 
     array (
       0 => 'templates/plantillas/modulos/empresas/panelMiEmpresa.tpl',
-      1 => 1499875030,
+      1 => 1499957187,
       2 => 'file',
     ),
   ),
@@ -52,7 +52,7 @@ no-camara.jpg" id="logotipo" style="height: 100px;"/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="txtRazonSocial" class="col-sm-2">Razon social</label>
+				<label for="txtRazonSocial" class="col-sm-2">Razon social *</label>
 				<div class="col-sm-10">
 					<input class="form-control" id="txtRazonSocial" name="txtRazonSocial" value="<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getRazonSocial();?>
 " />
@@ -62,6 +62,13 @@ no-camara.jpg" id="logotipo" style="height: 100px;"/>
 				<label for="txtSlogan" class="col-sm-2">Slogan</label>
 				<div class="col-sm-10">
 					<input class="form-control" id="txtSlogan" name="txtSlogan" value="<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getSlogan();?>
+"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="txtMarca" class="col-sm-2">Marca</label>
+				<div class="col-sm-10">
+					<input class="form-control" id="txtMarca" name="txtMarca" value="<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getMarca();?>
 "/>
 				</div>
 			</div>

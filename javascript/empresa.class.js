@@ -8,6 +8,7 @@ TEmpresa = function(){
 				"id": datos.id,
 				"razonSocial": datos.razonSocial,
 				"slogan": datos.slogan, 
+				"marca": datos.marca,
 				"direccion": datos.direccion,
 				"externo": datos.externo,
 				"interno": datos.interno,

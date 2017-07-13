@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 23:03:21
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-13 09:16:03
          compiled from "templates/plantillas/modulos/reportes/pedidos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:14450829155966f109a6dd46-09407010%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2ddacc6badbada352bdd39e383db5f05d6283c3e' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/pedidos.tpl',
-      1 => 1499918195,
+      1 => 1499953231,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_5966f109ae4735_64327406',
   'variables' => 
   array (
     'bazares' => 0,
     'row' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_5966f109ae4735_64327406',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5966f109ae4735_64327406')) {function content_5966f109ae4735_64327406($_smarty_tpl) {?><div class="row">
 	<div class="col-sm-3">

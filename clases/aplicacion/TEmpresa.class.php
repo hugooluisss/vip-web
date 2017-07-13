@@ -9,6 +9,7 @@
 class TEmpresa{
 	private $idEmpresa;
 	private $razonsocial;
+	private $marca;
 	private $slogan;
 	private $direccion;
 	private $externo;
@@ -144,6 +145,32 @@ class TEmpresa{
 	
 	public function getSlogan(){
 		return $this->slogan;
+	}
+	
+	/**
+	* Establece la marca
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setMarca($val = ""){
+		$this->marca = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna la marca
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getMarca(){
+		return $this->marca;
 	}
 	
 	/**
@@ -535,6 +562,7 @@ class TEmpresa{
 			SET
 				razonsocial = '".$this->getRazonSocial()."',
 				slogan = '".$this->getSlogan()."',
+				marca = '".$this->getMarca()."',
 				direccion = '".$this->getDireccion()."',
 				externo = '".$this->getExterno()."',
 				interno = '".$this->getInterno()."',

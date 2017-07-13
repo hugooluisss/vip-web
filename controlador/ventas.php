@@ -28,7 +28,7 @@ switch($objModulo->getId()){
 		$rs = $db->query("select * from metodopago where visible = true and idEmpresa = ".$userSesion->getEmpresa());
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
-			$rs2 = $db->query("select * from metodocobro a where a.visible = true and idTipoCobro = ".$row['idTipoCobro']);
+			$rs2 = $db->query("select * from metodocobro a where a.visible = true and idTipoCobro = ".$row['idTipoCobro']." and idEmpresa = ".$userSesion->getEmpresa());
 			$datos2 = array();
 			while($row2 = $rs2->fetch_assoc()){
 				array_push($datos2, $row2);

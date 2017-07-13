@@ -522,7 +522,7 @@ $(document).ready(function(){
 	
 	$("#winPago").on("show.bs.modal", function(event){
 		var ventana = $("#winPago");
-		ventana.find("#txtMonto").val($("#dvSaldo").html());
+		ventana.find("#txtMonto").val($("#dvSaldo").html() < 0?0:$("#dvSaldo").html());
 		ventana.find("#montoMaximo").val($("#dvSaldo").html() < 0?0:$("#dvSaldo").html());
 		
 	});
@@ -565,35 +565,28 @@ $(document).ready(function(){
 		wrapper: 'span', 
 		submitHandler: function(form){
 			console.log($("#txtMonto").val(), $("#montoMaximo").val());
-			if (parseFloat($("#txtMonto").val()) > parseFloat($("#montoMaximo").val())){
-				alert("El pago no debe de ser mayor a " + $("#montoMaximo").val());
-
-				$("#txtMonto").val($("#montoMaximo").val()).select();
-			}else{
-				var obj = new TPago;
-				obj.add({
-					id: $("#id").val(), 
-					venta: venta.id, 
-					metodoCobro: $("#selMetodoCobro").val(), 
-					metodoPago: $("#selMetodoPago").val(), 
-					monto: $("#txtMonto").val(), 
-					referencia: $("#txtReferencia").val(), 
-					fn: {
-						after: function(datos){
-							if (datos.band){
-								$("#frmPago").get(0).reset();
-								$("#winPago").modal("hide");
-								
-								getListaPagos();
-							}else{
-								alert("No se pudo guardar el registro");
-							}
+			var obj = new TPago;
+			obj.add({
+				id: $("#id").val(), 
+				venta: venta.id, 
+				metodoCobro: $("#selMetodoCobro").val(), 
+				metodoPago: $("#selMetodoPago").val(), 
+				monto: $("#txtMonto").val(), 
+				referencia: $("#txtReferencia").val(), 
+				fn: {
+					after: function(datos){
+						if (datos.band){
+							$("#frmPago").get(0).reset();
+							$("#winPago").modal("hide");
+							
+							getListaPagos();
+						}else{
+							alert("No se pudo guardar el registro");
 						}
 					}
-				});
-			}
+				}
+			});
         }
-
     });
     
     getListaPagos();
