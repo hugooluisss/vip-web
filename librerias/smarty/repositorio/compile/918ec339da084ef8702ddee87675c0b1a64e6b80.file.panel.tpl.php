@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-22 09:37:21
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:34:37
          compiled from "templates/plantillas/modulos/metodoscobro/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:123411077459495c77aacb50-51757110%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '918ec339da084ef8702ddee87675c0b1a64e6b80' => 
     array (
       0 => 'templates/plantillas/modulos/metodoscobro/panel.tpl',
-      1 => 1498142240,
+      1 => 1498157756,
       2 => 'file',
     ),
   ),

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-11 09:57:47
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:42:17
          compiled from "templates/plantillas/modulos/operaciones/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:53401678359568b1a0e4d11-76621903%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7b39e0b4c7f8f1d45423bde59d26499b19c4b646' => 
     array (
       0 => 'templates/plantillas/modulos/operaciones/panel.tpl',
-      1 => 1499088855,
+      1 => 1499797558,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_59568b1a1b1db4_64067431',
   'variables' => 
   array (
+    'totalBazares' => 0,
     'bazares' => 0,
     'row' => 0,
     'bazar' => 0,
@@ -27,7 +28,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_59568b1a1b1db4_64067431')) {function content_59568b1a1b1db4_64067431($_smarty_tpl) {?><div class="row">
+<?php if ($_valid && !is_callable('content_59568b1a1b1db4_64067431')) {function content_59568b1a1b1db4_64067431($_smarty_tpl) {?><?php if ($_smarty_tpl->tpl_vars['totalBazares']->value){?>
+<div class="row">
 	<div class="col-sm-3">
 		<h1 class="page-header">Operaciones</h1>
 	</div>
@@ -93,4 +95,12 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </div>
 
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/ventas/winProductos.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
-<?php }} ?>
+
+<?php }else{ ?>
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-3 col-sm-6">
+			<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/error/bazares.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+		</div>
+	</div>
+<?php }?><?php }} ?>

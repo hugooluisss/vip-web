@@ -1,8 +1,13 @@
 <div class="box">
 	<div class="box-body">
-		<div class="btn-group" role="group" aria-label="...">
-			<button class="btn btn-xs btn-success" id="showAll">Todos</button>
-			<button class="btn btn-xs btn-danger" id="hideInactive">Solo activos</button>
+		<div class="btn-toolbar" role="toolbar" aria-label="...">
+			<div class="btn-group" role="group" aria-label="...">
+				<button class="btn btn-xs btn-success" id="showAll">Todos</button>
+				<button class="btn btn-xs btn-danger" id="hideInactive">Solo activos</button>
+			</div>
+			<div class="btn-group" role="group" aria-label="...">
+				<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#winAyuda">Ayuda</button>
+			</div>
 		</div>
 		<table id="tblDatos" class="table table-bordered table-hover">
 			<thead>

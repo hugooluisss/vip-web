@@ -74,7 +74,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtMarca" class="col-md-2 text-right">Marca</label>
+						<label for="txtMarca" class="col-md-2 text-right">Familia</label>
 						<div class="col-md-2 text-right">
 							<input class="form-control" id="txtMarca" name="txtMarca">
 						</div>

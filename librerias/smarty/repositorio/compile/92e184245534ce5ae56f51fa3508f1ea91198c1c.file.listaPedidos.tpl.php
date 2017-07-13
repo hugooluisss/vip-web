@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:47:11
-         compiled from "templates/plantillas/modulos/reportes/listaVentas.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:853882315595a6899623151-96343687%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 23:07:42
+         compiled from "templates/plantillas/modulos/reportes/listaPedidos.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:1284159215966f20ec72050-51626097%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'a03d8e78d17ba2c986a3c8fb90ebff902f2dd580' => 
+    '92e184245534ce5ae56f51fa3508f1ea91198c1c' => 
     array (
-      0 => 'templates/plantillas/modulos/reportes/listaVentas.tpl',
+      0 => 'templates/plantillas/modulos/reportes/listaPedidos.tpl',
       1 => 1499789020,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '853882315595a6899623151-96343687',
+  'nocache_hash' => '1284159215966f20ec72050-51626097',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_595a6899658ef8_40628736',
   'variables' => 
   array (
     'bazar' => 0,
@@ -24,8 +22,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'row' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_5966f20ef3e685_75975045',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_595a6899658ef8_40628736')) {function content_595a6899658ef8_40628736($_smarty_tpl) {?><table id="tblDatos" class="table table-bordered table-hover">
+<?php if ($_valid && !is_callable('content_5966f20ef3e685_75975045')) {function content_5966f20ef3e685_75975045($_smarty_tpl) {?><table id="tblDatos" class="table table-bordered table-hover">
 	<thead>
 		<tr>
 			<th>Fecha</th>

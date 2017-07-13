@@ -1,32 +1,32 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:50:37
-         compiled from "templates/plantillas/modulos/reportes/existencias.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1706696756595bacc498ec92-04957641%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 23:03:21
+         compiled from "templates/plantillas/modulos/reportes/pedidos.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:14450829155966f109a6dd46-09407010%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '5a543a72b5ea2bd231546a55809a33b7e270d1ce' => 
+    '2ddacc6badbada352bdd39e383db5f05d6283c3e' => 
     array (
-      0 => 'templates/plantillas/modulos/reportes/existencias.tpl',
-      1 => 1499741850,
+      0 => 'templates/plantillas/modulos/reportes/pedidos.tpl',
+      1 => 1499918195,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1706696756595bacc498ec92-04957641',
+  'nocache_hash' => '14450829155966f109a6dd46-09407010',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_595bacc49c0579_05845311',
   'variables' => 
   array (
     'bazares' => 0,
     'row' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_5966f109ae4735_64327406',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_595bacc49c0579_05845311')) {function content_595bacc49c0579_05845311($_smarty_tpl) {?><div class="row">
+<?php if ($_valid && !is_callable('content_5966f109ae4735_64327406')) {function content_5966f109ae4735_64327406($_smarty_tpl) {?><div class="row">
 	<div class="col-sm-3">
-		<h1 class="page-header">Reporte de existencias</h1>
+		<h1 class="page-header">Reporte de pedidos</h1>
 	</div>
 </div>
 

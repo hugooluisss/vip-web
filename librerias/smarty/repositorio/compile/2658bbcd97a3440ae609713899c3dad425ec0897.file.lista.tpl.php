@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-27 13:33:50
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:33:45
          compiled from "templates/plantillas/modulos/metodospago/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:80790873659494f75e47a06-94358174%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2658bbcd97a3440ae609713899c3dad425ec0897' => 
     array (
       0 => 'templates/plantillas/modulos/metodospago/lista.tpl',
-      1 => 1498588427,
+      1 => 1498590150,
       2 => 'file',
     ),
   ),

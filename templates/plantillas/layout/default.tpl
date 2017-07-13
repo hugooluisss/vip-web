@@ -135,8 +135,8 @@
 							<li {if $PAGE.modulo eq 'miEmpresa'}class="active"{/if}><a href="miEmpresa">Mi empresa</a></li>
 							<li {if $PAGE.modulo eq 'misUsuarios'}class="active"{/if}><a href="misUsuarios">Mis usuarios</a></li>
 							<li {if in_array($PAGE.modulo, array('bazares', 'productos'))}class="active"{/if}><a href="bazares">Bazares</a></li>
-							<!--<li {if $PAGE.modulo eq 'metodoscobro'}class="active"{/if}><a href="metodoscobro">Métodos de cobro</a></li>-->
-							<li {if $PAGE.modulo eq 'metodospago'}class="active"{/if}><a href="metodospago">Métodos de pago</a></li>
+							<li {if $PAGE.modulo eq 'metodoscobro'}class="active"{/if}><a href="metodoscobro">Métodos de cobro</a></li>
+							<!--<li {if $PAGE.modulo eq 'metodospago'}class="active"{/if}><a href="metodospago">Métodos de pago</a></li>-->
 							<li {if in_array($PAGE.modulo, array('clientes'))}class="active"{/if}><a href="clientes">Clientes</a></li>
 						</ul>
 					</li>
@@ -160,7 +160,7 @@
 						</ul>
 					</li>
 					
-					<li class="{if in_array($PAGE.modulo, array('reporteventas', 'reporteexistencias'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('reporteventas', 'reporteexistencias', 'reportepedidos'))}active{/if} treeview">
 						<a href="#">
 							<i class="fa fa-list-alt"></i> 
 							<span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
@@ -168,6 +168,7 @@
 						<ul class="treeview-menu">
 							<li class="{if in_array($PAGE.modulo, array('reporteventas'))}active{/if}"><a href="reporteventas">Ventas</a></li>
 							<li class="{if in_array($PAGE.modulo, array('reporteexistencias'))}active{/if}"><a href="reporteexistencias">Existencias</a></li>
+							<li class="{if in_array($PAGE.modulo, array('reportepedidos'))}active{/if}"><a href="reportepedidos">Pedidos</a></li>
 						</ul>
 					</li>
 					{/if}
@@ -182,14 +183,15 @@
 						</ul>
 					</li>
 					
-					<li class="{if in_array($PAGE.modulo, array('reporteventas', 'reporteexistencias'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('reporteventas', 'reporteexistencias', 'reportepedidos'))}active{/if} treeview">
 						<a href="#">
 							<i class="fa fa-list-alt"></i> 
 							<span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
 							<li class="{if in_array($PAGE.modulo, array('reporteventas'))}active{/if}"><a href="reporteventas">Ventas</a></li>
-							<li class="{if in_array($PAGE.modulo, array('reporteexistencias'))}active{/if}"><a href="reporteexistencias">Existencias</a></li>
+							<li class="{if in_array($PAGE.modulo, array('reporteexistencias'))}active{/if}"><a href="reporteexistencias">Inventario</a></li>
+							<li class="{if in_array($PAGE.modulo, array('reportepedidos'))}active{/if}"><a href="reportepedidos">Pedidos</a></li>
 						</ul>
 					</li>
 					{/if}

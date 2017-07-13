@@ -90,3 +90,21 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+<div class="modal fade" id="winAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" identificador="">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Definición de íconos</h4>
+			</div>
+			<div class="modal-body">
+				<button class="btn btn-primary">P</button> Catálogo de productos<br /><br />
+				<button class="btn btn-primary"><i class="fa fa-users"></i></button> Usuarios del bazar<br /><br />
+				<button class="btn btn-success"><i class="fa fa-pencil"></i></button> Modificar bazar<br /><br />
+				<button class="btn btn-danger"><i class="fa fa-times"></i></button> Eliminar bazar<br /><br />
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

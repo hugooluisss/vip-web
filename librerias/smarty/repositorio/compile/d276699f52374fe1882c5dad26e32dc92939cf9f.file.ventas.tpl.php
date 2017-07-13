@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-11 09:05:32
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:50:22
          compiled from "templates/plantillas/modulos/reportes/ventas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1273032186595a5ed28ac366-22650336%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd276699f52374fe1882c5dad26e32dc92939cf9f' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/ventas.tpl',
-      1 => 1499781931,
+      1 => 1499917821,
       2 => 'file',
     ),
   ),
@@ -59,19 +59,20 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			<div class="col-xs-2 col-md-2 text-right">
 				<label for="txtInicio">Inicio</label>
 			</div>
-			<div class="col-xs-5 col-md-3">
+			<div class="col-xs-4 col-md-3">
 				<input type="date" placeholder="Y-m-d" class="form-control" id="txtInicio" name="txtInicio" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
 " readonly/>
 			</div>
 			<div class="col-xs-2 col-md-2 col-md-offset-1 text-right">
 				<label for="txtFin">Fin</label>
 			</div>
-			<div class="col-xs-5 col-md-3">
+			<div class="col-xs-4 col-md-3">
 				<input type="date" placeholder="Y-m-d" class="form-control" id="txtFin" name="txtFin" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
 " readonly/>
 			</div>
 		</div>
 		<br />
+		<!--
 		<div class="row">
 			<div class="col-xs-2 text-right">
 				<label for="selEstado">Estados</label>
@@ -91,6 +92,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			</div>
 		</div>
 		<br />
+		-->
 		<div class="row">
 			<div class="col-xs-12 text-right">
 				<button id="btnBuscar" name="btnBuscar" class="btn btn-primary">Buscar</button>

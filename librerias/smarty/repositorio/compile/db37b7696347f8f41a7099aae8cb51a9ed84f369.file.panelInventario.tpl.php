@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-11 10:37:45
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:41:59
          compiled from "templates/plantillas/modulos/bazares/panelInventario.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1369250404594abd8df16092-78177837%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'db37b7696347f8f41a7099aae8cb51a9ed84f369' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/panelInventario.tpl',
-      1 => 1499785686,
+      1 => 1499917311,
       2 => 'file',
     ),
   ),
@@ -19,13 +19,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_594abd8e1b0199_02081407',
   'variables' => 
   array (
+    'totalBazares' => 0,
     'lista' => 0,
     'row' => 0,
     'bazar' => 0,
+    'PAGE' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_594abd8e1b0199_02081407')) {function content_594abd8e1b0199_02081407($_smarty_tpl) {?><div class="row">
+<?php if ($_valid && !is_callable('content_594abd8e1b0199_02081407')) {function content_594abd8e1b0199_02081407($_smarty_tpl) {?><?php if ($_smarty_tpl->tpl_vars['totalBazares']->value){?>
+<div class="row">
 	<div class="col-sm-3">
 		<h1 class="page-header">Inventario del bazar </h1>
 	</div>
@@ -106,7 +109,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtMarca" class="col-md-2 text-right">Marca</label>
+						<label for="txtMarca" class="col-md-2 text-right">Familia</label>
 						<div class="col-md-2 text-right">
 							<input class="form-control" id="txtMarca" name="txtMarca">
 						</div>
@@ -174,4 +177,13 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
-</div><!-- /.modal --><?php }} ?>
+</div><!-- /.modal -->
+
+<?php }else{ ?>
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-3 col-sm-6">
+			<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/error/bazares.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+		</div>
+	</div>
+<?php }?><?php }} ?>

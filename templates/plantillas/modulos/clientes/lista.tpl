@@ -1,7 +1,29 @@
 {if $select neq true}
 <div class="box">
 	<div class="box-body">
+		<div class="btn-toolbar" role="toolbar" aria-label="...">
+			<div class="btn-group" role="group" aria-label="...">
+				<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#winAyuda">Ayuda</button>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="winAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" identificador="">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Definición de íconos</h4>
+					</div>
+					<div class="modal-body">
+						<button class="btn btn-default">D</button> Establece al cliente como el cliente por defecto<br /><br />
+						<button class="btn btn-success"><i class="fa fa-pencil"></i></button> Modificar<br /><br />
+						<button class="btn btn-danger"><i class="fa fa-times"></i></button> Eliminar<br /><br />
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 {/if}
+		
 		<table id="tblDatos" class="table table-bordered table-hover">
 			<thead>
 				<tr>

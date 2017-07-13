@@ -638,10 +638,7 @@ $(document).ready(function(){
 										objVenta.id = venta.id;
 										objVenta.imprimir({
 											fn: {
-												before: function(){
-													el.prop("disabled", true);
-												}, after: function(resp){
-													el.prop("disabled", false);
+												after: function(resp){
 													try{
 														if (ventanaImpresion == undefined)
 															ventanaImpresion = window.open(resp.url, "Ticket");

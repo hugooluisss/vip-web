@@ -513,7 +513,8 @@ class TEmpresa{
 				array("nombre" => "Cheque", "tipo" => 1), 
 				array("nombre" => "Tarjeta de débito", "tipo" => 2), 
 				array("nombre" => "Tarjeta de crédito", "tipo" => 2), 
-				array("nombre" => "Transferencia", "tipo" => 3)
+				array("nombre" => "Transferencia", "tipo" => 3),
+				array("nombre" => "Depósitos a cuenta", "tipo" => 2)
 			);
 			
 			foreach($catalogo as $el){

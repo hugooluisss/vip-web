@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 13:41:59
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:32:26
          compiled from "templates/plantillas/modulos/bazares/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4629580245953cdb630b635-21281453%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '56643b30d45b998ebf34dba5c2b47c1cd7922918' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/lista.tpl',
-      1 => 1499884915,
+      1 => 1499916743,
       2 => 'file',
     ),
   ),
@@ -26,9 +26,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5953cdb63d1ba0_35730339')) {function content_5953cdb63d1ba0_35730339($_smarty_tpl) {?><div class="box">
 	<div class="box-body">
-		<div class="btn-group" role="group" aria-label="...">
-			<button class="btn btn-xs btn-success" id="showAll">Todos</button>
-			<button class="btn btn-xs btn-danger" id="hideInactive">Solo activos</button>
+		<div class="btn-toolbar" role="toolbar" aria-label="...">
+			<div class="btn-group" role="group" aria-label="...">
+				<button class="btn btn-xs btn-success" id="showAll">Todos</button>
+				<button class="btn btn-xs btn-danger" id="hideInactive">Solo activos</button>
+			</div>
+			<div class="btn-group" role="group" aria-label="...">
+				<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#winAyuda">Ayuda</button>
+			</div>
 		</div>
 		<table id="tblDatos" class="table table-bordered table-hover">
 			<thead>

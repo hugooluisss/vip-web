@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-16 21:03:38
+<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:41:12
          compiled from "templates/plantillas/modulos/clientes/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:176422759059448dfa8e8514-51426664%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b3d926bdf5ef13138597e908a4dd74ad59633ab' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/lista.tpl',
-      1 => 1497380275,
+      1 => 1499917270,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_59448dfa9b4bc2_71421071',
   'variables' => 
   array (
     'select' => 0,
@@ -23,13 +25,33 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'parametros' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_59448dfa9b4bc2_71421071',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59448dfa9b4bc2_71421071')) {function content_59448dfa9b4bc2_71421071($_smarty_tpl) {?><?php if ($_smarty_tpl->tpl_vars['select']->value!=true){?>
 <div class="box">
 	<div class="box-body">
+		<div class="btn-toolbar" role="toolbar" aria-label="...">
+			<div class="btn-group" role="group" aria-label="...">
+				<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#winAyuda">Ayuda</button>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="winAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" identificador="">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Definición de íconos</h4>
+					</div>
+					<div class="modal-body">
+						<button class="btn btn-default">D</button> Establece al cliente como el cliente por defecto<br /><br />
+						<button class="btn btn-success"><i class="fa fa-pencil"></i></button> Modificar<br /><br />
+						<button class="btn btn-danger"><i class="fa fa-times"></i></button> Eliminar<br /><br />
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 <?php }?>
+		
 		<table id="tblDatos" class="table table-bordered table-hover">
 			<thead>
 				<tr>
