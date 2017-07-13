@@ -178,6 +178,7 @@ TVenta = function(){
 		
 		$.post('cventas', {
 				"id": self.id,
+				"email": datos.email,
 				"action": "imprimir"
 			}, function(data){
 				if (datos.fn.after !== undefined)

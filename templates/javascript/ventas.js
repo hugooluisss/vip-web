@@ -508,6 +508,27 @@ $(document).ready(function(){
 				});
 			});
 			
+			$("#winVentas").find("[action=email]").click(function(){
+				var el = $(this);
+				var json = jQuery.parseJSON(el.attr("datos"));
+				var objVenta = new TVenta;
+				
+				var email = prompt("¿A que correo se envía?", json.correo);
+				var json = jQuery.parseJSON(el.attr("datos"));
+				
+				objVenta.id = json.idVenta;
+				objVenta.imprimir({
+					"email": email,
+					fn: {
+						before: function(){
+							el.prop("disabled", true);
+						}, after: function(resp){
+							el.prop("disabled", false);
+						}
+					}
+				});
+			});
+			
 			$("#winVentas").find("#tblVentas").DataTable({
 				"responsive": true,
 				"language": espaniol,
@@ -630,6 +651,7 @@ $(document).ready(function(){
 				
 										objVenta.id = venta.id;
 										objVenta.imprimir({
+											"email": email,
 											fn: {
 												after: function(resp){
 													try{

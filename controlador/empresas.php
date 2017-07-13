@@ -49,6 +49,21 @@ switch($objModulo->getId()){
 					$obj->setRFC($_POST['rfc']);
 					$obj->setActivo($_POST['activo']);
 					
+					if($_POST['id'] == ''){ #es una nueva empresa
+						global $ini;
+						$email = new TMail();
+						$email->setTema("Registro de empresa");
+						$email->addDestino($_POST['email']);
+						
+						$datos = array();
+						$datos['empresa.razonsocial'] = $obj->getRazonSocial();
+						$datos['empresa.correo'] = $obj->getEmail();
+						
+						$email->setBodyHTML(utf8_decode($email->construyeMail(file_get_contents("repositorio/mail/registroEmpresa.html"), $datos)));
+						
+						$bandEmail = $email->send();
+					}
+					
 					$smarty->assign("json", array("band" => $obj->guardar(), "id" => $obj->getId()));
 				}else
 					$smarty->assign("json", array("band" => $band));

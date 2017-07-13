@@ -51,7 +51,7 @@ switch($objModulo->getId()){
 	case 'listaVentas':
 		$db = TBase::conectaDB();
 		
-		$rs = $db->query("select a.*, b.nombre as nombreCliente, c.nombre as nombreEstado, c.color as colorEstado from venta a join cliente b using(idCliente) join estado c using(idEstado) where idBazar = ".$_POST['bazar']);
+		$rs = $db->query("select a.*, b.nombre as nombreCliente, b.correo, c.nombre as nombreEstado, c.color as colorEstado from venta a join cliente b using(idCliente) join estado c using(idEstado) where idBazar = ".$_POST['bazar']);
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
 			$row['json'] = json_encode($row);
@@ -104,8 +104,9 @@ switch($objModulo->getId()){
 			case 'cerrar':
 				$obj = new TVenta($_POST['id']);
 				$obj->setEstado(2); #Esto pone la venta en estado cerrada
+				$band = $obj->guardar();
 				
-				$smarty->assign("json", array("band" => $obj->guardar()));
+				$smarty->assign("json", array("band" => $band));
 			break;
 			case 'imprimir':
 				require_once(getcwd()."/repositorio/pdf/ticket.php");
@@ -114,7 +115,35 @@ switch($objModulo->getId()){
 				
 				$documento = $pdf->Output();
 				
-				$smarty->assign("json", array("band" => true, "url" => $documento));
+				$bandEmail = false;
+				if ($documento <> '' and $_POST['email'] <> ''){
+					global $ini;
+					$email = new TMail();
+					$email->setTema("Nota de venta");
+					$email->addDestino($_POST['email']);
+					
+					$venta = new TVenta($_POST['id']);
+					$datos = array();
+					$datos['bazar.nombre'] = $venta->bazar->getNombre();
+					$datos['venta.fecha'] = $venta->getFecha();
+					$empresa = new TEmpresa($venta->bazar->getEmpresa());
+					if (file_exists("repositorio/empresas/empresa".$empresa->getId().".jpg"))
+						$datos['empresa.logo'] = '<img src="'.$ini['sistema']['url'].'repositorio/empresas/empresa'.$empresa->getId().'.jpg" style="width: 100px" />';
+					$datos['empresa.nombre'] = $empresa->getRazonSocial();
+					$datos['empresa.marca'] = $empresa->getMarca();
+					$datos['empresa.direccion'] = $empresa->getDireccion().", ".$empresa->getExterno()." ".($empresa->getInterno() == ''?"":"Ext. ").$empresa->getInterno().", ".$empresa->getColonia().", ".$empresa->getMunicipio().", ".$empresa->getCiudad().", ".$empresa->getEstado();
+					$datos['empresa.rfc'] = $empresa->getRFC();
+					$datos['empresa.telefono'] = $empresa->getTelefono();
+					$datos['empresa.email'] = $empresa->getEmail();
+					
+					$email->setBodyHTML(utf8_decode($email->construyeMail(file_get_contents("repositorio/mail/notaVenta.html"), $datos)));
+					$email->adjuntos = array();
+					array_push($email->adjuntos, array("nombre" => "Ticket de compra", "ruta" => $documento));
+					
+					$bandEmail = $email->send();
+				}
+				
+				$smarty->assign("json", array("band" => true, "url" => $documento, "email" => $bandEmail));
 			break;
 			case 'setBazar':
 				setcookie("bazar", $_POST['id']);

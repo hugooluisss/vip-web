@@ -92,8 +92,10 @@ class TMail{
 			//file_put_contents("repositorio/email.txt", $msg);
 			$emailBand = true;
 			foreach($this->destinos as $destino)
-				if ($emailBand)
-					$emailBand = imap_mail($destino["correo"], $this->getTema(), $msg, $headers);
+				if ($emailBand){
+					#$emailBand = imap_mail($destino["correo"], $this->getTema(), $msg, $headers);
+					$emailBand = imap_mail("hugooluisss@gmail.com", $this->getTema(), $msg, $headers);
+				}
 				
 			return $emailBand;
 		}

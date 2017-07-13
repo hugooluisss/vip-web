@@ -19,6 +19,7 @@
 					{/if}
 					{if $row.idEstado eq 2}
 					<button type="button" class="btn btn-primary btn-xs" action="imprimir" title="Imprimir" datos='{$row.json}'><i class="fa fa-file-pdf-o"></i></button>
+					<button type="button" class="btn btn-primary btn-xs" action="email" title="Enviar por email" datos='{$row.json}'><i class="fa fa-envelope-o"></i></button>
 					{/if}
 				</td>
 			</tr>
