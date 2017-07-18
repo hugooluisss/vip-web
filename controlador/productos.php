@@ -20,6 +20,9 @@ switch($objModulo->getId()){
 			$rs = $db->query("select * from producto a where a.visible = true and idBazar = ".$_POST['bazar']);
 			$datos = array();
 			while($row = $rs->fetch_assoc()){
+				$obj = new TProducto($row['idProducto']);
+				$row['inventario'] = $obj->getInventarioDisponible();
+				
 				$row['json'] = json_encode($row);
 				
 				array_push($datos, $row);
@@ -176,7 +179,7 @@ switch($objModulo->getId()){
 			break;
 			case 'get':
 				$db = TBase::conectaDB();
-				$sql = "select * from producto where idBazar = ".$_POST['bazar']." and codigoBarras = ".$_POST['codigo'];
+				$sql = "select * from producto where idBazar = ".$_POST['bazar']." and codigoBarras = '".$_POST['codigo']."'";
 				$rs = $db->query($sql);
 				$row = $rs->fetch_assoc();
 				

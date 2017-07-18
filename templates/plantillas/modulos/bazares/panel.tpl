@@ -31,7 +31,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtFin" class="col-sm-2">Termina *</label>
+						<label for="txtFin" class="col-sm-2">Termina</label>
 						<div class="col-sm-3">
 							<input class="form-control" id="txtFin" name="txtFin">
 						</div>
@@ -50,9 +50,12 @@
 						<label for="txtInicial" class="col-sm-2">Identificador *</label>
 						<div class="col-sm-1">
 							<input class="form-control" id="txtInicial" name="txtInicial">
+						</div>
+						<div class="col-sm-9">
 							<p class="help-block">Inicial con la que se identifica el folio</p>
 						</div>
 					</div>
+					<!--
 					<div class="form-group">
 						<label for="txtFolio" class="col-sm-2">Folio *</label>
 						<div class="col-sm-3">
@@ -60,6 +63,7 @@
 							<p class="help-block">Último entregado</p>
 						</div>
 					</div>
+					-->
 				</div>
 				<div class="box-footer">
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
@@ -100,10 +104,10 @@
 				<h4 class="modal-title">Definición de íconos</h4>
 			</div>
 			<div class="modal-body">
-				<button class="btn btn-primary">P</button> Catálogo de productos<br /><br />
-				<button class="btn btn-primary"><i class="fa fa-users"></i></button> Usuarios del bazar<br /><br />
-				<button class="btn btn-success"><i class="fa fa-pencil"></i></button> Modificar bazar<br /><br />
-				<button class="btn btn-danger"><i class="fa fa-times"></i></button> Eliminar bazar<br /><br />
+				<button class="btn btn-primary" style="width: 40px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button> Catálogo de productos<br /><br />
+				<button class="btn btn-primary" style="width: 40px;"><i class="fa fa-users"></i></button> Usuarios del bazar<br /><br />
+				<button class="btn btn-success" style="width: 40px;"><i class="fa fa-pencil"></i></button> Modificar bazar<br /><br />
+				<button class="btn btn-danger" style="width: 40px;"><i class="fa fa-times"></i></button> Eliminar bazar<br /><br />
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->

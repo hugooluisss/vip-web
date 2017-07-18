@@ -15,15 +15,35 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="btn-group btn-group-xs pull-left">
-			<a href="controlinventario" class="btn btn-primary"><i class="fa fa-arrow-right" aria-hidden="true"></i> Ir a control de inventario</a>
+			<button class="btn btn-warning" data-toggle="modal" data-target="#winAyuda">Ayuda</button>
 		</div>
 		<div class="btn-group btn-group-xs pull-right">
-			<button type="button" class="btn btn-success" id="btnExportar"><i class="fa fa-download" aria-hidden="true"></i> Exportar xls</button>
-			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar xls</button>
-			<button type="button" class="btn btn-primary" id="btnPlantilla"><i class="fa fa-download" aria-hidden="true"></i> Descargar plantilla</button>
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" class="btn btn-success" id="btnExportar"><i class="fa fa-download" aria-hidden="true"></i> Exportar xls</button>
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar xls</button>
+				<button type="button" class="btn btn-primary" id="btnPlantilla"><i class="fa fa-download" aria-hidden="true"></i> Descargar plantilla</button>
+			</div>
 		</div>
 	</div>
 </div>
+
+
+
+<div class="modal fade" id="winAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" identificador="">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Definición de íconos</h4>
+			</div>
+			<div class="modal-body">
+				<button class="btn btn-success"><i class="fa fa-pencil"></i></button> Modificar<br /><br />
+				<button class="btn btn-danger"><i class="fa fa-times"></i></button> Eliminar<br /><br />
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 <div class="row">
 	<div class="col-xs-12">
@@ -85,10 +105,12 @@
 						<div class="col-md-3">
 							<input class="form-control" id="txtPrecio" name="txtPrecio" type="number">
 						</div>
+						<!--
 						<label for="txtCosto" class="col-md-offset-1 col-md-2 text-right">Costo</label>
 						<div class="col-md-3">
 							<input class="form-control" id="txtCosto" name="txtCosto" type="number" value="0">
 						</div>
+						-->
 					</div>
 					
 					<div class="form-group">

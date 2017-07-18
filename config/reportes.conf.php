@@ -23,7 +23,7 @@ $conf['reporteexistencias'] = array(
 	'descripcion' => 'Reporte de existencias',
 	'seguridad' => true,
 	'js' => array('venta.class.js'),
-	'jsTemplate' => array('reporteexistencias.js'),
+	'jsTemplate' => array('reporteExistencias.js'),
 	'capa' => LAYOUT_DEFECTO);
 	
 $conf['listaReporteExistencias'] = array(

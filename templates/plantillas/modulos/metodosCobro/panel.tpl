@@ -35,7 +35,7 @@
 						<label for="txtDestino" class="col-lg-2">Destino</label>
 						<div class="col-lg-6">
 							<input class="form-control" id="txtDestino" name="txtDestino">
-							<span class="help-block">Personaliza tu método de cobro por ejemplo: “Bancomer -xxxx” o “Clip xxx</span>
+							<span class="help-block">Personaliza tu método de cobro por ejemplo: "Bancomer -xxxx" o "Clip xxx"</span>
 						</div>
 					</div>
 				</div>
@@ -48,3 +48,19 @@
 		</form>
 	</div>
 </div>
+
+
+<div class="modal fade" id="winAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" identificador="">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Definición de íconos</h4>
+			</div>
+			<div class="modal-body">
+				<button class="btn btn-success"><i class="fa fa-pencil"></i></button> Modificar<br /><br />
+				<button class="btn btn-danger"><i class="fa fa-times"></i></button> Eliminar<br /><br />
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

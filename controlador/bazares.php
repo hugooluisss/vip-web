@@ -45,12 +45,12 @@ switch($objModulo->getId()){
 				
 				$obj->setId($_POST['id']);
 				$obj->setInicio($_POST['inicio']);
-				$obj->setFin($_POST['fin']);
+				$obj->setFin($_POST['fin'] == ''?date("Y-m-d"):$_POST['fin']);
 				$obj->setEstado($_POST['estado']);
 				$obj->setNombre($_POST['nombre']);
 				$obj->setEmpresa($userSesion->getEmpresa());
 				$obj->setFolio($_POST['folio']);
-				$obj->setInicial($_POST['inicial']);
+				$obj->setInicial($_POST['inicial'] == ''?0:$_POST['inicial']);
 				
 				$band = $obj->guardar();
 				if ($band and $_POST['id'] == ''){

@@ -122,19 +122,19 @@
 					</div>
 				</div>
 				<div class="text-center">
-					<button class="btn btn-primary" id="btnPagar">Guardar y pagar</button>
+					<button class="btn btn-primary" id="btnPagar">Registro de pagos</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-6 col-sm-offset-3">
+	<div class="col-sm-8 col-sm-offset-2">
 		<div class="box">
 			<div class="box-body">
 				<div class="btn-group btn-group-justified">
 					<div class="btn-group">
-						<button class="btn btn-primary" id="btnGuardar">Guardar</button>
+						<button class="btn btn-primary" id="btnGuardar">Guardar para despues / apartar</button>
 					</div>
 					<div class="btn-group">
 						<button class="btn btn-danger" id="btnCancelar">Cancelar</button>

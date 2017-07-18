@@ -37,28 +37,30 @@
 	</div>
 	<div class="form-group">
 		<label class="col-sm-2 text-right" for="txtCiudad">Ciudad</label>
-		<div class="col-sm-2">
+		<div class="col-sm-4">
 			<input class="form-control input-sm" id="txtCiudad" name="txtCiudad" />
 		</div>
 		<label class="col-sm-2 text-right" for="txtEstado">Estado</label>
-		<div class="col-sm-2">
+		<div class="col-sm-4">
 			<input class="form-control input-sm" id="txtEstado" name="txtEstado" />
 		</div>
+	</div>
+	<div class="form-group">
 		<label class="col-sm-2 text-right" for="txtRFC">RFC</label>
 		<div class="col-sm-2">
 			<input class="form-control input-sm" id="txtRFC" name="txtRFC" />
 		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-sm-2 text-right" for="txtCorreo">Correo</label>
-		<div class="col-sm-2">
-			<input class="form-control input-sm" id="txtCorreo" name="txtCorreo" />
-		</div>
-		<label class="col-sm-2 text-right" for="txtTelefono">Teléfono</label>
+		<label class="col-sm-2 col-sm-offset-2 text-right" for="txtTelefono">Teléfono</label>
 		<div class="col-sm-2">
 			<input class="form-control input-sm" id="txtTelefono" name="txtTelefono" />
 		</div>
-		<label class="col-sm-2 text-right" for="txtTelefono">¿Recibir promociones?</label>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 text-right" for="txtCorreo">Correo</label>
+		<div class="col-sm-4">
+			<input class="form-control input-sm" id="txtCorreo" name="txtCorreo" />
+		</div>
+		<label class="col-sm-2 text-right" for="txtTelefono">¿Desea recibir promociones?</label>
 		<div class="col-sm-2">
 			<select id="selPromociones" name="selPromociones" class="form-control">
 				<option value="0">No</option>

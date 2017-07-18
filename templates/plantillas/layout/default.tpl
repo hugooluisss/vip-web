@@ -147,7 +147,7 @@
 						</a>
 						<ul class="treeview-menu">
 							<li {if in_array($PAGE.modulo, array('productos'))}class="active"{/if}><a href="productos">Productos</a></li>
-							<li {if in_array($PAGE.modulo, array('controlinventario'))}class="active"{/if}><a href="controlinventario">Control de inventario</a></li>
+							<li {if in_array($PAGE.modulo, array('controlinventario'))}class="active"{/if}><a href="controlinventario">Entradas y salidas de productos</a></li>
 						</ul>
 					</li>
 					<li class="{if in_array($PAGE.modulo, array('puntoventa'))}active{/if} treeview">
@@ -167,7 +167,7 @@
 						</a>
 						<ul class="treeview-menu">
 							<li class="{if in_array($PAGE.modulo, array('reporteventas'))}active{/if}"><a href="reporteventas">Ventas</a></li>
-							<li class="{if in_array($PAGE.modulo, array('reporteexistencias'))}active{/if}"><a href="reporteexistencias">Existencias</a></li>
+							<li class="{if in_array($PAGE.modulo, array('reporteexistencias'))}active{/if}"><a href="reporteexistencias">Inventarios</a></li>
 							<li class="{if in_array($PAGE.modulo, array('reportepedidos'))}active{/if}"><a href="reportepedidos">Pedidos</a></li>
 						</ul>
 					</li>
@@ -190,7 +190,7 @@
 						</a>
 						<ul class="treeview-menu">
 							<li class="{if in_array($PAGE.modulo, array('reporteventas'))}active{/if}"><a href="reporteventas">Ventas</a></li>
-							<li class="{if in_array($PAGE.modulo, array('reporteexistencias'))}active{/if}"><a href="reporteexistencias">Inventario</a></li>
+							<li class="{if in_array($PAGE.modulo, array('reporteexistencias'))}active{/if}"><a href="reporteexistencias">Inventarios</a></li>
 							<li class="{if in_array($PAGE.modulo, array('reportepedidos'))}active{/if}"><a href="reportepedidos">Pedidos</a></li>
 						</ul>
 					</li>

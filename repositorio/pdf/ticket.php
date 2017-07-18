@@ -75,9 +75,9 @@ class RTicket extends tFPDF{
     	$this->Ln(5);
     	$this->SetX($x);
     	$this->Cell(15, 5, "Correo: ");
-    	$this->Cell(50, 5, $this->empresa->getCiudad(), 'B');
+    	$this->Cell(50, 5, $this->empresa->getEmail(), 'B');
     	$this->Cell(10, 5, "Tel: ");
-    	$this->Cell(45, 5, $this->empresa->getEstado(), 'B');
+    	$this->Cell(45, 5, $this->empresa->getTelefono(), 'B');
     	$this->Ln(15);
     	
     	#Datos del cliente
@@ -173,7 +173,7 @@ class RTicket extends tFPDF{
 		
 		$this->SetFont('Sans', 'B', 6);
 		$this->Cell(93, 4, "Cantidad total", 'T', 0, 'R');
-		$this->Cell(15, 4, $cantidad, 'T', 0, 'R');
+		$this->Cell(15, 4, utf8_decode($cantidad), 'T', 0, 'R');
 		$this->Cell(50, 4, "Precio total", 'T', 0, 'R');
 		$this->Cell(25, 4, number_format($total, 2, '.', ','), 'T', 0, 'R');
 		$this->Cell(15, 4, "".$entregados, 'T', 0, 'R');
@@ -221,7 +221,7 @@ class RTicket extends tFPDF{
 		rename($file, $file.'.pdf');
 		$file .= '.pdf';
 		parent::Output($file, 'F');
-		chmod($file, 0555);
+		chmod($file, 0777);
 		//header('Location: temporal/'.$file);
 		
 		return $file;

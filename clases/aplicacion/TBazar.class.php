@@ -214,7 +214,7 @@ class TBazar{
 	*/
 	
 	public function getFolio(){
-		return $this->folio;
+		return $this->folio == ''?0:$this->folio;
 	}
 	
 	/**
@@ -266,7 +266,7 @@ class TBazar{
 		
 		if ($this->getId() == '')
 			return false;
-		
+			
 		$sql = "UPDATE bazar
 			SET
 				estado = ".$this->getEstado().",

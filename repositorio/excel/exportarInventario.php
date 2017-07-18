@@ -53,7 +53,7 @@ class RInventario{
 	
 	public function output(){
 		$this->libro->close();
-		
+		chmod($this->file, 0777);
 		return $this->file;
 	}
 }

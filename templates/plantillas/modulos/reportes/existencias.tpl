@@ -1,6 +1,6 @@
 <div class="row">
-	<div class="col-sm-3">
-		<h1 class="page-header">Reporte de existencias</h1>
+	<div class="col-sm-12">
+		<h1 class="page-header">Reporte de invetarios</h1>
 	</div>
 </div>
 

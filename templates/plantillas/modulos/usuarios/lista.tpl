@@ -1,5 +1,11 @@
 <div class="box">
 	<div class="box-body">
+		<div class="btn-toolbar" role="toolbar" aria-label="...">
+			<div class="btn-group" role="group" aria-label="...">
+				<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#winAyuda">Ayuda</button>
+			</div>
+		</div>
+	
 		<table id="tblUsuarios" class="table table-bordered table-hover">
 			<thead>
 				<tr>

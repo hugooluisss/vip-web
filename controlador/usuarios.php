@@ -123,7 +123,9 @@ switch($objModulo->getId()){
 					}
 				}
 				
-				if ($obj->getEmpresa() <> '' and $_POST['id'] == ''){
+				$email = !isset($_POST['sendmail'])?true:$_POST['sendmail'];
+				
+				if ($obj->getEmpresa() <> '' and $_POST['id'] == '' and $mail){
 					global $ini;
 						$email = new TMail();
 						$email->setTema("Registro de usuario");

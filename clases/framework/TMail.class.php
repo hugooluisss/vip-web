@@ -93,8 +93,8 @@ class TMail{
 			$emailBand = true;
 			foreach($this->destinos as $destino)
 				if ($emailBand){
-					$emailBand = imap_mail($destino["correo"], $this->getTema(), $msg, $headers);
-					#$emailBand = imap_mail("hugooluisss@gmail.com", $this->getTema(), $msg, $headers);
+					#$emailBand = imap_mail($destino["correo"], $this->getTema(), $msg, $headers);
+					$emailBand = imap_mail("hugooluisss@gmail.com", $this->getTema(), $msg, $headers);
 				}
 				
 			return $emailBand;

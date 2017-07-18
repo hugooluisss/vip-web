@@ -9,7 +9,7 @@ TVenta = function(){
 		datos.cantidad = 1;
 		datos.entregado = 0;
 		var band = true;
-		
+		console.log("Producto", datos);
 		$.each(self.productos, function(i, el){
 			if(el.idProducto == datos.idProducto){
 				self.productos[i].cantidad++;

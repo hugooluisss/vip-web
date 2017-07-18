@@ -29,6 +29,11 @@
 								{/foreach}
 							</select>
 						</div>
+						<div class="col-lg-1">
+							<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#winAyudaPerfil">
+								Ayuda
+							</button>
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="txtNombre" class="col-lg-2">Nombre *</label>
@@ -64,3 +69,57 @@
 		</form>
 	</div>
 </div>
+
+
+
+
+<div class="modal fade" id="winAyudaPerfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="exampleModalLabel">Tipos de usuario</h4>
+			</div>
+			<div class="modal-body">
+				<h4>Responsable</h4>
+				<ul>
+					<li>Actualizar los datos de tu empresa</li>
+					<li>Configurar tus métodos de cobro</li>
+					<li>Crear mas cuentas de usuario</li>
+					<li>Crear tu próximo bazar o mercado</li>
+					<li>Dar de alta tus productos e inventario de manera sencilla</li>
+					<li>Realizar ventas</li>
+				</ul>
+				<h4>Vendedor</h4>
+				<ul>
+					<li>Realizar ventas</li>
+					<li>Agregar nuevos productos</li>
+					<li>Crear nuevas cuentas de clientes</li>
+				</ul>
+				<h4>Auxiliar</h4>
+				<ul>
+					<li>Dar de alta tus productos e inventario de manera sencilla</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="modal fade" id="winAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" identificador="">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Definición de íconos</h4>
+			</div>
+			<div class="modal-body">
+				<button class="btn btn-success"><i class="fa fa-pencil"></i></button> Modificar<br /><br />
+				<button class="btn btn-danger"><i class="fa fa-times"></i></button> Eliminar<br /><br />
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

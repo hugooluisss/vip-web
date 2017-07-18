@@ -25,16 +25,16 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="txtReferencia" class="col-sm-3">Referencia</label>
+						<div class="col-sm-9">
+							<input class="form-control" id="txtReferencia" name="txtReferencia" value="" type="text" />
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="txtMonto" class="col-sm-3">Monto</label>
 						<div class="col-sm-3">
 							<input class="form-control text-right" id="txtMonto" name="txtMonto" value="0" type="number" />
 							<input id="montoMaximo" name="montoMaximo" value="0" type="hidden" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="txtReferencia" class="col-sm-3">Referencia</label>
-						<div class="col-sm-9">
-							<input class="form-control" id="txtReferencia" name="txtReferencia" value="" type="text" />
 						</div>
 					</div>
 				</div>

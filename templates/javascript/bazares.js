@@ -20,12 +20,12 @@ $(document).ready(function(){
 			txtInicio: "required",
 			selEstado: "required",
 			txtInicio: "required",
-			txtFin: "required",
+			//txtFin: "required",
 			txtInicial: "required",
-			txtFolio: {
-				required: true,
-				digits: true
-			},
+			//txtFolio: {
+			//	required: true,
+			//	digits: true
+			//},
 			txtInicial: {
 				maxlength: 2
 			}

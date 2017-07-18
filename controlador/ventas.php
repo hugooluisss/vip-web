@@ -131,7 +131,7 @@ switch($objModulo->getId()){
 						$datos['empresa.logo'] = '<img src="'.$ini['sistema']['url'].'repositorio/empresas/empresa'.$empresa->getId().'.jpg" style="width: 100px" />';
 					$datos['empresa.nombre'] = $empresa->getRazonSocial();
 					$datos['empresa.marca'] = $empresa->getMarca();
-					$datos['empresa.direccion'] = $empresa->getDireccion().", ".$empresa->getExterno()." ".($empresa->getInterno() == ''?"":"Ext. ").$empresa->getInterno().", ".$empresa->getColonia().", ".$empresa->getMunicipio().", ".$empresa->getCiudad().", ".$empresa->getEstado();
+					$datos['empresa.direccion'] = $empresa->getDireccion()." ".$empresa->getExterno()." ".($empresa->getInterno() == ''?"":"Ext. ").$empresa->getInterno()."<br />".$empresa->getColonia()."<br />".$empresa->getMunicipio()."<br />".$empresa->getCiudad()."<br />".$empresa->getEstado();
 					$datos['empresa.rfc'] = $empresa->getRFC();
 					$datos['empresa.telefono'] = $empresa->getTelefono();
 					$datos['empresa.email'] = $empresa->getEmail();

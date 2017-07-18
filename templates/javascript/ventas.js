@@ -227,12 +227,14 @@ $(document).ready(function(){
 				$(this).val(venta.productos[$(this).attr("indice")].cantidad);
 			}else{
 				venta.productos[$(this).attr("indice")].cantidad = $(this).val();
-				console.log("Entregados", $(this).parent().parent().find(".entregados").val());
+				console.log("Inventario", venta.productos[$(this).attr("indice")].inventario);
 				
-				if($(this).val() < $(this).parent().parent().find(".entregados").val()){
+				if($(this).val() <= venta.productos[$(this).attr("indice")].inventario){
 					$(this).parent().parent().find(".entregados").val($(this).val());
 					venta.productos[$(this).attr("indice")].entregados = $(this).val();
-				}
+				}else
+					$(this).parent().parent().find(".entregados").val(venta.productos[$(this).attr("indice")].inventario);
+					venta.productos[$(this).attr("indice")].entregados = venta.productos[$(this).attr("indice")].inventario;
 				
 				$(".totalCantidad").html(venta.getTotalCantidad());
 				monto = (producto.cantidad * producto.precio * ((100 - producto.descuento) / 100)).toFixed(2);
@@ -647,8 +649,9 @@ $(document).ready(function(){
 						    		
 						    		if (resp.band){
 						    			alert("La venta ha sido cerrada");
+						    			
+						    			/*
 						    			var objVenta = new TVenta;
-				
 										objVenta.id = venta.id;
 										objVenta.imprimir({
 											"email": email,
@@ -665,6 +668,7 @@ $(document).ready(function(){
 												}
 											}
 										});
+										*/
 						    			nuevaVenta();
 						    		}else
 						    			alert("La venta no pudo ser cerrada");

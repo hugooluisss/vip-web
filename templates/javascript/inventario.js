@@ -26,11 +26,13 @@ $(document).ready(function(){
 				number: true,
 				min: 0
 			},
+			/*
 			txtCosto: {
 				required: true,
 				number: true,
 				min: 0
 			},
+			*/
 			txtExistencias: {
 				required: true,
 				digits: true,
@@ -56,7 +58,8 @@ $(document).ready(function(){
 				"color": $("#txtColor").val(),
 				"talla": $("#txtTalla").val(),
 				"unidad": $("#txtUnidad").val(),
-				"costo": $("#txtCosto").val(),
+				//"costo": $("#txtCosto").val(),
+				"costo": 0,
 				"descuento": $("#txtDescuento").val(),
 				"existencias": $("#txtExistencias").val(),
 				"precio": $("#txtPrecio").val(),

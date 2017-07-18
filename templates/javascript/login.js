@@ -61,6 +61,7 @@ $(document).ready(function(){
 								"pass": $("#txtPassRegistro").val(),
 								"email": $("#txtEmail").val(),
 								"tipo": 2,
+								"sendmail": false,
 								"empresa": datos.id,
 								fn: {
 									after: function(respuesta){
