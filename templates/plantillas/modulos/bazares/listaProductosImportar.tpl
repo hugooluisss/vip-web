@@ -13,7 +13,7 @@
 			<th>CI</th>
 			<th>Descripción</th>
 			<th>Color/Talla/Unidad</th>
-			<th>Costo</th>
+			<!--<th>Costo</th>-->
 			<th>Descuento</th>
 			<th>Precio</th>
 			<th>Existencias</th>
@@ -26,7 +26,7 @@
 				<td>{$row.codigoInterno}</td>
 				<td>{$row.descripcion}</td>
 				<td>{$row.color}/{$row.talla}/{$row.unidad}</td>
-				<td class="text-right">{$row.costo}</td>
+				<!--<td class="text-right">{$row.costo}</td>-->
 				<td class="text-right">{$row.descuento}</td>
 				<td class="text-right">{$row.precio}</td>
 				<td class="text-right">{$row.existencias}</td>

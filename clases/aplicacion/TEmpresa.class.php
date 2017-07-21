@@ -519,7 +519,7 @@ class TEmpresa{
 			$parametros["clienteDefault"] = $cliente->getId();	
 			$this->setParametros($parametros);
 			$this->guardar();
-			
+			/*
 			$catalogo = array(
 				array("nombre" => "Terminal bancaria", "tipo" => 2), 
 				array("nombre" => "Banco", "tipo" => 3), 
@@ -534,7 +534,7 @@ class TEmpresa{
 				$mc->setTipo($el['tipo']);
 				$mc->guardar();
 			}
-			
+			*/
 			$catalogo = array(
 				array("nombre" => "Efectivo", "tipo" => 1), 
 				array("nombre" => "Cheque", "tipo" => 1), 

@@ -33,7 +33,7 @@
 					<div class="form-group">
 						<label for="txtMonto" class="col-sm-3">Monto</label>
 						<div class="col-sm-3">
-							<input class="form-control text-right" id="txtMonto" name="txtMonto" value="0" type="number" />
+							<input class="form-control text-right" id="txtMonto" name="txtMonto" value="0" type="text" />
 							<input id="montoMaximo" name="montoMaximo" value="0" type="hidden" />
 						</div>
 					</div>

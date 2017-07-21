@@ -29,10 +29,9 @@ class RInventario{
 		$hoja->write($y, 3, utf8_decode("Color"), $negrita);
 		$hoja->write($y, 4, utf8_decode("Talla"), $negrita);
 		$hoja->write($y, 5, utf8_decode("Unidad"), $negrita);
-		$hoja->write($y, 6, utf8_decode("Costo"), $negrita);
-		$hoja->write($y, 7, utf8_decode("Descuento"), $negrita);
-		$hoja->write($y, 8, utf8_decode("Existencias"), $negrita);
-		$hoja->write($y, 9, utf8_decode("Precio"), $negrita);
+		$hoja->write($y, 6, utf8_decode("Descuento"), $negrita);
+		$hoja->write($y, 7, utf8_decode("Existencias"), $negrita);
+		$hoja->write($y, 8, utf8_decode("Precio"), $negrita);
 		$y++;
 		
 		foreach($datos as $producto){
@@ -42,10 +41,9 @@ class RInventario{
 			$hoja->write($y, 3, utf8_decode($producto['color']));
 			$hoja->write($y, 4, utf8_decode($producto['talla']));
 			$hoja->write($y, 5, utf8_decode($producto['unidad']));
-			$hoja->write($y, 6, utf8_decode($producto['costo']));
-			$hoja->write($y, 7, utf8_decode($producto['descuento']));
-			$hoja->write($y, 8, utf8_decode($producto['existencias']));
-			$hoja->write($y, 9, utf8_decode($producto['precio']));
+			$hoja->write($y, 6, utf8_decode($producto['descuento']));
+			$hoja->write($y, 7, utf8_decode($producto['existencias']));
+			$hoja->write($y, 8, utf8_decode($producto['precio']));
 			
 			$y++;
 		}

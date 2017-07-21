@@ -180,25 +180,49 @@ class RTicket extends tFPDF{
 	}
 	
 	function Footer(){
+		$db = TBase::conectaDB();
+		
+		$rs = $db->query("select a.*, b.nombre as metodopago from pago a join metodopago b using(idMetodoPago) where a.visible = 1 and idVenta = ".$this->venta->getId()." order by fecha desc");
+		$pagos = array();
+		while($row = $rs->fetch_assoc())
+			array_push($pagos, $row);
+		
 		$monto = $this->total;
 		$descuento = $monto * ($this->venta->getDescuento() / 100);
 		$total = $monto - $descuento;
 		
-		$this->SetY(-30);
+		$this->SetY(-30 + count($pagos) * -5);
 		$this->SetFont('Arial', 'I', 8);
-		$this->SetY(-30);
+		$this->SetY(-30 + count($pagos) * -5);
 		$y = $this->GetY();
 		$this->MultiCell(100, 5, "Comentarios: ".$this->venta->getComentario());
-		$this->SetXY(160, $y);
+		$this->SetXY(140, $y);
 		$this->Cell(30, 5, "Subtotal");
 		$this->Cell(0, 5, number_format($monto, 2, '.', ','), 0, 0, 'R');
 		$this->Ln(5); $y += 5;
-		$this->SetXY(160, $y);
+		$this->SetXY(140, $y);
 		$this->Cell(30, 5, "Descuento (".$this->venta->getDescuento()."%)");
 		$this->Cell(0, 5, number_format($descuento, 2, '.', ','), 0, 0, 'R');
 		$this->Ln(5); $y += 5;
-		$this->SetXY(160, $y);
+		$this->SetXY(140, $y);
 		$this->Cell(30, 5, "Total");
+		$this->Cell(0, 5, number_format($total, 2, '.', ','), 0, 0, 'R');
+		
+		foreach($pagos as $pago){
+			$y += 5;
+			$this->SetXY(140, $y);
+			$descripcion = $pago['metodopago'];
+			if ($pago['referencia'] <> '')
+				$descripcion .= " (".$pago['referencia'].")";
+			$this->Cell(30, 5, utf8_decode("- ".$descripcion));
+			$this->Cell(0, 5, number_format($pago['monto'], 2, '.', ','), 0, 0, 'R');
+			$total -= $pago['monto'];
+		}
+		
+		$this->SetFont('Arial', 'B', 8);
+		$y += 5;
+		$this->SetXY(140, $y);
+		$this->Cell(30, 5, "Total pendiente");
 		$this->Cell(0, 5, number_format($total, 2, '.', ','), 0, 0, 'R');
 	}
 	

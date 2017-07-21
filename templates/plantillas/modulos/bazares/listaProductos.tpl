@@ -12,6 +12,7 @@
 					<th>Talla</th>
 					<th>Existencia</th>
 					<th>Precio</th>
+					<th>Descuento</th>
 					{if $select neq true}
 					<th>&nbsp;</th>
 					{/if}
@@ -25,8 +26,9 @@
 						<td>{$row.descripcion}</td>
 						<td>{$row.color}</td>
 						<td>{$row.talla}</td>
-						<td class="text-right">{$row.existencias}</td>
+						<td class="text-right">{$row.inventario}</td>
 						<td class="text-right">{$row.precio}</td>
+						<td class="text-right">{$row.descuento} %</td>
 						{if $select neq true}
 						<td class="text-right">
 							<button type="button" class="btn btn-success" action="modificar" title="Modificar" datos='{$row.json}'><i class="fa fa-pencil"></i></button>

@@ -35,7 +35,7 @@
 						<label for="txtDestino" class="col-lg-2">Destino</label>
 						<div class="col-lg-6">
 							<input class="form-control" id="txtDestino" name="txtDestino">
-							<span class="help-block">Personaliza tu método de cobro por ejemplo: "Bancomer -xxxx" o "Clip xxx"</span>
+							<span class="help-block">Personaliza tu método de cobro por ejemplo: "Bancomer -xxxx", "Clip xxx" o "Caja xxxx"</span>
 						</div>
 					</div>
 				</div>

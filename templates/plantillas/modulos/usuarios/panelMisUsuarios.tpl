@@ -117,7 +117,7 @@
 				<h4 class="modal-title">Definición de íconos</h4>
 			</div>
 			<div class="modal-body">
-				<button class="btn btn-success"><i class="fa fa-pencil"></i></button> Modificar<br /><br />
+				<button class="btn btn-primary"><i class="fa fa-edit"></i></button> Modificar<br /><br />
 				<button class="btn btn-danger"><i class="fa fa-times"></i></button> Eliminar<br /><br />
 			</div>
 		</div><!-- /.modal-content -->

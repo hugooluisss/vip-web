@@ -60,7 +60,7 @@ switch($objModulo->getId()){
 				$obj->setTelefono($_POST['telefono']);
 				$obj->setPromociones($_POST['promciones']);
 				
-				$smarty->assign("json", array("band" => $obj->guardar(), "id" => $obj->guardar()));
+				$smarty->assign("json", array("band" => $obj->guardar(), "id" => $obj->getId()));
 			break;
 			case 'del':
 				$obj = new TCliente($_POST['id']);

@@ -44,6 +44,8 @@ $(document).ready(function(){
 			obj.add({
 				"bazar": $("#selBazar").val(),
 				//"codigoInterno": $("#txtCodigo").val(), 
+				"codigoBarras": $("#codigoBarras").val(), 
+				"codigoInterno": $("#codigoBarras").val(), 
 				"descripcion": $("#txtDescripcion").val(),
 				"precio": $("#txtPrecio").val(),
 				"observacion": "Pedido",
@@ -73,16 +75,17 @@ $(document).ready(function(){
 						$(this).prop("disabled", true);
 					}, after: function(producto){
 						$(this).prop("disabled", false);
-						$("#txtProducto").val("");
 						
 						if (producto.band == false){
 							if (confirm("El código no fue encontrado ¿deseas agregar el producto?")){
 								$("#winNuevoProducto").modal();
+								$("#codigoBarras").val($("#txtProducto").val());
 							}
 						}else{
 							addProducto(producto.idProducto);
 						}
 						
+						$("#txtProducto").val("");
 						return false;
 					}
 				}
@@ -152,8 +155,10 @@ $(document).ready(function(){
 								if (!data.band){
 									alert("Error al actualizar la cantidad");
 									el.val(el.attr("cantidad"));
-								}else
+								}else{
 									el.attr("cantidad", el.val());
+									alert("Cantidad actualizada");
+								}
 							}
 						}
 					});
@@ -168,7 +173,7 @@ $(document).ready(function(){
 				"ordering": true,
 				"info": true,
 				"autoWidth": false,
-				"order": [[ 1, "desc" ]]
+				"order": [[ 0, "desc" ]]
 			});
 		});
 	}

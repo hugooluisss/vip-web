@@ -67,10 +67,10 @@ switch($objModulo->getId()){
 			4 => "color",
 			5 => "talla",
 			6 => "unidad",
-			7 => "costo",
-			8 => "descuento",
-			9 => "existencias",
-			10 => "precio",
+			#7 => "costo",
+			7 => "descuento",
+			8 => "existencias",
+			9 => "precio",
 			10 => "observacion"
 		);
 		
@@ -125,8 +125,10 @@ switch($objModulo->getId()){
 					$db = TBase::conectaDB();
 					$rs = $db->query("select * from producto a where idBazar = ".$_POST['bazar']." and visible = true");
 					
-					while($row = $rs->fetch_assoc())
+					while($row = $rs->fetch_assoc()){
+						unset($row['costo']);
 						array_push($datos, $row);
+					}
 				}
 				
 				$obj = new RInventario($_POST['bazar']);
@@ -153,7 +155,7 @@ switch($objModulo->getId()){
 				$db = TBase::conectaDB();
 				$cont = 0;
 				foreach($productos as $producto){
-					$sql = "select * from producto where idBazar = ".$_POST['bazar']." and codigoBarras = ".$producto->codigoBarras;
+					$sql = "select * from producto where idBazar = ".$_POST['bazar']." and codigoBarras = '".$producto->codigoBarras."'";
 					$rs = $db->query($sql);
 					$row = $rs->fetch_assoc();
 					$obj = new TProducto($row['idProducto']);
@@ -166,7 +168,7 @@ switch($objModulo->getId()){
 					$obj->setColor($producto->color);
 					$obj->setTalla($producto->talla);
 					$obj->setUnidad($producto->unidad);
-					$obj->setCosto($producto->costo);
+					//$obj->setCosto($producto->costo);
 					$obj->setDescuento($producto->descuento);
 					$obj->setExistencias($producto->existencias);
 					$obj->setPrecio($producto->precio);

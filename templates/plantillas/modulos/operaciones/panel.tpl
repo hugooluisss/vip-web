@@ -9,7 +9,7 @@
 	<div class="box">
 		<div class="box-body">
 			<div class="form-group">
-				<label for="selBazar" class="col-md-2 text-right">Bazar</label>
+				<label for="selBazar" class="col-md-2 text-right" style="padding-top: 5px">Bazar</label>
 				<div class="col-md-4">
 					<select class="form-control" id="selBazar" name="selBazar">
 						{foreach from=$bazares item="row"}
@@ -17,7 +17,7 @@
 						{/foreach}
 					</select>
 				</div>
-				<label for="selTipo" class="col-md-2 text-right">Tipo de operación</label>
+				<label for="selTipo" class="col-md-2 text-right" style="padding-top: 5px">Tipo de operación</label>
 				<div class="col-md-4">
 					<select class="form-control" id="selTipo" name="selTipo">
 						{foreach from=$tipos item="row"}
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<div class="box-footer">
-			<button type="submit" class="btn btn-info pull-right">Agregar</button>
+			<button type="submit" class="btn btn-info pull-right">Guardar</button>
 			<input type="hidden" id="id"/>
 		</div>
 	</div>
@@ -89,16 +89,16 @@
 							<input class="form-control" id="txtPrecio" name="txtPrecio" type="number" value="0">
 						</div>
 					</div>
-					
 					<div class="row">
 						<div class="col-xs-12">
 							<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
 							<button type="submit" class="btn btn-info pull-right">Guardar</button>
 						</div>
 					</div>
-				</div>
 				</form>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<input id="codigoBarras" name="codigoBarras" type="hidden" value="">

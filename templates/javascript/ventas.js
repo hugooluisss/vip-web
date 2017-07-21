@@ -538,15 +538,19 @@ $(document).ready(function(){
 				"lengthChange": false,
 				"ordering": true,
 				"info": true,
-				"autoWidth": false
+				"autoWidth": false,
+				"order": [[ 0, "desc" ]]
 			});
 		});
 	});
 	
 	$("#winPago").on("show.bs.modal", function(event){
 		var ventana = $("#winPago");
-		ventana.find("#txtMonto").val($("#dvSaldo").html() < 0?0:$("#dvSaldo").html());
-		ventana.find("#montoMaximo").val($("#dvSaldo").html() < 0?0:$("#dvSaldo").html());
+		var monto = parseFloat($("#dvSaldo").html().replace(",", ""));
+		monto = monto < 0?0:monto;
+		
+		ventana.find("#txtMonto").val(monto.toFixed(2));
+		ventana.find("#montoMaximo").val(monto.toFixed(2));
 		
 	});
 	
