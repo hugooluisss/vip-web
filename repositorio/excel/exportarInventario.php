@@ -22,6 +22,7 @@ class RInventario{
 		$negrita->setAlign("merge");
 		
 		$hoja->write(1, 0, utf8_decode("Inventario del bazar generado: ".date("Y-m-d")), $negrita);
+		$hoja->write(2, 0, utf8_decode("El descuento solo acepta números de 1 a 100 sin el signo de porcentaje, por ejemplo: 20 para 20%"));
 		
 		$hoja->write($y, 0, utf8_decode("Código Barras"), $negrita);
 		$hoja->write($y, 1, utf8_decode("Código Interno"), $negrita);

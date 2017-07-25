@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-sm-12">
-		<h1 class="page-header">Reporte de invetarios</h1>
+		<h1 class="page-header">Reporte de inventarios</h1>
 	</div>
 </div>
 

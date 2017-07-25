@@ -36,7 +36,7 @@ switch($objModulo->getId()){
 		$db = TBase::conectaDB();
 		global $sesion;
 		
-		$rs = $db->query("select codigoBarras, descripcion, idProducto, precio, 0 as descuento from producto a where a.visible = true and idBazar = ".$_GET['bazar']." and (descripcion like '%".$_GET['term']."%' or codigoBarras like '%".$_GET['term']."%' or codigoInterno like '%".$_GET['term']."%')");
+		$rs = $db->query("select codigoBarras, descripcion, idProducto, precio, descuento from producto a where a.visible = true and idBazar = ".$_GET['bazar']." and (descripcion like '%".$_GET['term']."%' or codigoBarras like '%".$_GET['term']."%' or codigoInterno like '%".$_GET['term']."%')");
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
 			$aux = array();

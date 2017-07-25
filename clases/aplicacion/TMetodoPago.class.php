@@ -8,7 +8,6 @@
 
 class TMetodoPago{
 	private $idMetodoPago;
-	private $idTipoCobro;
 	public $empresa;
 	private $nombre;
 	
@@ -91,32 +90,6 @@ class TMetodoPago{
 	public function getNombre(){
 		return $this->nombre;
 	}
-	
-	/**
-	* Establece el tipo de cobro
-	*
-	* @autor Hugo
-	* @access public
-	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
-	* @return boolean True si se realizó sin problemas
-	*/
-	
-	public function setTipoCobro($val = ""){
-		$this->idTipoCobro = $val;
-		return true;
-	}
-	
-	/**
-	* Retorna el tipo de cobro
-	*
-	* @autor Hugo
-	* @access public
-	* @return string Texto
-	*/
-	
-	public function getTipoCobro(){
-		return $this->idTipoCobro;
-	}
 		
 	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
@@ -126,13 +99,12 @@ class TMetodoPago{
 	* @return boolean True si se realizó sin problemas
 	*/
 	
-	public function guardar(){
+	public function guardar($tiposCobro){
 		if ($this->empresa->getId() == '') return false;
-		if ($this->getTipoCobro() == '') return false;
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$sql = "INSERT INTO metodopago(idEmpresa, idTipoCobro) VALUES('".$this->empresa->getId()."', ".$this->getTipoCobro().");";
+			$sql = "INSERT INTO metodopago(idEmpresa) VALUES('".$this->empresa->getId()."');";
 			$rs = $db->query($sql) or errorMySQL($db, $sql);
 			
 			if (!$rs) return false;
@@ -145,12 +117,20 @@ class TMetodoPago{
 		
 		$sql = "UPDATE metodopago
 			SET
-				nombre = '".$this->getNombre()."',
-				idTipoCobro = ".$this->getTipoCobro()."
+				nombre = '".$this->getNombre()."'
 			WHERE idMetodoPago = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
-			
+		
+		if ($rs){
+			$sql = "delete from metodopagotipocobro where idMetodoPago = ".$this->getId();
+			$rs = $db->query($sql) or errorMySQL($db, $sql);
+			foreach($tiposCobro as $tipo){
+				$sql = "insert into metodopagotipocobro(idMetodoPago, idTipoCobro) values (".$this->getId().", ".$tipo.")";
+				$rs = $db->query($sql) or errorMySQL($db, $sql);
+			}
+		}
+		
 		return $rs?true:false;
 	}
 	

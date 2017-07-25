@@ -536,20 +536,20 @@ class TEmpresa{
 			}
 			*/
 			$catalogo = array(
-				array("nombre" => "Efectivo", "tipo" => 1), 
-				array("nombre" => "Cheque", "tipo" => 1), 
-				array("nombre" => "Tarjeta de débito", "tipo" => 2), 
-				array("nombre" => "Tarjeta de crédito", "tipo" => 2), 
-				array("nombre" => "Transferencia", "tipo" => 3),
-				array("nombre" => "Depósitos a cuenta", "tipo" => 2)
+				array("nombre" => "Efectivo", "tipo" => array(1)), 
+				array("nombre" => "Cheque", "tipo" => array(1)), 
+				array("nombre" => "Tarjeta de débito", "tipo" => array(2, 4)), 
+				array("nombre" => "Tarjeta de crédito", "tipo" => array(2, 4)), 
+				array("nombre" => "Transferencia", "tipo" => array(3)),
+				array("nombre" => "Depósitos a cuenta", "tipo" => array(2))
 			);
 			
 			foreach($catalogo as $el){
 				$mc = new TMetodoPago;
 				$mc->empresa = new TEmpresa($this->getId());
 				$mc->setNombre($el['nombre']);
-				$mc->setTipoCobro($el['tipo']);
-				$mc->guardar();
+				
+				$mc->guardar($el['tipo']);
 			}
 			
 			

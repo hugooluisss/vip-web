@@ -28,7 +28,7 @@ switch($objModulo->getId()){
 		$rs = $db->query("select * from metodopago where visible = true and idEmpresa = ".$userSesion->getEmpresa());
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
-			$rs2 = $db->query("select * from metodocobro a where a.visible = true and idTipoCobro = ".$row['idTipoCobro']." and idEmpresa = ".$userSesion->getEmpresa());
+			$rs2 = $db->query("select a.*, b.nombre as tipo, concat(b.nombre, ' - ', a.destino) as destino from metodocobro a join tipocobro b using(idTipoCobro) join metodopagotipocobro using(idTipoCobro) where a.visible = true and a.idEmpresa = ".$userSesion->getEmpresa()." and idMetodoPago = ".$row['idMetodoPago']);
 			$datos2 = array();
 			while($row2 = $rs2->fetch_assoc()){
 				array_push($datos2, $row2);
@@ -137,8 +137,9 @@ switch($objModulo->getId()){
 					$datos['empresa.email'] = $empresa->getEmail();
 					
 					$email->setBodyHTML(utf8_decode($email->construyeMail(file_get_contents("repositorio/mail/notaVenta.html"), $datos)));
-					$email->adjuntos = array();
-					array_push($email->adjuntos, array("nombre" => "Ticket de compra", "ruta" => $documento));
+					$email->adjuntar($documento);
+					#$email->adjuntos = array();
+					#array_push($email->adjuntos, array("nombre" => "Ticket de compra", "ruta" => $documento));
 					
 					$bandEmail = $email->send();
 				}

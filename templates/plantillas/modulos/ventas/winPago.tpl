@@ -18,16 +18,19 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="txtReferencia" class="col-sm-3">Referencia</label>
+						<div class="col-sm-5">
+							<input class="form-control" id="txtReferencia" name="txtReferencia" value="" type="text" />
+						</div>
+						<div class="col-sm-4 text-muted">
+							Por ejemplo: últimos 4 dígitos
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="selMetodoCobro" class="col-sm-3">Método de cobro</label>
 						<div class="col-sm-9">
 							<select class="form-control" id="selMetodoCobro" name="selMetodoCobro">
 							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="txtReferencia" class="col-sm-3">Referencia</label>
-						<div class="col-sm-9">
-							<input class="form-control" id="txtReferencia" name="txtReferencia" value="" type="text" />
 						</div>
 					</div>
 					<div class="form-group">

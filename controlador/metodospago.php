@@ -17,9 +17,14 @@ switch($objModulo->getId()){
 		$db = TBase::conectaDB();
 		global $userSesion;
 		
-		$rs = $db->query("select a.*, b.nombre as nombrecobro from metodopago a join tipocobro b using(idTipoCobro) where visible = true and a.idEmpresa = ".$userSesion->getEmpresa());
+		$rs = $db->query("select a.*, b.nombre as nombrecobro from metodopago a where visible = true and a.idEmpresa = ".$userSesion->getEmpresa());
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
+			$rs2 = $db->query("select idTipoCobro from metodopagotipocobro where idMetodoPago = ".$row['idMetodoPago']);
+			$row['tiposCobro'] = array();
+			while($row2 = $rs2->fetch_assoc())
+				array_push($row['tiposCobro'], $row2['idTipoCobro']);
+				
 			$row['json'] = json_encode($row);
 			
 			array_push($datos, $row);
@@ -38,8 +43,7 @@ switch($objModulo->getId()){
 					$obj->empresa->setId($userSesion->getEmpresa());
 					
 				$obj->setNombre($_POST['nombre']);
-				$obj->setTipoCobro($_POST['cobros']);
-				$band = $obj->guardar();
+				$band = $obj->guardar($_POST['cobros']);
 				
 				$smarty->assign("json", array("band" => $band));
 			break;

@@ -227,19 +227,19 @@ $(document).ready(function(){
 				$(this).val(venta.productos[$(this).attr("indice")].cantidad);
 			}else{
 				venta.productos[$(this).attr("indice")].cantidad = $(this).val();
-				console.log("Inventario", venta.productos[$(this).attr("indice")].inventario);
 				
 				if($(this).val() <= venta.productos[$(this).attr("indice")].inventario){
 					$(this).parent().parent().find(".entregados").val($(this).val());
-					venta.productos[$(this).attr("indice")].entregados = $(this).val();
-				}else
+					venta.productos[$(this).attr("indice")].entregado = $(this).val();
+				}else{
 					$(this).parent().parent().find(".entregados").val(venta.productos[$(this).attr("indice")].inventario);
-					venta.productos[$(this).attr("indice")].entregados = venta.productos[$(this).attr("indice")].inventario;
+					venta.productos[$(this).attr("indice")].entregado = venta.productos[$(this).attr("indice")].inventario;
+				}
 				
 				$(".totalCantidad").html(venta.getTotalCantidad());
 				monto = (producto.cantidad * producto.precio * ((100 - producto.descuento) / 100)).toFixed(2);
 				$(this).parent().parent().find(".total").html(formatNumber.new(monto));
-				
+				$(".totalEntregados").html(venta.getTotalEntregado());
 				calcularMonto();
 			}
 		});

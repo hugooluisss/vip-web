@@ -60,7 +60,7 @@ $(document).ready(function(){
 				console.log(el);
 				$("#id").val(el.idMetodoPago);
 				$("#txtNombre").val(el.nombre);
-				$("#selTipoCobro").val(el.idTipoCobro);
+				$("#selTipoCobro").val(el.tiposCobro);
 				
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
