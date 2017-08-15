@@ -5,6 +5,7 @@
 			<th>Metodo</th>
 			<th>Monto</th>
 			<th>Referencia</th>
+			<th>&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -14,6 +15,9 @@
 				<td>{$row.nombrePago}</td>
 				<td class="text-right">{$row.monto|number_format:2:".":","}</td>
 				<td>{$row.referencia}</td>
+				<td class="text-center">
+					<button type="button" class="btn btn-danger btn-xs" action="eliminarPago" title="Eliminar pago" identificador='{$row.idPago}'><i class="fa fa-times"></i></button>
+				</td>
 			</tr>
 		{/foreach}
 	</tbody>

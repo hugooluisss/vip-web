@@ -235,6 +235,7 @@ $(document).ready(function(){
 					$(this).parent().parent().find(".entregados").val(venta.productos[$(this).attr("indice")].inventario);
 					venta.productos[$(this).attr("indice")].entregado = venta.productos[$(this).attr("indice")].inventario;
 				}
+				var producto = venta.productos[$(this).attr("indice")];
 				
 				$(".totalCantidad").html(venta.getTotalCantidad());
 				monto = (producto.cantidad * producto.precio * ((100 - producto.descuento) / 100)).toFixed(2);
@@ -601,7 +602,11 @@ $(document).ready(function(){
 				monto: $("#txtMonto").val(), 
 				referencia: $("#txtReferencia").val(), 
 				fn: {
+					before: function(){
+						$("#frmPago").find("[type=submit]").prop("disabled", true);
+					},
 					after: function(datos){
+						$("#frmPago").find("[type=submit]").prop("disabled", false);
 						if (datos.band){
 							$("#frmPago").get(0).reset();
 							$("#winPago").modal("hide");
@@ -624,6 +629,21 @@ $(document).ready(function(){
 		}, function(data) {
 			$("#dvPagos").html(data);
 			
+			$("[action=eliminarPago]").click(function(){
+				var obj = new TPago;
+				obj.del({
+					identificador: $(this).attr("identificador"),
+					fn: {
+						before: function(){
+							$(this).prop("disabled", true);
+						},
+						after: function(resp){
+							$(this).prop("disabled", false);
+							getListaPagos();
+						}
+					}
+				})
+			});
 			calcularMonto();
 		});
 	}

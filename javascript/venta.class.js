@@ -45,7 +45,7 @@ TVenta = function(){
 			
 			var tr = $("<tr />").attr("identificador", producto.idProducto)
 			tr.append($('<td>' + producto.codigoBarras + '</td>'));
-			tr.append($('<td style="width: 40%">' + producto.descripcion + '</td>'));
+			tr.append($('<td style="width: 40%">' + producto.descripcion + ' ' + producto.color + ' ' + producto.talla + '</td>'));
 			tr.append($('<td><input style="width: 100px;" type="number" size="3" class="text-right cantidad" value="' + producto.cantidad + '" indice="' + cont + '" existencias="' + producto.existenciareales + '"/></td>'));
 			tr.append($('<td class="text-right">' + formatNumber.new(producto.precio) + '</td>'));
 			tr.append($('<td class="text-right"><div class="input-group"><input style="width: 100px;" type="number" size="3" class="text-right descuento" value="' + (producto.descuento == 0?'':producto.descuento) + '" indice="' + cont + '"/><span class="input-group-addon" id="basic-addon2">%</span></div></td>'));
