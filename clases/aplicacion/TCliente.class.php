@@ -443,7 +443,7 @@ class TCliente{
 	public function guardar(){
 		if ($this->getEmpresa() == '') return false;
 		$db = TBase::conectaDB();
-		
+
 		if ($this->getId() == ''){
 			$sql = "INSERT INTO cliente(idEmpresa) VALUES(".$this->getEmpresa().");";
 			$rs = $db->query($sql) or errorMySQL($db, $sql);

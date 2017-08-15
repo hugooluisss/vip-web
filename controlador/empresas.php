@@ -62,6 +62,11 @@ switch($objModulo->getId()){
 						$email->setBodyHTML(utf8_decode($email->construyeMail(file_get_contents("repositorio/mail/registroEmpresa.html"), $datos)));
 						
 						$bandEmail = $email->send();
+						/*
+						
+						
+						
+						*/
 					}
 					
 					$smarty->assign("json", array("band" => $obj->guardar(), "id" => $obj->getId()));

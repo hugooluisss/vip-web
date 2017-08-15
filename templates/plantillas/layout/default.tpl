@@ -133,6 +133,7 @@
 						</a>
 						<ul class="treeview-menu">
 							<li {if $PAGE.modulo eq 'miEmpresa'}class="active"{/if}><a href="miEmpresa">Mi empresa</a></li>
+							<li {if in_array($PAGE.modulo, array('tarjetas'))}class="active"{/if}><a href="tarjetas">Mis tarjetas</a></li>
 							<li {if $PAGE.modulo eq 'misUsuarios'}class="active"{/if}><a href="misUsuarios">Mis usuarios</a></li>
 							<li {if in_array($PAGE.modulo, array('bazares', 'productos'))}class="active"{/if}><a href="bazares">Bazares</a></li>
 							<li {if $PAGE.modulo eq 'metodoscobro'}class="active"{/if}><a href="metodoscobro">Métodos de cobro</a></li>

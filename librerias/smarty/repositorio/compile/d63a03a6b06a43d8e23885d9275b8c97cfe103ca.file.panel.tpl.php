@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-06 12:36:46
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-15 11:07:38
          compiled from "templates/plantillas/modulos/empresas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:173194414459448ce5bd1997-01961569%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd63a03a6b06a43d8e23885d9275b8c97cfe103ca' => 
     array (
       0 => 'templates/plantillas/modulos/empresas/panel.tpl',
-      1 => 1499362604,
+      1 => 1499955235,
       2 => 'file',
     ),
   ),
@@ -51,6 +51,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<label for="txtSlogan" class="col-sm-2">Slogan</label>
 						<div class="col-sm-10">
 							<input class="form-control" id="txtSlogan" name="txtSlogan" value=""/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtMarca" class="col-sm-2">Marca</label>
+						<div class="col-sm-10">
+							<input class="form-control" id="txtMarca" name="txtMarca" value=""/>
 						</div>
 					</div>
 					<div class="form-group">

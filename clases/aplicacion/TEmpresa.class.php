@@ -23,6 +23,7 @@ class TEmpresa{
 	private $rfc;
 	private $activo;
 	public $usuarios;
+	private $idConekta;
 	
 	/**
 	* Constructor de la clase
@@ -490,6 +491,18 @@ class TEmpresa{
 	}
 	
 	/**
+	* Retorna el id de cliente en conekta
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getIdConekta(){
+		return $this->idConekta;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -574,7 +587,8 @@ class TEmpresa{
 				email = '".$this->getEmail()."',
 				rfc = '".$this->getRFC()."',
 				activo = ".($this->getActivo() == false?0:1).",
-				parametros = '".$this->parametros."'
+				parametros = '".$this->parametros."',
+				idConekta = '".$this->idConekta."'
 			WHERE idEmpresa = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
@@ -640,6 +654,38 @@ class TEmpresa{
 		
 		if (!$rs) return false;
 		$this->getUsuarios();
+		return true;
+	}
+	
+	/**
+	* Genera un ID de la empresa en conekta
+	*
+	* @autor Hugo
+	* @access public
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setClienteConekta(){
+		if ($this->getId() == '') return false;
+		
+		require_once("librerias/conekta/Conekta.php");
+		\Conekta\Conekta::setApiKey($ini['conekta']['key_private']);
+		\Conekta\Conekta::setLocale('es');
+		\Conekta\Conekta::setApiVersion("2.0.0");
+
+		try {
+			$conektaResp = \Conekta\Customer::create(array(
+				"name" => str_replace(array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0"), array("uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "cero"), $obj->getRazonSocial()),
+				"email" => $obj->getEmail(),
+				"phone" => $obj->getTelefono(),
+				"corporate" => true
+			));
+			
+			$this->idConekta = $conektaResp->id;
+			$this->guardar();
+		} catch (Exception $error){
+			ErrorSistema("Conekta: Ocurrió un error al registrar al cliente... ".$error->getMessage());
+		}
 		return true;
 	}
 }

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-13 09:54:39
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-15 12:40:36
          compiled from "templates/plantillas/modulos/ventas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:162072958459448df9a9a2a9-18731015%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b3ba611b730975d98c27112c204a40ab3938a2de' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/panel.tpl',
-      1 => 1499865262,
+      1 => 1502808612,
       2 => 'file',
     ),
   ),
@@ -163,19 +163,19 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 					</div>
 				</div>
 				<div class="text-center">
-					<button class="btn btn-primary" id="btnPagar">Guardar y pagar</button>
+					<button class="btn btn-primary" id="btnPagar">Registro de pagos</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-6 col-sm-offset-3">
+	<div class="col-sm-8 col-sm-offset-2">
 		<div class="box">
 			<div class="box-body">
 				<div class="btn-group btn-group-justified">
 					<div class="btn-group">
-						<button class="btn btn-primary" id="btnGuardar">Guardar</button>
+						<button class="btn btn-primary" id="btnGuardar">Guardar para despues / apartar</button>
 					</div>
 					<div class="btn-group">
 						<button class="btn btn-danger" id="btnCancelar">Cancelar</button>
