@@ -667,7 +667,7 @@ class TEmpresa{
 	
 	public function setClienteConekta(){
 		if ($this->getId() == '') return false;
-		
+		global $ini;
 		require_once("librerias/conekta/Conekta.php");
 		\Conekta\Conekta::setApiKey($ini['conekta']['key_private']);
 		\Conekta\Conekta::setLocale('es');
@@ -675,9 +675,9 @@ class TEmpresa{
 
 		try {
 			$conektaResp = \Conekta\Customer::create(array(
-				"name" => str_replace(array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0"), array("uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "cero"), $obj->getRazonSocial()),
-				"email" => $obj->getEmail(),
-				"phone" => $obj->getTelefono(),
+				"name" => str_replace(array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0"), array("uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "cero"), $this->getRazonSocial()),
+				"email" => $this->getEmail(),
+				"phone" => $this->getTelefono(),
 				"corporate" => true
 			));
 			
