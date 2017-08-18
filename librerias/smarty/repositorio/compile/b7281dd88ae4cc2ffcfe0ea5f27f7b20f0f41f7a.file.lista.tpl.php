@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:34:37
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 10:01:46
          compiled from "templates/plantillas/modulos/metodoscobro/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:123259821459495cf0b3e163-50710761%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b7281dd88ae4cc2ffcfe0ea5f27f7b20f0f41f7a' => 
     array (
       0 => 'templates/plantillas/modulos/metodoscobro/lista.tpl',
-      1 => 1498157756,
+      1 => 1502808612,
       2 => 'file',
     ),
   ),
@@ -26,6 +26,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59495cf0becc48_70119583')) {function content_59495cf0becc48_70119583($_smarty_tpl) {?><div class="box">
 	<div class="box-body">
+		<div class="btn-toolbar" role="toolbar" aria-label="...">
+			<div class="btn-group" role="group" aria-label="...">
+				<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#winAyuda">Ayuda</button>
+			</div>
+		</div>
+		
 		<table id="tblDatos" class="table table-bordered table-hover">
 			<thead>
 				<tr>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-22 21:59:00
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 09:58:25
          compiled from "templates/plantillas/modulos/pagos/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:149740891159448dfa7e11f2-18658618%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '84ac97159975e6f6372db424c88fd376bf43deff' => 
     array (
       0 => 'templates/plantillas/modulos/pagos/lista.tpl',
-      1 => 1498157756,
+      1 => 1502808659,
       2 => 'file',
     ),
   ),
@@ -32,6 +32,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<th>Metodo</th>
 			<th>Monto</th>
 			<th>Referencia</th>
+			<th>&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -50,6 +51,10 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['referencia'];?>
 </td>
+				<td class="text-center">
+					<button type="button" class="btn btn-danger btn-xs" action="eliminarPago" title="Eliminar pago" identificador='<?php echo $_smarty_tpl->tpl_vars['row']->value['idPago'];?>
+'><i class="fa fa-times"></i></button>
+				</td>
 			</tr>
 		<?php } ?>
 	</tbody>

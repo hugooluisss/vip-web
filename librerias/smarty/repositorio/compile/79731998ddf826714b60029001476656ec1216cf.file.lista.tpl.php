@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-20 09:46:57
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 10:02:01
          compiled from "templates/plantillas/modulos/ventas/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:83260548659472e841e9063-68918287%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '79731998ddf826714b60029001476656ec1216cf' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/lista.tpl',
-      1 => 1497965910,
+      1 => 1499973034,
       2 => 'file',
     ),
   ),
@@ -57,6 +57,8 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 					<?php if ($_smarty_tpl->tpl_vars['row']->value['idEstado']==2){?>
 					<button type="button" class="btn btn-primary btn-xs" action="imprimir" title="Imprimir" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-file-pdf-o"></i></button>
+					<button type="button" class="btn btn-primary btn-xs" action="email" title="Enviar por email" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'><i class="fa fa-envelope-o"></i></button>
 					<?php }?>
 				</td>
 			</tr>

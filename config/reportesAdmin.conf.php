@@ -6,7 +6,7 @@ $conf['admonreporteventasempresa'] = array(
 	'vista' => 'reportesAdmin/ventas.tpl',
 	'descripcion' => 'Reporte de ventas',
 	'seguridad' => true,
-	'js' => array('venta.class.js'),
+	'js' => array('empresa.class.js', 'venta.class.js'),
 	'jsTemplate' => array('reporteAdminVentas.js'),
 	'capa' => LAYOUT_DEFECTO);
 

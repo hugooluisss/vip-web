@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:33:22
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 09:57:47
          compiled from "templates/plantillas/modulos/bazares/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:7513394415953cdb55d7d20-91734581%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd265e09f1a9058ebfe6162618e06d7655cb819a1' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/panel.tpl',
-      1 => 1499916801,
+      1 => 1502808612,
       2 => 'file',
     ),
   ),
@@ -57,7 +57,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtFin" class="col-sm-2">Termina *</label>
+						<label for="txtFin" class="col-sm-2">Termina</label>
 						<div class="col-sm-3">
 							<input class="form-control" id="txtFin" name="txtFin">
 						</div>
@@ -76,9 +76,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<label for="txtInicial" class="col-sm-2">Identificador *</label>
 						<div class="col-sm-1">
 							<input class="form-control" id="txtInicial" name="txtInicial">
+						</div>
+						<div class="col-sm-9">
 							<p class="help-block">Inicial con la que se identifica el folio</p>
 						</div>
 					</div>
+					<!--
 					<div class="form-group">
 						<label for="txtFolio" class="col-sm-2">Folio *</label>
 						<div class="col-sm-3">
@@ -86,6 +89,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							<p class="help-block">Último entregado</p>
 						</div>
 					</div>
+					-->
 				</div>
 				<div class="box-footer">
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
@@ -133,10 +137,10 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 				<h4 class="modal-title">Definición de íconos</h4>
 			</div>
 			<div class="modal-body">
-				<button class="btn btn-primary">P</button> Catálogo de productos<br /><br />
-				<button class="btn btn-primary"><i class="fa fa-users"></i></button> Usuarios del bazar<br /><br />
-				<button class="btn btn-success"><i class="fa fa-pencil"></i></button> Modificar bazar<br /><br />
-				<button class="btn btn-danger"><i class="fa fa-times"></i></button> Eliminar bazar<br /><br />
+				<button class="btn btn-primary" style="width: 40px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button> Catálogo de productos<br /><br />
+				<button class="btn btn-primary" style="width: 40px;"><i class="fa fa-users"></i></button> Usuarios del bazar<br /><br />
+				<button class="btn btn-success" style="width: 40px;"><i class="fa fa-pencil"></i></button> Modificar bazar<br /><br />
+				<button class="btn btn-danger" style="width: 40px;"><i class="fa fa-times"></i></button> Eliminar bazar<br /><br />
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->

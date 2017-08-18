@@ -21,9 +21,9 @@
 					<tr>
 						<td>{$row.name}</td>
 						<td>XXXX XXXX XXXX {$row.last4}</td>
-						<td>{$row.brand}</td>
-						<td>{$row.exp_month} / {$row.exp_year}</td>
-						<td style="text-align: right">
+						<td class="text-center">{$row.brand}</td>
+						<td class="text-center">{$row.exp_month} / {$row.exp_year}</td>
+						<td class="text-right">
 							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador="{$row.idConekta}"><i class="fa fa-times"></i></button>
 						</td>
 					</tr>

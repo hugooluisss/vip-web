@@ -22,4 +22,11 @@ $conf['ctarjetas'] = array(
 	'descripcion' => 'Controlador de tarjetas',
 	'seguridad' => true,
 	'capa' => LAYOUT_JSON);
+	
+$conf['jsonTarjetas'] = array(
+	'controlador' => 'tarjetas.php',
+	#'vista' => 'tarjetas/lista.tpl',
+	'descripcion' => 'Lista de tarjetas con conekta',
+	'seguridad' => true,
+	'capa' => LAYOUT_JSON);
 ?>

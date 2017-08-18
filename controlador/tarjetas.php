@@ -11,9 +11,13 @@ switch($objModulo->getId()){
 		$smarty->assign("year", date("Y"));
 		$smarty->assign("public_conekta", $ini["conekta"]["key_public"]);
 	break;
-	case 'listaTarjetas':
-		global $userSesion;
-		$empresa = new TEmpresa($userSesion->getEmpresa());
+	case 'listaTarjetas': case 'jsonTarjetas':
+		if ($_POST['empresa'] <> '')
+			$empresa = new TEmpresa($_POST['empresa']);
+		else{
+			global $userSesion;
+			$empresa = new TEmpresa($userSesion->getEmpresa());
+		}
 		$datos = array();
 		if ($empresa->getIdConekta() <> ''){
 			$customer = \Conekta\Customer::find($empresa->getIdConekta());
@@ -24,6 +28,7 @@ switch($objModulo->getId()){
 		}
 		//print_r($datos);
 		$smarty->assign("lista", $datos);
+		$smarty->assign("json", $datos);
 	break;
 	case 'ctarjetas':
 		switch($objModulo->getAction()){

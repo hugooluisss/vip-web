@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-17 23:03:44
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 10:21:48
          compiled from "templates/plantillas/modulos/tarjetas/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:239794603599653fc3a9921-11611542%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd582a3cbf5bceac9e1364f5940080525f99d8833' => 
     array (
       0 => 'templates/plantillas/modulos/tarjetas/lista.tpl',
-      1 => 1503028896,
+      1 => 1503069702,
       2 => 'file',
     ),
   ),
@@ -53,12 +53,12 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 						<td>XXXX XXXX XXXX <?php echo $_smarty_tpl->tpl_vars['row']->value['last4'];?>
 </td>
-						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['brand'];?>
+						<td class="text-center"><?php echo $_smarty_tpl->tpl_vars['row']->value['brand'];?>
 </td>
-						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['exp_month'];?>
+						<td class="text-center"><?php echo $_smarty_tpl->tpl_vars['row']->value['exp_month'];?>
  / <?php echo $_smarty_tpl->tpl_vars['row']->value['exp_year'];?>
 </td>
-						<td style="text-align: right">
+						<td class="text-right">
 							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idConekta'];?>
 "><i class="fa fa-times"></i></button>
 						</td>

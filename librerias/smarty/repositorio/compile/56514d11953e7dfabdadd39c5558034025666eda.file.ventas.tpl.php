@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-10 10:08:13
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 13:48:37
          compiled from "templates/plantillas/modulos/reportesAdmin/ventas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1446187458596393f51243f5-98435692%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '56514d11953e7dfabdadd39c5558034025666eda' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/ventas.tpl',
-      1 => 1499699291,
+      1 => 1503081604,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'empresas' => 0,
     'row' => 0,
+    'PAGE' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -68,9 +69,11 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 " readonly/>
 			</div>
 		</div>
+		<br /><br />
 		<div class="row">
 			<div class="col-xs-12 text-right">
 				<button id="btnBuscar" name="btnBuscar" class="btn btn-primary">Buscar</button>
+				<button id="btnCobrar" name="btnCobrar" type="button" data-toggle="modal" data-target="#winOrdenCobro" class="btn btn-success">Cobrar con una orden de Conekta</button>
 			</div>
 		</div>
 	</div>
@@ -79,4 +82,10 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 <div class="panel panel-default">
 	<div class="panel-body" id="dvListaVentas">
 	</div>
-</div><?php }} ?>
+</div>
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/reportesAdmin/winOrden.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/tarjetas/winPago.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>

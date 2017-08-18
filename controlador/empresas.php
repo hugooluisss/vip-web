@@ -1,5 +1,10 @@
 <?php
 global $objModulo;
+require_once("librerias/conekta/Conekta.php");
+\Conekta\Conekta::setApiKey($ini['conekta']['key_private']);
+\Conekta\Conekta::setLocale('es');
+\Conekta\Conekta::setApiVersion("2.0.0");
+
 switch($objModulo->getId()){
 	case 'listaEmpresas':
 		$db = TBase::conectaDB();
@@ -98,6 +103,47 @@ switch($objModulo->getId()){
 				}
 				
 				echo '{"status":"error"}';
+			break;
+			case 'crearOrdenConekta':
+				$empresa = new TEmpresa($_POST['id']);
+				$datos = array();
+				if ($empresa->getIdConekta() == ''){
+					$empresa->setClienteConekta();
+				}
+				
+				$mensaje = "";
+				
+				if ($empresa->getIdConekta() <> ''){
+					try{
+						$orden = \Conekta\Order::create(array(
+							'currency' => 'MXN',
+							'customer_info' => array(
+								'customer_id' => $empresa->getIdConekta()
+							),
+							'line_items' => array(
+								array(
+									'name' => $_POST['concepto'],
+									'unit_price' => $_POST['total'] * 100,
+									'quantity' => 1
+								)
+							)
+						));
+					}catch(Exception $e){
+						$band = false;
+						$mensaje = $e->getMessage();
+						ErrorSistema("Conekta: Ocurrió un error al registrar al cliente... ".$e->getMessage());
+					}
+				
+					$band = true;
+				}else
+					$band = false;
+					
+				$smarty->assign("json", array("band" => $band, "mensaje" => $mensaje, "orden" => $orden->id));
+			break;
+			case 'getOrden':
+				$order = \Conekta\Order::find($_POST['orden']);
+				print_r($orden);
+				$smarty->assign("json", $orden);
 			break;
 		}
 	break;

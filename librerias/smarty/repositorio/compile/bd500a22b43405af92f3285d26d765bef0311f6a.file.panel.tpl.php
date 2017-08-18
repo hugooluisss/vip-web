@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-17 22:57:24
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 09:45:44
          compiled from "templates/plantillas/modulos/tarjetas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1582830281599653247f46b2-74284293%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bd500a22b43405af92f3285d26d765bef0311f6a' => 
     array (
       0 => 'templates/plantillas/modulos/tarjetas/panel.tpl',
-      1 => 1503028642,
+      1 => 1503067542,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'public_conekta' => 0,
     'year' => 0,
     'foo' => 0,
+    'PAGE' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -50,6 +51,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ">
 			<div class="box">
 				<div class="box-body">
+					<div class="alert alert-info">
+						<p>La(s) tarjeta(s) dadás de alta seran utilizadas al momento de generar el cargo por el uso de la plataforma</p>
+					</div>
 					<div class="form-group">
 						<label for="" class="col-lg-2">Nombre del tarjetahabiente</label>
 						<div class="col-lg-4">
@@ -58,8 +62,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					</div>
 					<div class="form-group">
 						<label for="" class="col-lg-2">Número de tarjeta</label>
-						<div class="col-lg-6">
+						<div class="col-lg-4">
 							<input type="text" size="20" data-conekta="card[number]" class="form-control">
+							<span class="text-success ayudaNumber"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -99,6 +104,16 @@ $_smarty_tpl->tpl_vars['foo']->first = $_smarty_tpl->tpl_vars['foo']->iteration 
 							</select>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-xs-6 col-sm-3 text-center"><img class="mx-auto d-block" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+/conekta/Conekta.png" style="width: 100px;"></div>
+						<div class="col-xs-6 col-sm-3 text-center"><img class="mx-auto d-block" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+/conekta/Visa.png" style="width: 100px"></div>
+						<div class="col-xs-6 col-sm-3 text-center"><img class="mx-auto d-block" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+/conekta/MasterCard.png" style="width: 100px"></div>
+						<div class="col-xs-6 col-sm-3 text-center"><img class="mx-auto d-block" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+/conekta/AmericanExpress.png" style="width: 100px"></div>
+					</div>
 				</div>
 				<div class="box-footer">
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
@@ -108,4 +123,18 @@ $_smarty_tpl->tpl_vars['foo']->first = $_smarty_tpl->tpl_vars['foo']->iteration 
 			</div>
 		</form>
 	</div>
-</div><?php }} ?>
+</div>
+
+<div class="modal fade" id="winAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" identificador="">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Definición de íconos</h4>
+			</div>
+			<div class="modal-body">
+				<button class="btn btn-danger"><i class="fa fa-times"></i></button> Eliminar<br /><br />
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal --><?php }} ?>

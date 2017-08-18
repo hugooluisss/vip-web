@@ -21,6 +21,8 @@ switch($objModulo->getId()){
 		$datos = array();
 		$total = 0;
 		$totalPagos = 0;
+		
+		$totalCerradas = 0;
 		while($row = $rs->fetch_assoc()){
 			$sql = "select sum(precio * cantidad * (1-descuento/100)) as total from movimiento where idVenta = ".$row['idVenta'];
 			
@@ -34,15 +36,19 @@ switch($objModulo->getId()){
 			$sql = "select sum(monto) as pagos from pago where visible = true and idVenta = ".$row['idVenta'];
 			$rs2 = $db->query($sql) or errorMySQL($db, $sql);
 			$row2 = $rs2->fetch_assoc();
+			$totalCerradas += $row['idEstado'] == 2?$row['total']:0;
+			
 			$row['pagos'] = number_format($row2['pagos'], 2, '.', ',');
 			$totalPagos += $row2['pagos'];
 			$row['json'] = json_encode($row);
+			
 			array_push($datos, $row);
 		}
 		
 		$smarty->assign("lista", $datos);
 		$smarty->assign("total", number_format($total, 2, '.', ','));
 		$smarty->assign("totalPagos", number_format($totalPagos, 2, '.', ','));
+		$smarty->assign("totalCerradas", number_format($totalCerradas, 2, '.', ','));
 	break;
 }
 ?>

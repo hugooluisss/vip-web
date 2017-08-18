@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-22 21:58:59
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 09:58:24
          compiled from "templates/plantillas/modulos/ventas/winPago.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:99215638859448df9bbf948-03404581%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a15284f7728d2f4cf2a91cc6dc9d743c358be1c0' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/winPago.tpl',
-      1 => 1498157756,
+      1 => 1502808612,
       2 => 'file',
     ),
   ),
@@ -51,6 +51,15 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="txtReferencia" class="col-sm-3">Referencia</label>
+						<div class="col-sm-5">
+							<input class="form-control" id="txtReferencia" name="txtReferencia" value="" type="text" />
+						</div>
+						<div class="col-sm-4 text-muted">
+							Por ejemplo: últimos 4 dígitos
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="selMetodoCobro" class="col-sm-3">Método de cobro</label>
 						<div class="col-sm-9">
 							<select class="form-control" id="selMetodoCobro" name="selMetodoCobro">
@@ -60,14 +69,8 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 					<div class="form-group">
 						<label for="txtMonto" class="col-sm-3">Monto</label>
 						<div class="col-sm-3">
-							<input class="form-control text-right" id="txtMonto" name="txtMonto" value="0" type="number" />
+							<input class="form-control text-right" id="txtMonto" name="txtMonto" value="0" type="text" />
 							<input id="montoMaximo" name="montoMaximo" value="0" type="hidden" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="txtReferencia" class="col-sm-3">Referencia</label>
-						<div class="col-sm-9">
-							<input class="form-control" id="txtReferencia" name="txtReferencia" value="" type="text" />
 						</div>
 					</div>
 				</div>

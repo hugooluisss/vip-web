@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-06-20 09:46:52
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 09:58:24
          compiled from "templates/plantillas/modulos/clientes/add.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:199994719259448df9b92686-86644233%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '667e0b0ff96b02241c08529463356fb2da0ec7e7' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/add.tpl',
-      1 => 1497363371,
+      1 => 1502808612,
       2 => 'file',
     ),
   ),
@@ -58,28 +58,30 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 	<div class="form-group">
 		<label class="col-sm-2 text-right" for="txtCiudad">Ciudad</label>
-		<div class="col-sm-2">
+		<div class="col-sm-4">
 			<input class="form-control input-sm" id="txtCiudad" name="txtCiudad" />
 		</div>
 		<label class="col-sm-2 text-right" for="txtEstado">Estado</label>
-		<div class="col-sm-2">
+		<div class="col-sm-4">
 			<input class="form-control input-sm" id="txtEstado" name="txtEstado" />
 		</div>
+	</div>
+	<div class="form-group">
 		<label class="col-sm-2 text-right" for="txtRFC">RFC</label>
 		<div class="col-sm-2">
 			<input class="form-control input-sm" id="txtRFC" name="txtRFC" />
 		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-sm-2 text-right" for="txtCorreo">Correo</label>
-		<div class="col-sm-2">
-			<input class="form-control input-sm" id="txtCorreo" name="txtCorreo" />
-		</div>
-		<label class="col-sm-2 text-right" for="txtTelefono">Teléfono</label>
+		<label class="col-sm-2 col-sm-offset-2 text-right" for="txtTelefono">Teléfono</label>
 		<div class="col-sm-2">
 			<input class="form-control input-sm" id="txtTelefono" name="txtTelefono" />
 		</div>
-		<label class="col-sm-2 text-right" for="txtTelefono">¿Recibir promociones?</label>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 text-right" for="txtCorreo">Correo</label>
+		<div class="col-sm-4">
+			<input class="form-control input-sm" id="txtCorreo" name="txtCorreo" />
+		</div>
+		<label class="col-sm-2 text-right" for="txtTelefono">¿Desea recibir promociones?</label>
 		<div class="col-sm-2">
 			<select id="selPromociones" name="selPromociones" class="form-control">
 				<option value="0">No</option>

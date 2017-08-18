@@ -22,6 +22,9 @@
 		<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;" publicConekta="{$public_conekta}">
 			<div class="box">
 				<div class="box-body">
+					<div class="alert alert-info">
+						<p>La(s) tarjeta(s) dadás de alta seran utilizadas al momento de generar el cargo por el uso de la plataforma</p>
+					</div>
 					<div class="form-group">
 						<label for="" class="col-lg-2">Nombre del tarjetahabiente</label>
 						<div class="col-lg-4">
@@ -30,8 +33,9 @@
 					</div>
 					<div class="form-group">
 						<label for="" class="col-lg-2">Número de tarjeta</label>
-						<div class="col-lg-6">
+						<div class="col-lg-4">
 							<input type="text" size="20" data-conekta="card[number]" class="form-control">
+							<span class="text-success ayudaNumber"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -66,6 +70,12 @@
 							</select>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-xs-6 col-sm-3 text-center"><img class="mx-auto d-block" src="{$PAGE.imagenes}/conekta/Conekta.png" style="width: 100px;"></div>
+						<div class="col-xs-6 col-sm-3 text-center"><img class="mx-auto d-block" src="{$PAGE.imagenes}/conekta/Visa.png" style="width: 100px"></div>
+						<div class="col-xs-6 col-sm-3 text-center"><img class="mx-auto d-block" src="{$PAGE.imagenes}/conekta/MasterCard.png" style="width: 100px"></div>
+						<div class="col-xs-6 col-sm-3 text-center"><img class="mx-auto d-block" src="{$PAGE.imagenes}/conekta/AmericanExpress.png" style="width: 100px"></div>
+					</div>
 				</div>
 				<div class="box-footer">
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
@@ -76,3 +86,17 @@
 		</form>
 	</div>
 </div>
+
+<div class="modal fade" id="winAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" identificador="">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Definición de íconos</h4>
+			</div>
+			<div class="modal-body">
+				<button class="btn btn-danger"><i class="fa fa-times"></i></button> Eliminar<br /><br />
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

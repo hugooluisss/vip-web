@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:34:37
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 10:01:45
          compiled from "templates/plantillas/modulos/metodoscobro/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:123411077459495c77aacb50-51757110%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '918ec339da084ef8702ddee87675c0b1a64e6b80' => 
     array (
       0 => 'templates/plantillas/modulos/metodoscobro/panel.tpl',
-      1 => 1498157756,
+      1 => 1502808612,
       2 => 'file',
     ),
   ),
@@ -67,7 +67,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<label for="txtDestino" class="col-lg-2">Destino</label>
 						<div class="col-lg-6">
 							<input class="form-control" id="txtDestino" name="txtDestino">
-							<span class="help-block">Personaliza tu método de cobro por ejemplo: “Bancomer -xxxx” o “Clip xxx</span>
+							<span class="help-block">Personaliza tu método de cobro por ejemplo: "Bancomer -xxxx", "Clip xxx" o "Caja xxxx"</span>
 						</div>
 					</div>
 				</div>
@@ -79,4 +79,20 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			</div>
 		</form>
 	</div>
-</div><?php }} ?>
+</div>
+
+
+<div class="modal fade" id="winAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" identificador="">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Definición de íconos</h4>
+			</div>
+			<div class="modal-body">
+				<button class="btn btn-success"><i class="fa fa-pencil"></i></button> Modificar<br /><br />
+				<button class="btn btn-danger"><i class="fa fa-times"></i></button> Eliminar<br /><br />
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal --><?php }} ?>

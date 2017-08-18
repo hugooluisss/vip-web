@@ -5,6 +5,10 @@ $(document).ready(function(){
 			txtRazonSocial: "required",
 			txtEmail: {
 				email: true
+			},
+			txtTelefono: {
+				required: true,
+				number: true
 			}
 		},
 		wrapper: 'span', 

@@ -33,9 +33,11 @@
 				<input type="date" placeholder="Y-m-d" class="form-control" id="txtFin" name="txtFin" value="{$smarty.now|date_format:"%Y-%m-%d"}" readonly/>
 			</div>
 		</div>
+		<br /><br />
 		<div class="row">
 			<div class="col-xs-12 text-right">
 				<button id="btnBuscar" name="btnBuscar" class="btn btn-primary">Buscar</button>
+				<button id="btnCobrar" name="btnCobrar" type="button" data-toggle="modal" data-target="#winOrdenCobro" class="btn btn-success">Cobrar con una orden de Conekta</button>
 			</div>
 		</div>
 	</div>
@@ -45,3 +47,7 @@
 	<div class="panel-body" id="dvListaVentas">
 	</div>
 </div>
+
+{include file=$PAGE.rutaModulos|cat:"modulos/reportesAdmin/winOrden.tpl"}
+
+{include file=$PAGE.rutaModulos|cat:"modulos/tarjetas/winPago.tpl"}

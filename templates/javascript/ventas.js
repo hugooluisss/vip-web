@@ -368,6 +368,8 @@ $(document).ready(function(){
 							producto.descripcion = ventana.find("#txtDescripcion").val();
 							producto.codigoInterno = ventana.find("#txtCodigo").val();
 							producto.precio = ventana.find("#txtPrecio").val();
+							producto.color = "";
+							producto.talla = "";
 							producto.descuento = 0;
 							producto.codigoBarras = "";
 							

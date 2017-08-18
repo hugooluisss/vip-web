@@ -12,6 +12,18 @@ $(document).ready(function(){
 	});
 	
 	Conekta.setPublishableKey($("#frmAdd").attr("publicConekta"));
+	
+	$("[data-conekta*=number]").change(function(){
+		if(Conekta.card.validateNumber($(this).val())){
+			$(".ayudaNumber").html("Estás usando " + Conekta.card.getBrand($(this).val()));
+			$(this).parent().parent().addClass("has-success");
+			$(this).parent().parent().removeClass("has-danger");
+		}else{
+			$(".ayudaNumber").html("Error en el número de tarjeta");
+			$(this).parent().parent().addClass("has-danger");
+			$(this).parent().parent().removeClass("has-success");
+		}
+	});
 		
 	$("#frmAdd").submit(function(){
 		var $form = $(this);

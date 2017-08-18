@@ -29,5 +29,11 @@
 			<th class="text-right">$ {$total}</th>
 			<th class="text-right">$ {$totalPagos}</th>
 		</tr>
+		<tr class="text-success">
+			<th colspan="5" class="text-right">Ventas cerradas</th>
+			<th class="text-right">$ {$totalCerradas}</th>
+		</tr>
 	</tfoot>
 </table>
+
+<input type="hidden" id="totalCerradas" value="{$totalCerradas}" />
