@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 12:28:19
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-21 08:48:59
          compiled from "templates/plantillas/modulos/reportesAdmin/listaVentas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:904572918596395fde6b3d8-55265294%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5c359684097b9b5ad5552565639d999ebf7e0e79' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/listaVentas.tpl',
-      1 => 1503077295,
+      1 => 1503323337,
       2 => 'file',
     ),
   ),
@@ -74,8 +74,13 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 		</tr>
 		<tr class="text-success">
 			<th colspan="5" class="text-right">Ventas cerradas</th>
-			<th class="text-right">$ <?php echo $_smarty_tpl->tpl_vars['totalCerradas']->value;?>
-</th>
+			<th class="text-right">
+				$ <?php echo $_smarty_tpl->tpl_vars['totalCerradas']->value;?>
+ <br />
+				<?php if ($_smarty_tpl->tpl_vars['totalCerradas']->value>0){?> 
+					<button id="btnCobrar" name="btnCobrar" type="button" data-toggle="modal" data-target="#winOrdenCobro" class="btn btn-success">Cobrar con una orden de Conekta</button>
+				<?php }?>
+			</th>
 		</tr>
 	</tfoot>
 </table>

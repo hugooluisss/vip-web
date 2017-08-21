@@ -31,7 +31,12 @@
 		</tr>
 		<tr class="text-success">
 			<th colspan="5" class="text-right">Ventas cerradas</th>
-			<th class="text-right">$ {$totalCerradas}</th>
+			<th class="text-right">
+				$ {$totalCerradas} <br />
+				{if $totalCerradas > 0} 
+					<button id="btnCobrar" name="btnCobrar" type="button" data-toggle="modal" data-target="#winOrdenCobro" class="btn btn-success">Cobrar con una orden de Conekta</button>
+				{/if}
+			</th>
 		</tr>
 	</tfoot>
 </table>

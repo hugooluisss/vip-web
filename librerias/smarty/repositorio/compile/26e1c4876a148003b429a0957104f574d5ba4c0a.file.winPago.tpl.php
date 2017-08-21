@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 14:00:17
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-21 09:19:24
          compiled from "templates/plantillas/modulos/tarjetas/winPago.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:91762029959973685c3f957-75253134%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '26e1c4876a148003b429a0957104f574d5ba4c0a' => 
     array (
       0 => 'templates/plantillas/modulos/tarjetas/winPago.tpl',
-      1 => 1503082702,
+      1 => 1503325160,
       2 => 'file',
     ),
   ),
@@ -41,7 +41,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<div class="col-lg-10" campo="created_at"></div>
 					</div>
 					<div class="form-group">
-						<label for="txtConcepto" class="col-lg-2">Pagar con </label>
+						<label for="txtConcepto" class="col-lg-2">Concepto</label>
+						<div class="col-lg-10" campo="concepto"></div>
+					</div>
+					<div class="form-group">
+						<label for="selTarjeta" class="col-lg-2">Pagar con </label>
 						<div class="col-lg-10">
 							<select id="selTarjeta" name="selTarjeta" class="form-control">
 							</select>
@@ -49,7 +53,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Realizar cargo</button>
+					<button type="button" class="btn btn-primary" id="btnCargarTarjeta">Realizar cargo</button>
 					<button type="reset" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 				</div>
 			</div><!-- /.modal-content -->

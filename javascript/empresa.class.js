@@ -104,4 +104,33 @@ TEmpresa = function(){
 				datos.fn.after(data);
 		}, "json");
 	}
+	
+	this.getOrden = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		$.post("cempresas", {
+			"orden": datos.orden,
+			"action": "getOrden"
+		}, function(data){
+			if (datos.fn.after != undefined)
+				datos.fn.after(data);
+				
+			if (data.band == 'false')
+				alert("Ocurrió un error al eliminar el registro");
+		}, "json");
+	}
+	
+	this.cargarACuenta = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		$.post("cempresas", {
+			"orden": datos.orden,
+			"tarjeta": datos.tarjeta,
+			"action": "cargarACuenta"
+		}, function(data){
+			if (datos.fn.after != undefined)
+				datos.fn.after(data);
+				
+			if (data.band == 'false')
+				alert("Ocurrió un error al eliminar el registro");
+		}, "json");
+	}
 };

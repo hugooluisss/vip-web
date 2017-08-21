@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 13:48:37
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-21 09:01:32
          compiled from "templates/plantillas/modulos/reportesAdmin/winOrden.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:185553133959973685badae1-78969962%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1a75a350bb3035222c8a9b011bd2053890a811bc' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/winOrden.tpl',
-      1 => 1503080061,
+      1 => 1503323429,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_59973685bedd46_45357193',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59973685bedd46_45357193')) {function content_59973685bedd46_45357193($_smarty_tpl) {?><form role="form" id="frmCobro" class="form-horizontal" onsubmit="javascript: return false;">
 	<div class="modal fade" id="winOrdenCobro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

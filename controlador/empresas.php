@@ -141,9 +141,32 @@ switch($objModulo->getId()){
 				$smarty->assign("json", array("band" => $band, "mensaje" => $mensaje, "orden" => $orden->id));
 			break;
 			case 'getOrden':
-				$order = \Conekta\Order::find($_POST['orden']);
-				print_r($orden);
+				$orden = \Conekta\Order::find($_POST['orden']);
 				$smarty->assign("json", $orden);
+			break;
+			case 'cargarACuenta':
+				try{
+					$orden = \Conekta\Order::find($_POST['orden']);
+					$fecha = new DateTime();
+					$fecha->add(new DateInterval('P1D'));
+					$charge = $orden->createCharge(
+						array(
+							'payment_method' => array(
+								'type'       => 'card',
+								'expires_at' => $fecha->getTimestamp(),
+								"token_id" => $_POST['tarjeta']
+							),
+							'amount' => $orden->amount,
+							"token_id" => $_POST['tarjeta']
+						)
+					);
+					
+					$band = true;
+				}catch(Exception $e){
+					$band = false;
+				}
+				
+				$smarty->assign("json", array("band" => $band, "cargo" => $charge));
 			break;
 		}
 	break;

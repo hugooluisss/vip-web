@@ -37,7 +37,6 @@
 		<div class="row">
 			<div class="col-xs-12 text-right">
 				<button id="btnBuscar" name="btnBuscar" class="btn btn-primary">Buscar</button>
-				<button id="btnCobrar" name="btnCobrar" type="button" data-toggle="modal" data-target="#winOrdenCobro" class="btn btn-success">Cobrar con una orden de Conekta</button>
 			</div>
 		</div>
 	</div>

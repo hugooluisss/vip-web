@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 13:48:37
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-21 08:48:27
          compiled from "templates/plantillas/modulos/reportesAdmin/ventas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1446187458596393f51243f5-98435692%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '56514d11953e7dfabdadd39c5558034025666eda' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/ventas.tpl',
-      1 => 1503081604,
+      1 => 1503323286,
       2 => 'file',
     ),
   ),
@@ -73,7 +73,6 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 		<div class="row">
 			<div class="col-xs-12 text-right">
 				<button id="btnBuscar" name="btnBuscar" class="btn btn-primary">Buscar</button>
-				<button id="btnCobrar" name="btnCobrar" type="button" data-toggle="modal" data-target="#winOrdenCobro" class="btn btn-success">Cobrar con una orden de Conekta</button>
 			</div>
 		</div>
 	</div>

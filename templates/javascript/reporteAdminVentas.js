@@ -113,6 +113,8 @@ $(document).ready(function(){
 	
 	
 	$("#winPagoOrden").on('show.bs.modal', function(e){
+		var objEmpresa = new TEmpresa;
+		
 		$.post("jsonTarjetas", {
 			empresa: $("#selEmpresa").val()
 		}, function(resp){
@@ -122,13 +124,45 @@ $(document).ready(function(){
 			});
 		}, "json");
 		
-		$.post("cempresas", {
-			orden: $("#winPagoOrden").attr("orden"),
-			"action": "getOrden"
-		}, function(orden){
-			$.each(orden, function(i, el){
-				$("[campo=" + i + "]").html(el);
+		
+		objEmpresa.getOrden({
+			"orden": $("#winPagoOrden").attr("orden"),
+			fn: {
+				after: function(orden){
+					$.each(orden, function(i, el){
+						$("[campo=" + i + "]").html(el);
+					});
+					
+					$("[campo=amount]").html(orden.amount / 100);
+					$("[campo=concepto]").html(orden.line_items.data[0].name);
+				}
+			}
+		});
+	});
+	
+	$("#btnCargarTarjeta").click(function(){
+		if ($("#selTarjeta").val() == '')
+			alert("Debes de seleccionar una tarjeta... si no hay en la lista solicitalé al cliente que registre una tarjeta para realizar el pago");
+		else{
+			var objEmpresa = new TEmpresa;
+			objEmpresa.cargarACuenta({
+				"orden": $("#winPagoOrden").attr("orden"),
+				"tarjeta": $("#selTarjeta").val(),
+				"fn": {
+					before: function(){
+						$("#btnCargarTarjeta").prop("disabled", true);
+					},
+					after: function(resp){
+						$("#btnCargarTarjeta").prop("disabled", false);
+						
+						if (resp.band){
+							alert("El cargo se realizó con éxito");
+							$("#winPagoOrden").modal("hide");
+						}else
+							alert("El cargo no pudo ser realizado");
+					}
+				}
 			});
-		}, "json");
+		}
 	});
 });

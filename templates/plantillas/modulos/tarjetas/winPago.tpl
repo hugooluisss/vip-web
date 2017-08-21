@@ -20,7 +20,11 @@
 						<div class="col-lg-10" campo="created_at"></div>
 					</div>
 					<div class="form-group">
-						<label for="txtConcepto" class="col-lg-2">Pagar con </label>
+						<label for="txtConcepto" class="col-lg-2">Concepto</label>
+						<div class="col-lg-10" campo="concepto"></div>
+					</div>
+					<div class="form-group">
+						<label for="selTarjeta" class="col-lg-2">Pagar con </label>
 						<div class="col-lg-10">
 							<select id="selTarjeta" name="selTarjeta" class="form-control">
 							</select>
@@ -28,7 +32,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Realizar cargo</button>
+					<button type="button" class="btn btn-primary" id="btnCargarTarjeta">Realizar cargo</button>
 					<button type="reset" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 				</div>
 			</div><!-- /.modal-content -->
