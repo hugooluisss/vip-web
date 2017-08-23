@@ -34,7 +34,7 @@
 			<th class="text-right">
 				$ {$totalCerradas} <br />
 				{if $totalCerradas > 0} 
-					<button id="btnCobrar" name="btnCobrar" type="button" data-toggle="modal" data-target="#winOrdenCobro" class="btn btn-success">Cobrar con una orden de Conekta</button>
+					<button id="btnCobrar" name="btnCobrar" type="button" data-toggle="modal" data-target="#winOrdenCobro" class="btn btn-success">Cobrar comisión</button>
 				{/if}
 			</th>
 		</tr>

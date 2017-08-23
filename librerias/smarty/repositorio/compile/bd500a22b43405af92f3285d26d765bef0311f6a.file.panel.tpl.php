@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 09:45:44
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-23 10:45:10
          compiled from "templates/plantillas/modulos/tarjetas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1582830281599653247f46b2-74284293%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bd500a22b43405af92f3285d26d765bef0311f6a' => 
     array (
       0 => 'templates/plantillas/modulos/tarjetas/panel.tpl',
-      1 => 1503067542,
+      1 => 1503503108,
       2 => 'file',
     ),
   ),
@@ -19,16 +19,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5996532485a759_78253635',
   'variables' => 
   array (
-    'public_conekta' => 0,
+    'public_key' => 0,
+    'merchant' => 0,
+    'PAGE' => 0,
     'year' => 0,
     'foo' => 0,
-    'PAGE' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5996532485a759_78253635')) {function content_5996532485a759_78253635($_smarty_tpl) {?><script type="text/javascript" src="https://cdn.conekta.io/js/latest/conekta.js"></script>
-
-<div class="row">
+<?php if ($_valid && !is_callable('content_5996532485a759_78253635')) {function content_5996532485a759_78253635($_smarty_tpl) {?><div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Tarjetas</h1>
 	</div>
@@ -47,36 +46,48 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 	
 	<div id="add" class="tab-pane fade">
-		<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;" publicConekta="<?php echo $_smarty_tpl->tpl_vars['public_conekta']->value;?>
+		<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;" public="<?php echo $_smarty_tpl->tpl_vars['public_key']->value;?>
+" merchant="<?php echo $_smarty_tpl->tpl_vars['merchant']->value;?>
 ">
 			<div class="box">
 				<div class="box-body">
 					<div class="alert alert-info">
 						<p>La(s) tarjeta(s) dadás de alta seran utilizadas al momento de generar el cargo por el uso de la plataforma</p>
 					</div>
+					<div class="row">
+                        <div class="col-xs-6">
+	                        <img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+/openpay/cards1.png" class="img-responsive" />
+                        </div>
+                        <div class="col-xs-6">
+	                        <img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+/openpay/cards2.png" class="img-responsive" />
+                        </div>
+                    </div>
+                    <br /><br />
 					<div class="form-group">
 						<label for="" class="col-lg-2">Nombre del tarjetahabiente</label>
 						<div class="col-lg-4">
-							<input type="text" size="20" data-conekta="card[name]" class="form-control">
+							<input type="text" id="txtTarjetahabiente" name="txtTarjetahabiente" data-openpay-card="holder_name" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-lg-2">Número de tarjeta</label>
 						<div class="col-lg-4">
-							<input type="text" size="20" data-conekta="card[number]" class="form-control">
+							<input type="text" id="txtNumero" name="txtNumero" maxlength="19" data-openpay-card="card_number" class="form-control">
 							<span class="text-success ayudaNumber"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-lg-2">CVC</label>
 						<div class="col-lg-2">
-							<input type="text" size="4" data-conekta="card[cvc]" class="form-control">
+							<input type="text" id="txtCVC" name="txtCVC" size="3" data-openpay-card="cvv2" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-lg-2">Fecha de expiración</label>
 						<div class="col-lg-3">
-							<select data-conekta="card[exp_month]" class="form-control">
+							<select id="selMes" name="selMes" data-openpay-card="expiration_month" class="form-control">
 								<option value="01">Enero</option>
 								<option value="02">Febrero</option>
 								<option value="03">Marzo</option>
@@ -92,7 +103,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							</select>
 						</div>
 						<div class="col-lg-3">
-							<select data-conekta="card[exp_year]" class="form-control">
+							<select id="selAnio" name="selAnio" data-openpay-card="expiration_year" class="form-control">
 								<?php $_smarty_tpl->tpl_vars['foo'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['foo']->step = 1;$_smarty_tpl->tpl_vars['foo']->total = (int)ceil(($_smarty_tpl->tpl_vars['foo']->step > 0 ? $_smarty_tpl->tpl_vars['year']->value+10+1 - ($_smarty_tpl->tpl_vars['year']->value) : $_smarty_tpl->tpl_vars['year']->value-($_smarty_tpl->tpl_vars['year']->value+10)+1)/abs($_smarty_tpl->tpl_vars['foo']->step));
 if ($_smarty_tpl->tpl_vars['foo']->total > 0){
 for ($_smarty_tpl->tpl_vars['foo']->value = $_smarty_tpl->tpl_vars['year']->value, $_smarty_tpl->tpl_vars['foo']->iteration = 1;$_smarty_tpl->tpl_vars['foo']->iteration <= $_smarty_tpl->tpl_vars['foo']->total;$_smarty_tpl->tpl_vars['foo']->value += $_smarty_tpl->tpl_vars['foo']->step, $_smarty_tpl->tpl_vars['foo']->iteration++){
@@ -104,6 +115,19 @@ $_smarty_tpl->tpl_vars['foo']->first = $_smarty_tpl->tpl_vars['foo']->iteration 
 							</select>
 						</div>
 					</div>
+					<br />
+					<br />
+					<div class="row">
+						<div class="col-xs-12 text-right">
+							<img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+/openpay/openpay.png" />
+							<img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+/openpay/radio_on.png" />
+							<img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+/openpay/security.png" />
+						</div>
+					</div>
+					<!--
 					<div class="row">
 						<div class="col-xs-6 col-sm-3 text-center"><img class="mx-auto d-block" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
 /conekta/Conekta.png" style="width: 100px;"></div>
@@ -114,6 +138,7 @@ $_smarty_tpl->tpl_vars['foo']->first = $_smarty_tpl->tpl_vars['foo']->iteration 
 						<div class="col-xs-6 col-sm-3 text-center"><img class="mx-auto d-block" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
 /conekta/AmericanExpress.png" style="width: 100px"></div>
 					</div>
+					-->
 				</div>
 				<div class="box-footer">
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>

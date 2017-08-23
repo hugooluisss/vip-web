@@ -1,9 +1,5 @@
 <?php
 global $objModulo;
-require_once("librerias/conekta/Conekta.php");
-\Conekta\Conekta::setApiKey($ini['conekta']['key_private']);
-\Conekta\Conekta::setLocale('es');
-\Conekta\Conekta::setApiVersion("2.0.0");
 
 switch($objModulo->getId()){
 	case 'listaEmpresas':
@@ -104,69 +100,31 @@ switch($objModulo->getId()){
 				
 				echo '{"status":"error"}';
 			break;
-			case 'crearOrdenConekta':
-				$empresa = new TEmpresa($_POST['id']);
-				$datos = array();
-				if ($empresa->getIdConekta() == ''){
-					$empresa->setClienteConekta();
-				}
-				
-				$mensaje = "";
-				
-				if ($empresa->getIdConekta() <> ''){
-					try{
-						$orden = \Conekta\Order::create(array(
-							'currency' => 'MXN',
-							'customer_info' => array(
-								'customer_id' => $empresa->getIdConekta()
-							),
-							'line_items' => array(
-								array(
-									'name' => $_POST['concepto'],
-									'unit_price' => $_POST['total'] * 100,
-									'quantity' => 1
-								)
-							)
-						));
-					}catch(Exception $e){
-						$band = false;
-						$mensaje = $e->getMessage();
-						ErrorSistema("Conekta: Ocurrió un error al registrar al cliente... ".$e->getMessage());
-					}
-				
-					$band = true;
-				}else
-					$band = false;
-					
-				$smarty->assign("json", array("band" => $band, "mensaje" => $mensaje, "orden" => $orden->id));
-			break;
-			case 'getOrden':
-				$orden = \Conekta\Order::find($_POST['orden']);
-				$smarty->assign("json", $orden);
-			break;
 			case 'cargarACuenta':
+				global $ini;
+				require_once('librerias/openpay/Openpay.php');
+				$openpay = Openpay::getInstance($ini['openpay']['id'], $ini['openpay']['key_private']);
+				$empresa = new TEmpresa($_POST['empresa']);
+				
 				try{
-					$orden = \Conekta\Order::find($_POST['orden']);
-					$fecha = new DateTime();
-					$fecha->add(new DateInterval('P1D'));
-					$charge = $orden->createCharge(
-						array(
-							'payment_method' => array(
-								'type'       => 'card',
-								'expires_at' => $fecha->getTimestamp(),
-								"token_id" => $_POST['tarjeta']
-							),
-							'amount' => $orden->amount,
-							"token_id" => $_POST['tarjeta']
+					$cliente = $openpay->customers->get($empresa->getIdPay());
+					$cargo = $cliente->charges->create(array(
+						'method' => 'card',
+						'source_id' => $_POST['tarjeta'],
+						'amount' => $_POST['monto'],
+						'currency' => 'MXN',
+						'description' => $_POST['concepto'],
+						'device_session_id' => $_POST['device_session']
 						)
 					);
-					
+										
 					$band = true;
 				}catch(Exception $e){
+					$mensaje = $e->getMessage();
 					$band = false;
 				}
 				
-				$smarty->assign("json", array("band" => $band, "cargo" => $charge));
+				$smarty->assign("json", array("band" => $band, "cargo" => $cargo, "mensaje" => $mensaje));
 			break;
 		}
 	break;

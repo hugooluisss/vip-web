@@ -1,5 +1,3 @@
-<script type="text/javascript" src="https://cdn.conekta.io/js/latest/conekta.js"></script>
-
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Tarjetas</h1>
@@ -19,35 +17,44 @@
 	</div>
 	
 	<div id="add" class="tab-pane fade">
-		<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;" publicConekta="{$public_conekta}">
+		<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;" public="{$public_key}" merchant="{$merchant}">
 			<div class="box">
 				<div class="box-body">
 					<div class="alert alert-info">
 						<p>La(s) tarjeta(s) dadás de alta seran utilizadas al momento de generar el cargo por el uso de la plataforma</p>
 					</div>
+					<div class="row">
+                        <div class="col-xs-6">
+	                        <img src="{$PAGE.imagenes}/openpay/cards1.png" class="img-responsive" />
+                        </div>
+                        <div class="col-xs-6">
+	                        <img src="{$PAGE.imagenes}/openpay/cards2.png" class="img-responsive" />
+                        </div>
+                    </div>
+                    <br /><br />
 					<div class="form-group">
 						<label for="" class="col-lg-2">Nombre del tarjetahabiente</label>
 						<div class="col-lg-4">
-							<input type="text" size="20" data-conekta="card[name]" class="form-control">
+							<input type="text" id="txtTarjetahabiente" name="txtTarjetahabiente" data-openpay-card="holder_name" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-lg-2">Número de tarjeta</label>
 						<div class="col-lg-4">
-							<input type="text" size="20" data-conekta="card[number]" class="form-control">
+							<input type="text" id="txtNumero" name="txtNumero" maxlength="19" data-openpay-card="card_number" class="form-control">
 							<span class="text-success ayudaNumber"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-lg-2">CVC</label>
 						<div class="col-lg-2">
-							<input type="text" size="4" data-conekta="card[cvc]" class="form-control">
+							<input type="text" id="txtCVC" name="txtCVC" size="3" data-openpay-card="cvv2" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-lg-2">Fecha de expiración</label>
 						<div class="col-lg-3">
-							<select data-conekta="card[exp_month]" class="form-control">
+							<select id="selMes" name="selMes" data-openpay-card="expiration_month" class="form-control">
 								<option value="01">Enero</option>
 								<option value="02">Febrero</option>
 								<option value="03">Marzo</option>
@@ -63,19 +70,30 @@
 							</select>
 						</div>
 						<div class="col-lg-3">
-							<select data-conekta="card[exp_year]" class="form-control">
+							<select id="selAnio" name="selAnio" data-openpay-card="expiration_year" class="form-control">
 								{for $foo=$year to $year+10}
 									<option value="{$foo}">{$foo}</option>
 								{/for}
 							</select>
 						</div>
 					</div>
+					<br />
+					<br />
+					<div class="row">
+						<div class="col-xs-12 text-right">
+							<img src="{$PAGE.imagenes}/openpay/openpay.png" />
+							<img src="{$PAGE.imagenes}/openpay/radio_on.png" />
+							<img src="{$PAGE.imagenes}/openpay/security.png" />
+						</div>
+					</div>
+					<!--
 					<div class="row">
 						<div class="col-xs-6 col-sm-3 text-center"><img class="mx-auto d-block" src="{$PAGE.imagenes}/conekta/Conekta.png" style="width: 100px;"></div>
 						<div class="col-xs-6 col-sm-3 text-center"><img class="mx-auto d-block" src="{$PAGE.imagenes}/conekta/Visa.png" style="width: 100px"></div>
 						<div class="col-xs-6 col-sm-3 text-center"><img class="mx-auto d-block" src="{$PAGE.imagenes}/conekta/MasterCard.png" style="width: 100px"></div>
 						<div class="col-xs-6 col-sm-3 text-center"><img class="mx-auto d-block" src="{$PAGE.imagenes}/conekta/AmericanExpress.png" style="width: 100px"></div>
 					</div>
+					-->
 				</div>
 				<div class="box-footer">
 					<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>

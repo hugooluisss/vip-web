@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 10:21:48
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-23 10:49:38
          compiled from "templates/plantillas/modulos/tarjetas/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:239794603599653fc3a9921-11611542%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd582a3cbf5bceac9e1364f5940080525f99d8833' => 
     array (
       0 => 'templates/plantillas/modulos/tarjetas/lista.tpl',
-      1 => 1503069702,
+      1 => 1503503372,
       2 => 'file',
     ),
   ),
@@ -49,17 +49,18 @@ foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars[
 $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
 					<tr>
-						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['name'];?>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value->holder_name;?>
 </td>
-						<td>XXXX XXXX XXXX <?php echo $_smarty_tpl->tpl_vars['row']->value['last4'];?>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value->card_number;?>
 </td>
-						<td class="text-center"><?php echo $_smarty_tpl->tpl_vars['row']->value['brand'];?>
-</td>
-						<td class="text-center"><?php echo $_smarty_tpl->tpl_vars['row']->value['exp_month'];?>
- / <?php echo $_smarty_tpl->tpl_vars['row']->value['exp_year'];?>
+						<td class="text-center"><?php echo $_smarty_tpl->tpl_vars['row']->value->brand;?>
+ <small class="text-info"><?php echo $_smarty_tpl->tpl_vars['row']->value->type;?>
+</small></td>
+						<td class="text-center"><?php echo $_smarty_tpl->tpl_vars['row']->value->expiration_month;?>
+ / <?php echo $_smarty_tpl->tpl_vars['row']->value->expiration_year;?>
 </td>
 						<td class="text-right">
-							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idConekta'];?>
+							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value->id;?>
 "><i class="fa fa-times"></i></button>
 						</td>
 					</tr>

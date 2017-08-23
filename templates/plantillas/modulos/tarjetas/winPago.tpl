@@ -13,7 +13,7 @@
 					</div>
 					<div class="form-group">
 						<label for="" class="col-lg-2">Monto</label>
-						<div class="col-lg-10" campo="amount"></div>
+						<div class="col-lg-10" campo="amount" ></div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-lg-2">Creada el</label>

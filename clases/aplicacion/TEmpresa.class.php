@@ -23,7 +23,7 @@ class TEmpresa{
 	private $rfc;
 	private $activo;
 	public $usuarios;
-	private $idConekta;
+	private $idPay;
 	
 	/**
 	* Constructor de la clase
@@ -491,18 +491,6 @@ class TEmpresa{
 	}
 	
 	/**
-	* Retorna el id de cliente en conekta
-	*
-	* @autor Hugo
-	* @access public
-	* @return string Texto
-	*/
-	
-	public function getIdConekta(){
-		return $this->idConekta;
-	}
-	
-	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -588,7 +576,7 @@ class TEmpresa{
 				rfc = '".$this->getRFC()."',
 				activo = ".($this->getActivo() == false?0:1).",
 				parametros = '".$this->parametros."',
-				idConekta = '".$this->idConekta."'
+				idPay = '".$this->idPay."'
 			WHERE idEmpresa = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
@@ -665,28 +653,39 @@ class TEmpresa{
 	* @return boolean True si se realizó sin problemas
 	*/
 	
-	public function setClienteConekta(){
+	public function setIdPay(){
 		if ($this->getId() == '') return false;
 		global $ini;
-		require_once("librerias/conekta/Conekta.php");
-		\Conekta\Conekta::setApiKey($ini['conekta']['key_private']);
-		\Conekta\Conekta::setLocale('es');
-		\Conekta\Conekta::setApiVersion("2.0.0");
-
-		try {
-			$conektaResp = \Conekta\Customer::create(array(
+		require_once('librerias/openpay/Openpay.php');
+		try{
+			$openpay = Openpay::getInstance($ini['openpay']['id'], $ini['openpay']['key_private']);
+			$cliente = $openpay->customers->add(array(
 				"name" => str_replace(array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0"), array("uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "cero"), $this->getRazonSocial()),
 				"email" => $this->getEmail(),
-				"phone" => $this->getTelefono(),
-				"corporate" => true
+				"phone_number" => $this->getTelefono(),
+				"external_id" => $this->getId()
 			));
 			
-			$this->idConekta = $conektaResp->id;
+			$this->idPay = $cliente->id;
 			$this->guardar();
 		} catch (Exception $error){
-			ErrorSistema("Conekta: Ocurrió un error al registrar al cliente... ".$error->getMessage());
+			ErrorSistema("PAY: Ocurrió un error al registrar al cliente... ".$error->getMessage());
+			return false;
 		}
+		
 		return true;
+	}
+	
+	/**
+	* Retorna el id de cliente en conekta
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getIdPay(){
+		return $this->idPay;
 	}
 }
 ?>

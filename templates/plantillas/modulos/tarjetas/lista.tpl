@@ -19,12 +19,12 @@
 			<tbody>
 				{foreach from=$lista item="row"}
 					<tr>
-						<td>{$row.name}</td>
-						<td>XXXX XXXX XXXX {$row.last4}</td>
-						<td class="text-center">{$row.brand}</td>
-						<td class="text-center">{$row.exp_month} / {$row.exp_year}</td>
+						<td>{$row->holder_name}</td>
+						<td>{$row->card_number}</td>
+						<td class="text-center">{$row->brand} <small class="text-info">{$row->type}</small></td>
+						<td class="text-center">{$row->expiration_month} / {$row->expiration_year}</td>
 						<td class="text-right">
-							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador="{$row.idConekta}"><i class="fa fa-times"></i></button>
+							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador="{$row->id}"><i class="fa fa-times"></i></button>
 						</td>
 					</tr>
 				{/foreach}

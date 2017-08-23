@@ -291,6 +291,9 @@
 	<script type="text/javascript" src="{$PAGE.ruta}plugins/treegrid/js/jquery.treegrid.bootstrap3.js"></script>
 	
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
+	<script type="text/javascript" src="https://openpay.s3.amazonaws.com/openpay.v1.min.js"></script>
+	<script type='text/javascript' src="https://openpay.s3.amazonaws.com/openpay-data.v1.min.js"></script>
     
     {foreach from=$PAGE.scriptsJS item=script}
 		<script type="text/javascript" src="{$script}?m={rand()}"></script>

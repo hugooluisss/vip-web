@@ -12,6 +12,8 @@ switch($objModulo->getId()){
 			array_push($datos, $row);
 		}
 		$smarty->assign("empresas", $datos);
+		global $ini;
+		$smarty->assign("openpay", $ini['openpay']);
 	break;
 	case 'listaReporteAdminVentas':
 		$db = TBase::conectaDB();

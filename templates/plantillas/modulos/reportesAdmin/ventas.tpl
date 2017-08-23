@@ -49,4 +49,5 @@
 
 {include file=$PAGE.rutaModulos|cat:"modulos/reportesAdmin/winOrden.tpl"}
 
-{include file=$PAGE.rutaModulos|cat:"modulos/tarjetas/winPago.tpl"}
+<input type="hidden" id="merchant" value="{$openpay.id}" />
+<input type="hidden" id="public" value="{$openpay.key_public}" />

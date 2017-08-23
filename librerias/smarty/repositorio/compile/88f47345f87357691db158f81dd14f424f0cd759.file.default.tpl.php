@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-17 21:31:21
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-23 09:48:02
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1503113349594484f7c43587-42411099%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1503018609,
+      1 => 1503499680,
       2 => 'file',
     ),
   ),
@@ -386,6 +386,9 @@ plugins/treegrid/js/jquery.treegrid.js"></script>
 plugins/treegrid/js/jquery.treegrid.bootstrap3.js"></script>
 	
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
+	<script type="text/javascript" src="https://openpay.s3.amazonaws.com/openpay.v1.min.js"></script>
+	<script type='text/javascript' src="https://openpay.s3.amazonaws.com/openpay-data.v1.min.js"></script>
     
     <?php  $_smarty_tpl->tpl_vars['script'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['script']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['PAGE']->value['scriptsJS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}

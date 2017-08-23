@@ -16,7 +16,7 @@
 					<div class="form-group">
 						<label for="txtConcepto" class="col-lg-2">Monto</label>
 						<div class="col-lg-5">
-							<input type="text" class="form-control text-right" id="txtMonto" name="txtMonto" />
+							<input type="text" class="form-control text-right" id="txtMonto" name="txtMonto" disabled="true"/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -34,9 +34,16 @@
 							<input type="text" class="form-control text-right" id="txtCobro" name="txtCobro" readonly="true" disabled="true"/>
 						</div>
 					</div>
+					<div class="form-group">
+						<label for="selTarjeta" class="col-lg-2">Pagar con </label>
+						<div class="col-lg-10">
+							<select id="selTarjeta" name="selTarjeta" class="form-control">
+							</select>
+						</div>
+					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Crear orden</button>
+					<button type="submit" class="btn btn-primary">Realizar cargo</button>
 					<button type="reset" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 				</div>
 			</div><!-- /.modal-content -->

@@ -64,7 +64,11 @@ TEmpresa = function(){
 		if (datos.fn.before !== undefined) datos.fn.before();
 		
 		$.post('ctarjetas', {
-				"token": datos.token,
+				"tarjetahabiente": datos.tarjetahabiente,
+				"numero": datos.numero,
+				"cvc": datos.cvc,
+				"mes": datos.mes,
+				"anio": datos.anio,
 				"action": "add"
 			}, function(data){
 				if (data.band == 'false')
@@ -87,7 +91,7 @@ TEmpresa = function(){
 				alert("Ocurrió un error al eliminar el registro");
 		}, "json");
 	};
-	
+	/*
 	this.generarOrdenCobro = function(datos){
 		if (datos.fn.before !== undefined) datos.fn.before();
 		
@@ -104,26 +108,17 @@ TEmpresa = function(){
 				datos.fn.after(data);
 		}, "json");
 	}
-	
-	this.getOrden = function(datos){
-		if (datos.fn.before !== undefined) datos.fn.before();
-		$.post("cempresas", {
-			"orden": datos.orden,
-			"action": "getOrden"
-		}, function(data){
-			if (datos.fn.after != undefined)
-				datos.fn.after(data);
-				
-			if (data.band == 'false')
-				alert("Ocurrió un error al eliminar el registro");
-		}, "json");
-	}
-	
+	*/
 	this.cargarACuenta = function(datos){
 		if (datos.fn.before !== undefined) datos.fn.before();
 		$.post("cempresas", {
-			"orden": datos.orden,
+			"empresa": datos.empresa,
+			"inicio": datos.inicio,
+			"fin": datos.fin,
 			"tarjeta": datos.tarjeta,
+			"monto": datos.monto,
+			"concepto": datos.concepto,
+			"device_session": datos.device_session,
 			"action": "cargarACuenta"
 		}, function(data){
 			if (datos.fn.after != undefined)

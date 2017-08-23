@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-21 08:48:27
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-23 12:59:31
          compiled from "templates/plantillas/modulos/reportesAdmin/ventas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1446187458596393f51243f5-98435692%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '56514d11953e7dfabdadd39c5558034025666eda' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/ventas.tpl',
-      1 => 1503323286,
+      1 => 1503511169,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'empresas' => 0,
     'row' => 0,
     'PAGE' => 0,
+    'openpay' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -86,5 +87,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/reportesAdmin/winOrden.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 
-<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/tarjetas/winPago.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
-<?php }} ?>
+<input type="hidden" id="merchant" value="<?php echo $_smarty_tpl->tpl_vars['openpay']->value['id'];?>
+" />
+<input type="hidden" id="public" value="<?php echo $_smarty_tpl->tpl_vars['openpay']->value['key_public'];?>
+" /><?php }} ?>
