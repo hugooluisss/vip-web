@@ -43,6 +43,7 @@ $(document).ready(function(){
 				telefono: $("#txtTelefono").val(), 
 				email: $("#txtEmail").val(), 
 				activo: $("#selActivo").val(),
+				comision: $("#txtComision").val(),
 				fn: {
 					after: function(datos){
 						if (datos.band){
@@ -92,7 +93,7 @@ $(document).ready(function(){
 				$("#txtTelefono").val(el.telefono);
 				$("#txtEmail").val(el.email);
 				$("#selActivo").val(el.activo);
-				
+				$("#txtComision").val(el.comision);
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
 			

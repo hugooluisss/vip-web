@@ -76,7 +76,13 @@ $conf['chome'] = array(
 	'controlador' => 'index.php',
 	'descripcion' => 'Controlador de la página',
 	'seguridad' => true,
-	'capa' => LAYOUT_JSON);	
+	'capa' => LAYOUT_JSON);
+	
+$conf['interfaz'] = array(
+	'controlador' => 'index.php',
+	'descripcion' => 'Interfaz para el control del sistema',
+	'seguridad' => false,
+	'capa' => LAYOUT_JSON);
 
 includeDir("config/");
 ?>

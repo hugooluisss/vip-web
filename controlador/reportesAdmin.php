@@ -52,5 +52,29 @@ switch($objModulo->getId()){
 		$smarty->assign("totalPagos", number_format($totalPagos, 2, '.', ','));
 		$smarty->assign("totalCerradas", number_format($totalCerradas, 2, '.', ','));
 	break;
+	case 'listaCobranza':
+		$db = TBase::conectaDB();
+		$sql = "select * from comision a join empresa b using(idEmpresa)";
+			
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		$datos = array();
+		while($row = $rs->fetch_assoc()){
+			$row['json'] = json_encode($row);
+			
+			array_push($datos, $row);
+		}
+		
+		$smarty->assign("lista", $datos);
+	break;
+	case 'ccobranza':
+		switch($objModulo->getAction()){
+			case 'pagar':
+				$comision = new TComision($_POST['id']);
+				$msg = $comision->cargar($_POST['tarjeta'], $_POST['device_session']);
+				
+				$smarty->assign("json", array("band" => $msg == '', "mensaje" => $msg));
+			break;
+		}
+	break;
 }
 ?>

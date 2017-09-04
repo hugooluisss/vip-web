@@ -21,6 +21,7 @@ TEmpresa = function(){
 				"email": datos.email,
 				"rfc": datos.rfc,
 				"activo": datos.activo,
+				"comision": datos.comision,
 				"action": "add"
 			}, function(data){
 				if (data.band == 'false')

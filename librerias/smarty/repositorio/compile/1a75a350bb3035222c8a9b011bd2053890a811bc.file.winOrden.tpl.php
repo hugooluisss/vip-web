@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-23 11:45:47
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-02 17:08:12
          compiled from "templates/plantillas/modulos/reportesAdmin/winOrden.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:185553133959973685badae1-78969962%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1a75a350bb3035222c8a9b011bd2053890a811bc' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/winOrden.tpl',
-      1 => 1503506743,
+      1 => 1504389249,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59973685bedd46_45357193')) {function content_59973685bedd46_45357193($_smarty_tpl) {?><form role="form" id="frmCobro" class="form-horizontal" onsubmit="javascript: return false;">
-	<div class="modal fade" id="winOrdenCobro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal fade" id="winOrdenCobro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" comision="">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -44,7 +44,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<label for="txtPorcentaje" class="col-lg-2">Porcentaje</label>
 						<div class="col-lg-5">
 							<div class="input-group">
-								<input type="number" class="form-control text-right" id="txtPorcentaje" name="txtPorcentaje" value="5"/>
+								<input type="number" class="form-control text-right" id="txtPorcentaje" name="txtPorcentaje" value="5" readonly="true"/>
 								<span class="input-group-addon" id="basic-addon2">%</span>
 							</div>
 						</div>

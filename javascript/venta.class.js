@@ -197,6 +197,19 @@ TVenta = function(){
 					datos.fn.after(data);
 			}, "json");
 	}
+	
+	this.isAllEntregado = function(){
+		var band = true;
+		
+		$.each(this.productos, function(){
+			var producto = this;
+			
+			if (producto.cantidad > producto.entregado)
+				band = false;
+		});
+		
+		return band;
+	}
 };
 
 var formatNumber = {

@@ -652,7 +652,9 @@ $(document).ready(function(){
     
 	/*Cerrar venta*/
 	$(".btnCerrar").click(function(){
-		if(confirm("¿Seguro?")){
+		var msg = venta.isAllEntregado()?"":"El inventario actual reportado en sistema no permite la entrega de la totalidad de la nota de venta. Las cantidades no entregadas se reportarán como pedido ";
+		
+		if(confirm(msg + "¿Seguro?")){
 	    	guardar({
 				before: function(){
 					$("#btnGuardar").prop("disabled", true);
@@ -676,25 +678,19 @@ $(document).ready(function(){
 						    		if (resp.band){
 						    			alert("La venta ha sido cerrada");
 						    			
-						    			/*
+						    			
 						    			var objVenta = new TVenta;
 										objVenta.id = venta.id;
 										objVenta.imprimir({
 											"email": email,
 											fn: {
 												after: function(resp){
-													try{
-														if (ventanaImpresion == undefined)
-															ventanaImpresion = window.open(resp.url, "Ticket");
-														else
-															ventanaImpresion.location.href = resp.url;
-													}catch(err){
-														ventanaImpresion = window.open(resp.url, "Ticket");
-													}
+													if (resp.email)
+														alert("Nota de venta enviada al comprador");
 												}
 											}
 										});
-										*/
+										
 						    			nuevaVenta();
 						    		}else
 						    			alert("La venta no pudo ser cerrada");

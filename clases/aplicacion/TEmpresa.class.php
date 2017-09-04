@@ -24,6 +24,8 @@ class TEmpresa{
 	private $activo;
 	public $usuarios;
 	private $idPay;
+	private $ultimocorte;
+	private $comision;
 	
 	/**
 	* Constructor de la clase
@@ -491,6 +493,58 @@ class TEmpresa{
 	}
 	
 	/**
+	* Establece la fecha del ultimo corte
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setUltimoCorte($val = ""){
+		$this->ultimocorte = $val == ''?date("Y-m-d"):$val;
+		return true;
+	}
+	
+	/**
+	* Retorna la fecha del último corte
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getUltimoCorte(){
+		return $this->ultimocorte;
+	}
+	
+	/**
+	* Establece la comision
+	*
+	* @autor Hugo
+	* @access public
+	* @param integer $val Valor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setComision($val = 5){
+		$this->comision = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna email
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getComision(){
+		return $this->comision;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -502,7 +556,7 @@ class TEmpresa{
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$sql = "INSERT INTO empresa(razonsocial) VALUES('".$this->getRazonSocial()."');";
+			$sql = "INSERT INTO empresa(razonsocial, ultimocorte) VALUES('".$this->getRazonSocial()."', now());";
 			$rs = $db->query($sql) or errorMySQL($db, $sql);
 			
 			if (!$rs) return false;
@@ -576,7 +630,9 @@ class TEmpresa{
 				rfc = '".$this->getRFC()."',
 				activo = ".($this->getActivo() == false?0:1).",
 				parametros = '".$this->parametros."',
-				idPay = '".$this->idPay."'
+				idPay = '".$this->idPay."',
+				ultimocorte = ".($this->getUltimoCorte() == ''?"null":("'".$this->getUltimoCorte()."'")).",
+				comision = ".$this->getComision()."
 			WHERE idEmpresa = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);

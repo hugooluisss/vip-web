@@ -90,6 +90,12 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="txtRFC" class="col-sm-2">Comision</label>
+						<div class="col-sm-2">
+							<input class="form-control text-right" id="txtComision" name="txtComision" value="5"/>
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="txtEmail" class="col-sm-2">Correo electrónico</label>
 						<div class="col-sm-3">
 							<input class="form-control" id="txtEmail" name="txtEmail" value=""/>

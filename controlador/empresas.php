@@ -50,6 +50,10 @@ switch($objModulo->getId()){
 					$obj->setRFC($_POST['rfc']);
 					$obj->setActivo($_POST['activo']);
 					
+					if ($_POST['comision'] <> '')
+						$obj->setComision($_POST['comision']);
+					
+					$bandEmail = false;
 					if($_POST['id'] == ''){ #es una nueva empresa
 						global $ini;
 						$email = new TMail();
@@ -65,7 +69,7 @@ switch($objModulo->getId()){
 						$bandEmail = $email->send();
 					}
 					
-					$smarty->assign("json", array("band" => $obj->guardar(), "id" => $obj->getId()));
+					$smarty->assign("json", array("band" => $obj->guardar(), "id" => $obj->getId(), "email" => $bandEmail));
 				}else
 					$smarty->assign("json", array("band" => $band));
 			break;

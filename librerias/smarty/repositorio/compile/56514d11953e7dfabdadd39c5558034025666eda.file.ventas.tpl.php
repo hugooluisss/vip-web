@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-23 12:59:31
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-30 21:29:50
          compiled from "templates/plantillas/modulos/reportesAdmin/ventas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1446187458596393f51243f5-98435692%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '56514d11953e7dfabdadd39c5558034025666eda' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/ventas.tpl',
-      1 => 1503511169,
+      1 => 1503535249,
       2 => 'file',
     ),
   ),

@@ -74,6 +74,9 @@ $(document).ready(function(){
 											$("#winSesion").find("#txtUsuario").val($("#txtEmail").val());
 											alert("Tu cuenta está lista, puedes iniciar sesión");
 										}
+										
+										if (respuesta.email)
+											alert("Correo de confirmación enviado al usuario");
 									}
 								}
 							});

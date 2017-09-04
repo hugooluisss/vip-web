@@ -120,7 +120,8 @@
 							<span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li class="{if in_array($PAGE.modulo, array('admonreporteventasempresa'))}active{/if}"><a href="admonreporteventasempresa">Ventas por empresa</a></li>
+							<li class="{if in_array($PAGE.modulo, array('admonreporteventasempresa', 'cobranza'))}active{/if}"><a href="admonreporteventasempresa">Ventas por empresa</a></li>
+							<li class="{if in_array($PAGE.modulo, array('cobranza'))}active{/if}"><a href="cobranza">Cobranza</a></li>
 						</ul>
 					</li>
 					</li>
