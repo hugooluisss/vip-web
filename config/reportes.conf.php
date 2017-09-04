@@ -62,4 +62,19 @@ $conf['listaReportePedidos'] = array(
 	'descripcion' => 'Lista de pedidos sin entregar',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+$conf['cobranzaVIP'] = array(
+	'controlador' => 'reportes.php',
+	'vista' => 'reportes/cobranza.tpl',
+	'descripcion' => 'Reporte de cobros por comisiones',
+	'seguridad' => true,
+	'jsTemplate' => array('reporteCobranzaEmpresa.js'),
+	'capa' => LAYOUT_DEFECTO);
+
+$conf['listaCobranzaVIP'] = array(
+	'controlador' => 'reportes.php',
+	'vista' => 'reportes/listaCobranza.tpl',
+	'descripcion' => 'Lista de cobros por comisiones',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
 ?>

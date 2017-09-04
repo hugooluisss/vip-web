@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-02 16:25:35
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-04 10:48:12
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1503113349594484f7c43587-42411099%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1504387533,
+      1 => 1504540089,
       2 => 'file',
     ),
   ),
@@ -164,13 +164,13 @@ img/logo.png" alt="User Image" style="background: white"/>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='admonUsuarios'){?>class="active"<?php }?>><a href="admonUsuarios"><i class="fa fa-users"></i> Usuarios</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='empresas'){?>class="active"<?php }?>><a href="empresas"><i class="fa fa-university"></i> Empresas</a></li>
 						</ul>
-						<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('admonreporteventasempresa'))){?>active<?php }?> treeview">
+						<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('admonreporteventasempresa',"cobranza"))){?>active<?php }?> treeview">
 						<a href="#">
 							<i class="fa fa-list-alt"></i> 
 							<span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('admonreporteventasempresa','cobranza'))){?>active<?php }?>"><a href="admonreporteventasempresa">Ventas por empresa</a></li>
+							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('admonreporteventasempresa'))){?>active<?php }?>"><a href="admonreporteventasempresa">Ventas por empresa</a></li>
 							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('cobranza'))){?>active<?php }?>"><a href="cobranza">Cobranza</a></li>
 						</ul>
 					</li>
@@ -212,7 +212,7 @@ img/logo.png" alt="User Image" style="background: white"/>
 						</ul>
 					</li>
 					
-					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reporteventas','reporteexistencias','reportepedidos'))){?>active<?php }?> treeview">
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reporteventas','reporteexistencias','reportepedidos','cobranzaVIP'))){?>active<?php }?> treeview">
 						<a href="#">
 							<i class="fa fa-list-alt"></i> 
 							<span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
@@ -221,6 +221,7 @@ img/logo.png" alt="User Image" style="background: white"/>
 							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reporteventas'))){?>active<?php }?>"><a href="reporteventas">Ventas</a></li>
 							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reporteexistencias'))){?>active<?php }?>"><a href="reporteexistencias">Inventarios</a></li>
 							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reportepedidos'))){?>active<?php }?>"><a href="reportepedidos">Pedidos</a></li>
+							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('cobranzaVIP'))){?>active<?php }?>"><a href="cobranzaVIP">Comisiones VIP</a></li>
 						</ul>
 					</li>
 					<?php }?>

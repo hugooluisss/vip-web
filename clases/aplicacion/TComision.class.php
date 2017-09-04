@@ -261,6 +261,9 @@ class TComision{
 				)
 			);
 			
+			$card = $cliente->cards->get($tarjeta);
+			
+			$this->setTarjeta($card->card_number);
 			$this->openpay_cash = $cargo->id;
 			$this->guardar();
 			

@@ -114,13 +114,13 @@
 							<li {if $PAGE.modulo eq 'admonUsuarios'}class="active"{/if}><a href="admonUsuarios"><i class="fa fa-users"></i> Usuarios</a></li>
 							<li {if $PAGE.modulo eq 'empresas'}class="active"{/if}><a href="empresas"><i class="fa fa-university"></i> Empresas</a></li>
 						</ul>
-						<li class="{if in_array($PAGE.modulo, array('admonreporteventasempresa'))}active{/if} treeview">
+						<li class="{if in_array($PAGE.modulo, array('admonreporteventasempresa', "cobranza"))}active{/if} treeview">
 						<a href="#">
 							<i class="fa fa-list-alt"></i> 
 							<span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li class="{if in_array($PAGE.modulo, array('admonreporteventasempresa', 'cobranza'))}active{/if}"><a href="admonreporteventasempresa">Ventas por empresa</a></li>
+							<li class="{if in_array($PAGE.modulo, array('admonreporteventasempresa'))}active{/if}"><a href="admonreporteventasempresa">Ventas por empresa</a></li>
 							<li class="{if in_array($PAGE.modulo, array('cobranza'))}active{/if}"><a href="cobranza">Cobranza</a></li>
 						</ul>
 					</li>
@@ -162,7 +162,7 @@
 						</ul>
 					</li>
 					
-					<li class="{if in_array($PAGE.modulo, array('reporteventas', 'reporteexistencias', 'reportepedidos'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('reporteventas', 'reporteexistencias', 'reportepedidos', 'cobranzaVIP'))}active{/if} treeview">
 						<a href="#">
 							<i class="fa fa-list-alt"></i> 
 							<span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
@@ -171,6 +171,7 @@
 							<li class="{if in_array($PAGE.modulo, array('reporteventas'))}active{/if}"><a href="reporteventas">Ventas</a></li>
 							<li class="{if in_array($PAGE.modulo, array('reporteexistencias'))}active{/if}"><a href="reporteexistencias">Inventarios</a></li>
 							<li class="{if in_array($PAGE.modulo, array('reportepedidos'))}active{/if}"><a href="reportepedidos">Pedidos</a></li>
+							<li class="{if in_array($PAGE.modulo, array('cobranzaVIP'))}active{/if}"><a href="cobranzaVIP">Comisiones VIP</a></li>
 						</ul>
 					</li>
 					{/if}

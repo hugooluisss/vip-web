@@ -58,7 +58,10 @@ switch($objModulo->getId()){
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		$datos = array();
+		$repositorio = "repositorio/facturas/";
 		while($row = $rs->fetch_assoc()){
+			$archivo = $repositorio."factura".$row['idComision'].".pdf";
+			$row['factura'] = file_exists($archivo)?$archivo:"";
 			$row['json'] = json_encode($row);
 			
 			array_push($datos, $row);
@@ -67,12 +70,27 @@ switch($objModulo->getId()){
 		$smarty->assign("lista", $datos);
 	break;
 	case 'ccobranza':
+		$repositorio = "repositorio/facturas/";
 		switch($objModulo->getAction()){
 			case 'pagar':
 				$comision = new TComision($_POST['id']);
 				$msg = $comision->cargar($_POST['tarjeta'], $_POST['device_session']);
 				
 				$smarty->assign("json", array("band" => $msg == '', "mensaje" => $msg));
+			break;
+			case 'upload':
+				$comision = new TComision($_GET['id']);
+				
+				if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
+					if(move_uploaded_file($_FILES['upl']['tmp_name'], $repositorio."factura".$_GET['id'].".pdf"))
+						$result = array("status" => true);
+					else{
+						$result = array("status" => false);
+					}
+				}else
+					$result = array("status" => false);
+				
+				$smarty->assign("json", $result);
 			break;
 		}
 	break;

@@ -59,7 +59,7 @@ $(document).ready(function(){
 			});
 		});
 	}
-	
+	/*
 	$("#winOrdenCobro").on('show.bs.modal', function(e){
 		var ventana = $("#winOrdenCobro");
 		
@@ -124,4 +124,6 @@ $(document).ready(function(){
 			});
 		}
 	});
+	
+	*/
 });

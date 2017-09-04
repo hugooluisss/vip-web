@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-04 10:42:39
-         compiled from "templates/plantillas/modulos/reportesAdmin/listaCobranza.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:34099737059ab23a8118528-28173330%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-04 10:59:05
+         compiled from "templates/plantillas/modulos/reportes/listaCobranza.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:156598509959ad7770ebd987-44618131%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'f9a892a75a95924b47be34e621b7dcc562fbfbfe' => 
+    '6d6e7252d1e7f991e6b543a1e5aeb5364bb09d79' => 
     array (
-      0 => 'templates/plantillas/modulos/reportesAdmin/listaCobranza.tpl',
-      1 => 1504539753,
+      0 => 'templates/plantillas/modulos/reportes/listaCobranza.tpl',
+      1 => 1504540739,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '34099737059ab23a8118528-28173330',
+  'nocache_hash' => '156598509959ad7770ebd987-44618131',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_59ab23a81b0746_34827714',
+  'unifunc' => 'content_59ad7770f337f2_80236966',
   'variables' => 
   array (
     'lista' => 0,
@@ -24,7 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_59ab23a81b0746_34827714')) {function content_59ab23a81b0746_34827714($_smarty_tpl) {?><table id="tblDatos" class="table table-bordered table-hover">
+<?php if ($_valid && !is_callable('content_59ad7770f337f2_80236966')) {function content_59ad7770f337f2_80236966($_smarty_tpl) {?><table id="tblDatos" class="table table-bordered table-hover">
 	<thead>
 		<tr>
 			<th>Fecha</th>
@@ -32,7 +32,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<th>Fin</th>
 			<th>Comisión</th>
 			<th>Monto</th>
-			<th>IdCargo</th>
+			<th>Tarjeta</th>
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
@@ -53,19 +53,12 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
  %</td>
 				<td class="text-right">$ <?php echo $_smarty_tpl->tpl_vars['row']->value['monto'];?>
 </td>
-				<td class="text-center"><?php echo $_smarty_tpl->tpl_vars['row']->value['openpay_cash'];?>
+				<td class="text-center"><?php echo $_smarty_tpl->tpl_vars['row']->value['tarjeta'];?>
 </td>
 				<td class="text-right">
-					<?php if ($_smarty_tpl->tpl_vars['row']->value['openpay_cash']==''){?>
-						<button action="cobrar" type="button" data-toggle="modal" data-target="#winOrdenCobro" class="btn btn-success" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
-'>Cobrar comisión</button>
-					<?php }else{ ?>
-						<button action="factura" type="button" data-toggle="modal" data-target="#winFactura" class="btn btn-primary" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
-'>Subir factura</button>
-						<?php if ($_smarty_tpl->tpl_vars['row']->value['factura']!=''){?>
-							<a href="<?php echo $_smarty_tpl->tpl_vars['row']->value['factura'];?>
-" target="_blank" class="btn btn-link">Descargar factura</a>
-						<?php }?>
+					<?php if ($_smarty_tpl->tpl_vars['row']->value['factura']!=''){?>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['row']->value['factura'];?>
+" target="_blank" class="btn btn-success" title="Descargar factura"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
 					<?php }?>
 				</td>
 			</tr>

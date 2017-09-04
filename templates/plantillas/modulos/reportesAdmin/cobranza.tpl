@@ -14,3 +14,5 @@
 
 <input type="hidden" id="merchant" value="{$openpay.id}" />
 <input type="hidden" id="public" value="{$openpay.key_public}" />
+
+{include file=$PAGE.rutaModulos|cat:"modulos/reportesAdmin/winUpFactura.tpl"}

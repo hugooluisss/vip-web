@@ -16,6 +16,8 @@ $conf['listaReporteAdminVentas'] = array(
 	'descripcion' => 'Lista de ventas para el reporte de ventas',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);	
+
+
 	
 $conf['cobranza'] = array(
 	'controlador' => 'reportesAdmin.php',

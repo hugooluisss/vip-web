@@ -147,5 +147,23 @@ switch($objModulo->getId()){
 		$smarty->assign("lista", $datos);
 		$smarty->assign("saldo", number_format($saldo, 2, '.', ','));
 	break;
+	
+	case 'listaCobranzaVIP':
+		$db = TBase::conectaDB();
+		$sql = "select * from comision a where idEmpresa = ".$userSesion->getEmpresa();
+			
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		$datos = array();
+		$repositorio = "repositorio/facturas/";
+		while($row = $rs->fetch_assoc()){
+			$archivo = $repositorio."factura".$row['idComision'].".pdf";
+			$row['factura'] = file_exists($archivo)?$archivo:"";
+			$row['json'] = json_encode($row);
+			
+			array_push($datos, $row);
+		}
+		
+		$smarty->assign("lista", $datos);
+	break;
 }
 ?>

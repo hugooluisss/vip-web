@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-02 16:27:30
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-04 09:34:29
          compiled from "templates/plantillas/modulos/reportesAdmin/cobranza.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:150501701159ab22424fed38-80958033%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '34618bd87a2d3403d0618fa25182b54bb1ac12a6' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/cobranza.tpl',
-      1 => 1504387636,
+      1 => 1504535618,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_59ab224256d2e3_85591322',
   'variables' => 
   array (
     'PAGE' => 0,
     'openpay' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_59ab224256d2e3_85591322',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59ab224256d2e3_85591322')) {function content_59ab224256d2e3_85591322($_smarty_tpl) {?><div class="row">
 	<div class="col-sm-12">
@@ -42,4 +42,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <input type="hidden" id="merchant" value="<?php echo $_smarty_tpl->tpl_vars['openpay']->value['id'];?>
 " />
 <input type="hidden" id="public" value="<?php echo $_smarty_tpl->tpl_vars['openpay']->value['key_public'];?>
-" /><?php }} ?>
+" />
+
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/reportesAdmin/winUpFactura.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>

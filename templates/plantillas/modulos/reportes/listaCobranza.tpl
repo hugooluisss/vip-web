@@ -6,7 +6,7 @@
 			<th>Fin</th>
 			<th>Comisión</th>
 			<th>Monto</th>
-			<th>IdCargo</th>
+			<th>Tarjeta</th>
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
@@ -18,15 +18,10 @@
 				<td>{$row.fin}</td>
 				<td class="text-right">{$row.comision} %</td>
 				<td class="text-right">$ {$row.monto}</td>
-				<td class="text-center">{$row.openpay_cash}</td>
+				<td class="text-center">{$row.tarjeta}</td>
 				<td class="text-right">
-					{if $row.openpay_cash eq ''}
-						<button action="cobrar" type="button" data-toggle="modal" data-target="#winOrdenCobro" class="btn btn-success" datos='{$row.json}'>Cobrar comisión</button>
-					{else}
-						<button action="factura" type="button" data-toggle="modal" data-target="#winFactura" class="btn btn-primary" datos='{$row.json}'>Subir factura</button>
-						{if $row.factura neq ''}
-							<a href="{$row.factura}" target="_blank" class="btn btn-link">Descargar factura</a>
-						{/if}
+					{if $row.factura neq ''}
+						<a href="{$row.factura}" target="_blank" class="btn btn-success" title="Descargar factura"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
 					{/if}
 				</td>
 			</tr>
