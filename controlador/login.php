@@ -25,19 +25,52 @@ switch($objModulo->getId()){
 					$obj = new TUsuario($row['idUsuario']);
 					if ($obj->getId() == '')
 						$result = array('band' => false, 'mensaje' => 'Acceso denegado', 'tipo' => $obj->getIdTipo());
-					else
-						$result = array('band' => true);
+					else{
+						if ($obj->getIdTipo() == 1){
+							$obj = new TUsuario($row['idUsuario']);
+							$sesion['usuario'] = $obj->getId();
+							$sesion['perfil'] = $obj->getIdTipo();
+							
+							$_SESSION[SISTEMA] = $sesion;
+
+
+							$result = array('band' => true, "totalTarjetas" => 1, 'tipo' => $obj->getIdTipo());
+						}else{
+							global $userSesion;
+							$empresa = new TEmpresa($obj->getEmpresa());
+							
+							$datos = array();
+							$json = array();
+							require_once('librerias/openpay/Openpay.php');
+							$openpay = Openpay::getInstance($ini['openpay']['id'], $ini['openpay']['key_private']);
+							
+							if ($empresa->getIdPay() == '')
+								$empresa->setIdPay();
+							
+							try{
+								$cliente = $openpay->customers->get($empresa->getIdPay());
+								$tarjetas = $cliente->cards->getList(array());
+								
+								if(count($tarjetas) > 0){
+									$obj = new TUsuario($row['idUsuario']);
+									$sesion['usuario'] = $obj->getId();
+									$sesion['perfil'] = $obj->getIdTipo();
+									
+									$_SESSION[SISTEMA] = $sesion;
+								}
+								
+								$result = array('band' => true, "totalTarjetas" => count($tarjetas), 'tipo' => $obj->getIdTipo(), 'empresa' => $empresa->getId());
+								
+								$result['datos'] = $sesion;
+							}catch(Exception $e){
+								ErrorSistema("PAY: ".$e->getMessage());
+								
+								$result = array('band' => false);
+							}
+						}
+					}
 				}
 				
-				if($result['band']){
-					$obj = new TUsuario($row['idUsuario']);
-					$sesion['usuario'] = $obj->getId();
-					$sesion['perfil'] = $obj->getIdTipo();
-					
-					$_SESSION[SISTEMA] = $sesion;
-				}
-				
-				$result['datos'] = $sesion;
 				echo json_encode($result);
 			break;
 			case 'logout':

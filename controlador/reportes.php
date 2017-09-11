@@ -1,6 +1,11 @@
 <?php
 global $objModulo;
 switch($objModulo->getId()){
+	case 'cobranzaVIP':
+		$fecha = new DateTime;
+		$fecha->sub(new DateInterval('P30D'));
+		$smarty->assign("fin", $fecha->format('Y-m-d'));
+	break;
 	case 'reporteventas':
 		$db = TBase::conectaDB();
 		$sql = "select * from estado";
@@ -150,7 +155,7 @@ switch($objModulo->getId()){
 	
 	case 'listaCobranzaVIP':
 		$db = TBase::conectaDB();
-		$sql = "select * from comision a where idEmpresa = ".$userSesion->getEmpresa();
+		$sql = "select * from comision a where idEmpresa = ".$userSesion->getEmpresa()." and registro between '".$_POST['inicio']."' and '".$_POST['fin']."'";
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		$datos = array();

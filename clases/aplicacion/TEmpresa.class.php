@@ -541,7 +541,7 @@ class TEmpresa{
 	*/
 	
 	public function getComision(){
-		return $this->comision;
+		return $this->comision == ''?5:$this->comision;
 	}
 	
 	/**
@@ -562,7 +562,7 @@ class TEmpresa{
 			if (!$rs) return false;
 				
 			$this->idEmpresa = $db->insert_id;
-			
+			$this->ultimocorte = date("Y-m-d");
 			#aquí se agrega todo la configuración inicial
 			
 			#Se crea el cliente por default

@@ -211,6 +211,7 @@ $(document).ready(function(){
 								$("#dvProductsImport").html("");
 								alert("Catálogo actualizado");
 								getLista();
+								$("#winUpload").modal("hide");
 							}else
 								alert("Ocurrió un error al importar");
 						}, "json");

@@ -99,7 +99,7 @@ $(document).ready(function(){
 	$('#upload').fileupload({
 		// This function is called when a file is added to the queue
 		add: function (e, data) {
-			var fileType = data.files[0].name.split('.').pop(), allowdtypes = 'pdf';
+			var fileType = data.files[0].name.split('.').pop(), allowdtypes = 'pdf,xml,zip';
 			
 	        if (allowdtypes.indexOf(fileType) < 0) {
 	            alert('El tipo es inválido, solo se permiten archivo pdf');

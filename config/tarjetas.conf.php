@@ -20,7 +20,7 @@ $conf['listaTarjetas'] = array(
 $conf['ctarjetas'] = array(
 	'controlador' => 'tarjetas.php',
 	'descripcion' => 'Controlador de tarjetas',
-	'seguridad' => true,
+	'seguridad' => false,
 	'capa' => LAYOUT_JSON);
 	
 $conf['jsonTarjetas'] = array(

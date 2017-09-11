@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-04 10:42:39
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-08 21:53:52
          compiled from "templates/plantillas/modulos/reportesAdmin/listaCobranza.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:34099737059ab23a8118528-28173330%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f9a892a75a95924b47be34e621b7dcc562fbfbfe' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/listaCobranza.tpl',
-      1 => 1504539753,
+      1 => 1504541205,
       2 => 'file',
     ),
   ),

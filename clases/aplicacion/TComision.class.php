@@ -254,7 +254,7 @@ class TComision{
 			$cargo = $cliente->charges->create(array(
 				'method' => 'card',
 				'source_id' => $tarjeta,
-				'amount' => $this->getMonto() * $this->getComision() / 100,
+				'amount' => sprintf("%0.2f", $this->getMonto() * $this->getComision() / 100),
 				'currency' => 'MXN',
 				'description' => "Comisiones del ".$this->getInicio()." al ".$this->getFin(),
 				'device_session_id' => $device

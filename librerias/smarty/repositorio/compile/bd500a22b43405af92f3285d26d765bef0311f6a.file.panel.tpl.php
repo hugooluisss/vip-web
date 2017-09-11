@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-23 10:45:10
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-08 21:00:30
          compiled from "templates/plantillas/modulos/tarjetas/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1582830281599653247f46b2-74284293%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bd500a22b43405af92f3285d26d765bef0311f6a' => 
     array (
       0 => 'templates/plantillas/modulos/tarjetas/panel.tpl',
-      1 => 1503503108,
+      1 => 1504921576,
       2 => 'file',
     ),
   ),
@@ -48,18 +48,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div id="add" class="tab-pane fade">
 		<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;" public="<?php echo $_smarty_tpl->tpl_vars['public_key']->value;?>
 " merchant="<?php echo $_smarty_tpl->tpl_vars['merchant']->value;?>
-">
+" empresa="">
 			<div class="box">
 				<div class="box-body">
 					<div class="alert alert-info">
 						<p>La(s) tarjeta(s) dadás de alta seran utilizadas al momento de generar el cargo por el uso de la plataforma</p>
 					</div>
 					<div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-sm-6 col-xs-12">
 	                        <img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
 /openpay/cards1.png" class="img-responsive" />
                         </div>
-                        <div class="col-xs-6">
+                        <div class="col-sm-6 col-xs-12">
 	                        <img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
 /openpay/cards2.png" class="img-responsive" />
                         </div>
@@ -86,7 +86,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					</div>
 					<div class="form-group">
 						<label for="" class="col-lg-2">Fecha de expiración</label>
-						<div class="col-lg-3">
+						<div class="col-xs-5 col-lg-3">
 							<select id="selMes" name="selMes" data-openpay-card="expiration_month" class="form-control">
 								<option value="01">Enero</option>
 								<option value="02">Febrero</option>
@@ -102,7 +102,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<option value="12">Diciembre</option>
 							</select>
 						</div>
-						<div class="col-lg-3">
+						<div class="col-xs-5 col-lg-3">
 							<select id="selAnio" name="selAnio" data-openpay-card="expiration_year" class="form-control">
 								<?php $_smarty_tpl->tpl_vars['foo'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['foo']->step = 1;$_smarty_tpl->tpl_vars['foo']->total = (int)ceil(($_smarty_tpl->tpl_vars['foo']->step > 0 ? $_smarty_tpl->tpl_vars['year']->value+10+1 - ($_smarty_tpl->tpl_vars['year']->value) : $_smarty_tpl->tpl_vars['year']->value-($_smarty_tpl->tpl_vars['year']->value+10)+1)/abs($_smarty_tpl->tpl_vars['foo']->step));
 if ($_smarty_tpl->tpl_vars['foo']->total > 0){

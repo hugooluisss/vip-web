@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-04 10:13:34
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-08 21:53:49
          compiled from "templates/plantillas/modulos/reportesAdmin/winUpFactura.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:208018291559ad6475da08f7-09238122%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '107b12df4fc4152065cf5e181cbb462f21ec3837' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/winUpFactura.tpl',
-      1 => 1504537954,
+      1 => 1504541205,
       2 => 'file',
     ),
   ),

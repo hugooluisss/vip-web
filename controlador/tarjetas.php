@@ -51,11 +51,14 @@ switch($objModulo->getId()){
 		switch($objModulo->getAction()){
 			case 'add':
 				global $userSesion;
-				$empresa = new TEmpresa($userSesion->getEmpresa());
+				if ($_POST['empresa'] <> '')
+					$empresa = new TEmpresa($_POST['empresa']);
+				else
+					$empresa = new TEmpresa($userSesion->getEmpresa());
+				
 				$datos = array();
-				if ($empresa->getIdPay() == ''){
+				if ($empresa->getIdPay() == '')
 					$empresa->setIdPay();
-				}
 				
 				if ($empresa->getIdPay() <> ''){
 					$cardDataRequest = array(

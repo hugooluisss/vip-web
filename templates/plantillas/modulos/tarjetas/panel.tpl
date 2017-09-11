@@ -17,17 +17,17 @@
 	</div>
 	
 	<div id="add" class="tab-pane fade">
-		<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;" public="{$public_key}" merchant="{$merchant}">
+		<form role="form" id="frmAdd" class="form-horizontal" onsubmit="javascript: return false;" public="{$public_key}" merchant="{$merchant}" empresa="">
 			<div class="box">
 				<div class="box-body">
 					<div class="alert alert-info">
 						<p>La(s) tarjeta(s) dadás de alta seran utilizadas al momento de generar el cargo por el uso de la plataforma</p>
 					</div>
 					<div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-sm-6 col-xs-12">
 	                        <img src="{$PAGE.imagenes}/openpay/cards1.png" class="img-responsive" />
                         </div>
-                        <div class="col-xs-6">
+                        <div class="col-sm-6 col-xs-12">
 	                        <img src="{$PAGE.imagenes}/openpay/cards2.png" class="img-responsive" />
                         </div>
                     </div>
@@ -53,7 +53,7 @@
 					</div>
 					<div class="form-group">
 						<label for="" class="col-lg-2">Fecha de expiración</label>
-						<div class="col-lg-3">
+						<div class="col-xs-5 col-lg-3">
 							<select id="selMes" name="selMes" data-openpay-card="expiration_month" class="form-control">
 								<option value="01">Enero</option>
 								<option value="02">Febrero</option>
@@ -69,7 +69,7 @@
 								<option value="12">Diciembre</option>
 							</select>
 						</div>
-						<div class="col-lg-3">
+						<div class="col-xs-5 col-lg-3">
 							<select id="selAnio" name="selAnio" data-openpay-card="expiration_year" class="form-control">
 								{for $foo=$year to $year+10}
 									<option value="{$foo}">{$foo}</option>

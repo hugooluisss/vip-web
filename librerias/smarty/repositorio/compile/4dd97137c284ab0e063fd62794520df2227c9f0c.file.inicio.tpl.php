@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-04 09:14:05
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-08 21:26:20
          compiled from "templates/plantillas/modulos/inicio.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:166554977059448ce019a6d9-45010204%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4dd97137c284ab0e063fd62794520df2227c9f0c' => 
     array (
       0 => 'templates/plantillas/modulos/inicio.tpl',
-      1 => 1504533359,
+      1 => 1504923979,
       2 => 'file',
     ),
   ),
@@ -45,7 +45,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<div class="panel panel-danger">
 					<div class="panel-heading">Actualiza los datos de tu empresa</div>
 					<div class="panel-body">
-						<p>Al parecer aun no haz actualizado la información de tu empresa. Recuerda que el realizarlo ayudará a tus clientes a identificarte</p>
+						<p>Al parecer aun no has actualizado la información de tu empresa.
+Es un paso obligatorio para terminar tu registro. Además, eso ayudará a tus clientes a identificarte.</p>
 					</div>
 					<div class="panel-footer text-right">
 							<a href="miEmpresa" >Ir a Mi empresa</a>
@@ -59,7 +60,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<div class="panel-heading">Crea un método de cobro</div>
 					<div class="panel-body">
 						<p>Antes de iniciar a vender es necesario dar de alta por lo menos un método de cobro.</p>
-						<p><b>¿Que es un método de cobro?</b> El método de cobro es el medio utilizado por la empresa para cobrar al cliente y puede ser de varios tipos: Bancos, Caja, Virtual</p>
+						<p><b>¿Que es un método de cobro?</b> El método de cobro es el medio utilizado por tu empresa para cobrar a sus clientes. Puede ser de varios tipos: Terminal Bancaria, Caja, Terminal Virtual.</p>
 					</div>
 					<div class="panel-footer text-right">
 							<a href="metodoscobro" >Ir a métodos de cobro</a>
@@ -72,7 +73,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<div class="panel panel-danger">
 					<div class="panel-heading">Crea tu primer bazar</div>
 					<div class="panel-body">
-						<p><b>Por el momento, no cuentas con ningún bazar activo</b>, si tal es el caso crealo ahora</p>
+						<p><b>Por el momento, no cuentas con ningún bazar activo</b>Crea uno ahora para poder empezar a monitorear tus Ventas, Inventarios y Pedidos.</p>
 					</div>
 					<div class="panel-footer text-right">
 							<a href="bazares" >Ir a Bazares</a>
@@ -105,7 +106,12 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
 							<tr>
 								<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
-</td>
+ 
+									<?php if ($_smarty_tpl->tpl_vars['row']->value['productos']==0){?>
+										<a href="productos/<?php echo $_smarty_tpl->tpl_vars['row']->value['idBazar'];?>
+-bazar/" class="text-danger" ><small>Ojo, no tienes productos para este bazar, haz clic aquí para cargarlos</small></a>
+									<?php }?>
+								</td>
 								<td><?php echo $_smarty_tpl->tpl_vars['row']->value['inicio'];?>
 </td>
 								<td><?php echo $_smarty_tpl->tpl_vars['row']->value['fin'];?>
@@ -114,6 +120,12 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 								<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['total'];?>
 </td>
+							</tr>
+						<?php }
+if (!$_smarty_tpl->tpl_vars["row"]->_loop) {
+?>
+							<tr>
+								<td colspan="5">Aun no hay ventas</td>
 							</tr>
 						<?php } ?>
 					</tbody>

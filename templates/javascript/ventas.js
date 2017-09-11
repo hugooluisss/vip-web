@@ -501,6 +501,7 @@ $(document).ready(function(){
 						}, after: function(resp){
 							el.prop("disabled", false);
 							try{
+								console.log(ventanaImpresion);
 								if (ventanaImpresion == undefined)
 									ventanaImpresion = window.open(resp.url, "Ticket");
 								else

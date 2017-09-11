@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-04 10:48:12
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-08 21:19:33
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1503113349594484f7c43587-42411099%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1504540089,
+      1 => 1504923572,
       2 => 'file',
     ),
   ),
@@ -154,6 +154,12 @@ img/logo.png" alt="User Image" style="background: white"/>
 					<?php }?>
 					
 					<li class="header">MENÚ PRINCIPAL</li>
+					<li>
+						<a href="panelPrincipal">
+							<i class="fa fa-dashboard"></i>
+							<span>Dashboard</span>
+						</a>
+					</li>
 					<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getPerfil()==1){?>
 					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('admonUsuarios','empresas'))){?>active<?php }?> treeview">
 						<a href="#">

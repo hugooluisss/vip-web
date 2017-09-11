@@ -1,10 +1,20 @@
 $(document).ready(function(){
+	$("#txtInicio").datepicker({ dateFormat: 'yy-mm-dd' });
+	$("#txtFin").datepicker({ dateFormat: 'yy-mm-dd' });
+	
+	$("#btnBuscar").click(function(){
+		getLista();
+	});
+	
 	getLista();
 	
 	function getLista(){
 		$("#dvListaVentas").html("");
 		$("#btnCobrar").hide();
-		$.get("listaCobranzaVIP", function(resp){
+		$.post("listaCobranzaVIP", {
+			inicio: $("#txtInicio").val(),
+			fin: $("#txtFin").val()
+		}, function(resp){
 			$("#dvLista").html("");
 			$("#dvLista").html(resp);
 			$("#btnCobrar").show();

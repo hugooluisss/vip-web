@@ -70,6 +70,7 @@ TEmpresa = function(){
 				"cvc": datos.cvc,
 				"mes": datos.mes,
 				"anio": datos.anio,
+				"empresa": datos.empresa,
 				"action": "add"
 			}, function(data){
 				if (data.band == 'false')

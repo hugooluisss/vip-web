@@ -37,7 +37,7 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	</head>
-	<body class="hold-transition skin-red-light sidebar-mini">
+	<body class="hold-transition skin-blue-light sidebar-mini">
 	<div class="wrapper">
 		<header class="main-header">
 			<!-- Logo -->
@@ -104,6 +104,12 @@
 					{/if}
 					
 					<li class="header">MENÚ PRINCIPAL</li>
+					<li>
+						<a href="panelPrincipal">
+							<i class="fa fa-dashboard"></i>
+							<span>Dashboard</span>
+						</a>
+					</li>
 					{if $PAGE.usuario->getPerfil() eq 1}
 					<li class="{if in_array($PAGE.modulo, array('admonUsuarios', 'empresas'))}active{/if} treeview">
 						<a href="#">

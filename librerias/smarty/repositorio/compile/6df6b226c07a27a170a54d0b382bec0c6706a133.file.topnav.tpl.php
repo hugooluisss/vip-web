@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-17 19:10:40
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-08 20:50:22
          compiled from "templates/plantillas/layout/topnav.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:10597828559448cd8539745-02858050%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6df6b226c07a27a170a54d0b382bec0c6706a133' => 
     array (
       0 => 'templates/plantillas/layout/topnav.tpl',
-      1 => 1499886145,
+      1 => 1504921820,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'PAGE' => 0,
+    'foo' => 0,
     'script' => 0,
   ),
   'has_nocache_code' => false,
@@ -71,6 +72,10 @@ plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 		<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/upload/css/jquery.fileupload.css">
+		
+		<script type="text/javascript" src="https://openpay.s3.amazonaws.com/openpay.v1.min.js"></script>
+		<script type='text/javascript' src="https://openpay.s3.amazonaws.com/openpay-data.v1.min.js"></script>
+	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -266,6 +271,102 @@ img/logo.png" class="img-responsive"/></center>
 						</div>
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-primary">Registrarme</button>
+							<button type="cancel" class="btn btn-secondary btn-right" data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<div id="winTarjeta" class="modal fade" role="dialog">
+			<form action="#" id="frmTarjeta" method="post" class="form-horizontal" onsubmit="javascript: return false;">
+				<div class="modal-dialog  modal-lg">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Registra una tarjeta</h4>
+						</div>
+						<div class="modal-body">
+							<div class="alert alert-info">
+								<p>La tarjeta registrada será utilizada al momento de generar el cargo por el uso de la plataforma</p>
+							</div>
+							<div class="row">
+		                        <div class="col-sm-6 col-xs-12">
+			                        <img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+/openpay/cards1.png" class="img-responsive" />
+		                        </div>
+		                        <div class="col-sm-6 col-xs-12">
+			                        <img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+/openpay/cards2.png" class="img-responsive" />
+		                        </div>
+		                    </div>
+		                    <br /><br />
+							<div class="form-group">
+								<label for="" class="col-lg-2">Nombre del tarjetahabiente</label>
+								<div class="col-lg-4">
+									<input type="text" id="txtTarjetahabiente" name="txtTarjetahabiente" data-openpay-card="holder_name" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-lg-2">Número de tarjeta</label>
+								<div class="col-lg-4">
+									<input type="text" id="txtNumero" name="txtNumero" maxlength="19" data-openpay-card="card_number" class="form-control">
+									<span class="text-success ayudaNumber"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-lg-2">CVC</label>
+								<div class="col-lg-2">
+									<input type="text" id="txtCVC" name="txtCVC" size="3" data-openpay-card="cvv2" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-lg-2">Fecha de expiración</label>
+								<div class="col-lg-3">
+									<select id="selMes" name="selMes" data-openpay-card="expiration_month" class="form-control">
+										<option value="01">Enero</option>
+										<option value="02">Febrero</option>
+										<option value="03">Marzo</option>
+										<option value="04">Abril</option>
+										<option value="05">Mayo</option>
+										<option value="06">Junio</option>
+										<option value="07">Julio</option>
+										<option value="08">Agosto</option>
+										<option value="09">Septiembre</option>
+										<option value="10">Octubre</option>
+										<option value="11">Noviembre</option>
+										<option value="12">Diciembre</option>
+									</select>
+								</div>
+								<div class="col-lg-3">
+									<select id="selAnio" name="selAnio" data-openpay-card="expiration_year" class="form-control">
+										<?php $_smarty_tpl->tpl_vars['foo'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['foo']->step = 1;$_smarty_tpl->tpl_vars['foo']->total = (int)ceil(($_smarty_tpl->tpl_vars['foo']->step > 0 ? date("Y")+10+1 - (date("Y")) : date("Y")-(date("Y")+10)+1)/abs($_smarty_tpl->tpl_vars['foo']->step));
+if ($_smarty_tpl->tpl_vars['foo']->total > 0){
+for ($_smarty_tpl->tpl_vars['foo']->value = date("Y"), $_smarty_tpl->tpl_vars['foo']->iteration = 1;$_smarty_tpl->tpl_vars['foo']->iteration <= $_smarty_tpl->tpl_vars['foo']->total;$_smarty_tpl->tpl_vars['foo']->value += $_smarty_tpl->tpl_vars['foo']->step, $_smarty_tpl->tpl_vars['foo']->iteration++){
+$_smarty_tpl->tpl_vars['foo']->first = $_smarty_tpl->tpl_vars['foo']->iteration == 1;$_smarty_tpl->tpl_vars['foo']->last = $_smarty_tpl->tpl_vars['foo']->iteration == $_smarty_tpl->tpl_vars['foo']->total;?>
+											<option value="<?php echo $_smarty_tpl->tpl_vars['foo']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['foo']->value;?>
+</option>
+										<?php }} ?>
+									</select>
+								</div>
+							</div>
+							<br />
+							<br />
+							<div class="row">
+								<div class="col-xs-12 text-right">
+									<img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+/openpay/openpay.png" />
+									<img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+/openpay/radio_on.png" />
+									<img src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['imagenes'];?>
+/openpay/security.png" />
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">Guardar</button>
 							<button type="cancel" class="btn btn-secondary btn-right" data-dismiss="modal">Cancelar</button>
 						</div>
 					</div>

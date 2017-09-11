@@ -15,7 +15,8 @@
 				<div class="panel panel-danger">
 					<div class="panel-heading">Actualiza los datos de tu empresa</div>
 					<div class="panel-body">
-						<p>Al parecer aun no haz actualizado la información de tu empresa. Recuerda que el realizarlo ayudará a tus clientes a identificarte</p>
+						<p>Al parecer aun no has actualizado la información de tu empresa.
+Es un paso obligatorio para terminar tu registro. Además, eso ayudará a tus clientes a identificarte.</p>
 					</div>
 					<div class="panel-footer text-right">
 							<a href="miEmpresa" >Ir a Mi empresa</a>
@@ -29,7 +30,7 @@
 					<div class="panel-heading">Crea un método de cobro</div>
 					<div class="panel-body">
 						<p>Antes de iniciar a vender es necesario dar de alta por lo menos un método de cobro.</p>
-						<p><b>¿Que es un método de cobro?</b> El método de cobro es el medio utilizado por la empresa para cobrar al cliente y puede ser de varios tipos: Bancos, Caja, Virtual</p>
+						<p><b>¿Que es un método de cobro?</b> El método de cobro es el medio utilizado por tu empresa para cobrar a sus clientes. Puede ser de varios tipos: Terminal Bancaria, Caja, Terminal Virtual.</p>
 					</div>
 					<div class="panel-footer text-right">
 							<a href="metodoscobro" >Ir a métodos de cobro</a>
@@ -42,7 +43,7 @@
 				<div class="panel panel-danger">
 					<div class="panel-heading">Crea tu primer bazar</div>
 					<div class="panel-body">
-						<p><b>Por el momento, no cuentas con ningún bazar activo</b>, si tal es el caso crealo ahora</p>
+						<p><b>Por el momento, no cuentas con ningún bazar activo</b>Crea uno ahora para poder empezar a monitorear tus Ventas, Inventarios y Pedidos.</p>
 					</div>
 					<div class="panel-footer text-right">
 							<a href="bazares" >Ir a Bazares</a>
@@ -70,11 +71,19 @@
 					<tbody>
 						{foreach from=$bazares item="row"}
 							<tr>
-								<td>{$row.nombre}</td>
+								<td>{$row.nombre} 
+									{if $row.productos == 0}
+										<a href="productos/{$row.idBazar}-bazar/" class="text-danger" ><small>Ojo, no tienes productos para este bazar, haz clic aquí para cargarlos</small></a>
+									{/if}
+								</td>
 								<td>{$row.inicio}</td>
 								<td>{$row.fin}</td>
 								<td>{$row.inicial}</td>
 								<td class="text-right">{$row.total}</td>
+							</tr>
+						{foreachelse}
+							<tr>
+								<td colspan="5">Aun no hay ventas</td>
 							</tr>
 						{/foreach}
 					</tbody>

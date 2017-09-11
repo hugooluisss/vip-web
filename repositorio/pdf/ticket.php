@@ -19,9 +19,9 @@ class RTicket extends tFPDF{
 	public function Header($nombre){
 		$y = $this->GetY();
 		if (file_exists("repositorio/empresas/empresa".$this->empresa->getId().".jpg"))
-	    	$this->Image("repositorio/empresas/empresa".$this->empresa->getId().".jpg", null, 37, 35, 35);
+	    	$this->Image("repositorio/empresas/empresa".$this->empresa->getId().".jpg", null, 20, 35, 35);
 	    else
-		    $this->Image("templates/img/no-camara.jpg", null, 37, 35, 35);
+		    $this->Image("templates/img/no-camara.jpg", null, 20, 35, 35);
 		
 		
 		$this->SetY($y);
@@ -46,6 +46,7 @@ class RTicket extends tFPDF{
     	
     	$x = 60;
     	$this->SetX($x);
+    	/*
     	$this->Cell(27, 5, "Razón Social: ");
     	$this->Cell(93, 5, $this->empresa->getRazonSocial(), 'B');
     	$this->Ln(5);
@@ -78,6 +79,29 @@ class RTicket extends tFPDF{
     	$this->Cell(50, 5, $this->empresa->getEmail(), 'B');
     	$this->Cell(10, 5, "Tel: ");
     	$this->Cell(45, 5, $this->empresa->getTelefono(), 'B');
+    	$this->Ln(15);
+    	*/
+    	$this->Cell(120, 5, $this->empresa->getRazonSocial());
+    	$this->Ln(5);
+    	$this->SetX($x);
+    	$this->Cell(70, 5, $this->empresa->getDireccion());
+    	$this->Cell(25, 5, $this->empresa->getExterno());
+    	$this->Cell(25, 5, $this->empresa->getInterno());
+    	$this->Ln(5);
+    	$this->SetX($x);
+    	$this->Cell(60, 5, $this->empresa->getColonia());
+    	$this->Cell(60, 5, $this->empresa->getMunicipio());
+    	$this->Ln(5);
+    	$this->SetX($x);
+    	$this->Cell(65, 5, $this->empresa->getCiudad());
+    	$this->Cell(55, 5, $this->empresa->getEstado());
+    	$this->Ln(5);
+    	$this->SetX($x);
+    	$this->Cell(55, 5, $this->empresa->getRFC());
+    	$this->Ln(5);
+    	$this->SetX($x);
+    	$this->Cell(65, 5, $this->empresa->getEmail());
+    	$this->Cell(55, 5, $this->empresa->getTelefono());
     	$this->Ln(15);
     	
     	#Datos del cliente

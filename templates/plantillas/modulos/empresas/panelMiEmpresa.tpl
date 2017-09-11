@@ -87,7 +87,7 @@
 				<div class="col-sm-3">
 					<input class="form-control" id="txtEmail" name="txtEmail" value="{$empresa->getEmail()}"/>
 				</div>
-				<label for="txtTelefono" class="col-sm-2 col-sm-offset-1">Teléfono</label>
+				<label for="txtTelefono" class="col-sm-2 col-sm-offset-1">Teléfono *</label>
 				<div class="col-sm-3">
 					<input class="form-control" id="txtTelefono" name="txtTelefono" value="{$empresa->getTelefono()}"/>
 				</div>

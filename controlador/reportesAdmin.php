@@ -54,7 +54,7 @@ switch($objModulo->getId()){
 	break;
 	case 'listaCobranza':
 		$db = TBase::conectaDB();
-		$sql = "select * from comision a join empresa b using(idEmpresa)";
+		$sql = "select a.* from comision a join empresa b using(idEmpresa)";
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		$datos = array();

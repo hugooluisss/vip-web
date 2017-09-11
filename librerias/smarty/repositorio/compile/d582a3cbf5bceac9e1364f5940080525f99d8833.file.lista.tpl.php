@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-23 10:49:38
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-08 12:42:00
          compiled from "templates/plantillas/modulos/tarjetas/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:239794603599653fc3a9921-11611542%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd582a3cbf5bceac9e1364f5940080525f99d8833' => 
     array (
       0 => 'templates/plantillas/modulos/tarjetas/lista.tpl',
-      1 => 1503503372,
+      1 => 1503535249,
       2 => 'file',
     ),
   ),

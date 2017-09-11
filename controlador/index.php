@@ -18,22 +18,49 @@ switch($objModulo->getId()){
 			$rs = $db->query("select * from bazar where idEmpresa = ".$userSesion->getEmpresa());
 			if ($rs->num_rows == 0)
 				$pendientes['bandBazar'] = true;
-			
+				
+			$rs = $db->query("select * from bazar where idEmpresa = ".$userSesion->getEmpresa());
+			if ($rs->num_rows == 0)
+				$pendientes['bandBazar'] = true;
+			/*
+			require_once('librerias/openpay/Openpay.php');
+			$openpay = Openpay::getInstance($ini['openpay']['id'], $ini['openpay']['key_private']);
+	
+			$empresa = new TEmpresa($userSesion->getEmpresa());
+			if ($empresa->getIdPay() == '')
+				$empresa->setIdPay();
+				
+			try{
+				$cliente = $openpay->customers->get($empresa->getIdPay());
+				$tarjetas = $cliente->cards->getList(array());
+				
+				if (count($tarjetas) == 0)
+					$pendientes['bandTarjetas'] = true;
+			}catch(Exception $e){
+				ErrorSistema("PAY: ".$e->getMessage());
+			}
+			*/
 			$smarty->assign("pendientes", $pendientes);
 			
-			
-			$sql = "select *, sum(precio * cantidad * ((100 - c.descuento) / 100) * ((100 - b.descuento) / 100)) as total
-				from bazar a join venta b using(idBazar) 
-					join movimiento c using(idVenta)
-				where idEmpresa = ".$userSesion->getEmpresa()." and a.visible = true and a.estado = 1
-				group by a.idBazar;";
-			
+			$sql = "select * from bazar where idEmpresa = ".$userSesion->getEmpresa();
 			$rs = $db->query($sql);
 			$datos = array();
 			$suma = 0;
 			while($row = $rs->fetch_assoc()){
-				$suma += $row['total'];
-				$row['total'] = number_format($row['total'], 2, '.', ',');
+				$rs2 = $db->query("select count(*) as total from producto a where a.visible = true and idBazar = ".$row['idBazar']);
+				$row2 = $rs->fetch_assoc();
+				$row['productos'] = $row2['total'];
+				
+				$sql = "select *, sum(precio * cantidad * ((100 - c.descuento) / 100) * ((100 - b.descuento) / 100)) as total
+				from venta b
+					join movimiento c using(idVenta)
+				where b.idBazar = ".$row['idBazar']."";
+				
+				$rs2 = $db->query($sql);
+				$row2 = $rs2->fetch_assoc();
+				
+				$suma += $row2['total'];
+				$row['total'] = number_format($row2['total'], 2, '.', ',');
 				$row['json'] = json_encode($row);
 				
 				array_push($datos, $row);
@@ -45,12 +72,13 @@ switch($objModulo->getId()){
 	case 'interfaz':
 		$db = TBase::conectaDB();
 		
-		$sql = "select idEmpresa from empresa where visible = 1 and activo = 1 and ultimocorte < now()";
+		$sql = "select idEmpresa from empresa where visible = 1 and activo = 1 and (ultimocorte < now() or ultimocorte is null)";
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		while($rowEmpresa = $rs->fetch_assoc()){
 			$empresa = new TEmpresa($rowEmpresa['idEmpresa']);
 			
-			$sql = "select idVenta, descuento from venta a join bazar b using(idBazar) where fecha between '".$empresa->getUltimoCorte()."' and date_sub(NOW(), INTERVAL 1 DAY) and idEmpresa = ".$empresa->getId();
+			#$sql = "select idVenta, descuento from venta a join bazar b using(idBazar) where fecha between '".$empresa->getUltimoCorte()."' and date_sub(NOW(), INTERVAL 1 DAY) and idEmpresa = ".$empresa->getId();
+			$sql = "select idVenta, descuento from venta a join bazar b using(idBazar) where registro between '".$empresa->getUltimoCorte()."' and NOW() and idEmpresa = ".$empresa->getId();
 			$rsVentas = $db->query($sql) or errorMySQL($db, $sql);
 			$suma = 0;
 			while($rowVenta = $rsVentas->fetch_assoc()){
@@ -65,16 +93,18 @@ switch($objModulo->getId()){
 				$suma += $total;
 			}
 			
-			$comision =  new TComision;
-			$comision->setEmpresa($empresa->getId());
-			$comision->setInicio($empresa->getUltimoCorte());
-			$comision->setFin(date("Y-m-d"));
-			$comision->setComision($empresa->getComision());
-			$comision->setMonto($suma);
-			
-			if ($comision->guardar()){
-				$empresa->setUltimoCorte();
-				$empresa->guardar();
+			if ($suma > 0){
+				$comision =  new TComision;
+				$comision->setEmpresa($empresa->getId());
+				$comision->setInicio($empresa->getUltimoCorte());
+				$comision->setFin(date("Y-m-d"));
+				$comision->setComision($empresa->getComision());
+				$comision->setMonto($suma);
+				
+				if ($comision->guardar()){
+					$empresa->setUltimoCorte();
+					$empresa->guardar();
+				}
 			}
 		}
 	break;
