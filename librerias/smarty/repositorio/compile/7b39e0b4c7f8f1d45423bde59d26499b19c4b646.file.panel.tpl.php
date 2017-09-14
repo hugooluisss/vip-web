@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:42:17
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-14 11:21:38
          compiled from "templates/plantillas/modulos/operaciones/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:53401678359568b1a0e4d11-76621903%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7b39e0b4c7f8f1d45423bde59d26499b19c4b646' => 
     array (
       0 => 'templates/plantillas/modulos/operaciones/panel.tpl',
-      1 => 1499797558,
+      1 => 1502808612,
       2 => 'file',
     ),
   ),
@@ -30,8 +30,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59568b1a1b1db4_64067431')) {function content_59568b1a1b1db4_64067431($_smarty_tpl) {?><?php if ($_smarty_tpl->tpl_vars['totalBazares']->value){?>
 <div class="row">
-	<div class="col-sm-3">
-		<h1 class="page-header">Operaciones</h1>
+	<div class="col-sm-12">
+		<h1 class="page-header">Entradas y salidas de productos</h1>
 	</div>
 </div>
 
@@ -39,8 +39,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div class="box">
 		<div class="box-body">
 			<div class="form-group">
-				<label for="selBazar" class="col-md-2 text-right">Bazar</label>
-				<div class="col-md-10">
+				<label for="selBazar" class="col-md-2 text-right" style="padding-top: 5px">Bazar</label>
+				<div class="col-md-4">
 					<select class="form-control" id="selBazar" name="selBazar">
 						<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['bazares']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -53,10 +53,8 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<?php } ?>
 					</select>
 				</div>
-			</div>
-			<div class="form-group">
-				<label for="selTipo" class="col-md-2 text-right">Tipo de operación</label>
-				<div class="col-md-10">
+				<label for="selTipo" class="col-md-2 text-right" style="padding-top: 5px">Tipo de operación</label>
+				<div class="col-md-4">
 					<select class="form-control" id="selTipo" name="selTipo">
 						<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['tipos']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -79,7 +77,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			</div>
 		</div>
 		<div class="box-footer">
-			<button type="submit" class="btn btn-info pull-right">Agregar</button>
+			<button type="submit" class="btn btn-info pull-right">Guardar</button>
 			<input type="hidden" id="id"/>
 		</div>
 	</div>
@@ -103,4 +101,48 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 
 		</div>
 	</div>
-<?php }?><?php }} ?>
+<?php }?>
+
+
+<div class="modal fade" id="winNuevoProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Agregar producto</h4>
+			</div>
+			<div class="modal-body">
+				<form role="form" id="frmAddProducto" class="form-horizontal" onsubmit="javascript: return false;">
+					<!--
+					<div class="form-group">
+						<label for="txtCodigo" class="col-md-2 text-right">Código</label>
+						<div class="col-md-3">
+							<input class="form-control" id="txtCodigo" name="txtCodigo">
+						</div>
+					</div>
+					-->
+					<div class="form-group">
+						<label for="txtDescripcion" class="col-md-2 text-right">Descripción</label>
+						<div class="col-md-10">
+							<input class="form-control" id="txtDescripcion" name="txtDescripcion">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtPrecio" class="col-md-2 text-right">Precio público</label>
+						<div class="col-md-3">
+							<input class="form-control" id="txtPrecio" name="txtPrecio" type="number" value="0">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
+							<button type="submit" class="btn btn-info pull-right">Guardar</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<input id="codigoBarras" name="codigoBarras" type="hidden" value=""><?php }} ?>

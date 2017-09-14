@@ -16,13 +16,7 @@ $(document).ready(function(){
 				after: function(datos){
 					$("#frmLogin").find("[type=submit]").prop("disabled", false);
 					if (datos.band){
-						if (datos.totalTarjetas > 0)
-							location.href = "panelPrincipal";
-						else{
-							$("#winSesion").modal("hide");
-							$("#winTarjeta").modal();
-							$("#frmTarjeta").attr("empresa", datos.empresa);
-						}
+						location.href = "panelPrincipal";
 					}else{
 						alert("Los datos son incorrectos, corrigelos y vuelve a intentarlo");
 					}
@@ -74,11 +68,12 @@ $(document).ready(function(){
 										
 										if (respuesta.band){
 											$("#winRegistro").modal("hide");
-											//$("#winSesion").modal();
+											$("#winSesion").modal();
 											$("#winSesion").find("#txtUsuario").val($("#txtEmail").val());
 											$("#winSesion").find("#txtPass").val($("#txtPassRegistro").val());
 											alert("Tu cuenta ha sido creada");
-											$("#winTarjeta").modal();
+											$("#frmLogin").submit();
+											//$("#winTarjeta").modal();
 										}
 										
 										if (respuesta.email)
@@ -98,6 +93,8 @@ $(document).ready(function(){
     });
 });
 
+
+/*
 $(document).ready(function(){
 	OpenPay.setId($("#frmTarjeta").attr("merchant"));
 	OpenPay.setApiKey($("#frmTarjeta").attr("public"));
@@ -162,3 +159,4 @@ $(document).ready(function(){
 		}
 	});
 });
+*/

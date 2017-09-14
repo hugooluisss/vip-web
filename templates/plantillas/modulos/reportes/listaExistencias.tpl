@@ -7,6 +7,8 @@
 			<th>Color</th>
 			<th>Talla</th>
 			<th>Existencia inicial</th>
+			<th>Ventas</th>
+			<th>Pedidos</th>
 			<th>Inventario actual</th>
 			<th>Precio</th>
 			{if $bazar eq ''}
@@ -23,9 +25,11 @@
 				<td>{$row.descripcion}</td>
 				<td>{$row.color}</td>
 				<td>{$row.talla}</td>
-				<td>{$row.existencias}</td>
-				<td>{$row.inventario}</td>
-				<td>{$row.precio}</td>
+				<td class="text-right">{$row.existencias}</td>
+				<td class="text-right">{$row.vendidos}</td>
+				<td class="text-right">{$row.pedidos}</td>
+				<td class="text-right">{$row.inventario}</td>
+				<td class="text-right">{$row.precio}</td>
 				{if $bazar eq ''}
 					<td>
 						<a href="productos/{$row.idBazar}-bazar/" class="" role="button" action="ticket" title="Comprobante de venta"> {$row.bazar}</a>

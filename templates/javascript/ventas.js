@@ -392,6 +392,8 @@ $(document).ready(function(){
 			before: function(){
 				$("#btnGuardar").prop("disabled", true);
 		    	$("#btnPagar").prop("disabled", true);
+		    	
+		    	nuevaVenta();
 		    },
 		    after: function(resp){
 		    	$("#btnGuardar").prop("disabled", false);

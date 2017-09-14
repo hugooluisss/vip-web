@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-08 21:26:20
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-14 11:59:16
          compiled from "templates/plantillas/modulos/inicio.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:166554977059448ce019a6d9-45010204%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4dd97137c284ab0e063fd62794520df2227c9f0c' => 
     array (
       0 => 'templates/plantillas/modulos/inicio.tpl',
-      1 => 1504923979,
+      1 => 1505408352,
       2 => 'file',
     ),
   ),
@@ -40,7 +40,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getIdTipo()!=1){?>
 	<?php if (count($_smarty_tpl->tpl_vars['pendientes']->value)>0){?>
 		<div class="row">
-			<?php if ($_smarty_tpl->tpl_vars['pendientes']->value['bandEmpresa']==true){?>
+			<?php if ($_smarty_tpl->tpl_vars['pendientes']->value['bandEmpresa']==true||$_smarty_tpl->tpl_vars['pendientes']->value['bandTarjetas']==true){?>
 			<div class="col-md-6">
 				<div class="panel panel-danger">
 					<div class="panel-heading">Actualiza los datos de tu empresa</div>
@@ -137,6 +137,9 @@ if (!$_smarty_tpl->tpl_vars["row"]->_loop) {
 						</tr>
 					</tfoot>
 				</table>
+			</div>
+			<div class="box-footer text-right">
+				<a href="bazares" >Crear un nuevo bazar/Mercado</a>
 			</div>
 		</div>
 	<?php }?>

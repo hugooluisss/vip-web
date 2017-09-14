@@ -1,5 +1,7 @@
 <?php
 global $objModulo;
+require_once('librerias/openpay/Openpay.php');
+$openpay = Openpay::getInstance($ini['openpay']['id'], $ini['openpay']['key_private']);
 
 switch($objModulo->getId()){
 	case 'listaEmpresas':
@@ -17,7 +19,23 @@ switch($objModulo->getId()){
 	break;
 	case 'miEmpresa':
 		global $userSesion;
-		$smarty->assign("empresa", new TEmpresa($userSesion->getEmpresa()));
+		$empresa = new TEmpresa($userSesion->getEmpresa());
+		$smarty->assign("empresa", $empresa);
+		
+		$datos = array();
+		$json = array();
+		
+		if ($empresa->getIdPay() == '')
+			$empresa->setIdPay();
+			
+		try{
+			$cliente = $openpay->customers->get($empresa->getIdPay());
+			$tarjetas = $cliente->cards->getList(array());
+			$smarty->assign("tarjeta", $tarjetas[0]);	
+		}catch(Exception $e){
+			ErrorSistema("PAY: ".$e->getMessage());
+			$smarty->assign("tarjeta", array());
+		}
 	break;
 	case 'cempresas':
 		switch($objModulo->getAction()){

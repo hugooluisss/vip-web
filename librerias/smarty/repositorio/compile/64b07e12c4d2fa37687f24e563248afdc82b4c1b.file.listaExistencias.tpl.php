@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:50:41
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-14 11:34:08
          compiled from "templates/plantillas/modulos/reportes/listaExistencias.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:920093192595badefb3ea78-70335118%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '64b07e12c4d2fa37687f24e563248afdc82b4c1b' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/listaExistencias.tpl',
-      1 => 1499789020,
+      1 => 1505406844,
       2 => 'file',
     ),
   ),
@@ -34,6 +34,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<th>Color</th>
 			<th>Talla</th>
 			<th>Existencia inicial</th>
+			<th>Ventas</th>
+			<th>Pedidos</th>
 			<th>Inventario actual</th>
 			<th>Precio</th>
 			<?php if ($_smarty_tpl->tpl_vars['bazar']->value==''){?>
@@ -59,11 +61,15 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['talla'];?>
 </td>
-				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['existencias'];?>
+				<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['existencias'];?>
 </td>
-				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['inventario'];?>
+				<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['vendidos'];?>
 </td>
-				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['precio'];?>
+				<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['pedidos'];?>
+</td>
+				<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['inventario'];?>
+</td>
+				<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['precio'];?>
 </td>
 				<?php if ($_smarty_tpl->tpl_vars['bazar']->value==''){?>
 					<td>

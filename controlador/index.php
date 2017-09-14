@@ -22,7 +22,7 @@ switch($objModulo->getId()){
 			$rs = $db->query("select * from bazar where idEmpresa = ".$userSesion->getEmpresa());
 			if ($rs->num_rows == 0)
 				$pendientes['bandBazar'] = true;
-			/*
+			
 			require_once('librerias/openpay/Openpay.php');
 			$openpay = Openpay::getInstance($ini['openpay']['id'], $ini['openpay']['key_private']);
 	
@@ -39,7 +39,7 @@ switch($objModulo->getId()){
 			}catch(Exception $e){
 				ErrorSistema("PAY: ".$e->getMessage());
 			}
-			*/
+			
 			$smarty->assign("pendientes", $pendientes);
 			
 			$sql = "select * from bazar where idEmpresa = ".$userSesion->getEmpresa();

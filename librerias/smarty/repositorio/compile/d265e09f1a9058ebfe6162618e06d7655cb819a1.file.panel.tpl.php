@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 09:57:47
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-14 12:01:19
          compiled from "templates/plantillas/modulos/bazares/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:7513394415953cdb55d7d20-91734581%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd265e09f1a9058ebfe6162618e06d7655cb819a1' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/panel.tpl',
-      1 => 1502808612,
+      1 => 1505408478,
       2 => 'file',
     ),
   ),
@@ -26,7 +26,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5953cdb56be8d1_49870594')) {function content_5953cdb56be8d1_49870594($_smarty_tpl) {?><div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Bazares</h1>
+		<h1 class="page-header">Bazares <br /><span class="text-danger" style="margin-left: 50px;"> y mercados</span></h1>
 	</div>
 </div>
 

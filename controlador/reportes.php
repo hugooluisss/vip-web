@@ -40,9 +40,9 @@ switch($objModulo->getId()){
 		
 		if ($_POST['bazar'] == ''){
 			global $userSesion;
-			$sql = "select a.idVenta, fecha, a.folio, b.nombre as bazar, b.idBazar, c.nombre as cliente from venta a join bazar b using(idBazar) join cliente c using(idCliente) where b.idEmpresa = ".$userSesion->getEmpresa()." and b.visible = 1 and a.idEstado = 2 and a.fecha between '".$_POST['inicio']."' and '".$_POST['fin']."' order by fecha desc";
+			$sql = "select a.idVenta, fecha, a.folio, b.nombre as bazar, b.idBazar, c.nombre as cliente, descuento from venta a join bazar b using(idBazar) join cliente c using(idCliente) where b.idEmpresa = ".$userSesion->getEmpresa()." and b.visible = 1 and a.idEstado = 2 and a.fecha between '".$_POST['inicio']."' and '".$_POST['fin']."' order by fecha desc";
 		}else
-			$sql = "select a.idVenta, fecha, a.folio, b.nombre as bazar, b.idBazar, c.nombre as cliente from venta a join bazar b using(idBazar) join cliente c using(idCliente) where a.idBazar = ".$_POST['bazar']." and b.visible = 1 and a.idEstado = 2 order by fecha desc;";
+			$sql = "select a.idVenta, fecha, a.folio, b.nombre as bazar, b.idBazar, c.nombre as cliente, descuento from venta a join bazar b using(idBazar) join cliente c using(idCliente) where a.idBazar = ".$_POST['bazar']." and b.visible = 1 and a.idEstado = 2 order by fecha desc;";
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		$datos = array();
@@ -109,6 +109,16 @@ switch($objModulo->getId()){
 		while($row = $rs->fetch_assoc()){
 			$producto = new TProducto($row['idProducto']);
 			$row['inventario'] = $producto->getInventarioDisponible();
+			if ($_POST['bazar'] == '')
+				$sql = "select sum(cantidad) as vendidos, sum(entregado) as entregados from venta a join movimiento b using(idVenta) join producto c using(idProducto) where c.visible = true and idProducto = ".$producto->getId();
+			else
+				$sql = "select sum(cantidad) as vendidos, sum(entregado) as entregados from venta a join movimiento b using(idVenta) join producto c using(idProducto) where c.visible = true and a.idBazar = ".$_POST['idBazar']." and idProducto = ".$producto->getId();
+			
+			$rs2 = $db->query($sql) or errorMySQL($db, $sql);
+			$row2 = $rs2->fetch_assoc();
+			$row['vendidos'] = $row2['vendidos'] == ''?0:$row2['vendidos'];
+			$row['entregados'] = $row2['entregados'] == ''?0:$row2['entregadosº'];
+			$row['pedidos'] = $row['vendidos'] - $row['entregados'];
 			$row['json'] = json_encode($row);
 			
 			array_push($datos, $row);

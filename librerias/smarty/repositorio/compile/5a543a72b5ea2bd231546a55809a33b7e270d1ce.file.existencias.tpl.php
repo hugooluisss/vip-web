@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:50:37
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-14 11:19:15
          compiled from "templates/plantillas/modulos/reportes/existencias.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1706696756595bacc498ec92-04957641%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5a543a72b5ea2bd231546a55809a33b7e270d1ce' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/existencias.tpl',
-      1 => 1499741850,
+      1 => 1502808612,
       2 => 'file',
     ),
   ),
@@ -25,8 +25,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_595bacc49c0579_05845311')) {function content_595bacc49c0579_05845311($_smarty_tpl) {?><div class="row">
-	<div class="col-sm-3">
-		<h1 class="page-header">Reporte de existencias</h1>
+	<div class="col-sm-12">
+		<h1 class="page-header">Reporte de inventarios</h1>
 	</div>
 </div>
 

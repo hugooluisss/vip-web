@@ -19,9 +19,9 @@ class RTicket extends tFPDF{
 	public function Header($nombre){
 		$y = $this->GetY();
 		if (file_exists("repositorio/empresas/empresa".$this->empresa->getId().".jpg"))
-	    	$this->Image("repositorio/empresas/empresa".$this->empresa->getId().".jpg", null, 20, 35, 35);
+	    	$this->Image("repositorio/empresas/empresa".$this->empresa->getId().".jpg", null, 5, 20, 20);
 	    else
-		    $this->Image("templates/img/no-camara.jpg", null, 20, 35, 35);
+		    $this->Image("templates/img/no-camara.jpg", null, 5, 20, 20);
 		
 		
 		$this->SetY($y);
@@ -42,9 +42,9 @@ class RTicket extends tFPDF{
     	$this->SetXY(150, $y + 10);
     	$this->Cell(15, 5, "Fecha: ");
     	$this->Cell(0, 5, $this->venta->getFecha(), 'B');
-    	$this->Ln(20);
+    	$this->Ln(10);
     	
-    	$x = 60;
+    	$x = 10;
     	$this->SetX($x);
     	/*
     	$this->Cell(27, 5, "Razón Social: ");

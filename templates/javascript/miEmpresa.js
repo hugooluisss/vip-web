@@ -34,6 +34,10 @@ $(document).ready(function(){
 					after: function(datos){
 						if (datos.band){
 							alert("Los datos se guardaron con éxito");
+							
+							$("#frmAdd").hide("slow", function(){
+								$("#frmTarjeta").show();
+							});
 						}else{
 							alert("No se pudo guardar el registro");
 						}
@@ -85,5 +89,70 @@ $(document).ready(function(){
         	
         	//result.status == 'success')
         }
+	});
+});
+
+
+
+$(document).ready(function(){
+	OpenPay.setId($("#frmTarjeta").attr("merchant"));
+	OpenPay.setApiKey($("#frmTarjeta").attr("public"));
+	
+	$("[data-openpay-card=card_number]").change(function(){
+		if(OpenPay.card.validateCardNumber($(this).val())){
+			$(".ayudaNumber").html("Estás usando " + OpenPay.card.cardType($(this).val()));
+			$(this).parent().parent().addClass("has-success");
+			$(this).parent().parent().removeClass("has-danger");
+		}else{
+			$(".ayudaNumber").html("Error en el número de tarjeta");
+			$(this).parent().parent().addClass("has-danger");
+			$(this).parent().parent().removeClass("has-success");
+		}
+	});
+	
+	
+	$("#frmTarjeta").validate({
+		debug: true,
+		rules: {
+			txtTarjetahabiente: "required",
+			txtNumero: "required",
+			txtCVC: "required",
+			selMes: "required",
+			selAnio: "required",
+		},
+		wrapper: 'span', 
+		submitHandler: function(form){
+			if (!OpenPay.card.validateExpiry($("#selMes").val(), $("#selAnio").val())){
+				alert("Verifica la fecha de expiración");
+			}else if(!OpenPay.card.validateCVC($("#txtCVC").val(), $("#txtNumero").val())){
+				alert("Verifica el código CVC");
+			}else{
+				var obj = new TEmpresa;
+				obj.addTarjeta({
+					tarjetahabiente: $("#txtTarjetahabiente").val(),
+					numero: $("#txtNumero").val(),
+					cvc: $("#txtCVC").val(),
+					mes: $("#selMes").val(),
+					anio: $("#selAnio").val(),
+					empresa: $("#frmTarjeta").attr("empresa"),
+					fn: {
+						before: function(){
+							$("#frmTarjeta").find("button").prop("disabled", true);
+						},
+						after: function(resp){
+							$("#frmTarjeta").find("button").prop("disabled", false);
+							
+							if (resp.band){
+								alert("Tu tarjeta ha quedado registrada... muchas gracias por completar tu información");
+								$("#frmTarjeta").get(0).reset();
+								
+								location.reload();
+							}else
+								alert("No se pudo agregar la tarjeta " + (resp.mensaje != null?resp.mensaje:''));
+						}
+					}
+				});
+			}
+		}
 	});
 });

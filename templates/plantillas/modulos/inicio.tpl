@@ -10,7 +10,7 @@
 {if $PAGE.usuario->getIdTipo() neq 1}
 	{if count($pendientes) > 0}
 		<div class="row">
-			{if $pendientes['bandEmpresa'] eq true}
+			{if $pendientes['bandEmpresa'] eq true or $pendientes['bandTarjetas'] eq true}
 			<div class="col-md-6">
 				<div class="panel panel-danger">
 					<div class="panel-heading">Actualiza los datos de tu empresa</div>
@@ -94,6 +94,9 @@ Es un paso obligatorio para terminar tu registro. Además, eso ayudará a tus cl
 						</tr>
 					</tfoot>
 				</table>
+			</div>
+			<div class="box-footer text-right">
+				<a href="bazares" >Crear un nuevo Bazar/Mercado</a>
 			</div>
 		</div>
 	{/if}

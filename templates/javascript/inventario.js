@@ -26,13 +26,6 @@ $(document).ready(function(){
 				number: true,
 				min: 0
 			},
-			/*
-			txtCosto: {
-				required: true,
-				number: true,
-				min: 0
-			},
-			*/
 			txtExistencias: {
 				required: true,
 				digits: true,

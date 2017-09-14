@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-08 21:19:33
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-14 12:02:37
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1503113349594484f7c43587-42411099%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1504923572,
+      1 => 1505408556,
       2 => 'file',
     ),
   ),
@@ -81,7 +81,7 @@ plugins/upload/css/jquery.fileupload.css">
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	</head>
-	<body class="hold-transition skin-red-light sidebar-mini">
+	<body class="hold-transition skin-blue-light sidebar-mini">
 	<div class="wrapper">
 		<header class="main-header">
 			<!-- Logo -->
@@ -190,9 +190,9 @@ img/logo.png" alt="User Image" style="background: white"/>
 						</a>
 						<ul class="treeview-menu">
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='miEmpresa'){?>class="active"<?php }?>><a href="miEmpresa">Mi empresa</a></li>
-							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('tarjetas'))){?>class="active"<?php }?>><a href="tarjetas">Mis tarjetas</a></li>
+							<!--<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('tarjetas'))){?>class="active"<?php }?>><a href="tarjetas">Mis tarjetas</a></li>-->
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='misUsuarios'){?>class="active"<?php }?>><a href="misUsuarios">Mis usuarios</a></li>
-							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('bazares','productos'))){?>class="active"<?php }?>><a href="bazares">Bazares</a></li>
+							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('bazares','productos'))){?>class="active"<?php }?>><a href="bazares">Bazares <span class="text-danger">y mercados</span></a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='metodoscobro'){?>class="active"<?php }?>><a href="metodoscobro">Métodos de cobro</a></li>
 							<!--<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='metodospago'){?>class="active"<?php }?>><a href="metodospago">Métodos de pago</a></li>-->
 							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('clientes'))){?>class="active"<?php }?>><a href="clientes">Clientes</a></li>

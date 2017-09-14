@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-04 13:24:05
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-14 11:56:48
          compiled from "templates/plantillas/modulos/reportes/listaVentasProducto.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1762816596595bdd457c6413-34524843%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4ac51c695d0a9f6f53b86ddf5ff2587a4a7235da' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/listaVentasProducto.tpl',
-      1 => 1499191908,
+      1 => 1505408200,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_595bdd45817986_96839739',
   'variables' => 
   array (
     'lista' => 0,
     'row' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_595bdd45817986_96839739',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_595bdd45817986_96839739')) {function content_595bdd45817986_96839739($_smarty_tpl) {?><table id="tblVentasProducto" class="table table-bordered table-hover">
 	<thead>
@@ -44,8 +44,10 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			<tr>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['fecha'];?>
 </td>
-				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['folio'];?>
-</td>
+				<td><a href="#" class="" role="button" action="ticket" title="Comprobante de venta" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+' idVenta="<?php echo $_smarty_tpl->tpl_vars['row']->value['idVenta'];?>
+" onclick="javascript: return false;"><?php echo $_smarty_tpl->tpl_vars['row']->value['folio'];?>
+</a></td>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['cliente'];?>
 </td>
 				<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['cantidad'];?>

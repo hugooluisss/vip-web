@@ -70,6 +70,12 @@ switch($objModulo->getId()){
 					
 					try{
 						$customer = $openpay->customers->get($empresa->getIdPay());
+						
+						#primero borramos las tarjetas
+						$tarjetas = $customer->cards->getList(array());
+						foreach($tarjetas as $card)
+							$card->delete();
+						
 						$card = $customer->cards->add($cardDataRequest);
 						$band = true;
 					}catch(Exception $e){

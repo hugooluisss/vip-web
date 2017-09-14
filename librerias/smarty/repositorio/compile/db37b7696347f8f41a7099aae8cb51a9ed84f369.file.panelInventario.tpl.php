@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 09:58:16
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-14 10:33:07
          compiled from "templates/plantillas/modulos/bazares/panelInventario.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1369250404594abd8df16092-78177837%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'db37b7696347f8f41a7099aae8cb51a9ed84f369' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/panelInventario.tpl',
-      1 => 1502808612,
+      1 => 1505403183,
       2 => 'file',
     ),
   ),
@@ -55,7 +55,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 		<div class="btn-group btn-group-xs pull-right">
 			<div class="btn-group" role="group" aria-label="...">
 				<button type="button" class="btn btn-success" id="btnExportar"><i class="fa fa-download" aria-hidden="true"></i> Exportar xls</button>
-				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar xls</button>
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar/Actualiza inventario xls</button>
 				<button type="button" class="btn btn-primary" id="btnPlantilla"><i class="fa fa-download" aria-hidden="true"></i> Descargar plantilla</button>
 			</div>
 		</div>
@@ -185,7 +185,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Subir archivo</h4>
+				<h4 class="modal-title">Subir archivo para Importar/actualizar inventario</h4>
 			</div>
 			<div class="modal-body">
 				<form id="upload" method="post" action="?mod=cproductos&action=uploadfile" enctype="multipart/form-data">

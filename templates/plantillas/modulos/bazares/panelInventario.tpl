@@ -1,7 +1,7 @@
 {if $totalBazares}
 <div class="row">
 	<div class="col-sm-3">
-		<h1 class="page-header">Inventario del bazar </h1>
+		<h1 class="page-header">Carga de inventario</h1>
 	</div>
 	<div class="col-sm-4 page-header">
 		<select class="form-control" id="bazar" name="bazar">
@@ -20,7 +20,7 @@
 		<div class="btn-group btn-group-xs pull-right">
 			<div class="btn-group" role="group" aria-label="...">
 				<button type="button" class="btn btn-success" id="btnExportar"><i class="fa fa-download" aria-hidden="true"></i> Exportar xls</button>
-				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar xls</button>
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#winUpload"><i class="fa fa-upload" aria-hidden="true"></i> Importar/Actualiza inventario xls</button>
 				<button type="button" class="btn btn-primary" id="btnPlantilla"><i class="fa fa-download" aria-hidden="true"></i> Descargar plantilla</button>
 			</div>
 		</div>

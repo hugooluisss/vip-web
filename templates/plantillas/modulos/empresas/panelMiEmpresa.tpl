@@ -103,6 +103,90 @@
 </form>
 
 
+<form action="#" id="frmTarjeta" method="post" class="form-horizontal" onsubmit="javascript: return false;" style="display: none">
+	<div class="box">
+		<div class="box-body">
+			{if $tarjeta->card_number == ''}
+				<div class="alert alert-danger">
+					<p>La tarjeta registrada será utilizada al momento de generar el cargo por el uso de la plataforma</p>
+				</div>
+			{else}
+				<div class="alert alert-info">
+					<p>Actualmente tenemos registrada la tarjeta con número {$tarjeta->card_number}. Si deseas cambiarla actualiza la información</p>
+				</div>
+			{/if}
+			<div class="row">
+		        <div class="col-sm-6 col-xs-12">
+		            <img src="{$PAGE.imagenes}/openpay/cards1.png" class="img-responsive" />
+		        </div>
+		        <div class="col-sm-6 col-xs-12">
+		            <img src="{$PAGE.imagenes}/openpay/cards2.png" class="img-responsive" />
+		        </div>
+		    </div>
+		    <br /><br />
+			<div class="form-group">
+				<label for="" class="col-lg-2">Nombre del tarjetahabiente</label>
+				<div class="col-lg-4">
+					<input type="text" id="txtTarjetahabiente" name="txtTarjetahabiente" data-openpay-card="holder_name" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-lg-2">Número de tarjeta</label>
+				<div class="col-lg-4">
+					<input type="text" id="txtNumero" name="txtNumero" maxlength="19" data-openpay-card="card_number" class="form-control">
+					<span class="text-success ayudaNumber"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-lg-2">CVC</label>
+				<div class="col-lg-2">
+					<input type="text" id="txtCVC" name="txtCVC" size="3" data-openpay-card="cvv2" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-lg-2">Fecha de expiración</label>
+				<div class="col-lg-3">
+					<select id="selMes" name="selMes" data-openpay-card="expiration_month" class="form-control">
+						<option value="01">Enero</option>
+						<option value="02">Febrero</option>
+						<option value="03">Marzo</option>
+						<option value="04">Abril</option>
+						<option value="05">Mayo</option>
+						<option value="06">Junio</option>
+						<option value="07">Julio</option>
+						<option value="08">Agosto</option>
+						<option value="09">Septiembre</option>
+						<option value="10">Octubre</option>
+						<option value="11">Noviembre</option>
+						<option value="12">Diciembre</option>
+					</select>
+				</div>
+				<div class="col-lg-3">
+					<select id="selAnio" name="selAnio" data-openpay-card="expiration_year" class="form-control">
+						{for $foo=date("Y") to date("Y")+10}
+							<option value="{$foo}">{$foo}</option>
+						{/for}
+					</select>
+				</div>
+			</div>
+			<br />
+			<br />
+			<div class="row">
+				<div class="col-xs-12 text-right">
+					<img src="{$PAGE.imagenes}/openpay/openpay.png" />
+					<img src="{$PAGE.imagenes}/openpay/radio_on.png" />
+					<img src="{$PAGE.imagenes}/openpay/security.png" />
+				</div>
+			</div>
+		</div>
+		<div class="box-footer">
+			<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
+			<button type="submit" class="btn btn-info pull-right">Guardar</button>
+		</div>
+	</div>
+</form>
+
+
 <div class="modal fade" id="winFotografia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
