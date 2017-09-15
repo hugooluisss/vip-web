@@ -30,7 +30,7 @@ Es un paso obligatorio para terminar tu registro. Además, eso ayudará a tus cl
 					<div class="panel-heading">Crea un método de cobro</div>
 					<div class="panel-body">
 						<p>Antes de iniciar a vender es necesario dar de alta por lo menos un método de cobro.</p>
-						<p><b>¿Que es un método de cobro?</b> El método de cobro es el medio utilizado por tu empresa para cobrar a sus clientes. Puede ser de varios tipos: Terminal Bancaria, Caja, Terminal Virtual.</p>
+						<p><b>¿Qué es un método de cobro?</b> El método de cobro es el medio utilizado por tu empresa para cobrar a sus clientes. Puede ser de varios tipos: Terminal Bancaria, Caja, Terminal Virtual.</p>
 					</div>
 					<div class="panel-footer text-right">
 							<a href="metodoscobro" >Ir a métodos de cobro</a>

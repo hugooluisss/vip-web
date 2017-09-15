@@ -41,6 +41,13 @@ switch($objModulo->getId()){
 							
 							$datos = array();
 							$json = array();
+							$obj = new TUsuario($row['idUsuario']);
+							$sesion['usuario'] = $obj->getId();
+							$sesion['perfil'] = $obj->getIdTipo();
+							
+							$_SESSION[SISTEMA] = $sesion;
+							$result = array('band' => true, 'tipo' => $obj->getIdTipo(), 'empresa' => $empresa->getId(), "datos" => $sesion);
+							/*
 							require_once('librerias/openpay/Openpay.php');
 							$openpay = Openpay::getInstance($ini['openpay']['id'], $ini['openpay']['key_private']);
 							
@@ -67,6 +74,7 @@ switch($objModulo->getId()){
 								
 								$result = array('band' => false);
 							}
+							*/
 						}
 					}
 				}
