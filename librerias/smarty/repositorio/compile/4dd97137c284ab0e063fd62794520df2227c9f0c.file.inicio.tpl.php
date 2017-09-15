@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-14 11:59:16
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-15 11:03:08
          compiled from "templates/plantillas/modulos/inicio.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:166554977059448ce019a6d9-45010204%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4dd97137c284ab0e063fd62794520df2227c9f0c' => 
     array (
       0 => 'templates/plantillas/modulos/inicio.tpl',
-      1 => 1505408352,
+      1 => 1505491385,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'PAGE' => 0,
     'pendientes' => 0,
+    'efectivo' => 0,
     'bazares' => 0,
     'row' => 0,
     'totalBazares' => 0,
@@ -60,7 +61,7 @@ Es un paso obligatorio para terminar tu registro. Además, eso ayudará a tus cl
 					<div class="panel-heading">Crea un método de cobro</div>
 					<div class="panel-body">
 						<p>Antes de iniciar a vender es necesario dar de alta por lo menos un método de cobro.</p>
-						<p><b>¿Que es un método de cobro?</b> El método de cobro es el medio utilizado por tu empresa para cobrar a sus clientes. Puede ser de varios tipos: Terminal Bancaria, Caja, Terminal Virtual.</p>
+						<p><b>¿Qué es un método de cobro?</b> El método de cobro es el medio utilizado por tu empresa para cobrar a sus clientes. Puede ser de varios tipos: Terminal Bancaria, Caja, Terminal Virtual.</p>
 					</div>
 					<div class="panel-footer text-right">
 							<a href="metodoscobro" >Ir a métodos de cobro</a>
@@ -83,6 +84,21 @@ Es un paso obligatorio para terminar tu registro. Además, eso ayudará a tus cl
 			<?php }?>
 		</div>
 	<?php }else{ ?>
+		<div class="row">
+			<?php if ($_smarty_tpl->tpl_vars['efectivo']->value){?>
+				<div class="col-xs-6">
+					<div class="panel panel-danger">
+						<div class="panel-heading">No hay caja</div>
+						<div class="panel-body">
+							<p>No te olvides de crear una caja para poder cobrar en efectivo</p>
+						</div>
+						<div class="panel-footer text-right">
+							<a href="metodoscobro" >Ir a métodos de cobro</a>
+						</div>
+					</div>
+				</div>
+			<?php }?>
+		</div>
 		<div class="box">
 			<div class="box-header">
 				<h3>Bazares activos</h3>
@@ -139,7 +155,7 @@ if (!$_smarty_tpl->tpl_vars["row"]->_loop) {
 				</table>
 			</div>
 			<div class="box-footer text-right">
-				<a href="bazares" >Crear un nuevo bazar/Mercado</a>
+				<a href="bazares" >Crear un nuevo Bazar/Mercado</a>
 			</div>
 		</div>
 	<?php }?>

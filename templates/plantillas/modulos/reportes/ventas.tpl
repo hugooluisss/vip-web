@@ -8,7 +8,7 @@
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-xs-2 text-right">
-				<label for="selBazar">Bazar</label>
+				<label for="selBazar">Bazar/mercado</label>
 			</div>
 			<div class="col-xs-10 text-right">
 				<select id="selBazar" name="selBazar" class="form-control">

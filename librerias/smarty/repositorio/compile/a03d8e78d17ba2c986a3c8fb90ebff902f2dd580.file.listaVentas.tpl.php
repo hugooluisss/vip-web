@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-12 22:47:11
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-15 11:09:17
          compiled from "templates/plantillas/modulos/reportes/listaVentas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:853882315595a6899623151-96343687%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a03d8e78d17ba2c986a3c8fb90ebff902f2dd580' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/listaVentas.tpl',
-      1 => 1499789020,
+      1 => 1505491754,
       2 => 'file',
     ),
   ),
@@ -34,7 +34,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<th>Monto</th>
 			<th>Pagado</th>
 			<?php if ($_smarty_tpl->tpl_vars['bazar']->value==''){?>
-			<th>Bazar</th>
+			<th>Bazar/mercado</th>
 			<?php }?>
 		</tr>
 	</thead>

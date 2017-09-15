@@ -152,6 +152,13 @@ $(document).ready(function(){
 		},
 	});
 	
+	$("#btnGenerar").click(function(){
+		$("#btnGenerar").prop("disabled", true);
+		$.get("interfaz").done(function(){
+			$("#btnGenerar").prop("disabled", false);
+			alert("Cobranza realizada");
+		});
+	});
 	
 		
 	$("#winFactura").on('show.bs.modal', function(e){

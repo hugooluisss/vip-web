@@ -53,6 +53,21 @@ Es un paso obligatorio para terminar tu registro. Además, eso ayudará a tus cl
 			{/if}
 		</div>
 	{else}
+		<div class="row">
+			{if $efectivo}
+				<div class="col-xs-6">
+					<div class="panel panel-danger">
+						<div class="panel-heading">No hay caja</div>
+						<div class="panel-body">
+							<p>No te olvides de crear una caja para poder cobrar en efectivo</p>
+						</div>
+						<div class="panel-footer text-right">
+							<a href="metodoscobro" >Ir a métodos de cobro</a>
+						</div>
+					</div>
+				</div>
+			{/if}
+		</div>
 		<div class="box">
 			<div class="box-header">
 				<h3>Bazares activos</h3>

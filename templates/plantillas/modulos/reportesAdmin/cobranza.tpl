@@ -4,6 +4,12 @@
 	</div>
 </div>
 
+<div class="btn-toolbar" role="toolbar" aria-label="...">
+	<div class="btn-group" role="group" aria-label="...">
+		<button class="btn btn-xs btn-warning" id="btnGenerar">Generar cobranza</button>
+	</div>
+</div>
+<br />
 <div class="panel panel-default">
 	<div class="panel-body" id="dvLista">
 		

@@ -12,7 +12,7 @@
 			<th>Inventario actual</th>
 			<th>Precio</th>
 			{if $bazar eq ''}
-				<th>Bazar</th>
+				<th>Bazar/mercado</th>
 			{/if}
 			<th>&nbsp;</th>
 		</tr>

@@ -4,7 +4,7 @@
 			<th>Fecha</th>
 			<th>Folio</th>
 			<th>Estado</th>
-			<th>Bazar</th>
+			<th>Bazar/mercado</th>
 			<th>Monto</th>
 			<th>Monto pagos</th>
 		</tr>

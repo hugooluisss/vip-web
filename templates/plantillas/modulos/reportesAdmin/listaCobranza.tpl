@@ -2,6 +2,7 @@
 	<thead>
 		<tr>
 			<th>Fecha</th>
+			<th>Empresa</th>
 			<th>Inicio</th>
 			<th>Fin</th>
 			<th>Comisión</th>
@@ -14,6 +15,7 @@
 		{foreach from=$lista item="row"}
 			<tr {if $row.openpay_cash eq ''}title="Sin cargar"{else}title="Cargado al cliente"{/if}>
 				<td {if $row.openpay_cash eq ''}style="border-left: 3px solid red"{else}style="border-left: 3px solid green"{/if}>{$row.registro}</td>
+				<td>{$row.razonsocial}</td>
 				<td>{$row.inicio}</td>
 				<td>{$row.fin}</td>
 				<td class="text-right">{$row.comision} %</td>

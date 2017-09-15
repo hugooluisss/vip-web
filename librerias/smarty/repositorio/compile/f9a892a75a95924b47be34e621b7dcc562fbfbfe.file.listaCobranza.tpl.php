@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-08 21:53:52
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-15 10:16:58
          compiled from "templates/plantillas/modulos/reportesAdmin/listaCobranza.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:34099737059ab23a8118528-28173330%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f9a892a75a95924b47be34e621b7dcc562fbfbfe' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/listaCobranza.tpl',
-      1 => 1504541205,
+      1 => 1505488566,
       2 => 'file',
     ),
   ),
@@ -28,6 +28,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<thead>
 		<tr>
 			<th>Fecha</th>
+			<th>Empresa</th>
 			<th>Inicio</th>
 			<th>Fin</th>
 			<th>Comisión</th>
@@ -44,6 +45,8 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
 			<tr <?php if ($_smarty_tpl->tpl_vars['row']->value['openpay_cash']==''){?>title="Sin cargar"<?php }else{ ?>title="Cargado al cliente"<?php }?>>
 				<td <?php if ($_smarty_tpl->tpl_vars['row']->value['openpay_cash']==''){?>style="border-left: 3px solid red"<?php }else{ ?>style="border-left: 3px solid green"<?php }?>><?php echo $_smarty_tpl->tpl_vars['row']->value['registro'];?>
+</td>
+				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['razonsocial'];?>
 </td>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['inicio'];?>
 </td>

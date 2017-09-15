@@ -6,7 +6,7 @@
 			<th>Cliente</th>
 			<th>Por entregar</th>
 			{if $bazar eq ''}
-			<th>Bazar</th>
+			<th>Bazar/mercado</th>
 			{/if}
 		</tr>
 	</thead>

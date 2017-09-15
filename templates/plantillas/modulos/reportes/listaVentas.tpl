@@ -7,7 +7,7 @@
 			<th>Monto</th>
 			<th>Pagado</th>
 			{if $bazar eq ''}
-			<th>Bazar</th>
+			<th>Bazar/mercado</th>
 			{/if}
 		</tr>
 	</thead>

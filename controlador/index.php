@@ -11,17 +11,17 @@ switch($objModulo->getId()){
 			if ($rs->num_rows == 0)
 				$pendientes['bandMetodosCobro'] = true;
 			
+			$rs = $db->query("select c.* from metodocobro a join metodopagotipocobro b using(idTipoCobro) join metodoPago c using(idMetodoPago) where c.nombre = 'Efectivo' and a.idEmpresa = ".$userSesion->getEmpresa());	
+			$smarty->assign("efectivo", $rs->num_rows == 0);
+			
 			$empresa = new TEmpresa($userSesion->getEmpresa());
 			if ($empresa->getSlogan() == '' or $empresa->getMarca() == '' or $empresa->getDireccion() == '')
 				$pendientes['bandEmpresa'] = true;
 				
 			$rs = $db->query("select * from bazar where idEmpresa = ".$userSesion->getEmpresa());
 			if ($rs->num_rows == 0)
-				$pendientes['bandBazar'] = true;
-				
-			$rs = $db->query("select * from bazar where idEmpresa = ".$userSesion->getEmpresa());
-			if ($rs->num_rows == 0)
-				$pendientes['bandBazar'] = true;
+				$pendientes['bandBazar'] = true;	
+			
 			
 			require_once('librerias/openpay/Openpay.php');
 			$openpay = Openpay::getInstance($ini['openpay']['id'], $ini['openpay']['key_private']);
@@ -48,7 +48,7 @@ switch($objModulo->getId()){
 			$suma = 0;
 			while($row = $rs->fetch_assoc()){
 				$rs2 = $db->query("select count(*) as total from producto a where a.visible = true and idBazar = ".$row['idBazar']);
-				$row2 = $rs->fetch_assoc();
+				$row2 = $rs2->fetch_assoc();
 				$row['productos'] = $row2['total'];
 				
 				$sql = "select *, sum(precio * cantidad * ((100 - c.descuento) / 100) * ((100 - b.descuento) / 100)) as total
