@@ -56,7 +56,7 @@ switch($objModulo->getId()){
 		$db = TBase::conectaDB();
 		global $sesion;
 		$usuario = new TUsuario($sesion['usuario']);
-		$sql = "select * from usuario a where a.visible = true";
+		$sql = "select * from usuario a where a.visible = true and idTipo = 1";
 		
 		if ($_POST['empresa'] <> '') #Estamos dentro de una empresa
 			$sql = "select * from usuario a where a.visible = true and idUsuario in (select idUsuario from usuarioempresa where idEmpresa = ".$_POST['empresa'].")";

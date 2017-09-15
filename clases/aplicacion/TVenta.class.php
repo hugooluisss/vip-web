@@ -280,6 +280,9 @@ class TVenta{
 	
 	public function addMovimiento($idProducto = "", $descripcion = "", $cantidad = 0, $precio = 0, $descuento = '', $entregado = '', $json = ''){
 		if ($this->getId() == '') return false;
+		$descuento = $descuento == ''?0:$descuento;
+		$precio = $precio == ''?0:$precio;
+		$entregado = $entregado == ''?0:$entregado;
 		
 		$db = TBase::conectaDB();
 		$sql = "insert into movimiento(idVenta, idProducto, descripcion, cantidad, precio, descuento, entregado, json) values (".$this->getId().", ".$idProducto.", '".$descripcion."', ".$cantidad.", ".$precio.", ".$descuento.", ".$entregado.", '".$json."')";

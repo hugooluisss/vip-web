@@ -80,15 +80,16 @@ switch($objModulo->getId()){
 			break;
 			case 'upload':
 				$comision = new TComision($_GET['id']);
-				
 				if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
-					if(move_uploaded_file($_FILES['upl']['tmp_name'], $repositorio."factura".$_GET['id'].".pdf"))
+					$extension = strtolower(end(explode(".", $_FILES['upl']['name'])));
+					
+					if(move_uploaded_file($_FILES['upl']['tmp_name'], $repositorio."factura".$_GET['id'].".".$extension))
 						$result = array("status" => true);
 					else{
-						$result = array("status" => false);
+						$result = array("status" => false, "msg" => "Al copiar");
 					}
 				}else
-					$result = array("status" => false);
+					$result = array("status" => false, "msg" => "No se subió");
 				
 				$smarty->assign("json", $result);
 			break;

@@ -139,7 +139,7 @@ $(document).ready(function(){
 		},
 		done: function(e, data){
 			var result = jQuery.parseJSON(data.result);
-			if (result.band){
+			if (result.status){
 				alert("Archivo guardado");
 				getLista();
 			}else
