@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-15 10:16:58
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-21 23:09:54
          compiled from "templates/plantillas/modulos/reportesAdmin/listaCobranza.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:34099737059ab23a8118528-28173330%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f9a892a75a95924b47be34e621b7dcc562fbfbfe' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/listaCobranza.tpl',
-      1 => 1505488566,
+      1 => 1506053392,
       2 => 'file',
     ),
   ),
@@ -67,7 +67,8 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 '>Subir factura</button>
 						<?php if ($_smarty_tpl->tpl_vars['row']->value['factura']!=''){?>
 							<a href="<?php echo $_smarty_tpl->tpl_vars['row']->value['factura'];?>
-" target="_blank" class="btn btn-link">Descargar factura</a>
+" download="<?php echo $_smarty_tpl->tpl_vars['row']->value['factura'];?>
+" class="btn btn-link">Descargar factura</a>
 						<?php }?>
 					<?php }?>
 				</td>

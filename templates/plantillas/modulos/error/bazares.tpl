@@ -1,10 +1,10 @@
-{if $PAGE.usuario->getIdTipo() eq 1}
+{if $PAGE.usuario->getIdTipo() eq 2}
 	<div class="panel panel-warning">
 		<div class="panel-heading">
-			Error en la definición de los bazares
+			Error en la definición de bazares o mercados Es necesario contar con un bazar o mercado
 		</div>
 		<div class="panel-body">
-			Es necesario contar con un bazar... agrega la definición de uno para iniciar con el registro de productos
+			Ve a Administración - Bazar y Mercados y agrega un bazar o mercado para poder iniciar con tu primera nota de venta
 		</div>
 		<div class="panel-fotter text-center">
 			<a href="bazares">Ir al catálogo de bazares</a>
@@ -12,13 +12,13 @@
 	</div>
 {/if}
 
-{if $PAGE.usuario->getIdTipo() neq 1}
+{if $PAGE.usuario->getIdTipo() neq 2}
 	<div class="panel panel-warning">
 		<div class="panel-heading">
-			Error en la definición de los bazares
+			Error en la definición de bazares o mercados Es necesario contar con un bazar o mercado
 		</div>
 		<div class="panel-body">
-			Es necesario contar con un bazar... solicita que agregén un bazar para iniciar con el trabajo
+			Ve a Administración - Bazar y Mercados y agrega un bazar o mercado para poder iniciar con tu primera nota de venta
 		</div>
 	</div>
 {/if}

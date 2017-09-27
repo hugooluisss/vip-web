@@ -66,7 +66,10 @@ switch($objModulo->getId()){
 					$obj->setTelefono($_POST['telefono']);
 					$obj->setEmail($_POST['email']);
 					$obj->setRFC($_POST['rfc']);
-					$obj->setActivo($_POST['activo']);
+					if (!isset($_POST['id']))
+						$obj->setActivo(true);
+					else
+						$obj->setActivo($_POST['activo']);
 					
 					if ($_POST['comision'] <> '')
 						$obj->setComision($_POST['comision']);
@@ -82,7 +85,7 @@ switch($objModulo->getId()){
 						$datos['empresa.razonsocial'] = $obj->getRazonSocial();
 						$datos['empresa.correo'] = $obj->getEmail();
 						
-						$email->setBodyHTML(utf8_decode($email->construyeMail(file_get_contents("repositorio/mail/registroEmpresa.html"), $datos)));
+						$email->setBodyHTML($email->construyeMail(file_get_contents("repositorio/mail/registroEmpresa.html"), $datos));
 						
 						$bandEmail = $email->send();
 					}
@@ -147,6 +150,27 @@ switch($objModulo->getId()){
 				}
 				
 				$smarty->assign("json", array("band" => $band, "cargo" => $cargo, "mensaje" => $mensaje));
+			break;
+			case 'validaUsuario':
+				$db = TBase::conectaDB();
+				$rs = $db->query("select idUsuario from usuario where upper(email) = upper('".$_POST['txtEmail']."')");
+				
+				echo $rs->num_rows == 0?"true":"false";
+			break;
+			case 'validaRazonSocial':
+				$db = TBase::conectaDB();
+				global $pageSesion;
+				
+				if (isset($_POST['empresa']))
+					$sql = "select idEmpresa from empresa where upper(razonsocial) = upper('".$_POST['txtRazonSocial']."') and not idEmpresa = ".$_POST['empresa'];
+				elseif ($pageSesion->getEmpresa() <> '')
+					$sql = "select idEmpresa from empresa where upper(razonsocial) = upper('".$_POST['txtRazonSocial']."') and not idEmpresa = ".$pageSesion->getId();
+				else
+					$sql = "select idEmpresa from empresa where upper(razonsocial) = upper('".$_POST['txtRazonSocial']."')";
+					
+				$rs = $db->query($sql);
+				
+				echo $rs->num_rows == 0?"true":"false";
 			break;
 		}
 	break;

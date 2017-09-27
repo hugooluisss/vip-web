@@ -21,7 +21,7 @@
 				<td class="text-center">{$row.tarjeta}</td>
 				<td class="text-right">
 					{if $row.factura neq ''}
-						<a href="{$row.factura}" target="_blank" class="btn btn-success" title="Descargar factura"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+						<a href="{$row.factura}" download="{$row.factura}" class="btn btn-link">Descargar factura</a>
 					{/if}
 				</td>
 			</tr>

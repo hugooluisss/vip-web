@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 10:02:01
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-26 21:00:45
          compiled from "templates/plantillas/modulos/ventas/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:83260548659472e841e9063-68918287%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '79731998ddf826714b60029001476656ec1216cf' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/lista.tpl',
-      1 => 1499973034,
+      1 => 1506477637,
       2 => 'file',
     ),
   ),
@@ -30,6 +30,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<th>Folio</th>
 			<th>Fecha</th>
 			<th>Cliente</th>
+			<th>Estado</th>
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
@@ -43,11 +44,15 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ' style="border-left: 4px solid <?php echo $_smarty_tpl->tpl_vars['row']->value['colorEstado'];?>
 " title="<?php echo $_smarty_tpl->tpl_vars['row']->value['nombreEstado'];?>
 ">
-				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['folio'];?>
+				<td style="border-left: 3px solid <?php echo $_smarty_tpl->tpl_vars['row']->value['colorEstado'];?>
+"><?php echo $_smarty_tpl->tpl_vars['row']->value['folio'];?>
 </td>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['fecha'];?>
 </td>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombreCliente'];?>
+</td>
+				<td style="color: <?php echo $_smarty_tpl->tpl_vars['row']->value['colorEstado'];?>
+"><?php echo $_smarty_tpl->tpl_vars['row']->value['nombreEstado'];?>
 </td>
 				<td style="text-align: right">
 					<?php if ($_smarty_tpl->tpl_vars['row']->value['idEstado']==1){?>
@@ -55,10 +60,16 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 '><i class="fa fa-pencil"></i></button>
 					<?php }?>
 					<?php if ($_smarty_tpl->tpl_vars['row']->value['idEstado']==2){?>
+					<button type="button" class="btn btn-success btn-xs" action="cargar" title="Cargar y modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'><i class="fa fa-pencil"></i></button>
 					<button type="button" class="btn btn-primary btn-xs" action="imprimir" title="Imprimir" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-file-pdf-o"></i></button>
 					<button type="button" class="btn btn-primary btn-xs" action="email" title="Enviar por email" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-envelope-o"></i></button>
+					<?php }?>
+					<?php if ($_smarty_tpl->tpl_vars['row']->value['idEstado']==3){?>
+					<button type="button" class="btn btn-primary btn-xs" action="imprimir" title="Imprimir" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'><i class="fa fa-file-pdf-o"></i></button>
 					<?php }?>
 				</td>
 			</tr>

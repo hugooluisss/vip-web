@@ -8,6 +8,7 @@
 			<th>Talla</th>
 			<th>Existencia inicial</th>
 			<th>Ventas</th>
+			<th>Apartados</th>
 			<th>Pedidos</th>
 			<th>Inventario actual</th>
 			<th>Precio</th>
@@ -27,6 +28,7 @@
 				<td>{$row.talla}</td>
 				<td class="text-right">{$row.existencias}</td>
 				<td class="text-right">{$row.vendidos}</td>
+				<td class="text-right">{$row.apartados}</td>
 				<td class="text-right">{$row.pedidos}</td>
 				<td class="text-right">{$row.inventario}</td>
 				<td class="text-right">{$row.precio}</td>

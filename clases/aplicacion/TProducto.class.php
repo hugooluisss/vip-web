@@ -380,13 +380,97 @@ class TProducto{
 			
 			$total = $total == ''?0:$total;
 			
-			$sql = "select entregado from movimiento where idProducto = ".$this->getId();
+			$sql = "select sum(entregado) as entregado from movimiento a join venta b using(idVenta) where idEstado in (1, 2) and idProducto = ".$this->getId();
 			$rs = $db->query($sql) or errorMySQL($db, $sql);
 			$row = $rs->fetch_assoc();
 			$entregado = $row['entregado'] == ''?0:$row['entregado'];
 			
 			$disponible = $this->getExistencias() + $total - $entregado;
 			return $disponible < 0?0:$disponible;
+		}
+	}
+	
+	/**
+	* Retorna el total de pedidos
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getPedidos(){
+		if ($this->getId() == '')
+			return 0;
+		else{
+			$db = TBase::conectaDB();
+			$sql = "select sum(cantidad - entregado) as pendiente from movimiento a join venta b using(idVenta) where idEstado in (1) and idProducto = ".$this->getId();
+			$rs = $db->query($sql) or errorMySQL($db, $sql);
+			
+			$row = $rs->fetch_assoc();
+			return $row['pendiente'];
+		}
+	}
+	
+	/**
+	* Retorna el total de apartados
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getApartados(){
+		if ($this->getId() == '')
+			return 0;
+		else{
+			$db = TBase::conectaDB();
+			$sql = "select sum(cantidad - entregado) as pendiente from movimiento a join venta b using(idVenta) where idEstado in (2) and idProducto = ".$this->getId();
+			$rs = $db->query($sql) or errorMySQL($db, $sql);
+			
+			$row = $rs->fetch_assoc();
+			return $row['pendiente'];
+		}
+	}
+	
+	/**
+	* Retorna el total de entregados
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getEntregados(){
+		if ($this->getId() == '')
+			return 0;
+		else{
+			$db = TBase::conectaDB();
+			$sql = "select sum(entregado) as pendiente from movimiento a join venta b using(idVenta) where idEstado in (2) and idProducto = ".$this->getId();
+			$rs = $db->query($sql) or errorMySQL($db, $sql);
+			
+			$row = $rs->fetch_assoc();
+			return $row['pendiente'];
+		}
+	}
+	
+	/**
+	* Retorna el total de vendidos
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getVendidos(){
+		if ($this->getId() == '')
+			return 0;
+		else{
+			$db = TBase::conectaDB();
+			$sql = "select sum(cantidad) as pendiente from movimiento a join venta b using(idVenta) where idEstado in (2) and idProducto = ".$this->getId();
+			$rs = $db->query($sql) or errorMySQL($db, $sql);
+			
+			$row = $rs->fetch_assoc();
+			return $row['pendiente'];
 		}
 	}
 	

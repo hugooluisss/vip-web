@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-14 09:45:10
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-21 13:50:32
          compiled from "templates/plantillas/modulos/empresas/panelMiEmpresa.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:84928952594484f80ab332-32821012%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '360ca23c1b4da61149fc752621b02aa684ff8be2' => 
     array (
       0 => 'templates/plantillas/modulos/empresas/panelMiEmpresa.tpl',
-      1 => 1505400306,
+      1 => 1506019822,
       2 => 'file',
     ),
   ),
@@ -75,14 +75,14 @@ no-camara.jpg" id="logotipo" style="height: 100px;"/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="txtDireccion" class="col-sm-2">Domicilio</label>
+				<label for="txtDireccion" class="col-sm-2">Domicilio fiscal *</label>
 				<div class="col-sm-8">
 					<input class="form-control" id="txtDireccion" name="txtDireccion" value="<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getDireccion();?>
 "/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="txtExterno" class="col-sm-2">#Ext</label>
+				<label for="txtExterno" class="col-sm-2">#Ext *</label>
 				<div class="col-sm-2">
 					<input class="form-control" id="txtExterno" name="txtExterno" value="<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getExterno();?>
 "/>
@@ -94,38 +94,38 @@ no-camara.jpg" id="logotipo" style="height: 100px;"/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="txtColonia" class="col-sm-2">Colonia</label>
+				<label for="txtColonia" class="col-sm-2">Colonia *</label>
 				<div class="col-sm-3">
 					<input class="form-control" id="txtColonia" name="txtColonia" value="<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getColonia();?>
 "/>
 				</div>
-				<label for="txtMunicipio" class="col-sm-2 col-sm-offset-1">Municipio</label>
+				<label for="txtMunicipio" class="col-sm-2 col-sm-offset-1">Municipio *</label>
 				<div class="col-sm-3">
 					<input class="form-control" id="txtMunicipio" name="txtMunicipio" value="<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getMunicipio();?>
 "/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="txtCiudad" class="col-sm-2">Ciudad</label>
+				<label for="txtCiudad" class="col-sm-2">Ciudad *</label>
 				<div class="col-sm-3">
 					<input class="form-control" id="txtCiudad" name="txtCiudad" value="<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getCiudad();?>
 "/>
 				</div>
-				<label for="txtEstado" class="col-sm-2 col-sm-offset-1">Estado</label>
+				<label for="txtEstado" class="col-sm-2 col-sm-offset-1">Estado *</label>
 				<div class="col-sm-3">
 					<input class="form-control" id="txtEstado" name="txtEstado" value="<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getEstado();?>
 "/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="txtRFC" class="col-sm-2">R. F. C.</label>
+				<label for="txtRFC" class="col-sm-2">R. F. C. *</label>
 				<div class="col-sm-4">
 					<input class="form-control" id="txtRFC" name="txtRFC" value="<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getRFC();?>
 "/>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="txtEmail" class="col-sm-2">Correo electrónico</label>
+				<label for="txtEmail" class="col-sm-2">Correo electrónico para recibir facturas</label>
 				<div class="col-sm-3">
 					<input class="form-control" id="txtEmail" name="txtEmail" value="<?php echo $_smarty_tpl->tpl_vars['empresa']->value->getEmail();?>
 "/>

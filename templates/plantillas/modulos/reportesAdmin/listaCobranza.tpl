@@ -27,7 +27,7 @@
 					{else}
 						<button action="factura" type="button" data-toggle="modal" data-target="#winFactura" class="btn btn-primary" datos='{$row.json}'>Subir factura</button>
 						{if $row.factura neq ''}
-							<a href="{$row.factura}" target="_blank" class="btn btn-link">Descargar factura</a>
+							<a href="{$row.factura}" download="{$row.factura}" class="btn btn-link">Descargar factura</a>
 						{/if}
 					{/if}
 				</td>

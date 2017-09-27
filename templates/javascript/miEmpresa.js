@@ -2,13 +2,38 @@ $(document).ready(function(){
 	$("#frmAdd").validate({
 		debug: true,
 		rules: {
-			txtRazonSocial: "required",
+			txtRazonSocial: {
+				required: true,
+				remote: {
+					url: "cempresas",
+					type: "post",
+					data: {
+						action: "validaRazonSocial",
+						empresa: function(){
+							return $("#id").val()
+						}
+					}
+				}
+			},
+			txtDireccion: "required",
+			txtExterno: "required",
+			txtColonia: "required",
+			txtMunicipio: "required",
+			txtCiudad: "required",
+			txtEstado: "required",
+			txtRFC: "required",
 			txtEmail: {
-				email: true
+				email: true,
+				required: true
 			},
 			txtTelefono: {
 				required: true,
 				number: true
+			}
+		},
+		messages: {
+			txtRazonSocial: {
+				remote: "Ya existe una empresa con este nombre, escoge otro"
 			}
 		},
 		wrapper: 'span', 

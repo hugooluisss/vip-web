@@ -11,6 +11,7 @@ TUsuario = function(){
 				"pass": datos.pass,
 				"tipo": datos.tipo,
 				"empresa": datos.empresa,
+				"sendmail": datos.sendmail,
 				"action": "add"
 			}, function(data){
 				if (data.band == 'false')

@@ -173,6 +173,18 @@ TVenta = function(){
 			}, "json");
 	}
 	
+	this.cancelar = function(datos){
+		if (datos.fn.before !== undefined) datos.fn.before();
+		
+		$.post('cventas', {
+				"id": self.id,
+				"action": "cancelar"
+			}, function(data){
+				if (datos.fn.after !== undefined)
+					datos.fn.after(data);
+			}, "json");
+	}
+	
 	this.imprimir = function(datos){
 		if (datos.fn.before !== undefined) datos.fn.before();
 		

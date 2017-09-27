@@ -12,12 +12,15 @@ switch($objModulo->getId()){
 		switch($objModulo->getAction()){
 			case 'login':
 				$db = TBase::conectaDB();
-				$rs = $db->query("select idUsuario, pass from usuario where upper(email) = upper('".$_POST['usuario']."') and visible = true");
+				$rs = $db->query("select idUsuario, idTipo, pass from usuario where upper(email) = upper('".$_POST['usuario']."') and visible = true");
 				$result = array('band' => false, 'mensaje' => 'Error al consultar los datos');
 				
 				$row = $rs->fetch_assoc();
+				$rs2 = $db->query("select idEmpresa from usuarioempresa a join empresa b using(idEmpresa) where idUsuario = ".$row['idUsuario']." and b.visible = true and b.activo = true;");
 				
-				if($rs->num_rows == 0)
+				if ($row['idTipo'] > 1 and $rs2->num_rows == 0)
+					$result = array('band' => false, 'mensaje' => 'Tu cuenta no está activa, comunícate con el administrador de tu empresa o manda un correo a: info@vipsystem.store');
+				elseif($rs->num_rows == 0)
 					$result = array('band' => false, 'mensaje' => 'El usuario no existe');
 				elseif(strtoupper($row['pass']) <> strtoupper($_POST['pass']))
 					$result = array('band' => false, 'mensaje' => 'Contraseña inválida');

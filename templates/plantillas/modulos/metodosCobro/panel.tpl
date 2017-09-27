@@ -1,3 +1,10 @@
+{if $informacionCompleta neq true}
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-3 col-sm-6">
+			{include file=$PAGE.rutaModulos|cat:"modulos/error/empresas.tpl"}
+		</div>
+	</div>
+{else}
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Métodos de cobro</h1>
@@ -64,3 +71,4 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+{/if}

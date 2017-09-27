@@ -4,6 +4,7 @@
 			<th>Fecha</th>
 			<th>Folio</th>
 			<th>Estado</th>
+			<th>Empresa</th>
 			<th>Bazar/mercado</th>
 			<th>Monto</th>
 			<th>Monto pagos</th>
@@ -17,6 +18,7 @@
 					<a href="#" class="" role="button" action="ticket" title="Comprobante de venta" datos='{$row.json}' idVenta="{$row.idVenta}" onclick="javascript: return false;">{$row.folio}</a>
 				</td>
 				<td>{$row.estado}</td>
+				<td>{$row.empresa}</td>
 				<td>{$row.bazar}</td>
 				<td class="text-right">$ {$row.total}</td>
 				<td class="text-right">$ {$row.pagos}</td>
@@ -25,7 +27,7 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<th colspan="4" class="text-right">Total</th>
+			<th colspan="5" class="text-right">Total</th>
 			<th class="text-right">$ {$total}</th>
 			<th class="text-right">$ {$totalPagos}</th>
 		</tr>

@@ -5,8 +5,10 @@ switch($objModulo->getId()){
 		$db = TBase::conectaDB();
 		global $userSesion;
 		
+		$empresa = new TEmpresa($userSesion->getEmpresa());
+		$smarty->assign("informacionCompleta", $empresa->isCompletaInformacion());
+		
 		$rs = $db->query("select count(*) as total from usuario a join usuariobazar b using(idUsuario) where b.idUsuario = ".$userSesion->getId());
-		echo "select count(*) as total from usuario a join usuariobazar b using(idUsuario) where b.idUsuario = ".$userSesion->getId();
 		$row = $rs->fetch_assoc();
 		
 		$smarty->assign("totalBazares", $row['total'] > 0);

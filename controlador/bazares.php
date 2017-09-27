@@ -5,6 +5,9 @@ switch($objModulo->getId()){
 		$db = TBase::conectaDB();
 		global $userSesion;
 		
+		$empresa = new TEmpresa($userSesion->getEmpresa());
+		$smarty->assign("informacionCompleta", $empresa->isCompletaInformacion());
+		
 		$rs = $db->query("select a.*, c.nombre as perfil from usuario a join usuarioempresa b using(idUsuario) join tipoUsuario c on a.idTipo = c.idTipoUsuario and b.idEmpresa = ".$userSesion->getEmpresa());
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
@@ -19,6 +22,9 @@ switch($objModulo->getId()){
 		
 		$db = TBase::conectaDB();
 		global $userSesion;
+		
+		$empresa = new TEmpresa($userSesion->getEmpresa());
+		$smarty->assign("informacionCompleta", $empresa->isCompletaInformacion());
 		
 		$rs = $db->query("select count(*) as total from usuario a join usuariobazar b using(idUsuario) where b.idUsuario = ".$userSesion->getId());
 		$row = $rs->fetch_assoc();

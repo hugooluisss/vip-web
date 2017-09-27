@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 10:32:08
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-25 20:16:44
          compiled from "templates/plantillas/modulos/reportes/ventas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1273032186595a5ed28ac366-22650336%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd276699f52374fe1882c5dad26e32dc92939cf9f' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/ventas.tpl',
-      1 => 1499953231,
+      1 => 1505491931,
       2 => 'file',
     ),
   ),
@@ -37,7 +37,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-xs-2 text-right">
-				<label for="selBazar">Bazar</label>
+				<label for="selBazar">Bazar/mercado</label>
 			</div>
 			<div class="col-xs-10 text-right">
 				<select id="selBazar" name="selBazar" class="form-control">

@@ -18,7 +18,10 @@ $(document).ready(function(){
 					if (datos.band){
 						location.href = "panelPrincipal";
 					}else{
-						alert("Los datos son incorrectos, corrigelos y vuelve a intentarlo");
+						if (datos.mensaje == '')
+							alert("Los datos son incorrectos, corrigelos y vuelve a intentarlo");
+						else
+							alert(datos.mensaje);
 					}
 				}
 			});
@@ -32,12 +35,38 @@ $(document).ready(function(){
 	$("#frmRegistro").validate({
 		debug: true,
 		rules: {
-			txtEmail: "required",
+			txtEmail: {
+				required: true,
+				remote: {
+					url: "cempresas",
+					type: "post",
+					data: {
+						action: "validaUsuario"
+					}
+				}
+			},
 			txtPassRegistro: "required",
-			txtRazonSocial: "required",
+			txtRazonSocial: {
+				required: true,
+				remote: {
+					url: "cempresas",
+					type: "post",
+					data: {
+						action: "validaRazonSocial"
+					}
+				}
+			},
 			txtNombre: "required",
 			txtConfirmar: {
-				equalTo: "#txtPassRegistro"
+				equalTo: "#txtPassRegistro",
+			}
+		},
+		messages: {
+			txtEmail: {
+				remote: "El correo ya está siendo ocupado, escoge otro"
+			},
+			txtRazonSocial: {
+				remote: "Ya existe una empresa con este nombre, escoge otro"
 			}
 		},
 		wrapper: 'span', 

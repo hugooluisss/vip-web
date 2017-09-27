@@ -8,20 +8,11 @@
 </div>
 
 {if $PAGE.usuario->getIdTipo() neq 1}
-	{if count($pendientes) > 0}
+	{if $bandPendientes}
 		<div class="row">
 			{if $pendientes['bandEmpresa'] eq true or $pendientes['bandTarjetas'] eq true}
 			<div class="col-md-6">
-				<div class="panel panel-danger">
-					<div class="panel-heading">Actualiza los datos de tu empresa</div>
-					<div class="panel-body">
-						<p>Al parecer aun no has actualizado la información de tu empresa.
-Es un paso obligatorio para terminar tu registro. Además, eso ayudará a tus clientes a identificarte.</p>
-					</div>
-					<div class="panel-footer text-right">
-							<a href="miEmpresa" >Ir a Mi empresa</a>
-					</div>
-				</div>
+				{include file=$PAGE.rutaModulos|cat:"modulos/error/empresas.tpl"}
 			</div>
 			{/if}
 			{if $pendientes['bandMetodosCobro'] eq true}
@@ -43,7 +34,7 @@ Es un paso obligatorio para terminar tu registro. Además, eso ayudará a tus cl
 				<div class="panel panel-danger">
 					<div class="panel-heading">Crea tu primer bazar</div>
 					<div class="panel-body">
-						<p><b>Por el momento, no cuentas con ningún bazar activo</b>Crea uno ahora para poder empezar a monitorear tus Ventas, Inventarios y Pedidos.</p>
+						<p><b>Por el momento, no cuentas con ningún bazar activo</b> Crea uno ahora para poder empezar a monitorear tus Ventas, Inventarios y Pedidos.</p>
 					</div>
 					<div class="panel-footer text-right">
 							<a href="bazares" >Ir a Bazares</a>
@@ -53,21 +44,6 @@ Es un paso obligatorio para terminar tu registro. Además, eso ayudará a tus cl
 			{/if}
 		</div>
 	{else}
-		<div class="row">
-			{if $efectivo}
-				<div class="col-xs-6">
-					<div class="panel panel-danger">
-						<div class="panel-heading">No hay caja</div>
-						<div class="panel-body">
-							<p>No te olvides de crear una caja para poder cobrar en efectivo</p>
-						</div>
-						<div class="panel-footer text-right">
-							<a href="metodoscobro" >Ir a métodos de cobro</a>
-						</div>
-					</div>
-				</div>
-			{/if}
-		</div>
 		<div class="box">
 			<div class="box-header">
 				<h3>Bazares activos</h3>

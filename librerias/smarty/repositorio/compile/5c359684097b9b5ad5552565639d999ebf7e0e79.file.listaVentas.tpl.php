@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-08 22:12:50
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-25 19:58:32
          compiled from "templates/plantillas/modulos/reportesAdmin/listaVentas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:904572918596395fde6b3d8-55265294%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5c359684097b9b5ad5552565639d999ebf7e0e79' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/listaVentas.tpl',
-      1 => 1504541205,
+      1 => 1506387510,
       2 => 'file',
     ),
   ),
@@ -33,7 +33,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<th>Fecha</th>
 			<th>Folio</th>
 			<th>Estado</th>
-			<th>Bazar</th>
+			<th>Empresa</th>
+			<th>Bazar/mercado</th>
 			<th>Monto</th>
 			<th>Monto pagos</th>
 		</tr>
@@ -55,6 +56,8 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 				</td>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['estado'];?>
 </td>
+				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['empresa'];?>
+</td>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['bazar'];?>
 </td>
 				<td class="text-right">$ <?php echo $_smarty_tpl->tpl_vars['row']->value['total'];?>
@@ -66,7 +69,7 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 	</tbody>
 	<tfoot>
 		<tr>
-			<th colspan="4" class="text-right">Total</th>
+			<th colspan="5" class="text-right">Total</th>
 			<th class="text-right">$ <?php echo $_smarty_tpl->tpl_vars['total']->value;?>
 </th>
 			<th class="text-right">$ <?php echo $_smarty_tpl->tpl_vars['totalPagos']->value;?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-30 21:29:50
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-26 21:31:07
          compiled from "templates/plantillas/modulos/reportesAdmin/ventas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1446187458596393f51243f5-98435692%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '56514d11953e7dfabdadd39c5558034025666eda' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/ventas.tpl',
-      1 => 1503535249,
+      1 => 1506479466,
       2 => 'file',
     ),
   ),
@@ -36,11 +36,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div class="panel panel-success">
 	<div class="panel-body">
 		<div class="row">
-			<div class="col-xs-2 text-right">
+			<div class="col-xs-2 col-sm-2 text-right">
 				<label for="selEmpresa">Empresa</label>
 			</div>
-			<div class="col-xs-10 text-right">
-				<select id="selEmpresa" name="selEmpresa" class="form-control">
+			<div class="col-xs-10 col-sm-6 text-right">
+				<select id="selEmpresa" name="selEmpresa" class="form-control" multiple>
 					<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['empresas']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars["row"]->value){
@@ -52,20 +52,32 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 					<?php } ?>
 				</select>
 			</div>
+			<div class="col-xs-offset-2 col-xs-10 col-sm-offset-0 col-sm-4">
+				<button id="btnSelAll" class="btn btn-block btn-success btn-xs">Seleccionar todas</button>
+			</div>
 		</div>
 		<br />
 		<div class="row">
-			<div class="col-xs-2 col-md-2 text-right">
+			<div class="col-xs-2 col-sm-2 text-right">
+				<label for="selEmpresa">Solo las cerradas</label>
+			</div>
+			<div class="col-xs-10 col-sm-6">
+				<input type="checkbox" value="1" id="chkCerradas" checked="true">
+			</div>
+		</div>
+		<br />
+		<div class="row">
+			<div class="col-xs-2 col-sm-2 col-md-2 text-right">
 				<label for="txtInicio">Inicio</label>
 			</div>
-			<div class="col-xs-5 col-md-3">
+			<div class="col-xs-5 col-sm-4 col-md-3">
 				<input type="date" placeholder="Y-m-d" class="form-control" id="txtInicio" name="txtInicio" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
 " readonly/>
 			</div>
-			<div class="col-xs-2 col-md-2 col-md-offset-1 text-right">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-md-offset-1 text-right">
 				<label for="txtFin">Fin</label>
 			</div>
-			<div class="col-xs-5 col-md-3">
+			<div class="col-xs-5 col-sm-4 col-md-3">
 				<input type="date" placeholder="Y-m-d" class="form-control" id="txtFin" name="txtFin" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
 " readonly/>
 			</div>

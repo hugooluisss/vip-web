@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-14 12:01:19
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-21 19:36:57
          compiled from "templates/plantillas/modulos/bazares/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:7513394415953cdb55d7d20-91734581%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd265e09f1a9058ebfe6162618e06d7655cb819a1' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/panel.tpl',
-      1 => 1505408478,
+      1 => 1506040118,
       2 => 'file',
     ),
   ),
@@ -19,14 +19,24 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5953cdb56be8d1_49870594',
   'variables' => 
   array (
+    'informacionCompleta' => 0,
+    'PAGE' => 0,
     'usuarios' => 0,
     'row' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5953cdb56be8d1_49870594')) {function content_5953cdb56be8d1_49870594($_smarty_tpl) {?><div class="row">
+<?php if ($_valid && !is_callable('content_5953cdb56be8d1_49870594')) {function content_5953cdb56be8d1_49870594($_smarty_tpl) {?><?php if ($_smarty_tpl->tpl_vars['informacionCompleta']->value!=true){?>
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-3 col-sm-6">
+			<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/error/empresas.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+		</div>
+	</div>
+<?php }else{ ?>
+<div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Bazares <br /><span class="text-danger" style="margin-left: 50px;"> y mercados</span></h1>
+		<h1 class="page-header">Bazares y mercados</h1>
 	</div>
 </div>
 
@@ -144,4 +154,5 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
-</div><!-- /.modal --><?php }} ?>
+</div><!-- /.modal -->
+<?php }?><?php }} ?>

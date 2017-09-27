@@ -96,7 +96,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtEmail" class="col-sm-2">Correo electrónico</label>
+						<label for="txtEmail" class="col-sm-2">Correo electrónico para recibir facturas</label>
 						<div class="col-sm-3">
 							<input class="form-control" id="txtEmail" name="txtEmail" value=""/>
 						</div>

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	var ventanaImpresion;
 	var venta = new TVenta;
 	venta.setBazar({"id": $("#selBazar").val(), fn: {}});
@@ -169,7 +170,7 @@ $(document).ready(function(){
 	function nuevaVenta(){
 		var clienteDefault = jQuery.parseJSON($("#txtCliente").attr("jsonDefault"));
 		venta = new TVenta;
-		
+		$("#btnGuardar").show();
 		$("#txtComentario").val("");
 		$("#txtDescuento").val("");
 		$("#txtCliente").val(clienteDefault.nombre).attr("identificador", clienteDefault.idCliente).attr("email", clienteDefault.correo);
@@ -222,8 +223,8 @@ $(document).ready(function(){
 		$("#dvProductos").append(venta.getTable());
 		
 		$("#dvProductos").find(".cantidad").change(function(){
-			if ($(this).val() <= 0 || $(this).val() == ''){
-				alert("Debe de ser mayor a 0");
+			if ($(this).val() == ''){
+				alert("Debe de ser un número");
 				$(this).val(venta.productos[$(this).attr("indice")].cantidad);
 			}else{
 				venta.productos[$(this).attr("indice")].cantidad = $(this).val();
@@ -488,6 +489,10 @@ $(document).ready(function(){
 						}
 					}
 				});
+				console.log(el);
+				if (el.idEstado != 1){
+					$("#btnGuardar").hide();
+				}
 			});
 			
 			$("#winVentas").find("[action=imprimir]").click(function(){
@@ -708,7 +713,22 @@ $(document).ready(function(){
 	});
 	
 	$("#btnCancelar").click(function(){
-		if (confirm("¿Seguro?"))
-			nuevaVenta();
+		if (venta.id == null)
+			alert("La venta no se ha guardado, no puede ser cancelada");
+		else if (confirm("¿Seguro?")){
+			venta.cancelar({
+				fn: {
+					before: function(){
+						$("#btnCancelar").prop("disabled", true);
+					},
+					after: function(resp){
+						if (resp.band)
+							nuevaVenta();
+						else
+							alert("No se pudo cancelar la venta");
+					}
+				}
+			});
+		}
 	});
 });

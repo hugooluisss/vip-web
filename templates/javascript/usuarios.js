@@ -14,7 +14,19 @@ $(document).ready(function(){
 	$("#frmAdd").validate({
 		debug: true,
 		rules: {
-			txtEmail: "required",
+			txtEmail: {
+				required: true,
+				remote: {
+					url: "cusuarios",
+					type: "post",
+					data: {
+						action: "validaUsuario",
+						usuario: function(){
+							return $("#id").val()
+						}
+					}
+				}
+			},
 			txtNombre: "required",
 			txtPass: "required",
 			txtClave: "required",
@@ -22,7 +34,12 @@ $(document).ready(function(){
 				equalTo: "#txtPass"
 			}
 		},
-		wrapper: 'span', 
+		wrapper: 'span',
+		messages: {
+			txtEmail: {
+				remote: "El correo ya existe para otro usuario, escoge otro"
+			}
+		},
 		submitHandler: function(form){
 		
 			var obj = new TUsuario;

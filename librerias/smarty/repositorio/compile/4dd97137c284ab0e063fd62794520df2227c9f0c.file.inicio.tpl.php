@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-15 11:03:08
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-25 20:07:25
          compiled from "templates/plantillas/modulos/inicio.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:166554977059448ce019a6d9-45010204%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4dd97137c284ab0e063fd62794520df2227c9f0c' => 
     array (
       0 => 'templates/plantillas/modulos/inicio.tpl',
-      1 => 1505491385,
+      1 => 1506388043,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'PAGE' => 0,
+    'bandPendientes' => 0,
     'pendientes' => 0,
-    'efectivo' => 0,
     'bazares' => 0,
     'row' => 0,
     'totalBazares' => 0,
@@ -39,20 +39,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </div>
 
 <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getIdTipo()!=1){?>
-	<?php if (count($_smarty_tpl->tpl_vars['pendientes']->value)>0){?>
+	<?php if ($_smarty_tpl->tpl_vars['bandPendientes']->value){?>
 		<div class="row">
 			<?php if ($_smarty_tpl->tpl_vars['pendientes']->value['bandEmpresa']==true||$_smarty_tpl->tpl_vars['pendientes']->value['bandTarjetas']==true){?>
 			<div class="col-md-6">
-				<div class="panel panel-danger">
-					<div class="panel-heading">Actualiza los datos de tu empresa</div>
-					<div class="panel-body">
-						<p>Al parecer aun no has actualizado la información de tu empresa.
-Es un paso obligatorio para terminar tu registro. Además, eso ayudará a tus clientes a identificarte.</p>
-					</div>
-					<div class="panel-footer text-right">
-							<a href="miEmpresa" >Ir a Mi empresa</a>
-					</div>
-				</div>
+				<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/error/empresas.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 			</div>
 			<?php }?>
 			<?php if ($_smarty_tpl->tpl_vars['pendientes']->value['bandMetodosCobro']==true){?>
@@ -74,7 +66,7 @@ Es un paso obligatorio para terminar tu registro. Además, eso ayudará a tus cl
 				<div class="panel panel-danger">
 					<div class="panel-heading">Crea tu primer bazar</div>
 					<div class="panel-body">
-						<p><b>Por el momento, no cuentas con ningún bazar activo</b>Crea uno ahora para poder empezar a monitorear tus Ventas, Inventarios y Pedidos.</p>
+						<p><b>Por el momento, no cuentas con ningún bazar activo</b> Crea uno ahora para poder empezar a monitorear tus Ventas, Inventarios y Pedidos.</p>
 					</div>
 					<div class="panel-footer text-right">
 							<a href="bazares" >Ir a Bazares</a>
@@ -84,21 +76,6 @@ Es un paso obligatorio para terminar tu registro. Además, eso ayudará a tus cl
 			<?php }?>
 		</div>
 	<?php }else{ ?>
-		<div class="row">
-			<?php if ($_smarty_tpl->tpl_vars['efectivo']->value){?>
-				<div class="col-xs-6">
-					<div class="panel panel-danger">
-						<div class="panel-heading">No hay caja</div>
-						<div class="panel-body">
-							<p>No te olvides de crear una caja para poder cobrar en efectivo</p>
-						</div>
-						<div class="panel-footer text-right">
-							<a href="metodoscobro" >Ir a métodos de cobro</a>
-						</div>
-					</div>
-				</div>
-			<?php }?>
-		</div>
 		<div class="box">
 			<div class="box-header">
 				<h3>Bazares activos</h3>

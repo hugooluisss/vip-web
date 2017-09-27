@@ -743,5 +743,52 @@ class TEmpresa{
 	public function getIdPay(){
 		return $this->idPay;
 	}
+	
+	/**
+	* Retorna true si la informacion de la empresa está completa
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function isCompletaInformacion(){
+		$db = TBase::conectaDB();
+		$rs = $db->query("select marca, direccion, telefono, externo, email, colonia, municipio, ciudad, estado, rfc from empresa a where a.idEmpresa = ".$this->getId());	
+			
+		$band = true;
+		foreach($rs->fetch_assoc() as $key => $valor)
+			if ($valor == '')
+				$band = false;
+				
+		return $band?$this->tarjetaRegistrada():false;
+	}
+	
+	/**
+	* Retorna true si la empresa ya tiene registrada una tarjeta
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function tarjetaRegistrada(){
+		require_once('librerias/openpay/Openpay.php');
+		global $ini;
+		$openpay = Openpay::getInstance($ini['openpay']['id'], $ini['openpay']['key_private']);
+			
+		if ($this->getIdPay() == '')
+			$this->setIdPay();
+			
+		try{
+			$cliente = $openpay->customers->get($this->getIdPay());
+			$tarjetas = $cliente->cards->getList(array());
+			
+			return count($tarjetas) > 0;
+		}catch(Exception $e){
+			ErrorSistema("PAY: ".$e->getMessage());
+			return false;
+		}
+	}
 }
 ?>

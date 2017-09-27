@@ -4,8 +4,10 @@ switch($objModulo->getId()){
 	case 'puntoventa':
 		$db = TBase::conectaDB();
 		global $userSesion;
+		$empresa = new TEmpresa($userSesion->getEmpresa());
+		$smarty->assign("informacionCompleta", $empresa->isCompletaInformacion());
 		
-		$rs = $db->query("select count(*) as total from usuario a join usuariobazar b using(idUsuario) where b.idUsuario = ".$userSesion->getId());
+		$rs = $db->query("select count(*) as total from usuario a join usuariobazar b using(idUsuario) join bazar c using(idBazar) where c.visible = true and b.idUsuario = ".$userSesion->getId());
 		$row = $rs->fetch_assoc();
 		
 		$smarty->assign("totalBazares", $row['total'] > 0);
@@ -27,11 +29,13 @@ switch($objModulo->getId()){
 		
 		$rs = $db->query("select * from metodopago where visible = true and idEmpresa = ".$userSesion->getEmpresa());
 		$datos = array();
+		$metodosCobro = array();
 		while($row = $rs->fetch_assoc()){
 			$rs2 = $db->query("select a.*, b.nombre as tipo, concat(b.nombre, ' - ', a.destino) as destino from metodocobro a join tipocobro b using(idTipoCobro) join metodopagotipocobro using(idTipoCobro) where a.visible = true and a.idEmpresa = ".$userSesion->getEmpresa()." and idMetodoPago = ".$row['idMetodoPago']);
 			$datos2 = array();
 			while($row2 = $rs2->fetch_assoc()){
 				array_push($datos2, $row2);
+				array_push($metodosCobro, $row2);
 			}
 			
 			$row['cobros'] = json_encode($datos2);
@@ -39,14 +43,18 @@ switch($objModulo->getId()){
 			array_push($datos, $row);
 		}
 		$smarty->assign("metodosPago", $datos);
+		$smarty->assign("metodosCobro", $metodosCobro);
 		
 		$empresa = new TEmpresa($userSesion->getEmpresa());
 		$parametros = $empresa->getParametros();
 		$clienteDefecto = new TCliente($parametros['clienteDefault']);
 		$smarty->assign("clienteDefecto", array("nombre" => $clienteDefecto->getNombre(), "idCliente" => $clienteDefecto->getId()));
 		
-		
 		$smarty->assign("bazarCookie", $_GET['tipo'] == 'bazar'?$_GET['id']:$_COOKIE['bazar']);
+		
+		$rs = $db->query("select c.* from metodocobro a join metodopagotipocobro b using(idTipoCobro) join metodopago c using(idMetodoPago) where a.visible = true and (c.nombre = 'Efectivo' or c.nombre = 'Caja') and a.idEmpresa = ".$userSesion->getEmpresa());
+		
+		$smarty->assign("efectivo", $rs->num_rows == 0);
 	break;
 	case 'listaVentas':
 		$db = TBase::conectaDB();
@@ -108,6 +116,13 @@ switch($objModulo->getId()){
 				
 				$smarty->assign("json", array("band" => $band));
 			break;
+			case 'cancelar':
+				$obj = new TVenta($_POST['id']);
+				$obj->setEstado(3); #Esto pone la venta en estado cerrada
+				$band = $obj->guardar();
+				
+				$smarty->assign("json", array("band" => $band));
+			break;
 			case 'imprimir':
 				require_once(getcwd()."/repositorio/pdf/ticket.php");
 				$pdf = new RTicket($_POST['id']);
@@ -136,7 +151,7 @@ switch($objModulo->getId()){
 					$datos['empresa.telefono'] = $empresa->getTelefono();
 					$datos['empresa.email'] = $empresa->getEmail();
 					
-					$email->setBodyHTML(utf8_decode($email->construyeMail(file_get_contents("repositorio/mail/notaVenta.html"), $datos)));
+					$email->setBodyHTML($email->construyeMail(file_get_contents("repositorio/mail/notaVenta.html"), $datos));
 					$email->adjuntar($documento);
 					#$email->adjuntos = array();
 					#array_push($email->adjuntos, array("nombre" => "Ticket de compra", "ruta" => $documento));

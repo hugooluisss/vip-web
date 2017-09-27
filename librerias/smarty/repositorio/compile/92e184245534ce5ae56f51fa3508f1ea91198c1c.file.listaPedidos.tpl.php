@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-08 22:13:22
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-25 20:21:01
          compiled from "templates/plantillas/modulos/reportes/listaPedidos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1284159215966f20ec72050-51626097%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '92e184245534ce5ae56f51fa3508f1ea91198c1c' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/listaPedidos.tpl',
-      1 => 1499960056,
+      1 => 1505491931,
       2 => 'file',
     ),
   ),
@@ -33,7 +33,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<th>Cliente</th>
 			<th>Por entregar</th>
 			<?php if ($_smarty_tpl->tpl_vars['bazar']->value==''){?>
-			<th>Bazar</th>
+			<th>Bazar/mercado</th>
 			<?php }?>
 		</tr>
 	</thead>

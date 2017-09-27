@@ -11,12 +11,14 @@ switch($objModulo->getId()){
 			if ($rs->num_rows == 0)
 				$pendientes['bandMetodosCobro'] = true;
 			
-			$rs = $db->query("select c.* from metodocobro a join metodopagotipocobro b using(idTipoCobro) join metodoPago c using(idMetodoPago) where c.nombre = 'Efectivo' and a.idEmpresa = ".$userSesion->getEmpresa());	
-			$smarty->assign("efectivo", $rs->num_rows == 0);
+			$rs = $db->query("select marca, direccion, telefono, externo, email, colonia, municipio, ciudad, estado, rfc from empresa a where a.idEmpresa = ".$userSesion->getEmpresa());	
 			
-			$empresa = new TEmpresa($userSesion->getEmpresa());
-			if ($empresa->getSlogan() == '' or $empresa->getMarca() == '' or $empresa->getDireccion() == '')
-				$pendientes['bandEmpresa'] = true;
+			$band = false;
+			foreach($rs->fetch_assoc() as $key => $valor)
+				if ($valor == '')
+					$band = true;
+			
+			$pendientes['bandEmpresa'] = $band;
 				
 			$rs = $db->query("select * from bazar where idEmpresa = ".$userSesion->getEmpresa());
 			if ($rs->num_rows == 0)
@@ -27,6 +29,7 @@ switch($objModulo->getId()){
 			$openpay = Openpay::getInstance($ini['openpay']['id'], $ini['openpay']['key_private']);
 	
 			$empresa = new TEmpresa($userSesion->getEmpresa());
+			
 			if ($empresa->getIdPay() == '')
 				$empresa->setIdPay();
 				
@@ -36,11 +39,18 @@ switch($objModulo->getId()){
 				
 				if (count($tarjetas) == 0)
 					$pendientes['bandTarjetas'] = true;
+				else
+					$pendientes['bandTarjetas'] = false;
 			}catch(Exception $e){
 				ErrorSistema("PAY: ".$e->getMessage());
+				$pendientes['bandTarjetas'] = false;
 			}
-			
 			$smarty->assign("pendientes", $pendientes);
+			$band = true;
+			foreach($pendientes as $pendiente){
+				$band = !$pendiente?false:$band;
+			}
+			$smarty->assign("bandPendientes", $band);
 			
 			$sql = "select * from bazar where idEmpresa = ".$userSesion->getEmpresa();
 			$rs = $db->query($sql);
@@ -54,7 +64,7 @@ switch($objModulo->getId()){
 				$sql = "select *, sum(precio * cantidad * ((100 - c.descuento) / 100) * ((100 - b.descuento) / 100)) as total
 				from venta b
 					join movimiento c using(idVenta)
-				where b.idBazar = ".$row['idBazar']."";
+				where b.idBazar = ".$row['idBazar']." and b.idEstado = 2";
 				
 				$rs2 = $db->query($sql);
 				$row2 = $rs2->fetch_assoc();

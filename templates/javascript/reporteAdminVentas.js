@@ -3,22 +3,30 @@ $(document).ready(function(){
 	$("#txtInicio").datepicker({ dateFormat: 'yy-mm-dd' });
 	$("#txtFin").datepicker({ dateFormat: 'yy-mm-dd' });
 	
-	OpenPay.setId($("#merchant"));
-	OpenPay.setApiKey($("#public"));
-	var deviceSessionId = OpenPay.deviceData.setup("frmCobro", "deviceIdHiddenFieldName");
+	//OpenPay.setId($("#merchant"));
+	//OpenPay.setApiKey($("#public"));
+	//var deviceSessionId = OpenPay.deviceData.setup("frmCobro", "deviceIdHiddenFieldName");
 	
 	$("#btnBuscar").click(function(){
 		getLista();
+	});
+	
+	$("#btnSelAll").click(function(){
+		$("#selEmpresa").find("option").attr("selected", true);
+		getLista
 	});
 	
 	getLista();
 	function getLista(){
 		$("#dvListaVentas").html("");
 		$("#btnCobrar").hide();
+		$("#btnBuscar").prop("disabled", true);
+		
 		$.post("listaReporteAdminVentas", {
 			"inicio": $("#txtInicio").val(),
 			"fin": $("#txtFin").val(),
 			"empresa": $("#selEmpresa").val(),
+			"soloCerradas": $("#chkCerradas").is(":checked")?1:0
 		}, function(resp){
 			$("#dvListaVentas").html("");
 			$("#dvListaVentas").html(resp);
@@ -57,6 +65,8 @@ $(document).ready(function(){
 				"info": true,
 				"autoWidth": false
 			});
+		}).done(function(){
+			$("#btnBuscar").prop("disabled", false);
 		});
 	}
 	/*

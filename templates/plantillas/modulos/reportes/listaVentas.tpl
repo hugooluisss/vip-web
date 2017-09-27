@@ -35,4 +35,11 @@
 			</tr>
 		{/foreach}
 	</tbody>
+	<tfoot>
+		<tr style="font-weight: bold">
+			<td class="text-right" colspan="3">Total</td>
+			<td class="text-right">{$totalMonto}</td>
+			<td class="text-right">{$totalPagado}</td>
+		</tr>
+	</tfoot>
 </table>

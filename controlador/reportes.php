@@ -46,16 +46,20 @@ switch($objModulo->getId()){
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		$datos = array();
+		$montoTotal = 0;
+		$totalPagado = 0;
 		while($row = $rs->fetch_assoc()){
 			$sql = "select sum(precio * cantidad * (1-descuento/100)) as total from movimiento where idVenta = ".$row['idVenta'];
 			
 			$rs2 = $db->query($sql) or errorMySQL($db, $sql);
 			$row2 = $rs2->fetch_assoc();
 			$row['total'] = $row2['total'] * (1 - $row['descuento'] / 100);
+			$montoTotal += $row['total'];
 			$row['total'] = number_format($row['total'], 2, '.', ',');
 			
 			$rs2 = $db->query("select sum(monto) as monto from pago a where idVenta = ".$row['idVenta']);
 			$row2 = $rs2->fetch_assoc();
+			$totalPagado += $row2['monto'];
 			$row['pagos'] = number_format($row2['monto'], 2, '.', ',');
 			
 			$row['json'] = json_encode($row);
@@ -64,12 +68,16 @@ switch($objModulo->getId()){
 		
 		$smarty->assign("lista", $datos);
 		$smarty->assign("bazar", $_POST['bazar']);
+		
+		$smarty->assign("totalMonto", number_format($montoTotal, 2, '.', ','));
+		$smarty->assign("totalPagado", number_format($totalPagado, 2, '.', ','));
 	break;
 	case 'listaReportePedidos':
 		$db = TBase::conectaDB();
 		
 		if ($_POST['bazar'] == ''){
 			global $userSesion;
+			
 			$sql = "select a.idVenta, fecha, a.folio, b.nombre as bazar, b.idBazar, c.nombre as cliente, d.descripcion, sum(d.cantidad) as cantidad, sum(d.entregado) as entregado from venta a join bazar b using(idBazar) join cliente c using(idCliente) join movimiento d using(idVenta) where b.idEmpresa = ".$userSesion->getEmpresa()." and b.visible = 1 and d.cantidad > d.entregado group by a.idVenta order by fecha desc";
 		}else
 			$sql = "select a.idVenta, fecha, a.folio, b.nombre as bazar, b.idBazar, c.nombre as cliente, d.descripcion, sum(d.cantidad) as cantidad, sum(d.entregado) as entregado from venta a join bazar b using(idBazar) join cliente c using(idCliente) join movimiento d using(idVenta) where a.idBazar = ".$_POST['bazar']." and b.visible = 1 and d.cantidad > d.entregado group by a.idVenta order by fecha desc;";
@@ -109,16 +117,13 @@ switch($objModulo->getId()){
 		while($row = $rs->fetch_assoc()){
 			$producto = new TProducto($row['idProducto']);
 			$row['inventario'] = $producto->getInventarioDisponible();
-			if ($_POST['bazar'] == '')
-				$sql = "select sum(cantidad) as vendidos, sum(entregado) as entregados from venta a join movimiento b using(idVenta) join producto c using(idProducto) where c.visible = true and idProducto = ".$producto->getId();
-			else
-				$sql = "select sum(cantidad) as vendidos, sum(entregado) as entregados from venta a join movimiento b using(idVenta) join producto c using(idProducto) where c.visible = true and a.idBazar = ".$_POST['idBazar']." and idProducto = ".$producto->getId();
 			
-			$rs2 = $db->query($sql) or errorMySQL($db, $sql);
-			$row2 = $rs2->fetch_assoc();
-			$row['vendidos'] = $row2['vendidos'] == ''?0:$row2['vendidos'];
-			$row['entregados'] = $row2['entregados'] == ''?0:$row2['entregadosº'];
-			$row['pedidos'] = $row['vendidos'] - $row['entregados'];
+			$row['vendidos'] = $producto->getVendidos();
+			$row['entregados'] = $producto->getEntregados();
+			$row['apartados'] = $producto->getApartados();
+			$row['pedidos'] = $producto->getPedidos();
+			
+			unset($producto);
 			$row['json'] = json_encode($row);
 			
 			array_push($datos, $row);
@@ -130,7 +135,7 @@ switch($objModulo->getId()){
 	case 'listaReporteVentasProducto':
 		$db = TBase::conectaDB();
 		
-		$sql = "select b.*, cantidad, entregado, c.nombre as cliente from movimiento a join venta b using(idVenta) join cliente c using(idCliente) where idProducto = ".$_POST['producto']." order by fecha desc";
+		$sql = "select b.*, cantidad, entregado, c.nombre as cliente, d.nombre as estado, d.color as colorEstado from movimiento a join venta b using(idVenta) join cliente c using(idCliente) join estado d using(idEstado) where idProducto = ".$_POST['producto']." and idEstado in (1, 2) order by fecha desc";
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		$datos = array();
@@ -171,8 +176,8 @@ switch($objModulo->getId()){
 		$datos = array();
 		$repositorio = "repositorio/facturas/";
 		while($row = $rs->fetch_assoc()){
-			$archivo = $repositorio."factura".$row['idComision'].".pdf";
-			$row['factura'] = file_exists($archivo)?$archivo:"";
+			$files = glob($repositorio."factura".$row['idComision'].".*");
+			$row['factura'] = file_exists($files[0])?$files[0]:"";
 			$row['json'] = json_encode($row);
 			
 			array_push($datos, $row);

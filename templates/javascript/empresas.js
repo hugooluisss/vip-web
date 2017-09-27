@@ -14,13 +14,30 @@ $(document).ready(function(){
 	$("#frmAdd").validate({
 		debug: true,
 		rules: {
-			txtRazonSocial: "required",
+			txtRazonSocial: {
+				required: true,
+				remote: {
+					url: "cempresas",
+					type: "post",
+					data: {
+						action: "validaRazonSocial",
+						empresa: function(){
+							return $("#id").val()
+						}
+					}
+				}
+			},
 			txtEmail: {
 				email: true
 			},
 			txtTelefono: {
 				required: true,
 				number: true
+			}
+		},
+		messages: {
+			txtRazonSocial: {
+				remote: "Ya existe una empresa con este nombre, escoge otro"
 			}
 		},
 		wrapper: 'span', 

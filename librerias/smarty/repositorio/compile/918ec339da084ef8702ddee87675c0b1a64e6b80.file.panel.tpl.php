@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-18 10:01:45
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-21 19:24:59
          compiled from "templates/plantillas/modulos/metodoscobro/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:123411077459495c77aacb50-51757110%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '918ec339da084ef8702ddee87675c0b1a64e6b80' => 
     array (
       0 => 'templates/plantillas/modulos/metodoscobro/panel.tpl',
-      1 => 1502808612,
+      1 => 1506039871,
       2 => 'file',
     ),
   ),
@@ -19,12 +19,22 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_59495c77ac9c56_97326163',
   'variables' => 
   array (
+    'informacionCompleta' => 0,
+    'PAGE' => 0,
     'tipos' => 0,
     'row' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_59495c77ac9c56_97326163')) {function content_59495c77ac9c56_97326163($_smarty_tpl) {?><div class="row">
+<?php if ($_valid && !is_callable('content_59495c77ac9c56_97326163')) {function content_59495c77ac9c56_97326163($_smarty_tpl) {?><?php if ($_smarty_tpl->tpl_vars['informacionCompleta']->value!=true){?>
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-3 col-sm-6">
+			<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/error/empresas.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+		</div>
+	</div>
+<?php }else{ ?>
+<div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Métodos de cobro</h1>
 	</div>
@@ -95,4 +105,5 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
-</div><!-- /.modal --><?php }} ?>
+</div><!-- /.modal -->
+<?php }?><?php }} ?>

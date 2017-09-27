@@ -7,7 +7,7 @@ switch($objModulo->getId()){
 		$usuario = new TUsuario($sesion['usuario']);
 		
 		if ($_GET['id'] == '')
-			$rs = $db->query("select * from tipoUsuario where rol = 'A'"); #Administración
+			$rs = $db->query("select * from tipoUsuario where rol = 'A'"); #AdministraciÃ³n
 		else
 			$rs = $db->query("select * from tipoUsuario where rol = 'B'"); #Bazas
 			
@@ -90,7 +90,7 @@ switch($objModulo->getId()){
 				
 				$rs = $db->query("select idUsuario from usuario where email = '".$_POST['clave']."'");
 				
-				if ($rs->num_rows > 0){ #si es que encontró la clave
+				if ($rs->num_rows > 0){ #si es que encontrÃ³ la clave
 					$row = $rs->fetch_assoc();
 					if ($row["idUsuario"] <> $_POST['id']){
 						$obj->setId($row['idUsuario']);
@@ -123,9 +123,8 @@ switch($objModulo->getId()){
 					}
 				}
 				
-				$email = !isset($_POST['sendmail'])?true:$_POST['sendmail'];
-				
-				if ($obj->getEmpresa() <> '' and $_POST['id'] == '' and $email){
+				$sendmail = $_POST['sendmail'] == ''?true:($_POST['sendmail'] <> 'false'?true:false);
+				if ($obj->getEmpresa() <> '' and $_POST['id'] == '' and $sendmail){
 					global $ini;
 						$email = new TMail();
 						$email->setTema("Registro de usuario");
@@ -139,9 +138,9 @@ switch($objModulo->getId()){
 						switch($obj->getIdTipo()){
 							case 2:
 								$s = '<li>Actualizar los datos de tu empresa</li>';
-								$s .= '<li>Configurar tus métodos de cobro</li>';
+								$s .= '<li>Configurar tus mÃ©todos de cobro</li>';
 								$s .= '<li>Crear mas cuentas de usuario</li>';
-								$s .= '<li>Crear tu próximo bazar o mercado</li>';
+								$s .= '<li>Crear tu prÃ³ximo bazar o mercado</li>';
 								$s .= '<li>Dar de alta tus productos e inventario de manera sencilla</li>';
 								$s .= '<li>Realizar ventas</li>';
 							break;
@@ -159,7 +158,7 @@ switch($objModulo->getId()){
 						
 						$datos['usuario.roles'] = $s;
 						
-						$email->setBodyHTML(utf8_decode($email->construyeMail(file_get_contents("repositorio/mail/nuevoUsuario.html"), $datos)));
+						$email->setBodyHTML($email->construyeMail(file_get_contents("repositorio/mail/nuevoUsuario.html"), $datos));
 						
 						$bandEmail = $email->send();
 				}
@@ -187,6 +186,19 @@ switch($objModulo->getId()){
 				$obj->setPass($_POST['pass']);
 				
 				$smarty->assign("json", array("band" => $obj->guardar()));
+			break;
+			case 'validaUsuario':
+				$db = TBase::conectaDB();
+				
+				$rs = $db->query("select idUsuario from usuario where upper(email) = upper('".$_POST['txtEmail']."')");
+				$row = $rs->fetch_assoc();
+				if ($rs->num_rows > 0){
+					if ($_POST['usuario'] <> '')
+						echo $row['idUsuario'] <> $_POST['usuario']?"false":"true";
+					else
+						echo "false";
+				}else
+					echo "true";
 			break;
 		}
 	break;

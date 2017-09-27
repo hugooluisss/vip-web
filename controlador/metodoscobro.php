@@ -3,6 +3,11 @@ global $objModulo;
 switch($objModulo->getId()){
 	case 'metodoscobro':
 		$db = TBase::conectaDB();
+		global $userSesion;
+		
+		$empresa = new TEmpresa($userSesion->getEmpresa());
+		$smarty->assign("informacionCompleta", $empresa->isCompletaInformacion());
+		
 		$rs = $db->query("select * from tipocobro");
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
