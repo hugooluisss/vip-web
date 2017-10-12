@@ -45,6 +45,11 @@ $(document).ready(function(){
 					after: function(datos){
 						if (datos.band){
 							getLista();
+							if ($(form).find("#id").val() == ''){
+								$('#winUsuarios').attr("identificador", datos.id);
+								$("#winUsuarios").modal();
+							}
+								
 							$("#frmAdd").get(0).reset();
 							$('#panelTabs a[href="#listas"]').tab('show');
 						}else{
@@ -56,6 +61,87 @@ $(document).ready(function(){
         }
 
     });
+    
+    $("#frmAddUsers").validate({
+		debug: true,
+		rules: {
+			txtEmail: {
+				required: true,
+				remote: {
+					url: "cusuarios",
+					type: "post",
+					data: {
+						action: "validaUsuario",
+						usuario: function(){
+							return $("#id").val()
+						}
+					}
+				}
+			},
+			txtNombre: "required",
+			txtPass: "required",
+			//txtClave: "required",
+			txtPass2: {
+				equalTo: "#txtPass"
+			}
+		},
+		wrapper: 'span',
+		messages: {
+			txtEmail: {
+				remote: "El correo ya existe para otro usuario, escoge otro"
+			}
+		},
+		submitHandler: function(form){
+			form = $(form);
+			var obj = new TUsuario;
+			obj.add({
+				id: form.find("#id").val(), 
+				nombre: form.find("#txtNombre").val(), 
+				email: form.find("#txtEmail").val(),
+				pass: form.find("#txtPass").val(),
+				tipo: form.find("#selTipo").val(),
+				empresa: form.find("#empresa").val(),
+				fn: {
+					after: function(datos){
+						if (datos.band){
+							var label = $("<label />");
+							var input = $("<input />", {
+								value: datos.identificador,
+								class: "usuario",
+								type: "checkbox"
+							});
+							
+							input.click(function(){
+								clickUsuario(input);
+							});
+							label.append(input);
+							label.append($("<span />", {
+								class: "text-primary",
+								text: " " + form.find("#txtNombre").val()
+							}));
+							
+							
+							$(".tipo" + $("#selTipo").val()).append(label);
+							console.log(label);
+							$("#frmAddUsers").get(0).reset();
+							$("#winAddUsuarios").modal("hide");
+						}else{
+							alert("Upps... " + datos.mensaje);
+						}
+					}
+				}
+			});
+        }
+
+    });
+    
+    $('#winAddUsuarios').on('shown.bs.modal', function(){
+    	$("#winUsuarios").modal("hide");
+	});
+	
+	$('#winAddUsuarios').on('hide.bs.modal', function(){
+		$("#winUsuarios").modal();
+	});
 		
 	function getLista(){
 		$.get("listaBazares", function( data ) {
@@ -73,7 +159,7 @@ $(document).ready(function(){
 			});
 			
 			$("[data-target=#winUsuarios]").click(function(){
-			var el = $(this);
+				var el = $(this);
 				$('#winUsuarios').attr("identificador", el.attr("identificador"));
 			});
 			
@@ -129,8 +215,10 @@ $(document).ready(function(){
 	});
 	
 	$(".usuario").click(function(){
-		var el = $(this);
-		
+		clickUsuario($(this));
+	});
+	
+	function clickUsuario(el){
 		var bazar = new TBazar;
 		if (el.is(":checked"))
 			bazar.setUsuario({
@@ -164,5 +252,5 @@ $(document).ready(function(){
 					}
 				}
 			});
-	});
+	}
 });

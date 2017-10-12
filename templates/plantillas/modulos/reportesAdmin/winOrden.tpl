@@ -29,6 +29,18 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="txtSubtotal" class="col-lg-2">Subtotal</label>
+						<div class="col-lg-5">
+							<input type="text" class="form-control text-right" id="txtSubtotal" name="txtSubtotal" readonly="true" disabled="true"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtIVA" class="col-lg-2">IVA</label>
+						<div class="col-lg-5">
+							<input type="text" class="form-control text-right" id="txtIVA" name="txtIVA" readonly="true" disabled="true"/>
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="txtConcepto" class="col-lg-2">Total a cobrar</label>
 						<div class="col-lg-5">
 							<input type="text" class="form-control text-right" id="txtCobro" name="txtCobro" readonly="true" disabled="true"/>

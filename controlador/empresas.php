@@ -36,6 +36,8 @@ switch($objModulo->getId()){
 			ErrorSistema("PAY: ".$e->getMessage());
 			$smarty->assign("tarjeta", array());
 		}
+		global $ini;
+		$smarty->assign("openpay", $ini['openpay']);
 	break;
 	case 'cempresas':
 		switch($objModulo->getAction()){

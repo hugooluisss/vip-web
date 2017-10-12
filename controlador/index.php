@@ -88,7 +88,7 @@ switch($objModulo->getId()){
 			$empresa = new TEmpresa($rowEmpresa['idEmpresa']);
 			
 			#$sql = "select idVenta, descuento from venta a join bazar b using(idBazar) where fecha between '".$empresa->getUltimoCorte()."' and date_sub(NOW(), INTERVAL 1 DAY) and idEmpresa = ".$empresa->getId();
-			$sql = "select idVenta, descuento from venta a join bazar b using(idBazar) where registro between '".$empresa->getUltimoCorte()."' and NOW() and idEmpresa = ".$empresa->getId();
+			$sql = "select idVenta, descuento from venta a join bazar b using(idBazar) where registro between '".$empresa->getUltimoCorte()."' and NOW() and idEmpresa = ".$empresa->getId()." and idEstado = 2";
 			$rsVentas = $db->query($sql) or errorMySQL($db, $sql);
 			$suma = 0;
 			while($rowVenta = $rsVentas->fetch_assoc()){

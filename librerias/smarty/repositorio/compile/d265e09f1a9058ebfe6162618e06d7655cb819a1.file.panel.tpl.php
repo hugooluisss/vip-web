@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-21 19:36:57
+<?php /* Smarty version Smarty-3.1.11, created on 2017-10-02 09:50:12
          compiled from "templates/plantillas/modulos/bazares/panel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:7513394415953cdb55d7d20-91734581%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd265e09f1a9058ebfe6162618e06d7655cb819a1' => 
     array (
       0 => 'templates/plantillas/modulos/bazares/panel.tpl',
-      1 => 1506040118,
+      1 => 1506955810,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'PAGE' => 0,
     'usuarios' => 0,
     'row' => 0,
+    'tipos' => 0,
+    'key' => 0,
+    'item' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -119,20 +122,58 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<h4 class="modal-title">Usuarios</h4>
 			</div>
 			<div class="modal-body">
-				<p>
+				<div class="alert alert-info">
 					A continuación se presenta la lista de usuarios registrados en el sistema, los marcados son los que tienen acceso al bazar
-				</p>
-				<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['usuarios']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+				</div>
+				<div class="text-right">
+					<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#winAddUsuarios">Agregar usuario</button>
+					<br />
+					<br />
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 tipo2">
+						<div class="text-center"><b>Responsable</b></div>
+						<hr />
+						<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['usuarios']->value['tipo2']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars["row"]->value){
 $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ?>
-					<label><input type="checkbox" class="usuario" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['idUsuario'];?>
+						<label><input type="checkbox" class="usuario" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['idUsuario'];?>
 "> <span class="text-primary"><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
-</span> <small><span class="text-muted"><?php echo $_smarty_tpl->tpl_vars['row']->value['perfil'];?>
-</span></small></label>
-					<br />
-				<?php } ?>
+</span></label>
+						<br />
+					<?php } ?>
+					</div>
+					<div class="col-xs-12 col-sm-4 tipo3">
+						<div class="text-center"><b>Vendedor</b></div>
+						<hr />
+						<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['usuarios']->value['tipo3']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars["row"]->value){
+$_smarty_tpl->tpl_vars["row"]->_loop = true;
+?>
+						<label><input type="checkbox" class="usuario" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['idUsuario'];?>
+"> <span class="text-primary"><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
+</span></label>
+						<br />
+					<?php } ?>
+					</div>
+					<div class="col-xs-12 col-sm-4 tipo4">
+						<div class="text-center"><b>Inventarios</b></div>
+						<hr />
+						<?php  $_smarty_tpl->tpl_vars["row"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["row"]->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['usuarios']->value['tipo4']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars["row"]->key => $_smarty_tpl->tpl_vars["row"]->value){
+$_smarty_tpl->tpl_vars["row"]->_loop = true;
+?>
+						<label><input type="checkbox" class="usuario" value="<?php echo $_smarty_tpl->tpl_vars['row']->value['idUsuario'];?>
+"> <span class="text-primary"><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
+</span></label>
+						<br />
+					<?php } ?>
+					</div>
+				</div>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
@@ -155,4 +196,62 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+
+<form role="form" id="frmAddUsers" class="form-horizontal" onsubmit="javascript: return false;">
+	<div class="modal fade" id="winAddUsuarios" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" identificador="">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Agregar usuario</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="selTipo" class="col-sm-4">Tipo</label>
+						<div class="col-sm-8">
+							<select class="form-control" id="selTipo" name="selTipo">
+								<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['tipos']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+									<option value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+
+								<?php } ?>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtNombre" class="col-sm-4">Nombre</label>
+						<div class="col-sm-8">
+							<input class="form-control" id="txtNombre" name="txtNombre">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtEmail" class="col-sm-4">Correo electrónico</label>
+						<div class="col-sm-8">
+							<input class="form-control" id="txtEmail" name="txtEmail" type="email">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtPass" class="col-sm-4">Contraseña</label>
+						<div class="col-sm-8">
+							<input class="form-control" id="txtPass" name="txtPass" type="password">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" id="btnAddUser">Guardar</button>
+					<button type="reset" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div>
+</form>
+
 <?php }?><?php }} ?>

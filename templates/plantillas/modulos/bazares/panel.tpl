@@ -90,13 +90,40 @@
 				<h4 class="modal-title">Usuarios</h4>
 			</div>
 			<div class="modal-body">
-				<p>
+				<div class="alert alert-info">
 					A continuación se presenta la lista de usuarios registrados en el sistema, los marcados son los que tienen acceso al bazar
-				</p>
-				{foreach from=$usuarios item="row"}
-					<label><input type="checkbox" class="usuario" value="{$row.idUsuario}"> <span class="text-primary">{$row.nombre}</span> <small><span class="text-muted">{$row.perfil}</span></small></label>
+				</div>
+				<div class="text-right">
+					<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#winAddUsuarios">Agregar usuario</button>
 					<br />
-				{/foreach}
+					<br />
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 tipo2">
+						<div class="text-center"><b>Responsable</b></div>
+						<hr />
+						{foreach from=$usuarios['tipo2'] item="row"}
+						<label><input type="checkbox" class="usuario" value="{$row.idUsuario}"> <span class="text-primary">{$row.nombre}</span></label>
+						<br />
+					{/foreach}
+					</div>
+					<div class="col-xs-12 col-sm-4 tipo3">
+						<div class="text-center"><b>Vendedor</b></div>
+						<hr />
+						{foreach from=$usuarios['tipo3'] item="row"}
+						<label><input type="checkbox" class="usuario" value="{$row.idUsuario}"> <span class="text-primary">{$row.nombre}</span></label>
+						<br />
+					{/foreach}
+					</div>
+					<div class="col-xs-12 col-sm-4 tipo4">
+						<div class="text-center"><b>Inventarios</b></div>
+						<hr />
+						{foreach from=$usuarios['tipo4'] item="row"}
+						<label><input type="checkbox" class="usuario" value="{$row.idUsuario}"> <span class="text-primary">{$row.nombre}</span></label>
+						<br />
+					{/foreach}
+					</div>
+				</div>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
@@ -119,4 +146,54 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+
+<form role="form" id="frmAddUsers" class="form-horizontal" onsubmit="javascript: return false;">
+	<div class="modal fade" id="winAddUsuarios" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" identificador="">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Agregar usuario</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="selTipo" class="col-sm-4">Tipo</label>
+						<div class="col-sm-8">
+							<select class="form-control" id="selTipo" name="selTipo">
+								{foreach key=key item=item from=$tipos}
+									<option value="{$key}">{$item}
+								{/foreach}
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtNombre" class="col-sm-4">Nombre</label>
+						<div class="col-sm-8">
+							<input class="form-control" id="txtNombre" name="txtNombre">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtEmail" class="col-sm-4">Correo electrónico</label>
+						<div class="col-sm-8">
+							<input class="form-control" id="txtEmail" name="txtEmail" type="email">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtPass" class="col-sm-4">Contraseña</label>
+						<div class="col-sm-8">
+							<input class="form-control" id="txtPass" name="txtPass" type="password">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" id="btnAddUser">Guardar</button>
+					<button type="reset" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div>
+</form>
+
 {/if}

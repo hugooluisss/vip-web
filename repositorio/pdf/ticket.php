@@ -84,24 +84,19 @@ class RTicket extends tFPDF{
     	$this->Cell(120, 5, $this->empresa->getRazonSocial());
     	$this->Ln(5);
     	$this->SetX($x);
-    	$this->Cell(70, 5, $this->empresa->getDireccion());
-    	$this->Cell(25, 5, $this->empresa->getExterno());
-    	$this->Cell(25, 5, $this->empresa->getInterno());
+    	$this->Cell(120, 5, $this->empresa->getDireccion().' '.$this->empresa->getExterno().' '.$this->empresa->getInterno());
     	$this->Ln(5);
     	$this->SetX($x);
-    	$this->Cell(60, 5, $this->empresa->getColonia());
-    	$this->Cell(60, 5, $this->empresa->getMunicipio());
+    	$this->Cell(120, 5, $this->empresa->getColonia().' '.$this->empresa->getMunicipio());
     	$this->Ln(5);
     	$this->SetX($x);
-    	$this->Cell(65, 5, $this->empresa->getCiudad());
-    	$this->Cell(55, 5, $this->empresa->getEstado());
+    	$this->Cell(120, 5, $this->empresa->getCiudad().' '.$this->empresa->getEstado());
     	$this->Ln(5);
     	$this->SetX($x);
     	$this->Cell(55, 5, $this->empresa->getRFC());
     	$this->Ln(5);
     	$this->SetX($x);
-    	$this->Cell(65, 5, $this->empresa->getEmail());
-    	$this->Cell(55, 5, $this->empresa->getTelefono());
+    	$this->Cell(120, 5, $this->empresa->getEmail().' '.$this->empresa->getTelefono());
     	$this->Ln(15);
     	
     	#Datos del cliente

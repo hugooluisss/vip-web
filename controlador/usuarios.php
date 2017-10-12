@@ -163,7 +163,7 @@ switch($objModulo->getId()){
 						$bandEmail = $email->send();
 				}
 				
-				$smarty->assign("json", array("band" => $band));
+				$smarty->assign("json", array("band" => $band, "identificador" => $obj->getId()));
 			break;
 			case 'del':
 				$obj = new TUsuario($_POST['usuario']);

@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-sm-12">
-		<h1 class="page-header">Cobranza</h1>
+		<h1 class="page-header">Comisiones VIP System</h1>
 	</div>
 </div>
 

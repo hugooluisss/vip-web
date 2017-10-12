@@ -541,7 +541,7 @@ class TEmpresa{
 	*/
 	
 	public function getComision(){
-		return $this->comision == ''?5:$this->comision;
+		return $this->comision == ''?0.5:$this->comision;
 	}
 	
 	/**

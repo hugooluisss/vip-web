@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-21 00:18:46
+<?php /* Smarty version Smarty-3.1.11, created on 2017-10-02 09:12:32
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1503113349594484f7c43587-42411099%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1505491931,
+      1 => 1506953549,
       2 => 'file',
     ),
   ),
@@ -191,8 +191,8 @@ img/logo.png" alt="User Image" style="background: white"/>
 						<ul class="treeview-menu">
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='miEmpresa'){?>class="active"<?php }?>><a href="miEmpresa">Mi empresa</a></li>
 							<!--<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('tarjetas'))){?>class="active"<?php }?>><a href="tarjetas">Mis tarjetas</a></li>-->
-							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='misUsuarios'){?>class="active"<?php }?>><a href="misUsuarios">Mis usuarios</a></li>
 							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('bazares','productos'))){?>class="active"<?php }?>><a href="bazares">Bazares y mercados</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='misUsuarios'){?>class="active"<?php }?>><a href="misUsuarios">Mis usuarios</a></li>
 							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='metodoscobro'){?>class="active"<?php }?>><a href="metodoscobro">Métodos de cobro</a></li>
 							<!--<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='metodospago'){?>class="active"<?php }?>><a href="metodospago">Métodos de pago</a></li>-->
 							<li <?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('clientes'))){?>class="active"<?php }?>><a href="clientes">Clientes</a></li>
@@ -227,7 +227,7 @@ img/logo.png" alt="User Image" style="background: white"/>
 							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reporteventas'))){?>active<?php }?>"><a href="reporteventas">Ventas</a></li>
 							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reporteexistencias'))){?>active<?php }?>"><a href="reporteexistencias">Inventarios</a></li>
 							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('reportepedidos'))){?>active<?php }?>"><a href="reportepedidos">Pedidos</a></li>
-							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('cobranzaVIP'))){?>active<?php }?>"><a href="cobranzaVIP">Comisiones VIP</a></li>
+							<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('cobranzaVIP'))){?>active<?php }?>"><a href="cobranzaVIP">Comisiones VIP System</a></li>
 						</ul>
 					</li>
 					<?php }?>

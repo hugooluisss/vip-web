@@ -122,6 +122,8 @@ $(document).ready(function(){
 $(document).ready(function(){
 	OpenPay.setId($("#frmTarjeta").attr("merchant"));
 	OpenPay.setApiKey($("#frmTarjeta").attr("public"));
+	OpenPay.setSandboxMode(true);
+
 	
 	$("[data-openpay-card=card_number]").change(function(){
 		if(OpenPay.card.validateCardNumber($(this).val())){
@@ -152,30 +154,51 @@ $(document).ready(function(){
 			}else if(!OpenPay.card.validateCVC($("#txtCVC").val(), $("#txtNumero").val())){
 				alert("Verifica el código CVC");
 			}else{
-				var obj = new TEmpresa;
-				obj.addTarjeta({
-					tarjetahabiente: $("#txtTarjetahabiente").val(),
-					numero: $("#txtNumero").val(),
-					cvc: $("#txtCVC").val(),
-					mes: $("#selMes").val(),
-					anio: $("#selAnio").val(),
-					empresa: $("#frmTarjeta").attr("empresa"),
-					fn: {
-						before: function(){
-							$("#frmTarjeta").find("button").prop("disabled", true);
-						},
-						after: function(resp){
-							$("#frmTarjeta").find("button").prop("disabled", false);
-							
-							if (resp.band){
-								alert("Tu tarjeta ha quedado registrada... muchas gracias por completar tu información");
-								$("#frmTarjeta").get(0).reset();
-								
-								location.reload();
-							}else
-								alert("No se pudo agregar la tarjeta " + (resp.mensaje != null?resp.mensaje:''));
-						}
+				var anio = $("#selAnio").val();
+				OpenPay.token.create({
+					"card_number": $("#txtNumero").val(),
+					"holder_name":$("#txtTarjetahabiente").val(),
+					"expiration_year": anio[2] + anio[3],
+					"expiration_month": $("#selMes").val(),
+					"cvv2": $("#txtCVC").val(),
+					"address":{
+						"city": $("#txtCiudad").val(),
+						"line3": $("#txtEstado").val(),
+						"postal_code": "71234",
+						"line1": $("#txtDireccion").val() + ' ' + $("#txtColonia").val(),
+						"line2": $("#txtExterno").val(),
+						"state": $("#txtEstado").val(),
+						"country_code":"MX"
 					}
+				}, function(){
+					var obj = new TEmpresa;
+					obj.addTarjeta({
+						tarjetahabiente: $("#txtTarjetahabiente").val(),
+						numero: $("#txtNumero").val(),
+						cvc: $("#txtCVC").val(),
+						mes: $("#selMes").val(),
+						anio: $("#selAnio").val(),
+						empresa: $("#frmTarjeta").attr("empresa"),
+						fn: {
+							before: function(){
+								$("#frmTarjeta").find("button").prop("disabled", true);
+							},
+							after: function(resp){
+								$("#frmTarjeta").find("button").prop("disabled", false);
+								
+								if (resp.band){
+									alert("Tu tarjeta ha quedado registrada... muchas gracias por completar tu información");
+									$("#frmTarjeta").get(0).reset();
+									
+									location.reload();
+								}else
+									alert("No se pudo agregar la tarjeta " + (resp.mensaje != null?resp.mensaje:''));
+							}
+						}
+					});
+				}, function(response){
+					console.log(response);
+					alert("No se pudo registrar")
 				});
 			}
 		}

@@ -134,10 +134,11 @@
 								<i class="fa fa-envelope-o fa-stack-1x fa-inverse" aria-hidden="true"></i>
 							</span>
 						</a>
+							<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=wUG52RBzjqoqi5UEOJom08bIuhoWMDsjMtIQHxNemUzMVWzmm3wqW3mixqb0"></script></span>
 					</div>
 					<div class="col-xs-6 text-right ligasInteres">
-						<a href="terminos">Términos de servicio</a>
-						<a href="proliticaPrivacidad">Política de privacidad</a>
+						<a href="#" data-toggle="modal" data-target="#winTerminosCondiciones">Términos de servicio</a>
+						<a href="#" data-toggle="modal" data-target="#winAvisoPrivacidad">Política de privacidad</a>
 					</div>
 				</div>
 			</div>
@@ -228,7 +229,35 @@
 			</form>
 		</div>
 		
+		<div id="winTerminosCondiciones" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-lg">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Términos y condiciones</h4>
+					</div>
+					<div class="modal-body">
+						{include file=$PAGE.rutaModulos|cat:"modulos/terminosCondiciones.tpl"}
+					</div>
+				</div>
+			</div>
+		</div>
 		
+		<div id="winAvisoPrivacidad" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-lg">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Política de privacidad</h4>
+					</div>
+					<div class="modal-body">
+						{include file=$PAGE.rutaModulos|cat:"modulos/avisoPrivacidad.tpl"}
+					</div>
+				</div>
+			</div>
+		</div>
     
 	    <!-- jQuery 2.1.4 -->
 	    <script src="{$PAGE.ruta}plugins/jQuery/jQuery-2.1.4.min.js"></script>

@@ -10,12 +10,27 @@ switch($objModulo->getId()){
 		
 		$rs = $db->query("select a.*, c.nombre as perfil from usuario a join usuarioempresa b using(idUsuario) join tipoUsuario c on a.idTipo = c.idTipoUsuario and b.idEmpresa = ".$userSesion->getEmpresa());
 		$datos = array();
+		
+		$datos["tipo2"] = array();
+		$datos["tipo3"] = array();
+		$datos["tipo4"] = array();
+		
 		while($row = $rs->fetch_assoc()){
 			$row['json'] = json_encode($row);
 			
-			array_push($datos, $row);
+			array_push($datos["tipo".$row['idTipo']], $row);
 		}
+		
 		$smarty->assign("usuarios", $datos);
+		
+		$rs = $db->query("select * from tipoUsuario where rol = 'B'"); #Bazas
+			
+		$datos = array();
+		while($row = $rs->fetch_assoc()){
+			$datos[$row['idTipoUsuario']] = $row['nombre'];
+		}
+		
+		$smarty->assign("tipos", $datos);
 	break;
 	case 'productos':
 		$smarty->assign("bazar", $_GET['id']);
@@ -62,7 +77,7 @@ switch($objModulo->getId()){
 				if ($band and $_POST['id'] == ''){
 					$obj->addUsuario($userSesion->getId());
 				}
-				$smarty->assign("json", array("band" => $band));
+				$smarty->assign("json", array("band" => $band, "id" => $obj->getId()));
 			break;
 			case 'del':
 				$obj = new TBazar($_POST['id']);

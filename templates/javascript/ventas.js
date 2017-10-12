@@ -127,8 +127,7 @@ $(document).ready(function(){
 	$("#frmAddCliente").validate({
 		debug: true,
 		rules: {
-			txtNombre: "required",
-			txtRazonSocial: "required"
+			txtNombre: "required"
 		},
 		wrapper: 'span', 
 		submitHandler: function(form){

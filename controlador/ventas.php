@@ -112,6 +112,7 @@ switch($objModulo->getId()){
 			case 'cerrar':
 				$obj = new TVenta($_POST['id']);
 				$obj->setEstado(2); #Esto pone la venta en estado cerrada
+				$obj->setRegistro(date("Y-m-d"));
 				$band = $obj->guardar();
 				
 				$smarty->assign("json", array("band" => $band));

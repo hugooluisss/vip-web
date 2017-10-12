@@ -98,7 +98,7 @@
 					{if file_exists("repositorio/empresas/empresa"|cat:$PAGE.empresa->getId()|cat:".jpg")}
 					<br />
 					<center>
-						<img src="repositorio/empresas/empresa{$PAGE.empresa->getId()}.jpg" alt="VIP" style="width: 65px;"/>
+						<img src="repositorio/empresas/empresa{$PAGE.empresa->getId()}.jpg?{rand()}" alt="VIP" style="width: 65px;"/>
 					</center>
 					 <br />
 					{/if}
@@ -141,8 +141,8 @@
 						<ul class="treeview-menu">
 							<li {if $PAGE.modulo eq 'miEmpresa'}class="active"{/if}><a href="miEmpresa">Mi empresa</a></li>
 							<!--<li {if in_array($PAGE.modulo, array('tarjetas'))}class="active"{/if}><a href="tarjetas">Mis tarjetas</a></li>-->
-							<li {if $PAGE.modulo eq 'misUsuarios'}class="active"{/if}><a href="misUsuarios">Mis usuarios</a></li>
 							<li {if in_array($PAGE.modulo, array('bazares', 'productos'))}class="active"{/if}><a href="bazares">Bazares y mercados</a></li>
+							<li {if $PAGE.modulo eq 'misUsuarios'}class="active"{/if}><a href="misUsuarios">Mis usuarios</a></li>
 							<li {if $PAGE.modulo eq 'metodoscobro'}class="active"{/if}><a href="metodoscobro">Métodos de cobro</a></li>
 							<!--<li {if $PAGE.modulo eq 'metodospago'}class="active"{/if}><a href="metodospago">Métodos de pago</a></li>-->
 							<li {if in_array($PAGE.modulo, array('clientes'))}class="active"{/if}><a href="clientes">Clientes</a></li>
@@ -177,7 +177,7 @@
 							<li class="{if in_array($PAGE.modulo, array('reporteventas'))}active{/if}"><a href="reporteventas">Ventas</a></li>
 							<li class="{if in_array($PAGE.modulo, array('reporteexistencias'))}active{/if}"><a href="reporteexistencias">Inventarios</a></li>
 							<li class="{if in_array($PAGE.modulo, array('reportepedidos'))}active{/if}"><a href="reportepedidos">Pedidos</a></li>
-							<li class="{if in_array($PAGE.modulo, array('cobranzaVIP'))}active{/if}"><a href="cobranzaVIP">Comisiones VIP</a></li>
+							<li class="{if in_array($PAGE.modulo, array('cobranzaVIP'))}active{/if}"><a href="cobranzaVIP">Comisiones VIP System</a></li>
 						</ul>
 					</li>
 					{/if}

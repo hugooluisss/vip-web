@@ -170,7 +170,7 @@ switch($objModulo->getId()){
 	
 	case 'listaCobranzaVIP':
 		$db = TBase::conectaDB();
-		$sql = "select * from comision a where idEmpresa = ".$userSesion->getEmpresa()." and registro between '".$_POST['inicio']."' and '".$_POST['fin']."'";
+		$sql = "select * from comision a where idEmpresa = ".$userSesion->getEmpresa()." and registro between '".$_POST['inicio']." 00:00:00' and '".$_POST['fin']." 23:59:59'";
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		$datos = array();

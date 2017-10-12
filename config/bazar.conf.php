@@ -6,7 +6,7 @@ $conf['bazares'] = array(
 	'vista' => 'bazares/panel.tpl',
 	'descripcion' => 'Bazares',
 	'seguridad' => true,
-	'js' => array('bazar.class.js'),
+	'js' => array('bazar.class.js', 'usuario.class.js'),
 	'jsTemplate' => array('bazares.js'),
 	'capa' => LAYOUT_DEFECTO);
 

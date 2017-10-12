@@ -83,6 +83,7 @@ $conf['interfaz'] = array(
 	'descripcion' => 'Interfaz para el control del sistema',
 	'seguridad' => false,
 	'capa' => LAYOUT_JSON);
+	
 
 includeDir("config/");
 ?>

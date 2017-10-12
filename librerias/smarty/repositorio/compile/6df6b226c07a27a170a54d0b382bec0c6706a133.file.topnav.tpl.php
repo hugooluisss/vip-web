@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-20 23:41:18
+<?php /* Smarty version Smarty-3.1.11, created on 2017-10-05 09:14:57
          compiled from "templates/plantillas/layout/topnav.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:10597828559448cd8539745-02858050%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6df6b226c07a27a170a54d0b382bec0c6706a133' => 
     array (
       0 => 'templates/plantillas/layout/topnav.tpl',
-      1 => 1505411257,
+      1 => 1507212895,
       2 => 'file',
     ),
   ),
@@ -181,10 +181,11 @@ img/stand2.jpg" class="img-responsive"/>
 								<i class="fa fa-envelope-o fa-stack-1x fa-inverse" aria-hidden="true"></i>
 							</span>
 						</a>
+							<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=wUG52RBzjqoqi5UEOJom08bIuhoWMDsjMtIQHxNemUzMVWzmm3wqW3mixqb0"></script></span>
 					</div>
 					<div class="col-xs-6 text-right ligasInteres">
-						<a href="terminos">Términos de servicio</a>
-						<a href="proliticaPrivacidad">Política de privacidad</a>
+						<a href="#" data-toggle="modal" data-target="#winTerminosCondiciones">Términos de servicio</a>
+						<a href="#" data-toggle="modal" data-target="#winAvisoPrivacidad">Política de privacidad</a>
 					</div>
 				</div>
 			</div>
@@ -277,7 +278,37 @@ img/logo.png" class="img-responsive"/></center>
 			</form>
 		</div>
 		
+		<div id="winTerminosCondiciones" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-lg">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Términos y condiciones</h4>
+					</div>
+					<div class="modal-body">
+						<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/terminosCondiciones.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+					</div>
+				</div>
+			</div>
+		</div>
 		
+		<div id="winAvisoPrivacidad" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-lg">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Política de privacidad</h4>
+					</div>
+					<div class="modal-body">
+						<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['PAGE']->value['rutaModulos']).("modulos/avisoPrivacidad.tpl"), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+					</div>
+				</div>
+			</div>
+		</div>
     
 	    <!-- jQuery 2.1.4 -->
 	    <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>

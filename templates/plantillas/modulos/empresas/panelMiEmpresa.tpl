@@ -13,7 +13,7 @@
 						{assign var="img" value="repositorio/empresas/empresa"|cat:$empresa->getId()|cat:".jpg"} 
 
 						{if file_exists($img)}
-						<img src="repositorio/empresas/empresa{$empresa->getId()}.jpg" id="logotipo" style="height: 100px;"/>
+						<img src="repositorio/empresas/empresa{$empresa->getId()}.jpg?{rand()}" id="logotipo" style="height: 100px;"/>
 						{else}
 						<img src="{$PAGE.imagenes}no-camara.jpg" id="logotipo" style="height: 100px;"/>
 						{/if}
@@ -92,6 +92,12 @@
 					<input class="form-control" id="txtTelefono" name="txtTelefono" value="{$empresa->getTelefono()}"/>
 				</div>
 			</div>
+			<div class="form-group">
+				<label for="txtRFC" class="col-sm-2">Comisión</label>
+				<div class="col-sm-4">
+					{$empresa->getComision()} %
+				</div>
+			</div>
 		</div>
 		<div class="box-footer">
 			<button type="reset" id="btnReset" class="btn btn-default">Cancelar</button>
@@ -103,7 +109,7 @@
 </form>
 
 
-<form action="#" id="frmTarjeta" method="post" class="form-horizontal" onsubmit="javascript: return false;" style="display: none">
+<form action="#" id="frmTarjeta" method="post" class="form-horizontal" onsubmit="javascript: return false;" style="display: none" merchant="{$openpay.id}" public="{$openpay.key_public}">
 	<div class="box">
 		<div class="box-body">
 			{if $tarjeta->card_number == ''}

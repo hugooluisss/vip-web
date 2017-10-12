@@ -26,7 +26,8 @@ $(document).ready(function(){
 				"ordering": true,
 				"paging": false,
 				"info": true,
-				"autoWidth": false
+				"autoWidth": false,
+				"order": [[ 0, "desc" ]]
 			});
 		});
 	}
@@ -38,7 +39,12 @@ $(document).ready(function(){
 		ventana.find("#txtConcepto").val("Cobro de comisiones correspondientes a las ventas cerradas del " + cobranza.inicio + " al " + cobranza.fin);
 		ventana.find("#txtMonto").val(cobranza.monto);
 		var total = cobranza.monto * cobranza.comision / 100;
-		ventana.find("#txtCobro").val(total.toFixed(2));
+		var iva = total * 0.16;
+		var granTotal = total * 1.16;
+		
+		ventana.find("#txtSubtotal").val(total.toFixed(2));
+		ventana.find("#txtIVA").val(iva.toFixed(2));
+		ventana.find("#txtCobro").val(granTotal.toFixed(2));
 		
 		$.post("jsonTarjetas", {
 			empresa: cobranza.idEmpresa
@@ -157,6 +163,7 @@ $(document).ready(function(){
 		$.get("interfaz").done(function(){
 			$("#btnGenerar").prop("disabled", false);
 			alert("Cobranza realizada");
+			getLista();
 		});
 	});
 	
