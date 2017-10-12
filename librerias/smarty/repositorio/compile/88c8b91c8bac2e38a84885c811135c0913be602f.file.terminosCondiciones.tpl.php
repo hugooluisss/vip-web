@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-10-05 09:10:15
+<?php /* Smarty version Smarty-3.1.11, created on 2017-10-12 09:49:13
          compiled from "templates/plantillas/modulos/terminosCondiciones.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:139339132859d63ba9244802-08988225%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88c8b91c8bac2e38a84885c811135c0913be602f' => 
     array (
       0 => 'templates/plantillas/modulos/terminosCondiciones.tpl',
-      1 => 1507212613,
+      1 => 1507819706,
       2 => 'file',
     ),
   ),

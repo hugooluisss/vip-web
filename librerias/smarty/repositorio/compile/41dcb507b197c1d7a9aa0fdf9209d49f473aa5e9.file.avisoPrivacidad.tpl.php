@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-10-05 09:14:29
+<?php /* Smarty version Smarty-3.1.11, created on 2017-10-12 09:49:13
          compiled from "templates/plantillas/modulos/avisoPrivacidad.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:54189981859d63e4540cce5-37035433%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '41dcb507b197c1d7a9aa0fdf9209d49f473aa5e9' => 
     array (
       0 => 'templates/plantillas/modulos/avisoPrivacidad.tpl',
-      1 => 1507212832,
+      1 => 1507819706,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.11',
   'unifunc' => 'content_59d63e45414fd0_25291057',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59d63e45414fd0_25291057')) {function content_59d63e45414fd0_25291057($_smarty_tpl) {?><h1>Aviso de Privacidad</h1>
 <p>En cumplimiento a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (la "Ley"), Jade Consultores SC protege y salvaguarda sus datos personales para evitar el daño, pérdida, destrucción, robo, extravío, alteración, así como el tratamiento no autorizado de sus datos personales.</p>
