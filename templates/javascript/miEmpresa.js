@@ -122,8 +122,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 	OpenPay.setId($("#frmTarjeta").attr("merchant"));
 	OpenPay.setApiKey($("#frmTarjeta").attr("public"));
-	OpenPay.setSandboxMode(true);
-
+	OpenPay.setSandboxMode(false);
 	
 	$("[data-openpay-card=card_number]").change(function(){
 		if(OpenPay.card.validateCardNumber($(this).val())){
@@ -202,5 +201,11 @@ $(document).ready(function(){
 				});
 			}
 		}
+	});
+	
+	$("#frmTarjeta").find("#btnReset").click(function(){
+		$("#frmTarjeta").hide("slow", function(){
+			$("#frmAdd").show();
+		});
 	});
 });

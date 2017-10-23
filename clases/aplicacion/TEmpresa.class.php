@@ -715,6 +715,9 @@ class TEmpresa{
 		require_once('librerias/openpay/Openpay.php');
 		try{
 			$openpay = Openpay::getInstance($ini['openpay']['id'], $ini['openpay']['key_private']);
+			if ($ini['openpay']['produccion'] == 'on')
+				Openpay::setProductionMode(true);
+				
 			$cliente = $openpay->customers->add(array(
 				"name" => str_replace(array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0"), array("uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "cero"), $this->getRazonSocial()),
 				"email" => $this->getEmail(),
@@ -776,6 +779,8 @@ class TEmpresa{
 		require_once('librerias/openpay/Openpay.php');
 		global $ini;
 		$openpay = Openpay::getInstance($ini['openpay']['id'], $ini['openpay']['key_private']);
+		if ($ini['openpay']['produccion'] == 'on')
+				Openpay::setProductionMode(true);
 			
 		if ($this->getIdPay() == '')
 			$this->setIdPay();

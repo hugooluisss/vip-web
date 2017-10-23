@@ -27,7 +27,9 @@ switch($objModulo->getId()){
 			
 			require_once('librerias/openpay/Openpay.php');
 			$openpay = Openpay::getInstance($ini['openpay']['id'], $ini['openpay']['key_private']);
-	
+			if ($ini['openpay']['produccion'] == 'on')
+				Openpay::setProductionMode(true);
+				
 			$empresa = new TEmpresa($userSesion->getEmpresa());
 			
 			if ($empresa->getIdPay() == '')

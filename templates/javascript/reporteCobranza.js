@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	OpenPay.setId($("#merchant"));
 	OpenPay.setApiKey($("#public"));
+	OpenPay.setSandboxMode(false);
 	var deviceSessionId = null;
 	
 	getLista();

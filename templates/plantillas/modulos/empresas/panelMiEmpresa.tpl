@@ -139,7 +139,7 @@
 			<div class="form-group">
 				<label for="" class="col-lg-2">Número de tarjeta</label>
 				<div class="col-lg-4">
-					<input type="text" id="txtNumero" name="txtNumero" maxlength="19" data-openpay-card="card_number" class="form-control">
+					<input type="text" id="txtNumero" name="txtNumero" maxlength="16" data-openpay-card="card_number" class="form-control">
 					<span class="text-success ayudaNumber"></span>
 				</div>
 			</div>
