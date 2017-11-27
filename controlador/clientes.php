@@ -6,8 +6,9 @@ switch($objModulo->getId()){
 	case 'listaClientes':
 		$db = TBase::conectaDB();
 		global $userSesion;
+		$usuario = isset($_POST['usuario'])?(new TUsuario($_POST['usuario'])):$userSesion;
 		
-		$rs = $db->query("select * from cliente a where a.visible = true and idEmpresa = ".$userSesion->getEmpresa());
+		$rs = $db->query("select * from cliente a where a.visible = true and idEmpresa = ".$usuario->getEmpresa());
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
 			$row['json'] = json_encode($row);
@@ -17,7 +18,7 @@ switch($objModulo->getId()){
 		$smarty->assign("lista", $datos);
 		$smarty->assign("select", $_POST['select']);
 		
-		$empresa = new TEmpresa($userSesion->getEmpresa());
+		$empresa = new TEmpresa($usuario->getEmpresa());
 		$smarty->assign("parametros", $empresa->getParametros());
 	break;
 	case 'listaClientesAutocomplete':
@@ -44,7 +45,12 @@ switch($objModulo->getId()){
 				$obj = new TCliente();
 				
 				$obj->setId($_POST['id']);
-				$obj->setEmpresa($userSesion->getEmpresa());
+				if ($_POST['idUsuario'] == '')
+					$obj->setEmpresa($userSesion->getEmpresa());
+				else{
+					$usuario = new TUsuario($_POST['idUsuario']);
+					$obj->setEmpresa($usuario->getEmpresa());
+				}
 				$obj->setRazonSocial($_POST['razonSocial']);
 				$obj->setNombre($_POST['nombre']);
 				$obj->setDomicilio($_POST['domicilio']);

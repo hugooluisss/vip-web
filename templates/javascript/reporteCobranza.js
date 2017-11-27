@@ -1,7 +1,7 @@
 $(document).ready(function(){
-	OpenPay.setId($("#merchant"));
-	OpenPay.setApiKey($("#public"));
-	OpenPay.setSandboxMode(false);
+	OpenPay.setId($("#merchant").val());
+	OpenPay.setApiKey($("#public").val());
+	OpenPay.setSandboxMode($("#cobranza").val() != 'on');
 	var deviceSessionId = null;
 	
 	getLista();
@@ -39,6 +39,7 @@ $(document).ready(function(){
 		
 		ventana.find("#txtConcepto").val("Cobro de comisiones correspondientes a las ventas cerradas del " + cobranza.inicio + " al " + cobranza.fin);
 		ventana.find("#txtMonto").val(cobranza.monto);
+		ventana.find("#txtPorcentaje").val(cobranza.comision);
 		var total = cobranza.monto * cobranza.comision / 100;
 		var iva = total * 0.16;
 		var granTotal = total * 1.16;
@@ -59,8 +60,17 @@ $(document).ready(function(){
 	});
 	
 	$("#winOrdenCobro").find("#txtPorcentaje").change(function(){
-		var total = $("#totalCerradas").val() * $("#txtPorcentaje").val() / 100;
-		$("#winOrdenCobro").find("#txtCobro").val(total.toFixed(2));
+		var cobranza = jQuery.parseJSON($("#winOrdenCobro").attr("comision"));
+		var ventana = $("#winOrdenCobro");
+		
+		var total = cobranza.monto * $("#winOrdenCobro").find("#txtPorcentaje").val() / 100;
+		var iva = total * 0.16;
+		var granTotal = total * 1.16;
+		
+		ventana.find("#txtSubtotal").val(total.toFixed(2));
+		ventana.find("#txtIVA").val(iva.toFixed(2));
+		ventana.find("#txtCobro").val(granTotal.toFixed(2));
+
 	});
 	
 	$("#frmCobro").validate({
@@ -68,8 +78,7 @@ $(document).ready(function(){
 		rules: {
 			txtConcepto: "required",
 			txtPorcentaje: {
-				required: true,
-				digits: true
+				required: true
 			},
 			selTarjeta: "required"
 		},
@@ -80,6 +89,7 @@ $(document).ready(function(){
 			
 			comision.pagar({
 				"id": cobranza.idComision,
+				"porcentaje": $("#winOrdenCobro").find("#txtPorcentaje").val(),
 				"tarjeta": $("#selTarjeta").val(),
 				"device_session": deviceSessionId,
 				fn: {
@@ -89,10 +99,10 @@ $(document).ready(function(){
 					after: function(resp){
 						$("#frmCobro").find("[type=submit]").prop("disabled", false);
 						console.log(resp);
+						getLista();
 						if (resp.band){
 							alert("El cargo se realizó correctamente");
 							$("#winOrdenCobro").modal("hide");
-							getLista();
 						}else{
 							alert("El cargo no se pudo realizar " + (resp.mensaje == null?"":resp.mensaje));
 						}

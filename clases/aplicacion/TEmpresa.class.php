@@ -26,6 +26,7 @@ class TEmpresa{
 	private $idPay;
 	private $ultimocorte;
 	private $comision;
+	private $cvv;
 	
 	/**
 	* Constructor de la clase
@@ -545,6 +546,32 @@ class TEmpresa{
 	}
 	
 	/**
+	* Establece cvv
+	*
+	* @autor Hugo
+	* @access public
+	* @param integer $val Valor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setCVV($val = ''){
+		$this->cvv = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna email
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getCVV(){
+		return $this->cvv;
+	}
+	
+	/**
 	* Guarda los datos en la base de datos, si no existe un identificador entonces crea el objeto
 	*
 	* @autor Hugo
@@ -632,7 +659,8 @@ class TEmpresa{
 				parametros = '".$this->parametros."',
 				idPay = '".$this->idPay."',
 				ultimocorte = ".($this->getUltimoCorte() == ''?"null":("'".$this->getUltimoCorte()."'")).",
-				comision = ".$this->getComision()."
+				comision = ".$this->getComision().",
+				cvv = '".$this->getCVV()."'
 			WHERE idEmpresa = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);

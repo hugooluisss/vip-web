@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-08 22:21:25
+<?php /* Smarty version Smarty-3.1.11, created on 2017-10-23 21:43:12
          compiled from "templates/plantillas/modulos/reportes/cobranza.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:148464690259ad75bca85656-13860211%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '68b255d025ce1642515c1b21c0a061b2eda8bd6f' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/cobranza.tpl',
-      1 => 1504927284,
+      1 => 1506742715,
       2 => 'file',
     ),
   ),
@@ -26,7 +26,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_valid && !is_callable('content_59ad75bca87c65_56226050')) {function content_59ad75bca87c65_56226050($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/Library/WebServer/Documents/vip-web/librerias/smarty/plugins/modifier.date_format.php';
 ?><div class="row">
 	<div class="col-sm-12">
-		<h1 class="page-header">Cobranza</h1>
+		<h1 class="page-header">Comisiones VIP System</h1>
 	</div>
 </div>
 

@@ -6,6 +6,7 @@ TComision = function(){
 		
 		$.post('ccobranza', {
 				"id": datos.id,
+				"comision": datos.porcentaje,
 				"tarjeta": datos.tarjeta,
 				"device_session": datos.device_session,
 				"action": "pagar"

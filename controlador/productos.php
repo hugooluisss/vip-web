@@ -33,6 +33,7 @@ switch($objModulo->getId()){
 		
 		$smarty->assign("lista", $datos);
 		$smarty->assign("select", $_POST['select']);
+		$smarty->assign("json", $datos);
 	break;
 	case 'listaProductosAutocomplete':
 		$db = TBase::conectaDB();

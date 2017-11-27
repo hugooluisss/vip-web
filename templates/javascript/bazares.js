@@ -114,6 +114,7 @@ $(document).ready(function(){
 							input.click(function(){
 								clickUsuario(input);
 							});
+							
 							label.append(input);
 							label.append($("<span />", {
 								class: "text-primary",
@@ -123,8 +124,21 @@ $(document).ready(function(){
 							
 							$(".tipo" + $("#selTipo").val()).append(label);
 							console.log(label);
-							$("#frmAddUsers").get(0).reset();
-							$("#winAddUsuarios").modal("hide");
+							var bazar = new TBazar;
+							bazar.setUsuario({
+								"usuario": datos.identificador,
+								"bazar": $('#winUsuarios').attr("identificador"),
+								"fn": {
+									before: function(){
+									},
+									after: function(resp){
+										$("#frmAddUsers").get(0).reset();
+										$("#winAddUsuarios").modal("hide");
+									}
+								}
+							});
+							
+							
 						}else{
 							alert("Upps... " + datos.mensaje);
 						}

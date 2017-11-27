@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-21 23:09:54
+<?php /* Smarty version Smarty-3.1.11, created on 2017-10-23 21:45:41
          compiled from "templates/plantillas/modulos/reportesAdmin/listaCobranza.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:34099737059ab23a8118528-28173330%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f9a892a75a95924b47be34e621b7dcc562fbfbfe' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/listaCobranza.tpl',
-      1 => 1506053392,
+      1 => 1506742188,
       2 => 'file',
     ),
   ),
@@ -32,7 +32,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<th>Inicio</th>
 			<th>Fin</th>
 			<th>Comisión</th>
-			<th>Monto</th>
+			<th>Ventas</th>
+			<th>Comisión</th>
+			<th>IVA</th>
+			<th>Total</th>
 			<th>IdCargo</th>
 			<th>&nbsp;</th>
 		</tr>
@@ -54,7 +57,13 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 				<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['comision'];?>
  %</td>
-				<td class="text-right">$ <?php echo $_smarty_tpl->tpl_vars['row']->value['monto'];?>
+				<td class="text-right">$<?php echo sprintf("%.2f",($_smarty_tpl->tpl_vars['row']->value['monto']));?>
+</td>
+				<td class="text-right">$<?php echo sprintf("%.2f",($_smarty_tpl->tpl_vars['row']->value['monto']*($_smarty_tpl->tpl_vars['row']->value['comision']/100)));?>
+</td>
+				<td class="text-right">$<?php echo sprintf("%.2f",($_smarty_tpl->tpl_vars['row']->value['monto']*($_smarty_tpl->tpl_vars['row']->value['comision']/100)*0.16));?>
+</td>
+				<td class="text-right">$<?php echo sprintf("%.2f",($_smarty_tpl->tpl_vars['row']->value['monto']*($_smarty_tpl->tpl_vars['row']->value['comision']/100)*1.16));?>
 </td>
 				<td class="text-center"><?php echo $_smarty_tpl->tpl_vars['row']->value['openpay_cash'];?>
 </td>

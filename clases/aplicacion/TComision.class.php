@@ -247,6 +247,9 @@ class TComision{
 		global $ini;
 		require_once('librerias/openpay/Openpay.php');
 		$openpay = Openpay::getInstance($ini['openpay']['id'], $ini['openpay']['key_private']);
+		if ($ini['openpay']['produccion'] == 'on')
+				Openpay::setProductionMode(true);
+				
 		$empresa = new TEmpresa($this->getEmpresa());
 		$mensaje = "";
 		try{
@@ -256,6 +259,7 @@ class TComision{
 				'source_id' => $tarjeta,
 				'amount' => sprintf("%0.2f", $this->getMonto() * $this->getComision() / 100),
 				'currency' => 'MXN',
+				'cvv2' => $empresa->getCVV(),
 				'description' => "Comisiones del ".$this->getInicio()." al ".$this->getFin(),
 				'device_session_id' => $device
 				)

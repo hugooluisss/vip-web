@@ -20,5 +20,6 @@
 
 <input type="hidden" id="merchant" value="{$openpay.id}" />
 <input type="hidden" id="public" value="{$openpay.key_public}" />
+<input type="hidden" id="produccion" value="{$openpay.produccion}" />
 
 {include file=$PAGE.rutaModulos|cat:"modulos/reportesAdmin/winUpFactura.tpl"}

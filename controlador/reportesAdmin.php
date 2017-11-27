@@ -59,6 +59,10 @@ switch($objModulo->getId()){
 		}else
 			$smarty->assign("lista", array());
 	break;
+	case 'cobranza':
+		global $ini;
+		$smarty->assign("openpay", $ini['openpay']);
+	break;
 	case 'listaCobranza':
 		$db = TBase::conectaDB();
 		$sql = "select a.*, b.razonsocial from comision a join empresa b using(idEmpresa)";
@@ -82,6 +86,9 @@ switch($objModulo->getId()){
 		switch($objModulo->getAction()){
 			case 'pagar':
 				$comision = new TComision($_POST['id']);
+				$comision->setComision($_POST['comision']);
+				$comision->guardar();
+				
 				$msg = $comision->cargar($_POST['tarjeta'], $_POST['device_session']);
 				
 				$smarty->assign("json", array("band" => $msg == '', "mensaje" => $msg));

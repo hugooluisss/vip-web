@@ -109,7 +109,7 @@
 </form>
 
 
-<form action="#" id="frmTarjeta" method="post" class="form-horizontal" onsubmit="javascript: return false;" style="display: none" merchant="{$openpay.id}" public="{$openpay.key_public}">
+<form action="#" id="frmTarjeta" method="post" class="form-horizontal" onsubmit="javascript: return false;" style="display: none" merchant="{$openpay.id}" public="{$openpay.key_public}" produccion="{$openpay.produccion}">
 	<div class="box">
 		<div class="box-body">
 			{if $tarjeta->card_number == ''}

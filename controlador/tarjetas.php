@@ -80,6 +80,8 @@ switch($objModulo->getId()){
 						
 						$card = $customer->cards->add($cardDataRequest);
 						$band = true;
+						$empresa->setCVV($_POST['cvc']);
+						$empresa->guardar();
 					}catch(Exception $e){
 						ErrorSistema("PAY: ".$e->getMessage());
 						$mensaje = $e->getMessage();

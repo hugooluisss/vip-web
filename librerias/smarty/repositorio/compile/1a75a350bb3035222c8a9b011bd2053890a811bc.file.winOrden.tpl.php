@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-04 09:14:08
+<?php /* Smarty version Smarty-3.1.11, created on 2017-11-06 09:34:18
          compiled from "templates/plantillas/modulos/reportesAdmin/winOrden.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:185553133959973685badae1-78969962%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1a75a350bb3035222c8a9b011bd2053890a811bc' => 
     array (
       0 => 'templates/plantillas/modulos/reportesAdmin/winOrden.tpl',
-      1 => 1504533359,
+      1 => 1509982456,
       2 => 'file',
     ),
   ),
@@ -44,9 +44,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<label for="txtPorcentaje" class="col-lg-2">Porcentaje</label>
 						<div class="col-lg-5">
 							<div class="input-group">
-								<input type="number" class="form-control text-right" id="txtPorcentaje" name="txtPorcentaje" value="5" readonly="true"/>
+								<input type="number" class="form-control text-right" id="txtPorcentaje" name="txtPorcentaje" value="0.5"/>
 								<span class="input-group-addon" id="basic-addon2">%</span>
 							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtSubtotal" class="col-lg-2">Subtotal</label>
+						<div class="col-lg-5">
+							<input type="text" class="form-control text-right" id="txtSubtotal" name="txtSubtotal" readonly="true" disabled="true"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtIVA" class="col-lg-2">IVA</label>
+						<div class="col-lg-5">
+							<input type="text" class="form-control text-right" id="txtIVA" name="txtIVA" readonly="true" disabled="true"/>
 						</div>
 					</div>
 					<div class="form-group">

@@ -111,8 +111,8 @@ $(document).ready(function(){
         complete: function(result, textStatus, jqXHR) {
         	//console.log(result);
         	result = jQuery.parseJSON(result.responseText);
-        	
-        	//result.status == 'success')
+        	if(result.status == 'error')
+        		alert("Solo se permite el uso de archivos JPG");
         }
 	});
 });
@@ -122,7 +122,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 	OpenPay.setId($("#frmTarjeta").attr("merchant"));
 	OpenPay.setApiKey($("#frmTarjeta").attr("public"));
-	OpenPay.setSandboxMode(false);
+	OpenPay.setSandboxMode($("#frmTarjeta").attr("produccion") != 'on');
 	
 	$("[data-openpay-card=card_number]").change(function(){
 		if(OpenPay.card.validateCardNumber($(this).val())){

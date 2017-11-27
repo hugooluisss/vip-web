@@ -23,7 +23,7 @@
 						<label for="txtPorcentaje" class="col-lg-2">Porcentaje</label>
 						<div class="col-lg-5">
 							<div class="input-group">
-								<input type="number" class="form-control text-right" id="txtPorcentaje" name="txtPorcentaje" value="5" readonly="true"/>
+								<input type="number" class="form-control text-right" id="txtPorcentaje" name="txtPorcentaje" value="0.5"/>
 								<span class="input-group-addon" id="basic-addon2">%</span>
 							</div>
 						</div>

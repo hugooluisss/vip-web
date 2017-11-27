@@ -112,9 +112,9 @@ switch($objModulo->getId()){
 			case 'cerrar':
 				$obj = new TVenta($_POST['id']);
 				$obj->setEstado(2); #Esto pone la venta en estado cerrada
-				$obj->setRegistro(date("Y-m-d"));
 				$band = $obj->guardar();
-				
+				#if ($band)
+				#	$obj->setRegistro(date("Y-m-d"));
 				$smarty->assign("json", array("band" => $band));
 			break;
 			case 'cancelar':
@@ -126,7 +126,8 @@ switch($objModulo->getId()){
 			break;
 			case 'imprimir':
 				require_once(getcwd()."/repositorio/pdf/ticket.php");
-				$pdf = new RTicket($_POST['id']);
+				$idVenta = $_POST['id'] == ''?$_GET['id']:$_POST['id'];
+				$pdf = new RTicket($idVenta);
 				$pdf->generar();
 				
 				$documento = $pdf->Output();
@@ -138,7 +139,7 @@ switch($objModulo->getId()){
 					$email->setTema("Nota de venta");
 					$email->addDestino($_POST['email']);
 					
-					$venta = new TVenta($_POST['id']);
+					$venta = new TVenta($idVenta);
 					$datos = array();
 					$datos['bazar.nombre'] = $venta->bazar->getNombre();
 					$datos['venta.fecha'] = $venta->getFecha();
@@ -160,12 +161,30 @@ switch($objModulo->getId()){
 					$bandEmail = $email->send();
 				}
 				
-				$smarty->assign("json", array("band" => true, "url" => $documento, "email" => $bandEmail));
+				if ($_POST['id'] == '')
+					header('Location: '.$documento);
+				else
+					$smarty->assign("json", array("band" => true, "url" => $documento, "email" => $bandEmail));
 			break;
 			case 'setBazar':
 				setcookie("bazar", $_POST['id']);
 				
 				$smarty->assign("json", array("band" => true));
+			break;
+			case 'getBazares':
+				$db = TBase::conectaDB();
+				
+				$sql = "select * from bazar a join usuariobazar b using(idBazar) where idUsuario = ".$_POST['usuario']." and a.visible = 1 and estado = 1";
+				
+				$rs = $db->query($sql) or errorMySQL($db, $sql);
+				$datos = array();
+				while($row = $rs->fetch_assoc()){
+					$row['json'] = json_encode($row);
+					
+					array_push($datos, $row);
+				}
+				
+				$smarty->assign("json", $datos);
 			break;
 		}
 	break;

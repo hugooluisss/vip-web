@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-26 21:00:45
+<?php /* Smarty version Smarty-3.1.11, created on 2017-10-23 21:38:47
          compiled from "templates/plantillas/modulos/ventas/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:83260548659472e841e9063-68918287%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '79731998ddf826714b60029001476656ec1216cf' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/lista.tpl',
-      1 => 1506477637,
+      1 => 1508812716,
       2 => 'file',
     ),
   ),
@@ -62,14 +62,20 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 					<?php if ($_smarty_tpl->tpl_vars['row']->value['idEstado']==2){?>
 					<button type="button" class="btn btn-success btn-xs" action="cargar" title="Cargar y modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>
-					<button type="button" class="btn btn-primary btn-xs" action="imprimir" title="Imprimir" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
-'><i class="fa fa-file-pdf-o"></i></button>
+					<!--<button type="button" class="btn btn-primary btn-xs" action="imprimir" title="Imprimir" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'><i class="fa fa-file-pdf-o"></i></button>-->
+					<a class="btn btn-primary btn-xs" href="?mod=cventas&action=imprimir&id=<?php echo $_smarty_tpl->tpl_vars['row']->value['idVenta'];?>
+" target="_blank" title="Imprimir" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'><i class="fa fa-file-pdf-o"></i></a>
 					<button type="button" class="btn btn-primary btn-xs" action="email" title="Enviar por email" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-envelope-o"></i></button>
 					<?php }?>
 					<?php if ($_smarty_tpl->tpl_vars['row']->value['idEstado']==3){?>
-					<button type="button" class="btn btn-primary btn-xs" action="imprimir" title="Imprimir" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
-'><i class="fa fa-file-pdf-o"></i></button>
+					<!--<button type="button" class="btn btn-primary btn-xs" action="imprimir" title="Imprimir" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'><i class="fa fa-file-pdf-o"></i></button>-->
+					<a class="btn btn-primary btn-xs" href="?mod=cventas&action=imprimir&id=<?php echo $_smarty_tpl->tpl_vars['row']->value['idVenta'];?>
+" target="_blank" title="Imprimir" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'><i class="fa fa-file-pdf-o"></i></a>
 					<?php }?>
 				</td>
 			</tr>

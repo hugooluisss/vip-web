@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-10-12 09:49:13
+<?php /* Smarty version Smarty-3.1.11, created on 2017-10-23 21:24:32
          compiled from "templates/plantillas/modulos/terminosCondiciones.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:139339132859d63ba9244802-08988225%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88c8b91c8bac2e38a84885c811135c0913be602f' => 
     array (
       0 => 'templates/plantillas/modulos/terminosCondiciones.tpl',
-      1 => 1507819706,
+      1 => 1508776631,
       2 => 'file',
     ),
   ),
@@ -34,7 +34,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <p>Cualquier función nueva o herramienta que se añadan a la tienda actual, también estarán sujetas a los Términos de Servicio. Puedes revisar la versión actualizada de los Términos de Servicio, en cualquier momento en esta página. Nos reservamos el derecho de actualizar, cambiar o reemplazar cualquier parte de los Términos de Servicio mediante la publicación de actualizaciones y/o cambios en nuestro sitio web. Es tu responsabilidad chequear esta página periódicamente para verificar cambios. Tu uso continuo o el acceso al sitio web después de la publicación de cualquier cambio constituye la aceptación de dichos cambios.</p>
 
-<p>Nuestra servicio se encuentra alojado en http:www//app.vipsystem.store que proporciona una plataforma de control de ventas, inventarios y pedidos en puntos de ventas provisionales como son bazares y mercados.</p>
+<p>Nuestro servicio se encuentra alojado en https://app.vipsystem.store que proporciona una plataforma de control de ventas, inventarios y pedidos en puntos de ventas provisionales como son bazares y mercados.</p>
 
 
 <h3>SECCIÓN 1 - TÉRMINOS DE LA TIENDA EN LÍNEA</h3>
@@ -52,7 +52,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <p>Nos reservamos el derecho de rechazar la prestación de servicio a cualquier persona, por cualquier motivo y en cualquier momento.</p>
 
-<p>Entiendes que tu contenido (sin incluir la información de tu tarjeta de crédito), puede ser transferida sin encriptar e involucrar (a) transmisiones a través de varias redes; y (b) cambios para ajustarse o adaptarse a los requisitos técnicos de conexión de redes o dispositivos. La información de tarjetas de crédito está siempre encriptada durante la transferencia a través de las redes.</p>
+<p>Entiendes que su contenido (sin incluir la información de tu tarjeta de crédito), puede ser transferida sin encriptar e involucrar (a) transmisiones a través de varias redes; y (b) cambios para ajustarse o adaptarse a los requisitos técnicos de conexión de redes o dispositivos. La información de tarjetas de crédito está siempre encriptada durante la transferencia a través de las redes.</p>
 
 <p>Estás de acuerdo con no reproducir, duplicar, copiar, vender, revender o explotar cualquier parte del Servicio, uso del Servicio, o acceso al Servicio o cualquier contacto en el sitio web a través del cual se presta el servicio, sin el expreso permiso por escrito de nuestra parte.</p>
 
@@ -72,6 +72,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <p>Nos reservamos el derecho de modificar o discontinuar el Servicio (o cualquier parte del contenido) en cualquier momento sin aviso previo.</p>
 
 <p>No seremos responsables ante ti o alguna tercera parte por cualquier modificación, cambio de precio, suspensión o discontinuidad del Servicio.</p>
+
+<p>Por el uso del Servicio, te cobraremos una comisión sobre el total de venta registrada en nuestro portal (total de notas de ventas). Encontrarás el monto de esta comisión en el apartado “Mi Empresa”. A esta comisión se le agregará el porcentaje correspondiente del Impuesto sobre el Valor Agregado (IVA) conforme a las leyes fiscales aplicables.</p>
+<p>El cobro se hará a la tarjeta de crédito ingresada en esta misma sección. </p>
+<p>El cobro se realiza por medio de una aplicación de tercero: Openpay SAPI de C.V. cuyas condiciones de uso encontrarás en https://www.openpay.mx/terminos-servicio.html </p>
+<p>Una vez cobrada la comisión, se te hará llegar en las siguientes 48 horas hábiles la factura correspondiente, misma factura que podrás descargar dentro de tu portal. </p>
+<p>Los datos de facturación corresponden a los datos capturados como: “Mi Empresa”. Cualquier aclaración o cambio de facturación se deberá solicitar por correo a: info@vipsystem.store en un lapso máximo de 48 horas, dentro del mismo mes calendario.</p>
 
 
 <h3>SECCIÓN 5 - SERVICIOS (si aplicable)</h3>
@@ -154,7 +160,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <p>Estas Condiciones de servicio son efectivos a menos que y hasta que sea terminado por ti o nosotros. Puedes terminar estos Términos de Servicio en cualquier momento por avisarnos que ya no deseas utilizar nuestros servicios, o cuando dejes de usar nuestro sitio.</p>
 
-<h3>Si a nuestro juicio, fallas, o se sospecha que haz fallado, en el cumplimiento de cualquier término o disposición de estas Condiciones de Servicio, también podemos terminar este acuerdo en cualquier momento sin previo aviso, y seguirás siendo responsable de todos los montos adeudados hasta incluida la fecha de terminación; y/o en consecuencia podemos negarte el acceso a nuestros servicios (o cualquier parte del mismo).</h3>
+<p>Si a nuestro juicio, fallas, o se sospecha que haz fallado, en el cumplimiento de cualquier término o disposición de estas Condiciones de Servicio, también podemos terminar este acuerdo en cualquier momento sin previo aviso, y seguirás siendo responsable de todos los montos adeudados hasta incluida la fecha de terminación; y/o en consecuencia podemos negarte el acceso a nuestros servicios (o cualquier parte del mismo).</p>
+
+<p>Si a nuestro juicio, fallas, o se sospecha que haz fallado, en el cumplimiento de cualquier término o disposición de estas Condiciones de Servicio, también podemos terminar este acuerdo en cualquier momento sin previo aviso, y seguirás siendo responsable de todos los montos adeudados hasta incluida la fecha de terminación; y/o en consecuencia podemos negarte el acceso a nuestros servicios (o cualquier parte del mismo).</p>
 
 <h3>SECCIÓN 17 - ACUERDO COMPLETO</h3>
 

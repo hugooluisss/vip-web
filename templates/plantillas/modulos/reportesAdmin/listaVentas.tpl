@@ -15,7 +15,9 @@
 			<tr>
 				<td>{$row.fecha}</td>
 				<td>
-					<a href="#" class="" role="button" action="ticket" title="Comprobante de venta" datos='{$row.json}' idVenta="{$row.idVenta}" onclick="javascript: return false;">{$row.folio}</a>
+					<a class="" href="?mod=cventas&action=imprimir&id={$row.idVenta}" target="_blank" title="Comprobante de venta" datos='{$row.json}'>{$row.folio}</a>
+					
+					<!--<a href="#" class="" role="button" action="ticket" title="Comprobante de venta" datos='{$row.json}' idVenta="{$row.idVenta}" onclick="javascript: return false;">{$row.folio}</a>-->
 				</td>
 				<td>{$row.estado}</td>
 				<td>{$row.empresa}</td>

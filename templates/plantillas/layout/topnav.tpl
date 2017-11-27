@@ -68,12 +68,19 @@
 			<div class="body">
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3">
-						<h2 class="text-center">Todo listo para empezar a vender tus productos en el bazar</h2>
+						<h2 class="text-center">Todo listo para empezar a vender tus productos en Bazares y Mercados</h2>
 						<br />
 						<br />
 						<p class="text-mute text-center">
-							VIP es una herramienta que te auxiliará en todos los procesos de venta en tu bazar ¿estás listo para iniciar?
+							VIP es la herramienta ideal que te auxiliará en todos los procesos comerciales en bazares y mercado
 						</p>
+						
+						<p class="text-mute text-center">
+						- Control de Ventas<br />
+						- Control de Inventarios<br />
+						- Control de Pedidos</p>
+						<br />
+						<p class="text-center"><b>¿Estás listo para iniciar?</b></p>
 					</div>
 				</div>
 			</div>
@@ -90,24 +97,30 @@
 				<div class="col-xs-6 col-sm-5">
 					<br />
 					<br />
-					<h3>Vende lo que quieras y toma el control de tu bazar</h3>
-					<p class="text-mute">Con VIP tienes el control de tu inventario al cual podrás acceder desde cualquier dispositivo movil o computadora permitiendo que el proceso de venta se realice con facilidad
+					<h3>Vende lo que quieras y toma el control de tu bazar o mercado</h3>
+					<p class="text-mute">
+					Con VIP tienes el control de tus <b>V</b>entas, <b>I</b>nventarios y <b>P</b>edidos a los cuales podrás acceder desde cualquier dispositivo móvil o computadora permitiendo una información siempre actualizada, estés donde estés.
+					</p>
+					<p class="text-mute">
+					Además de poder mandar notas de ventas personalizadas, te facilitará el proceso de identificación de la cobranza gracias a su módulo "Método de cobro" (Efectivo, banco, terminal bancaria y /o virtuales). Lo único que necesitas es acceso a internet desde cualquier dispositivo.
 					</p>
 				</div>
 				<div class="col-xs-6 col-sm-5 col-sm-offset-2">
 					<img src="{$PAGE.ruta}img/stand1.jpg" class="img-responsive"/>
 				</div>
 			</div>
-			
+			<br />
+			<br />
+			<br />
 			<div class="row">
 				<div class="col-xs-6 col-sm-5">
 					<img src="{$PAGE.ruta}img/stand2.jpg" class="img-responsive"/>
 				</div>
 				<div class="col-xs-6 col-sm-5 col-sm-offset-2">
-					<br />
-					<br />
-					<h3>Tu bazar, tu imagen</h3>
-					<p class="text-mute">Conoce VIP y personalizalo de acuerdo a tus necesidades de imagen</p>
+					<h3>¡Una herramienta para la cobranza y la conciliación bancaria!</h3>
+					<p class="text-mute"><b>¡Sin cuota fija!</b> Pagarás una comisión muy baja de 0.5% únicamente sobre las ventas que realices (es decir 50cts por cada 100 pesos de venta).</p>
+					<p class="text-mute"><b>¡Muy fácil de usar y configurar!</b> En tres pasos sencillos podrás configurar tu VIPSystem. Te costará $1.00 pesos. Luego, tendrás acceso a videos tutoriales muy cortos que te guiarán en cada una de las etapas del proceso</b>
+					<p class="text-mute"><b>Soporte telefónico</b> 7/7 24/24 al 01800-286 9734</p>
 				</div>
 			</div>
 		</div>
@@ -116,29 +129,38 @@
 				<hr />
 				<div class="row">
 					<div class="col-xs-6 text-left redesSociales">
-						<a href="#">
+						<a href="https://www.facebook.com/vipsystemmexico/">
 							<span class="fa-stack fa-lg">
 								<i class="fa fa-circle fa-stack-2x"></i>
 								<i class="fa fa-facebook fa-stack-1x fa-inverse" aria-hidden="true"></i>
 							</span>
 						</a>
-						<a href="#">
+						<a href="https://twitter.com/VipSystemMexico">
 							<span class="fa-stack fa-lg">
 								<i class="fa fa-circle fa-stack-2x"></i>
 								<i class="fa fa-twitter fa-stack-1x fa-inverse" aria-hidden="true"></i>
 							</span>
 						</a>
-						<a href="#">
+						<a href="mailto:info@vipsystem.store">
 							<span class="fa-stack fa-lg">
 								<i class="fa fa-circle fa-stack-2x"></i>
 								<i class="fa fa-envelope-o fa-stack-1x fa-inverse" aria-hidden="true"></i>
 							</span>
 						</a>
-							<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=wUG52RBzjqoqi5UEOJom08bIuhoWMDsjMtIQHxNemUzMVWzmm3wqW3mixqb0"></script></span>
 					</div>
 					<div class="col-xs-6 text-right ligasInteres">
 						<a href="#" data-toggle="modal" data-target="#winTerminosCondiciones">Términos de servicio</a>
 						<a href="#" data-toggle="modal" data-target="#winAvisoPrivacidad">Política de privacidad</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<img src="{$PAGE.ruta}img/googleplay.png" style="width: 159px;"/>
+						<img src="{$PAGE.ruta}img/appstore.png" style="width: 159px;"/>
+						<img src="{$PAGE.ruta}img/compraLocal.jpg" style="width: 50px;"/>
+					</div>
+					<div class="col-xs-6 text-right">
+						<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=wUG52RBzjqoqi5UEOJom08bIuhoWMDsjMtIQHxNemUzMVWzmm3wqW3mixqb0"></script></span>
 					</div>
 				</div>
 			</div>

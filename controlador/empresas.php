@@ -112,16 +112,21 @@ switch($objModulo->getId()){
 				$smarty->assign("json", array("band" => $obj->guardar()));
 			break;
 			case 'uploadfile':
-				if(isset($_FILES['upl']) and $_FILES['upl']['error'] == 0 and $_GET['empresa'] <> ''){
-					$carpeta = "repositorio/empresas/";
-					mkdir($carpeta, 0777, true);
-					chmod($carpeta, 0755);
-					#$_FILES['upl']['name']
-					if(move_uploaded_file($_FILES['upl']['tmp_name'], $carpeta."empresa".$_GET['empresa'].".jpg")){
-						chmod($carpeta."empresa".$_POST['id'].".jpg", 0755);
-						
-						echo '{"status":"success"}';
-						exit;
+				$ext = explode(".", $_FILES['upl']['name']);
+				$ext = $ext[count($ext) - 1];
+				
+				if (strtolower($ext) == 'jpg' or strtolower($ext) == 'jpeg'){
+					if(isset($_FILES['upl']) and $_FILES['upl']['error'] == 0 and $_GET['empresa'] <> ''){
+						$carpeta = "repositorio/empresas/";
+						mkdir($carpeta, 0777, true);
+						chmod($carpeta, 0755);
+						#$_FILES['upl']['name']
+						if(move_uploaded_file($_FILES['upl']['tmp_name'], $carpeta."empresa".$_GET['empresa'].".jpg")){
+							chmod($carpeta."empresa".$_POST['id'].".jpg", 0755);
+							
+							echo '{"status":"success"}';
+							exit;
+						}
 					}
 				}
 				

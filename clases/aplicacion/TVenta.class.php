@@ -222,8 +222,14 @@ class TVenta{
 	*/
 	
 	public function setRegistro($val = ''){
+		if ($this->getId() == '') return false;
+		$db = TBase::conectaDB();
+		
 		$this->registro = $val == ''?date("Y-m-d"):$val;
-		return true;
+		$sql = "update venta set registro = '".$this->registro."' where idVenta = ".$this->getId();
+		
+		$rs = $db->query($sql) or errorMySQL($db, $sql);
+		return $rs?true:false;
 	}
 	
 	/**
@@ -252,13 +258,13 @@ class TVenta{
 		$db = TBase::conectaDB();
 		
 		if ($this->getId() == ''){
-			$sql = "INSERT INTO venta(idBazar, idCliente, idEstado, registro) VALUES(".$this->bazar->getId().", ".$this->cliente->getId().", ".$this->getEstado().", now());";
+			$sql = "INSERT INTO venta(idBazar, idCliente, idEstado) VALUES(".$this->bazar->getId().", ".$this->cliente->getId().", ".$this->getEstado().");";
 			$rs = $db->query($sql) or errorMySQL($db, $sql);
 			
 			if (!$rs) return false;
 				
 			$this->idVenta = $db->insert_id;
-			$this->setRegistro("");
+			#$this->setRegistro("");
 		}		
 		
 		if ($this->getId() == '')
@@ -271,8 +277,7 @@ class TVenta{
 				folio = '".$this->getFolio()."',
 				comentario = '".$this->getComentario()."',
 				descuento = ".$this->getDescuento().",
-				idEstado = ".$this->getEstado().",
-				registro = '".$this->getRegistro()."'
+				idEstado = ".$this->getEstado()." 
 			WHERE idVenta = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);

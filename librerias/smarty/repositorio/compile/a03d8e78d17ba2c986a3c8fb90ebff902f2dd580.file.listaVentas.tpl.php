@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-09-25 20:31:59
+<?php /* Smarty version Smarty-3.1.11, created on 2017-10-23 21:40:18
          compiled from "templates/plantillas/modulos/reportes/listaVentas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:853882315595a6899623151-96343687%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a03d8e78d17ba2c986a3c8fb90ebff902f2dd580' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/listaVentas.tpl',
-      1 => 1506389516,
+      1 => 1508812816,
       2 => 'file',
     ),
   ),
@@ -50,10 +50,14 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['fecha'];?>
 </td>
 				<td>
-					<a href="#" class="" role="button" action="ticket" title="Comprobante de venta" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+					<a class="" href="?mod=cventas&action=imprimir&id=<?php echo $_smarty_tpl->tpl_vars['row']->value['idVenta'];?>
+" target="_blank" title="Comprobante de venta" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'><?php echo $_smarty_tpl->tpl_vars['row']->value['folio'];?>
+</a>
+					<!--<a href="#" class="" role="button" action="ticket" title="Comprobante de venta" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 ' idVenta="<?php echo $_smarty_tpl->tpl_vars['row']->value['idVenta'];?>
 " onclick="javascript: return false;"><?php echo $_smarty_tpl->tpl_vars['row']->value['folio'];?>
-</a>
+</a>-->
 				</td>
 				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['cliente'];?>
 </td>
