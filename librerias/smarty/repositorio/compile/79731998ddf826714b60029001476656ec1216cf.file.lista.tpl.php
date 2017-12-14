@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-10-23 21:38:47
+<?php /* Smarty version Smarty-3.1.11, created on 2017-11-27 13:40:38
          compiled from "templates/plantillas/modulos/ventas/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:83260548659472e841e9063-68918287%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '79731998ddf826714b60029001476656ec1216cf' => 
     array (
       0 => 'templates/plantillas/modulos/ventas/lista.tpl',
-      1 => 1508812716,
+      1 => 1511811629,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'lista' => 0,
     'row' => 0,
+    'movil' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -64,9 +65,11 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 '><i class="fa fa-pencil"></i></button>
 					<!--<button type="button" class="btn btn-primary btn-xs" action="imprimir" title="Imprimir" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-file-pdf-o"></i></button>-->
+					<?php if ($_smarty_tpl->tpl_vars['movil']->value!=1){?>
 					<a class="btn btn-primary btn-xs" href="?mod=cventas&action=imprimir&id=<?php echo $_smarty_tpl->tpl_vars['row']->value['idVenta'];?>
 " target="_blank" title="Imprimir" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-file-pdf-o"></i></a>
+					<?php }?>
 					<button type="button" class="btn btn-primary btn-xs" action="email" title="Enviar por email" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-envelope-o"></i></button>
 					<?php }?>

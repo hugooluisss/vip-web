@@ -42,7 +42,7 @@
 						<td>{$row.idCliente}</td>
 						<td>{$row.nombre}</td>
 						<td>{$row.razonsocial}</td>
-						<td class="text-center">{if $row.idCliente eq $parametros['clienteDefault']}<i class="fa fa-check" aria-hidden="true"></i>{/if}</td>
+						<td class="text-center" {if $row.idCliente eq $parametros['clienteDefault']}clienteDefault="1" json='{$row.json}'{/if}>{if $row.idCliente eq $parametros['clienteDefault']}<i class="fa fa-check" aria-hidden="true"></i>{/if}</td>
 						{if $select neq true}
 						<td style="text-align: right">
 							{if $row.idCliente neq $parametros['clienteDefault']}

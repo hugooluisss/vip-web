@@ -3,6 +3,9 @@ global $objModulo;
 switch($objModulo->getId()){
 	case 'panelPrincipal':
 		global $userSesion;
+		if ($_POST['usuario'] <> '')
+			$userSesion = new TUsuario($_POST['usuario']);
+		
 		if ($userSesion->getIdTipo() <> 1){
 			$db = TBase::conectaDB();
 			$pendientes = array();
@@ -53,8 +56,11 @@ switch($objModulo->getId()){
 				$band = !$pendiente?false:$band;
 			}
 			$smarty->assign("bandPendientes", $band);
+			if (!isset($_post['movil']))
+				$sql = "select * from bazar where idEmpresa = ".$userSesion->getEmpresa();
+			else;
+				$sql = "select * from bazar a join usuariobazar b using(idBazar) where idEmpresa = ".$userSesion->getEmpresa()." and idUsuario = ".$userSesion->getId()." and estado = 1";
 			
-			$sql = "select * from bazar where idEmpresa = ".$userSesion->getEmpresa();
 			$rs = $db->query($sql);
 			$datos = array();
 			$suma = 0;
@@ -72,6 +78,7 @@ switch($objModulo->getId()){
 				$row2 = $rs2->fetch_assoc();
 				
 				$suma += $row2['total'];
+				$row['total2'] = $row2['total'] == null?0:$row2['total'];
 				$row['total'] = number_format($row2['total'], 2, '.', ',');
 				$row['json'] = json_encode($row);
 				
@@ -79,6 +86,21 @@ switch($objModulo->getId()){
 			}
 			$smarty->assign("bazares", $datos);
 			$smarty->assign("totalBazares", number_format($suma, 2, '.', ','));
+			
+			$smarty->assign("json", array(
+				"bazares" => $datos,
+				"totalBazares" => number_format($suma, 2, '.', ','),
+				"bandPendientes" => $band,
+				"pendientes" => $pendientes,
+				"usuario" => array(
+					"nombre" => $userSesion->getNombre(),
+					"nombrePerfil" => $userSesion->getTipo(),
+					"idPerfil" => $userSesion->getPerfil(),
+					"idUsuario" => $userSesion->getId()
+				),
+				"empresa" => array("logotipo" => file_exists("repositorio/empresas/empresa".$userSesion->getEmpresa().".jpg")?"repositorio/empresas/empresa".$userSesion->getEmpresa().".jpg":"img/logo.png"
+				)
+			));
 		}
 	break;
 	case 'interfaz':

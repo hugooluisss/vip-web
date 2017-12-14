@@ -22,7 +22,9 @@
 					{if $row.idEstado eq 2}
 					<button type="button" class="btn btn-success btn-xs" action="cargar" title="Cargar y modificar" datos='{$row.json}'><i class="fa fa-pencil"></i></button>
 					<!--<button type="button" class="btn btn-primary btn-xs" action="imprimir" title="Imprimir" datos='{$row.json}'><i class="fa fa-file-pdf-o"></i></button>-->
+					{if $movil neq 1}
 					<a class="btn btn-primary btn-xs" href="?mod=cventas&action=imprimir&id={$row.idVenta}" target="_blank" title="Imprimir" datos='{$row.json}'><i class="fa fa-file-pdf-o"></i></a>
+					{/if}
 					<button type="button" class="btn btn-primary btn-xs" action="email" title="Enviar por email" datos='{$row.json}'><i class="fa fa-envelope-o"></i></button>
 					{/if}
 					{if $row.idEstado eq 3}

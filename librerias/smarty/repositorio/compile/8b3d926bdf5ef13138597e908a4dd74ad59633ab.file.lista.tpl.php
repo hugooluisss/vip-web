@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-13 09:54:43
+<?php /* Smarty version Smarty-3.1.11, created on 2017-11-27 09:45:15
          compiled from "templates/plantillas/modulos/clientes/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:176422759059448dfa8e8514-51426664%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b3d926bdf5ef13138597e908a4dd74ad59633ab' => 
     array (
       0 => 'templates/plantillas/modulos/clientes/lista.tpl',
-      1 => 1499953231,
+      1 => 1511797210,
       2 => 'file',
     ),
   ),
@@ -78,7 +78,8 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['razonsocial'];?>
 </td>
-						<td class="text-center"><?php if ($_smarty_tpl->tpl_vars['row']->value['idCliente']==$_smarty_tpl->tpl_vars['parametros']->value['clienteDefault']){?><i class="fa fa-check" aria-hidden="true"></i><?php }?></td>
+						<td class="text-center" <?php if ($_smarty_tpl->tpl_vars['row']->value['idCliente']==$_smarty_tpl->tpl_vars['parametros']->value['clienteDefault']){?>clienteDefault="1" json='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'<?php }?>><?php if ($_smarty_tpl->tpl_vars['row']->value['idCliente']==$_smarty_tpl->tpl_vars['parametros']->value['clienteDefault']){?><i class="fa fa-check" aria-hidden="true"></i><?php }?></td>
 						<?php if ($_smarty_tpl->tpl_vars['select']->value!=true){?>
 						<td style="text-align: right">
 							<?php if ($_smarty_tpl->tpl_vars['row']->value['idCliente']!=$_smarty_tpl->tpl_vars['parametros']->value['clienteDefault']){?>

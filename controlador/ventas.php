@@ -3,16 +3,24 @@ global $objModulo;
 switch($objModulo->getId()){
 	case 'puntoventa':
 		$db = TBase::conectaDB();
-		global $userSesion;
-		$empresa = new TEmpresa($userSesion->getEmpresa());
-		$smarty->assign("informacionCompleta", $empresa->isCompletaInformacion());
+		$usuario = new TUSuario();
 		
-		$rs = $db->query("select count(*) as total from usuario a join usuariobazar b using(idUsuario) join bazar c using(idBazar) where c.visible = true and b.idUsuario = ".$userSesion->getId());
+		if ($_POST['usuario'] == ''){
+			global $userSesion;
+			$usuario->setId($userSesion->getId());
+		}else
+			$usuario->setId($_POST['usuario']);
+			
+		$empresa = new TEmpresa($usuario->getEmpresa());
+		$smarty->assign("informacionCompleta", $empresa->isCompletaInformacion());
+		$datosJSON = array();
+		$datosJSON["informacionCompleta"] = $empresa->isCompletaInformacion();
+		$rs = $db->query("select count(*) as total from usuario a join usuariobazar b using(idUsuario) join bazar c using(idBazar) where c.visible = true and b.idUsuario = ".$usuario->getId());
 		$row = $rs->fetch_assoc();
 		
 		$smarty->assign("totalBazares", $row['total'] > 0);
-	
-		$sql = "select * from bazar a join usuariobazar b using(idBazar) where idUsuario = ".$userSesion->getId()." and a.visible = 1 and estado = 1";
+		$datosJSON["totalBazares"] = $row['total'] > 0;
+		$sql = "select * from bazar a join usuariobazar b using(idBazar) where idUsuario = ".$usuario->getId()." and a.visible = 1 and estado = 1";
 		
 		$rs = $db->query($sql) or errorMySQL($db, $sql);
 		$datos = array();
@@ -23,15 +31,15 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("bazares", $datos);
-		
+		$datosJSON["bazares"] = $datos;
 		$db = TBase::conectaDB();
 		global $userSesion;
 		
-		$rs = $db->query("select * from metodopago where visible = true and idEmpresa = ".$userSesion->getEmpresa());
+		$rs = $db->query("select * from metodopago where visible = true and idEmpresa = ".$usuario->getEmpresa());
 		$datos = array();
 		$metodosCobro = array();
 		while($row = $rs->fetch_assoc()){
-			$rs2 = $db->query("select a.*, b.nombre as tipo, concat(b.nombre, ' - ', a.destino) as destino from metodocobro a join tipocobro b using(idTipoCobro) join metodopagotipocobro using(idTipoCobro) where a.visible = true and a.idEmpresa = ".$userSesion->getEmpresa()." and idMetodoPago = ".$row['idMetodoPago']);
+			$rs2 = $db->query("select a.*, b.nombre as tipo, concat(b.nombre, ' - ', a.destino) as destino from metodocobro a join tipocobro b using(idTipoCobro) join metodopagotipocobro using(idTipoCobro) where a.visible = true and a.idEmpresa = ".$usuario->getEmpresa()." and idMetodoPago = ".$row['idMetodoPago']);
 			$datos2 = array();
 			while($row2 = $rs2->fetch_assoc()){
 				array_push($datos2, $row2);
@@ -43,18 +51,25 @@ switch($objModulo->getId()){
 			array_push($datos, $row);
 		}
 		$smarty->assign("metodosPago", $datos);
+		$datosJSON["metodosPago"] = $datos;
 		$smarty->assign("metodosCobro", $metodosCobro);
+		$datosJSON["metodosCobro"] = $metodosCobro;
 		
-		$empresa = new TEmpresa($userSesion->getEmpresa());
+		$empresa = new TEmpresa($usuario->getEmpresa());
 		$parametros = $empresa->getParametros();
 		$clienteDefecto = new TCliente($parametros['clienteDefault']);
 		$smarty->assign("clienteDefecto", array("nombre" => $clienteDefecto->getNombre(), "idCliente" => $clienteDefecto->getId()));
+		$datosJSON["clienteDefecto"] = array("nombre" => $clienteDefecto->getNombre(), "idCliente" => $clienteDefecto->getId());
 		
 		$smarty->assign("bazarCookie", $_GET['tipo'] == 'bazar'?$_GET['id']:$_COOKIE['bazar']);
 		
-		$rs = $db->query("select c.* from metodocobro a join metodopagotipocobro b using(idTipoCobro) join metodopago c using(idMetodoPago) where a.visible = true and (c.nombre = 'Efectivo' or c.nombre = 'Caja') and a.idEmpresa = ".$userSesion->getEmpresa());
+		$rs = $db->query("select c.* from metodocobro a join metodopagotipocobro b using(idTipoCobro) join metodopago c using(idMetodoPago) where a.visible = true and (c.nombre = 'Efectivo' or c.nombre = 'Caja') and a.idEmpresa = ".$usuario->getEmpresa());
 		
 		$smarty->assign("efectivo", $rs->num_rows == 0);
+		$datosJSON["efectivo"] = $rs->num_rows == 0;
+		
+		$datosJSON['usuario'] = $usuario->getId();
+		$smarty->assign("json", $datosJSON);
 	break;
 	case 'listaVentas':
 		$db = TBase::conectaDB();
@@ -68,6 +83,7 @@ switch($objModulo->getId()){
 		}
 		
 		$smarty->assign("lista", $datos);
+		$smarty->assign("movil", $_POST['movil']);
 	break;
 	case 'cventas':
 		switch($objModulo->getAction()){

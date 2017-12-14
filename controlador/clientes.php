@@ -17,7 +17,6 @@ switch($objModulo->getId()){
 		}
 		$smarty->assign("lista", $datos);
 		$smarty->assign("select", $_POST['select']);
-		
 		$empresa = new TEmpresa($usuario->getEmpresa());
 		$smarty->assign("parametros", $empresa->getParametros());
 	break;
